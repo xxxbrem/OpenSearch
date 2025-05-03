@@ -10,17 +10,6 @@ python -u src/database_process/data_preprocess.py \
     --dev_json "${dev_json}" \
     --dev_table "${dev_table}" \
 
-
-python -u src/database_process/prepare_train_queries.py \
-    --db_root_directory "${db_root_directory}" \
-    --model "${fewshot_llm}" 
-
-
-python -u src/database_process/generate_question.py \
-    --db_root_directory "${db_root_directory}" \
-    --DAIL_SQL "${DAIL_SQL}" 
-
-
 python -u src/database_process/make_emb.py \
     --db_root_directory "${db_root_directory}" \
     --dev_database "${dev_database}" \

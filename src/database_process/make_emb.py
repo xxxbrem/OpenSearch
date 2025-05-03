@@ -50,7 +50,11 @@ def make_emb(db, DB_dir, DB_emb,col_values,bert_model,exclude_int=True):
             col_vals = filter_column(values, col, exclude_int)###做索引的值：str
             if len(col_vals) == 0:
                 continue
-            train_embeddings = bert_model.encode(col_vals,device=device)##对值和embedding做相互索引
+            train_embeddings = bert_model.encode(col_vals,device=device)##对值和embedding做相互索引/
+            # train_embeddings = bert_model.embed_documents(col_vals)
+            # print(np.array(train_embeddings).shape)
+            # import sys
+            # sys.exit(0)
             DB_emb[table + "." + col] = train_embeddings
             col_values[table + "." + col] = col_vals
 
@@ -78,6 +82,12 @@ def make_emb_all(data_dir, database, bertmodel):
     data_dir=os.path.join(data_dir,"data_preprocess","dev.json")
     # init model
     bert_model = SentenceTransformer(bertmodel, device=device, cache_folder='model/')
+    # from langchain_openai import AzureOpenAIEmbeddings
+    # bert_model = AzureOpenAIEmbeddings(  model="text-embedding-3-large",
+    #                                 deployment="text-embedding-3-large",
+    #                                 openai_api_key=os.getenv("AZURE_OPENAI_KEY"),
+    #                                 azure_endpoint=os.getenv("AZURE_ENDPOINT")
+    # )
     
     # load data
     Q = pd.read_json(data_dir)
