@@ -8,7 +8,7 @@ bert_model=BAAI/bge-large-en-v1.5
 python -u src/database_process/data_preprocess.py \
     --db_root_directory "${db_root_directory}" \
     --dev_json "${dev_json}" \
-    --dev_table "${dev_table}" \
+    --dev_table "${dev_table}" 
 
 python -u src/database_process/make_emb.py \
     --db_root_directory "${db_root_directory}" \

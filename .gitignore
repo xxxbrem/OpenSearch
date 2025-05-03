@@ -1,3 +1,7 @@
 **/__pycache__/
 Spider2-sqlite/test_database/
 model/
+
+# embedding
+Spider2-sqlite/emb/
+Spider2-sqlite/*.zip

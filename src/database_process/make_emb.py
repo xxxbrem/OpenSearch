@@ -9,7 +9,17 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import euclidean_distances
 import argparse
 import logging
-device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
+
+def get_random_device():
+    num_gpus = torch.cuda.device_count()
+
+    if num_gpus > 0:
+        gpu_id = random.randint(0, num_gpus - 1)
+        device = f"cuda:{gpu_id}"
+    else:
+        device = "cpu"
+    return device
+
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 uuid_pattern = re.compile(
@@ -50,7 +60,10 @@ def make_emb(db, DB_dir, DB_emb,col_values,bert_model,exclude_int=True):
             col_vals = filter_column(values, col, exclude_int)###做索引的值：str
             if len(col_vals) == 0:
                 continue
-            train_embeddings = bert_model.encode(col_vals,device=device)##对值和embedding做相互索引/
+
+
+
+            train_embeddings = bert_model.encode(col_vals,device=get_random_device())##对值和embedding做相互索引/
             # train_embeddings = bert_model.embed_documents(col_vals)
             # print(np.array(train_embeddings).shape)
             # import sys
@@ -81,7 +94,7 @@ def make_emb_all(data_dir, database, bertmodel):
     database=os.path.join(data_dir,database)
     data_dir=os.path.join(data_dir,"data_preprocess","dev.json")
     # init model
-    bert_model = SentenceTransformer(bertmodel, device=device, cache_folder='model/')
+    bert_model = SentenceTransformer(bertmodel, device=get_random_device(), cache_folder='model/')
     # from langchain_openai import AzureOpenAIEmbeddings
     # bert_model = AzureOpenAIEmbeddings(  model="text-embedding-3-large",
     #                                 deployment="text-embedding-3-large",

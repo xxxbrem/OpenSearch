@@ -1,9 +1,9 @@
 # Define variables
 data_mode='dev' # Options: 'dev', 'train' 
-db_root_path=Bird #root directory # UPDATE THIS WITH THE PATH TO THE TARGET DATASET
+db_root_path=Spider2-sqlite #root directory # UPDATE THIS WITH THE PATH TO THE TARGET DATASET
 start=0 #闭区间
-end=1  #开区间
-pipeline_nodes='generate_db_schema+extract_col_value+extract_query_noun+column_retrieve_and_other_info+candidate_generate+align_correct+vote+evaluation'
+end=135  #开区间
+pipeline_nodes='generate_db_schema+extract_col_value+extract_query_noun+column_retrieve_and_other_info'
 # pipeline_nodes='column_retrieve_and_other_info'
 # pipeline指当前工作流的节点组合
 # checkpoint_nodes='generate_db_schema,extract_col_value,extract_query_noun'
@@ -20,7 +20,7 @@ pipeline_nodes='generate_db_schema+extract_col_value+extract_query_noun+column_r
     # evaluation
 
 AK='your_ak' #set your ak in src/llm/model.py
-engine1='gpt-4o-0513'
+engine1='gpt-4o-rag-research'
 engine2='gpt-3.5-turbo-0125'
 engine3='gpt-4-turbo'
 engine4='claude-3-opus-20240229'
@@ -38,7 +38,7 @@ engine10='gpt-3.5-turbo-instruct'
 #     "generate_db_schema": {                 #生成db_schema的环节
 #         "engine": "'${engine1}'",            #生成 db_schema的大模型选择                 
 #         "bert_model": "/app/sentence-transformers/all-mpnet-base-v2/",  #bert_model模型选择
-#         "device":"cpu"                                                  #bert_model加载方式，目前该机器只支持cpu
+#         "device":"cuda:0"                                                  #bert_model加载方式，目前该机器只支持cuda:0
 #     },
 #     "extract_col_value": {                    #get_des_ans得到key_col_des_raw
 #         "engine": "'${engine1}'",             #大模型
@@ -51,7 +51,7 @@ engine10='gpt-3.5-turbo-instruct'
 #     "column_retrieve_and_other_info": {      #得到一些列描述和列等相关信息+query_order
 #         "engine": "'${engine1}'",             #query_order用的大模型
 #         "bert_model": "/app/bge",        # bert_model模型选择
-#         "device":"cpu",                          #bert_model加载方式，目前该机器只支持cpu
+#         "device":"cuda:0",                          #bert_model加载方式，目前该机器只支持cuda:0
 #         "temperature":0.3,                        #query_order使用大模型的生成参数
 #         "top_k":10                                #get_key_col_des里面的top_k
 #     },
@@ -66,15 +66,15 @@ engine10='gpt-3.5-turbo-instruct'
 #         "engine": "'${engine1}'",             #对齐和纠错
 #         "n":21,                                  #多线程的数量
 #         "bert_model": "/app/bge",            
-#         "device":"cpu",                           #bert_model 加载方式
+#         "device":"cuda:0",                           #bert_model 加载方式
 #         "align_methods":"style_align+function_align+agent_align"   #对齐方式，以+号分割
 #     }
 # }'  
 pipeline_setup='{
     "generate_db_schema": {
         "engine": "'${engine1}'",
-        "bert_model": "your_bert_model_path",  
-        "device":"cpu"
+        "bert_model": "BAAI/bge-large-en-v1.5", 
+        "device":"cuda:0"
     },
     "extract_col_value": {
         "engine": "'${engine1}'",
@@ -86,8 +86,8 @@ pipeline_setup='{
     },
     "column_retrieve_and_other_info": {
         "engine": "'${engine1}'",
-        "bert_model": "your_bert_model_path",  
-        "device":"cpu",
+        "bert_model": "BAAI/bge-large-en-v1.5", 
+        "device":"cuda:0",
         "temperature":0.3,
         "top_k":10
     },
@@ -102,7 +102,7 @@ pipeline_setup='{
         "engine": "'${engine1}'",
         "n":21,
         "bert_model": "your_bert_model_path:e.g. /opensearch-sql/bge",  
-        "device":"cpu",
+        "device":"cuda:0",
         "align_methods":"style_align+function_align+agent_align"
     }
 }'  

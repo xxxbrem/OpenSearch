@@ -1,6 +1,6 @@
 import requests, time
-import dashscope
-import torch
+# import dashscope
+# import torch
 import json
 import re
 from runner.logger import Logger
@@ -14,7 +14,7 @@ def model_chose(step,model="gpt-4 32K"):
         return qwenmax(model)
     if model.startswith("sft"):
         return sft_req()
-
+import os
 
 class req:
 
@@ -43,72 +43,70 @@ class req:
             s = s.replace(f"{li[1]}.", f"{li[0]}.")
         return t + "#SELECT:" + s + "#values:" + v
 
-def request(url,model,messages,temperature,top_p,n,key,**k):
-    res = requests.post(
-                url=
-                url,
-                json={
-                    "model":
-                    model,
-                    "messages": [{
-                        "role": "system",
-                        "content":
-                        "You are an SQL expert, skilled in handling various SQL-related issues."
-                    }, {
-                        "role": "user",
-                        "content": messages
-                    }],
-                    "max_tokens":
-                    800,
-                    "temperature":
-                    temperature,
-                    "top_p":top_p,
-                    "n":n,
-                    **k
+AZURE_ENDPOINT = f"https://sfc-ml-sweden.openai.azure.com/openai/deployments/gpt-4o-rag-research/chat/completions?api-version=2024-05-01-preview"
+def request_azure(messages, temperature=0.0, top_p=1.0, n=1, **k):
+    response = requests.post(
+        url=AZURE_ENDPOINT,
+        headers={
+            "api-key": os.getenv("AZURE_OPENAI_KEY"),
+            "Content-Type": "application/json"
+        },
+        json={
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "You are an SQL expert, skilled in handling various SQL-related issues."
                 },
-                headers={
-                    "Authorization":
-                    key
-                }).json()
+                {
+                    "role": "user",
+                    "content": messages
+                }
+            ],
+            "max_tokens": 800,
+            "temperature": temperature,
+            "top_p": top_p,
+            "n": n,
+            **k
+        }
+    )
 
-    return res
+    return response.json()
 
 class gpt_req(req):
+    def __init__(self, step, deployment_id="gpt-4o-rag-research"):
+        super().__init__(step, deployment_id)
 
-    def __init__(self, step,model="gpt-4o-0513") -> None:
-        super().__init__(step,model)
-
-    def get_ans(self, messages, temperature=0.0, top_p=None,n=1,single=True,**k):
+    def get_ans(self, messages, temperature=0.0, top_p=None, n=1, single=True, debug=False, **k):
         count = 0
         while count < 50:
-            # print(messages) #保存prompt和答案
+            res = None
             try:
-                res = request(
-                url=
-                "",
-                model=self.model,
-                messages= messages,
-                temperature=temperature,
-                top_p=top_p,
-                n=n,key="",
-                    **k)
-                if n==1 and single:
+                res = request_azure(
+                    messages=messages,
+                    temperature=temperature,
+                    top_p=top_p,
+                    n=n,
+                    **k
+                )
+                if debug:
+                    print(res)
+                if n == 1 and single:
                     response_clean = res["choices"][0]["message"]["content"]
                 else:
                     response_clean = res["choices"]
-                # print(self.step)
-                if self.step!="prepare_train_queries":
-                    self.log_record(messages, response_clean)  # 记录对话内容
+
+                if self.step != "prepare_train_queries":
+                    self.log_record(messages, response_clean)
+
                 break
 
             except Exception as e:
                 count += 1
                 time.sleep(2)
-                # print(messages)
-                print(e, count, self.Cost,res)
+                print(e, count, self.Cost, res)
 
-        self.Cost += res["usage"]['prompt_tokens'] / 1000 * 0.042 + res[
-            "usage"]["completion_tokens"] / 1000 * 0.126
+        self.Cost += res["usage"]['prompt_tokens'] / 1000 * 0.042 + \
+                     res["usage"]["completion_tokens"] / 1000 * 0.126
         return response_clean
     
 
@@ -236,3 +234,8 @@ class sft_req(req):
 
 
 
+if __name__ == "__main__":
+    user_query = "Write an SQL query to list the top 3 products by sales."
+    gpt = gpt_req(1)
+    result = gpt.get_ans(user_query)
+    print(result)
