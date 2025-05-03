@@ -1,0 +1,22 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "status": "error",
+        "error": "<class 'sqlite3.OperationalError'>: <unable to open database file>"
+    },
+    {
+        "node_type": "extract_col_value",
+        "status": "error",
+        "error": "<class 'FileNotFoundError'>: <[Errno 2] No such file or directory: 'Spider2-sqlite/fewshot/questions.json'>"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "status": "error",
+        "error": "<class 'KeyError'>: <'key_col_des_raw'>"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "status": "error",
+        "error": "<class 'KeyError'>: <'db_col_dic'>"
+    }
+]

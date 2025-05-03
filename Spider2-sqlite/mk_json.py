@@ -43,6 +43,8 @@ def export_spider_style_schema(db_path, db_id="my_database"):
 
     schema = {
         "db_id": db_id,
+        "table_names": tables,
+        "column_names": column_names,
         "table_names_original": tables,
         "column_names_original": column_names,
         "column_types": column_types,

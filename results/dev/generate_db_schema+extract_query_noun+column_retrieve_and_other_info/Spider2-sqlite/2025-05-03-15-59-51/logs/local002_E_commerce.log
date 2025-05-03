@@ -1,0 +1,175 @@
+############################## Human at step generate_db_schema ##############################
+
+/* Here is a examples about describe database */
+    #Forigen keys: 
+    Airlines.ORIGIN = Airports.Code, Airlines.DEST = Airports.Code, Airlines.OP_CARRIER_AIRLINE_ID = Air Carriers.Code
+    #Database Description: The database encompasses information related to flights, including airlines, airports, and flight operations.
+    #Tables Descriptions:
+    Air Carriers: Codes and descriptive information about airlines
+    Airports: IATA codes and descriptions of airports
+    Airlines: Detailed information about flights 
+
+    /* Here is a examples about describe database */
+    #Forigen keys:
+    data.ID = price.ID, production.ID = price.ID, production.ID = data.ID, production.country = country.origin
+    #Database Description: The database contains information related to cars, including country, price, specifications, Production
+    #Tables Descriptions:
+    Country: Names of the countries where the cars originate from.
+    Price: Price of the car in USD.
+    Data: Information about the car's specifications
+    Production: Information about car's production.
+
+    /* Describe the following database */
+    Database Management System: SQLite
+#Database name: E_commerce
+## Table product_category_name_translation:
+product_category_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['artes', 'fashion_underwear_e_moda_praia', 'agro_industria_e_comercio']
+product_category_name_english: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['perfumery', 'electronics', 'home_construction']
+
+## Table sellers:
+seller_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['7b3f6ce5c6c22e9b96e7581ebf0df6e1', '98115075dd26cb8835946fc6086f5d30', '913fd0ebba70bb919f7254a02239173c']
+seller_zip_code_prefix: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [22713, 12924, 17032]
+seller_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['santa cruz do sul', 'ampere', 'olimpia']
+seller_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['GO', 'PA', 'DF']
+
+## Table customers:
+customer_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['a15cfa97b62e30ca2e0f9ad649cc7774', '744712b9c80935dedc6c1995e32bfdd9', '24919b72996bb428094aac6b57ff53de']
+customer_unique_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2ec795a39feac8b0ffac1f2aedcdbbfe', '0339119d431b8dd1b361567e4fc48a58', '25901d663386536f4a705f6ba76a7616']
+customer_zip_code_prefix: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [53350, 89535, 7436]
+customer_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['simonesia', 'aracuai', 'diamantino']
+customer_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PR', 'MG', 'MS']
+
+## Table geolocation:
+geolocation_zip_code_prefix: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [29027, 3448, 12335]
+geolocation_lat: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [-30, -30, -23]
+geolocation_lng: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [-46, -46, -46]
+geolocation_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['quatituba', 'são domingos do norte', 'conceicao da barra de minas']
+geolocation_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['MT', 'PA', 'CE']
+
+## Table order_items:
+order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['6355eaa9ea0d6a5946978835f89effbb', 'd66296945273987f899b24ce13f32f81', '8cdf6f8f13da3e9e57245ad6a35e5eaa']
+order_item_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 6, 4]
+product_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['42c28e0e09e582dfd979242c53111e6e', '1a41f6016e828ff1d37f2ecc2f2a0dfd', 'c144fdb6fc3bda28fb58900cdb37247c']
+seller_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['a435b009cd956ea60748b5cfbddf2e24', 'f4c4daa86e30c7e5a553a8d518ac03a5', 'ce3ad9de960102d0677a81f5d0bb7b2d']
+shipping_limit_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-13 20:55:50', '2018-06-21 02:58:50', '2017-05-23 19:43:26']
+price: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [277, 229, 159]
+freight_value: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [211, 33, 23]
+
+## Table order_payments:
+order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['8281751e57c88c456c81120e259c4367', '056a21113c096b87e87743862452a7d3', 'a404ea50be6a196526edbedda3d1d083']
+payment_sequential: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [17, 20, 15]
+payment_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['voucher', 'not_defined', 'debit_card']
+payment_installments: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 0, 24]
+payment_value: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [819, 134, 178]
+
+## Table order_reviews:
+review_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['3590167a693b2f2312743bc9a03a8d28', '0a451903f2fd4f369e6f037a343e3c1c', 'c6c40b1caf7e48b48b2ad47fa88cf78d']
+order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['6be4d639e28647dfcf1002b1e2f3e84c', '7deef94321f75bede64577871cf3147a', '5561adcb0fd46da4cad3048fa4e7fc00']
+review_score: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 5, 3]
+review_comment_title: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Atraso no entrega ', 'Excelentes!', 'entregue rapido']
+review_comment_message: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['A melhor loja entrega rápida recomendo a todos ', 'quero meu dinheiro de volta', 'NAO RECEBI MEUS PRODUTOS COMPLETO']
+review_creation_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-05-16 00:00:00', '2016-12-16 00:00:00', '2017-10-23 00:00:00']
+review_answer_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-03 17:37:22', '2018-05-06 18:52:02', '2017-10-07 05:12:30']
+
+## Table orders:
+order_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['cc9b441239dbd3786773a5c8724547ba', 'c256d21967285da68304dbc784bae3d4', 'e9de409fda259726830399eaf5fb4e42']
+customer_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['67127c6c29a10ac3bccb1fff10fe5758', '194e5864217a3571944250937dec0a41', '3ecd1b9b4c5f6f6288f6e95485527938']
+order_status: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['invoiced', 'created', 'approved']
+order_purchase_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-03-23 20:23:25', '2017-10-17 18:12:23', '2017-03-03 15:55:48']
+order_approved_at: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2017-11-20 16:06:44', '2018-02-06 16:11:40', '2017-11-23 21:27:49']
+order_delivered_carrier_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-01-08 18:16:45', '2018-02-27 16:23:50', '2017-07-07 12:43:39']
+order_delivered_customer_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-08-24 21:40:59', '2017-05-18 12:36:48', '2018-04-02 13:18:34']
+order_estimated_delivery_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-03-16 00:00:00', '2017-05-02 00:00:00', '2017-11-07 00:00:00']
+
+## Table products:
+product_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['d7d794641d5ada503ecda1a6f19199d5', '3fdb534dccf5bc9ab0406944b913787d', '7c8e2b381bb0fcba5b368961d7823cd2']
+product_category_name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['instrumentos_musicais', 'casa_conforto', 'livros_importados']
+product_name_lenght: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [72, 60, 34]
+product_description_lenght: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [1789, 2416, 588]
+product_photos_qty: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [11, 15, 3]
+product_weight_g: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [8325, 948, 1277]
+product_length_cm: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [30, 71, 98]
+product_height_cm: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [27, 73, 86]
+product_width_cm: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [23, 42, 100]
+
+## Table leads_qualified:
+mql_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['ea9bfa88b4322f8cc046e06cfd8c8856', 'ff0ff1ca67906b0ffaef9f6eaff010c6', '77487ac14aa5a4e7e5521642407eea5c']
+first_contact_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-05-15', '2017-10-20', '2017-08-07']
+landing_page_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['fa5a0151e1f37d0055a3478fbb48827a', '87732658ba41d8775e8577df347a64db', '0f25be78376bbbaba8553051e980b83c']
+origin: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other_publicities', 'paid_search', 'social']
+
+## Table leads_closed:
+mql_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['a4caf71cf38708eaf17117f78fa61c9f', 'a2de60ae969948c62475144651c21281', '92ad56ab29e347d1779a07879d38c67a']
+seller_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['ec5b3cd9d6bf0a880edfda73562a7cea', '4a4da369ad50f14d48337aa52eb826f5', 'c1849d4d32d7a6cecd5aa471809d3135']
+sdr_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['0cdad77786224a7cefea567b8c75c3c1', 'de63de0d10a6012430098db33c679b0b', '068066e24f0c643eb1d089c7dd20cd73']
+sr_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['d3d1e91a157ea7f90548eef82f1955e3', 'b90f87164b5f8c2cfa5c8572834dbe3f', '9d12ef1a7eca3ec58c545c678af7869c']
+won_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-03-07 17:11:48', '2018-05-09 21:35:58', '2018-05-10 19:16:27']
+business_segment: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['car_accessories', 'food_drink', 'health_beauty']
+lead_type: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['online_small', 'online_medium', 'industry']
+lead_behaviour_profile: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['cat', 'shark, wolf', 'eagle']
+has_company: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [1, 0]
+has_gtin: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [1, 0]
+average_stock: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['200+', '50-200', '20-50']
+business_type: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['reseller', 'manufacturer', 'other']
+declared_product_catalog_size: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [5, 1000, 305]
+declared_monthly_revenue: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [130000, 150000, 20000]
+
+#Forigen keys:
+
+
+    Please conclude the database in the following format:
+    #Database Description:
+    #Tables Descriptions:
+    
+
+############################## AI at step generate_db_schema ##############################
+
+#Database Description:
+The `E_commerce` database is designed to manage and analyze data related to an e-commerce platform. It contains information about products, sellers, customers, orders, payments, reviews, geolocation, and leads. The database facilitates tracking product details, seller and customer information, order processing, payment transactions, customer reviews, and lead management. It is structured to support business operations, customer insights, and sales analysis.
+
+#Tables Descriptions:
+
+1. **product_category_name_translation**:
+   - Contains translations of product category names into English.
+   - Includes columns for the original product category name (`product_category_name`) and its English translation (`product_category_name_english`).
+
+2. **sellers**:
+   - Stores information about sellers on the platform.
+   - Includes seller ID (`seller_id`), zip code prefix (`seller_zip_code_prefix`), city (`seller_city`), and state (`seller_state`).
+
+3. **customers**:
+   - Stores information about customers.
+   - Includes customer ID (`customer_id`), unique customer ID (`customer_unique_id`), zip code prefix (`customer_zip_code_prefix`), city (`customer_city`), and state (`customer_state`).
+
+4. **geolocation**:
+   - Contains geolocation data for zip codes.
+   - Includes zip code prefix (`geolocation_zip_code_prefix`), latitude (`geolocation_lat`), longitude (`geolocation_lng`), city (`geolocation_city`), and state (`geolocation_state`).
+
+5. **order_items**:
+   - Stores details about items in orders.
+   - Includes order ID (`order_id`), item ID (`order_item_id`), product ID (`product_id`), seller ID (`seller_id`), shipping limit date (`shipping_limit_date`), price (`price`), and freight value (`freight_value`).
+
+6. **order_payments**:
+   - Contains payment information for orders.
+   - Includes order ID (`order_id`), payment sequential number (`payment_sequential`), payment type (`payment_type`), number of installments (`payment_installments`), and payment value (`payment_value`).
+
+7. **order_reviews**:
+   - Stores customer reviews for orders.
+   - Includes review ID (`review_id`), order ID (`order_id`), review score (`review_score`), review comment title (`review_comment_title`), review comment message (`review_comment_message`), review creation date (`review_creation_date`), and review answer timestamp (`review_answer_timestamp`).
+
+8. **orders**:
+   - Contains information about orders placed on the platform.
+   - Includes order ID (`order_id`), customer ID (`customer_id`), order status (`order_status`), purchase timestamp (`order_purchase_timestamp`), approval timestamp (`order_approved_at`), carrier delivery date (`order_delivered_carrier_date`), customer delivery date (`order_delivered_customer_date`), and estimated delivery date (`order_estimated_delivery_date`).
+
+9. **products**:
+   - Stores details about products available on the platform.
+   - Includes product ID (`product_id`), category name (`product_category_name`), name length (`product_name_lenght`), description length (`product_description_lenght`), number of photos (`product_photos_qty`), weight (`product_weight_g`), dimensions (length, height, width in cm).
+
+10. **leads_qualified**:
+    - Contains information about qualified leads.
+    - Includes lead ID (`mql_id`), first contact date (`first_contact_date`), landing page ID (`landing_page_id`), and origin (`origin`).
+
+11. **leads_closed**:
+    - Stores information about closed leads.
+    - Includes lead ID (`mql_id`), seller ID (`seller_id`), SDR ID (`sdr_id`), SR ID (`sr_id`), won date (`won_date`), business segment (`business_segment`
+

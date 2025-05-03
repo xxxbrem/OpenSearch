@@ -44,8 +44,8 @@ class DatabaseManager:
 
     def _set_paths(self):
         """Sets the paths for the database files and directories."""
-        self.db_path = Path(self.db_root_path)/f"{self.db_mode}" / f"{self.db_mode}_databases" / self.db_id / f"{self.db_id}.sqlite"
-        self.db_directory_path = Path(self.db_root_path)/f"{self.db_mode}" / f"{self.db_mode}_databases" / self.db_id
+        self.db_path = Path(self.db_root_path)/ f"test_database" / self.db_id / f"{self.db_id}.sqlite"
+        self.db_directory_path = Path(self.db_root_path)/ f"test_database" / self.db_id
         self.db_json=Path(self.db_root_path)/"data_preprocess"/f"{self.db_mode}.json"
         self.db_tables=Path(self.db_root_path)/"data_preprocess"/"tables.json"
         self.db_fewshot_path=Path(self.db_root_path)/"fewshot"/"questions.json"

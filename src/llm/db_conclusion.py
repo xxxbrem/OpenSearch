@@ -4,7 +4,7 @@ import re, sqlite3, os, chardet
 
 def find_foreign_keys_MYSQL_like(DATASET_JSON, db_name):
     schema_df = pd.read_json(DATASET_JSON)
-    schema_df = schema_df.drop(['column_names', 'table_names'], axis=1)
+    # schema_df = schema_df.drop(['column_names', 'table_names'], axis=1)
     f_keys = []
     for index, row in schema_df.iterrows():
         tables = row['table_names_original']
@@ -148,31 +148,32 @@ class db_agent:
 
     def get_db_des(self,sqllite_dir,db_dir,model):
         conn = sqlite3.connect(sqllite_dir)
-        table_dir = os.path.join(db_dir, 'database_description')
+        # table_dir = os.path.join(db_dir, 'database_description')
         sql = "SELECT name FROM sqlite_master WHERE type='table';"
         cursor = conn.cursor()
         tables = cursor.execute(sql).fetchall()
         db_info = []
         db_col = dict()
-        file_list = os.listdir(table_dir)
-        files_emb = model.encode(file_list, show_progress_bar=False)
+        # file_list = os.listdir(table_dir)
+        # files_emb = model.encode(file_list, show_progress_bar=False)
         for table in tables:
             if table[0] == 'sqlite_sequence':
                 continue
-            files_sim = (files_emb @ model.encode(table[0] + '.csv',
-                                                  show_progress_bar=False).T)
-            if max(files_sim) > 0.9:
-                file = os.path.join(table_dir, file_list[files_sim.argmax()])
-            else:
-                file = os.path.join(table_dir, table[0] + '.csv')
+            # files_sim = (files_emb @ model.encode(table[0] + '.csv',
+            #                                       show_progress_bar=False).T)
+            # if max(files_sim) > 0.9:
+            #     file = os.path.join(table_dir, file_list[files_sim.argmax()])
+            # else:
+            #     file = os.path.join(table_dir, table[0] + '.csv')
 
-            try:
-                with open(file, 'rb') as f:
-                    result = chardet.detect(f.read())
-                table_df = pd.read_csv(file, encoding=result['encoding'])
-            except Exception as e:
-                print(e)
-                table_df = pd.DataFrame()
+            # try:
+            #     with open(file, 'rb') as f:
+            #         result = chardet.detect(f.read())
+            #     table_df = pd.read_csv(file, encoding=result['encoding'])
+            # except Exception as e:
+            #     print(e)
+            #     table_df = pd.DataFrame()
+            table_df = pd.DataFrame()
             table_info, columns = self.get_complete_table_info(
                 conn, table[0], table_df)
             db_info.append(table_info)

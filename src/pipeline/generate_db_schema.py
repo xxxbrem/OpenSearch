@@ -23,7 +23,7 @@ def generate_db_schema(task: Any, execution_history: Dict[str, Any]) -> Dict[str
     db_dir=paths.db_directory_path
     chat_model = model_chose(node_name,config["engine"])  # deepseek qwen-max gpt qwen-max-longcontext
     ext_file = Path(paths.db_root_path)/"db_schema.json"
-
+    # print(db_dir, ext_file)
     # 读取已有数据
     if os.path.exists(ext_file):
         with open(ext_file, 'r') as f:
