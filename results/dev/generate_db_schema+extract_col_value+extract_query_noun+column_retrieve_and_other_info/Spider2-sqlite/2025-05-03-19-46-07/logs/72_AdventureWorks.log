@@ -1,0 +1,573 @@
+############################## Human at step generate_db_schema ##############################
+
+/* Here is a examples about describe database */
+    #Forigen keys: 
+    Airlines.ORIGIN = Airports.Code, Airlines.DEST = Airports.Code, Airlines.OP_CARRIER_AIRLINE_ID = Air Carriers.Code
+    #Database Description: The database encompasses information related to flights, including airlines, airports, and flight operations.
+    #Tables Descriptions:
+    Air Carriers: Codes and descriptive information about airlines
+    Airports: IATA codes and descriptions of airports
+    Airlines: Detailed information about flights 
+
+    /* Here is a examples about describe database */
+    #Forigen keys:
+    data.ID = price.ID, production.ID = price.ID, production.ID = data.ID, production.country = country.origin
+    #Database Description: The database contains information related to cars, including country, price, specifications, Production
+    #Tables Descriptions:
+    Country: Names of the countries where the cars originate from.
+    Price: Price of the car in USD.
+    Data: Information about the car's specifications
+    Production: Information about car's production.
+
+    /* Describe the following database */
+    Database Management System: SQLite
+#Database name: AdventureWorks
+## Table salesperson:
+businessentityid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [286, 277, 287]
+territoryid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, '', 2]
+salesquota: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: ['', 250000, 300000]
+bonus: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5150, 4100, 5650]
+commissionpct: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]
+salesytd: The type is FLOAT, Which does not inlude Null and is Unique. Values format like: [3763178, 2458535, 172524]
+saleslastyear: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [0, 1620276, 1997186]
+rowguid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['f509e3d4-76c8-42aa-b353-90b7b8db08de', '31fd7fc1-dc84-4f05-b9a0-762519eacacc', '1e0a7274-3064-4f58-88ee-4c6586c87169']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2013-03-07 00:00:00', '2010-12-28 00:00:00', '2012-04-09 00:00:00']
+
+## Table product:
+productid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [378, 727, 790]
+NAME: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['LL Mountain Frame - Black, 42', 'Metal Plate 3', 'ML Road Tire']
+productnumber: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['FW-1200', 'FK-1639', 'LJ-5162']
+makeflag: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: ['f', 't']
+finishedgoodsflag: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: ['f', 't']
+color: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Black', 'Grey', 'Red']
+safetystocklevel: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [500, 100, 1000]
+reorderpoint: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 75, 600]
+standardcost: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [1554, 104, 755]
+listprice: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [52, 1079, 264]
+size: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [40, 44, 54]
+sizeunitmeasurecode: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['', 'CM ']
+weightunitmeasurecode: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['G  ', 'LB ', '']
+weight: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [28, 19, 24]
+daystomanufacture: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 0, 1]
+productline: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['S ', '', 'M ']
+class: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['M ', 'L ', 'H ']
+style: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['W ', 'U ', 'M ']
+productsubcategoryid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [25, 30, 36]
+productmodelid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [15, 23, 95]
+sellstartdate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2011-05-31 00:00:00', '2008-04-30 00:00:00', '2013-05-30 00:00:00']
+sellenddate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2012-05-29 00:00:00', '', '2013-05-29 00:00:00']
+discontinueddate: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['']
+rowguid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['64169a28-161c-4737-b724-f42ffd99de80', 'da46d979-59df-456d-b5ae-e7e89fc589df', 'a2f1352e-45d0-42c4-aef3-60033073bb66']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2014-02-08 10:01:36.827', '2014-02-08 10:03:55.51']
+
+## Table productmodelproductdescriptionculture:
+productmodelid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [13, 39, 121]
+productdescriptionid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1572, 1430, 1978]
+cultureid: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['he', 'zh-cht', 'th']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2013-04-30 00:00:00']
+
+## Table productdescription:
+productdescriptionid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1957, 1720, 1755]
+description: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['การออกแบบให้มีจุดเชื่อมกว้าง', 'Thin, lightweight and durable with cuffs that stay up.', '真正的多项运动自行车，骑乘自如，设计新颖。符合空气动力学的设计给您带来专业车手的体验，极佳的传动装置可以轻易征服陡峭的路面。']
+rowguid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['fbf952b7-c45d-45b2-81a3-64452309b203', 'e2dd66ad-6115-4c94-9884-cec7466bcf6c', 'aecdb6b8-4df5-4d6e-9cb5-262eb2b37bb2']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2013-04-30 00:00:00', '2014-02-08 10:32:17.973']
+
+## Table productreview:
+productreviewid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3, 2, 1]
+productid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [798, 709, 937]
+reviewername: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['David', 'John Smith', 'Jill']
+reviewdate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2013-11-15 00:00:00', '2013-09-18 00:00:00', '2013-11-13 00:00:00']
+emailaddress: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['laura@treyresearch.net', 'jill@margiestravel.com', 'john@fourthcoffee.com']
+rating: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 5, 2]
+comments: The type is TEXT, Which does not inlude Null and is Unique. Values format: <Long text>
+modifeddate: The type is DATE, Which inlude Null and is Non-Unique. Value of this column must in: None
+modifieddate: The type is VARCHAR(19), Which does not inlude Null and is Non-Unique. Values format like: ['2013-11-15 00:00:00', '2013-11-13 00:00:00', '2013-09-18 00:00:00']
+
+## Table productcategory:
+productcategoryid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2, 4, 1]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Components', 'Clothing', 'Accessories']
+rowguid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['10a7c342-ca82-48d4-8a38-46a2eb089b74', '2be3be36-d9a2-4eee-b593-ed895d97c2a6', 'c657828d-d808-4aba-91a3-af2ce02300e9']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2008-04-30 00:00:00']
+
+## Table productsubcategory:
+productsubcategoryid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [28, 31, 25]
+productcategoryid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 4, 2]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Helmets', 'Tires and Tubes', 'Saddles']
+rowguid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2d364ade-264a-433c-b092-4fcbf3804e01', '3002a5d5-fec3-464b-bef3-e0f81d35f431', '09e91437-ba4f-4b1a-8215-74184fd95db8']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2008-04-30 00:00:00']
+
+## Table salesorderdetail:
+salesorderid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52178, 59102, 45902]
+salesorderdetailid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [115694, 18726, 42881]
+carriertrackingnumber: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['BBAC-4A43-89', '4453-4267-A1', '8772-4C82-85']
+orderqty: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [24, 35, 17]
+productid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [934, 900, 868]
+specialofferid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [16, 9, 13]
+unitprice: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [1265, 234, 133]
+unitpricediscount: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]
+rowguid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['a977420c-09b2-41ee-997b-717420b4701c', 'e319df7e-bb4e-4120-964f-8ab50148375d', 'b69b04c8-d777-438e-a8a2-1d9ed9aab63b']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2012-07-22 00:00:00', '2012-03-21 00:00:00', '2012-07-18 00:00:00']
+
+## Table salesorderheader:
+salesorderid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [68886, 69345, 52274]
+revisionnumber: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [8, 9]
+orderdate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2012-04-16 00:00:00', '2011-09-01 00:00:00', '2012-03-02 00:00:00']
+duedate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2014-03-12 00:00:00', '2011-08-26 00:00:00', '2011-08-20 00:00:00']
+shipdate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2012-06-16 00:00:00', '2013-09-16 00:00:00', '2012-10-22 00:00:00']
+STATUS: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: [5]
+onlineorderflag: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: ['f', 't']
+purchaseordernumber: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PO4582126105', 'PO10440138648', 'PO8584112874']
+accountnumber: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['10-4030-017544', '10-4030-025230', '10-4030-011807']
+customerid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [15178, 26650, 19639]
+salespersonid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [290, 285, 286]
+territoryid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 5, 7]
+billtoaddressid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [27287, 957, 21899]
+shiptoaddressid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [15514, 24303, 19103]
+shipmethodid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [5, 1]
+creditcardid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [15651, 12112, 6886]
+creditcardapprovalcode: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['123508Vi74110', '1021365Vi87795', '443032Vi74639']
+currencyrateid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1113, 10525, 7707]
+subtotal: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [2503, 4294, 22]
+taxamt: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [67, 9418, 144]
+freight: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [1504, 2, 427]
+totaldue: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [4853, 4939, 7721]
+comment: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['']
+rowguid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['6b71ab41-8d3c-4f61-8c88-9d6a47fc9661', '20ad00e5-6918-4308-8cde-3b45188e1b6e', 'b2e18ebf-799e-4446-a82f-355d4bc8b283']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2012-06-10 00:00:00', '2013-09-01 00:00:00', '2012-08-28 00:00:00']
+
+## Table salesterritory:
+territoryid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [9, 5, 8]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Northwest', 'Southeast', 'Northeast']
+countryregioncode: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['DE', 'AU', 'GB']
+group: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Europe', 'Pacific', 'North America']
+salesytd: The type is FLOAT, Which does not inlude Null and is Unique. Values format like: [2538667, 3072175, 4772398]
+saleslastyear: The type is FLOAT, Which does not inlude Null and is Unique. Values format like: [3925071, 5366575, 3298694]
+costytd: The type is FLOAT, Which does not inlude Null and is Non-Unique. Value of this column must in: [0]
+costlastyear: The type is FLOAT, Which does not inlude Null and is Non-Unique. Value of this column must in: [0]
+rowguid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['dc3e9ea0-7950-4431-9428-99dbcbc33865', 'df6e7fd8-1a8d-468c-b103-ed8addb452c1', '05fc7e1f-2dea-414e-9ecd-09d150516fb5']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2008-04-30 00:00:00']
+
+## Table countryregioncurrency:
+countryregioncode: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['DE', 'JP', 'SV']
+currencycode: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['NPR', 'DEM', 'PHP']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2014-02-08 10:17:21.51', '2008-04-30 00:00:00']
+
+## Table currencyrate:
+currencyrateid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3033, 647, 7627]
+currencyratedate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2013-01-09 00:00:00', '2012-09-30 00:00:00', '2012-06-10 00:00:00']
+fromcurrencycode: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['USD']
+tocurrencycode: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['EUR', 'CAD', 'CNY']
+averagerate: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [1, 0, 1]
+endofdayrate: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [2, 10, 2]
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2014-03-19 00:00:00', '2013-09-23 00:00:00', '2014-05-24 00:00:00']
+
+## Table SalesPersonQuotaHistory:
+BusinessEntityID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [280, 274, 279]
+QuotaDate: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2011-08-31 00:00:00', '2013-02-28 00:00:00', '2011-05-31 00:00:00']
+SalesQuota: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [675000, 418000, 324000]
+rowguid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['{7A09CD71-EED6-485B-8AF4-800C82AEC15A}', '{440AA05D-4BC7-4093-8C4E-54F7F8C74BB9}', '{A2B99573-AF8A-461A-B554-F489DE2FA266}']
+ModifiedDate: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2012-01-15 00:00:00', '2012-10-16 00:00:00', '2014-01-15 00:00:00']
+
+#Forigen keys:
+
+
+    Please conclude the database in the following format:
+    #Database Description:
+    #Tables Descriptions:
+    
+
+############################## AI at step generate_db_schema ##############################
+
+#Database Description:
+The AdventureWorks database is a comprehensive dataset designed to manage and analyze business operations related to sales, products, territories, currencies, and customer interactions. It includes detailed information about products, sales orders, territories, currencies, and associated entities. The database is structured to support business intelligence, reporting, and operational management.
+
+#Tables Descriptions:
+
+1. **SalesPerson**:  
+   Contains information about salespersons, including their business entity ID, territory ID, sales quota, bonus, commission percentage, year-to-date sales, last year's sales, and modification details.
+
+2. **Product**:  
+   Stores detailed information about products, including product ID, name, product number, manufacturing flags, color, stock levels, cost, price, size, weight, manufacturing time, product line, class, style, subcategory, model, and sales dates.
+
+3. **ProductModelProductDescriptionCulture**:  
+   Links product models to their descriptions and cultures, including modification details.
+
+4. **ProductDescription**:  
+   Contains descriptions of products, including their ID, text description, and modification details.
+
+5. **ProductReview**:  
+   Stores customer reviews for products, including reviewer name, review date, email address, rating, comments, and modification details.
+
+6. **ProductCategory**:  
+   Contains information about product categories, including category ID, name, and modification details.
+
+7. **ProductSubcategory**:  
+   Stores information about product subcategories, including subcategory ID, category ID, name, and modification details.
+
+8. **SalesOrderDetail**:  
+   Contains detailed information about sales orders, including order ID, detail ID, tracking number, quantity, product ID, special offer ID, unit price, discount, and modification details.
+
+9. **SalesOrderHeader**:  
+   Stores header information for sales orders, including order ID, revision number, order dates, shipping details, customer ID, salesperson ID, territory ID, billing and shipping addresses, payment details, and modification details.
+
+10. **SalesTerritory**:  
+    Contains information about sales territories, including territory ID, name, country region code, group, sales and cost data, and modification details.
+
+11. **CountryRegionCurrency**:  
+    Links countries to their currencies, including modification details.
+
+12. **CurrencyRate**:  
+    Stores currency exchange rates, including rate ID, date, source and target currencies, average and end-of-day rates, and modification details.
+
+13. **SalesPersonQuotaHistory**:  
+    Contains historical sales quota data for salespersons, including business entity ID, quota date, sales quota, and modification details.
+
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: What is the total number of female legislators who ever served on December 31, 1999? served on December 31, 1999 refers to start_date <= '1999-12-31' AND end_date >= '1999-12-31'; female refers to gender = 'F'; */
+SELECT COUNT(DISTINCT L.legislator_id)
+FROM legislators AS L
+JOIN terms AS T ON L.legislator_id = T.legislator_id
+WHERE L.gender = 'F'
+  AND T.start_date <= '1999-12-31'
+  AND T.end_date   >= '1999-12-31';
+
+/* Answer the following: List the abbreviations of the three states with the largest number of first-time female legislators. first-time female legislators refers to gender = 'F' and term_number = 1; */
+SELECT first_state
+FROM legislators
+WHERE gender = 'F' AND term_number = 1
+GROUP BY first_state
+ORDER BY COUNT(*) DESC
+LIMIT 3;
+
+/* Answer the following: For each party, how many female legislators had at least one term that included December 31, 2010? included December 31, 2010 refers to start_date <= '2010-12-31' AND end_date >= '2010-12-31'; */
+SELECT L.party, COUNT(DISTINCT L.legislator_id) AS female_count
+FROM legislators AS L
+JOIN terms AS T ON L.legislator_id = T.legislator_id
+WHERE L.gender = 'F'
+  AND T.start_date <= '2010-12-31'
+  AND T.end_date   >= '2010-12-31'
+GROUP BY L.party;
+
+/* Answer the following: Which state has the greatest average length in days of the first term served by female legislators, and what is that average length? first term refers to term_number = 1; */
+SELECT L.first_state,
+       AVG(JULIANDAY(T.end_date) - JULIANDAY(T.start_date)) AS avg_days
+FROM legislators AS L
+JOIN terms AS T
+  ON L.legislator_id = T.legislator_id
+WHERE L.gender = 'F' AND T.term_number = 1
+GROUP BY L.first_state
+ORDER BY avg_days DESC
+LIMIT 1;
+
+/* Answer the following: How many female legislators first represented Texas (TX) and had at least one term that overlapped with Christmas Day (December 25) of any year? overlap with Christmas Day means MONTH(T.start_date) < 12 OR (MONTH =12 and DAY <=25) and MONTH(T.end_date) >12 OR (MONTH=12 and DAY>=25).  Simpler: DAY-MONTH string '12-25' lies between start_date and end_date for any year; */
+SELECT COUNT(DISTINCT L.legislator_id)
+FROM legislators AS L
+JOIN terms AS T ON L.legislator_id = T.legislator_id
+WHERE L.gender = 'F'
+  AND L.first_state = 'TX'
+  AND STRFTIME('%m-%d', T.start_date) <= '12-25'
+  AND STRFTIME('%m-%d', T.end_date)   >= '12-25';
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: AdventureWorks
+## Table salesperson:
+businessentityid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [286, 277, 287]
+territoryid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, '', 2]
+salesquota: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: ['', 250000, 300000]
+bonus: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5150, 4100, 5650]
+commissionpct: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]
+salesytd: The type is FLOAT, Which does not inlude Null and is Unique. Values format like: [3763178, 2458535, 172524]
+saleslastyear: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [0, 1620276, 1997186]
+rowguid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['f509e3d4-76c8-42aa-b353-90b7b8db08de', '31fd7fc1-dc84-4f05-b9a0-762519eacacc', '1e0a7274-3064-4f58-88ee-4c6586c87169']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2013-03-07 00:00:00', '2010-12-28 00:00:00', '2012-04-09 00:00:00']
+
+## Table product:
+productid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [378, 727, 790]
+NAME: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['LL Mountain Frame - Black, 42', 'Metal Plate 3', 'ML Road Tire']
+productnumber: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['FW-1200', 'FK-1639', 'LJ-5162']
+makeflag: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: ['f', 't']
+finishedgoodsflag: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: ['f', 't']
+color: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Black', 'Grey', 'Red']
+safetystocklevel: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [500, 100, 1000]
+reorderpoint: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 75, 600]
+standardcost: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [1554, 104, 755]
+listprice: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [52, 1079, 264]
+size: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [40, 44, 54]
+sizeunitmeasurecode: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['', 'CM ']
+weightunitmeasurecode: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['G  ', 'LB ', '']
+weight: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [28, 19, 24]
+daystomanufacture: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 0, 1]
+productline: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['S ', '', 'M ']
+class: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['M ', 'L ', 'H ']
+style: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['W ', 'U ', 'M ']
+productsubcategoryid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [25, 30, 36]
+productmodelid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [15, 23, 95]
+sellstartdate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2011-05-31 00:00:00', '2008-04-30 00:00:00', '2013-05-30 00:00:00']
+sellenddate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2012-05-29 00:00:00', '', '2013-05-29 00:00:00']
+discontinueddate: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['']
+rowguid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['64169a28-161c-4737-b724-f42ffd99de80', 'da46d979-59df-456d-b5ae-e7e89fc589df', 'a2f1352e-45d0-42c4-aef3-60033073bb66']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2014-02-08 10:01:36.827', '2014-02-08 10:03:55.51']
+
+## Table productmodelproductdescriptionculture:
+productmodelid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [13, 39, 121]
+productdescriptionid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1572, 1430, 1978]
+cultureid: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['he', 'zh-cht', 'th']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2013-04-30 00:00:00']
+
+## Table productdescription:
+productdescriptionid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1957, 1720, 1755]
+description: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['การออกแบบให้มีจุดเชื่อมกว้าง', 'Thin, lightweight and durable with cuffs that stay up.', '真正的多项运动自行车，骑乘自如，设计新颖。符合空气动力学的设计给您带来专业车手的体验，极佳的传动装置可以轻易征服陡峭的路面。']
+rowguid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['fbf952b7-c45d-45b2-81a3-64452309b203', 'e2dd66ad-6115-4c94-9884-cec7466bcf6c', 'aecdb6b8-4df5-4d6e-9cb5-262eb2b37bb2']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2013-04-30 00:00:00', '2014-02-08 10:32:17.973']
+
+## Table productreview:
+productreviewid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3, 2, 1]
+productid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [798, 709, 937]
+reviewername: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['David', 'John Smith', 'Jill']
+reviewdate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2013-11-15 00:00:00', '2013-09-18 00:00:00', '2013-11-13 00:00:00']
+emailaddress: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['laura@treyresearch.net', 'jill@margiestravel.com', 'john@fourthcoffee.com']
+rating: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 5, 2]
+comments: The type is TEXT, Which does not inlude Null and is Unique. Values format: <Long text>
+modifeddate: The type is DATE, Which inlude Null and is Non-Unique. Value of this column must in: None
+modifieddate: The type is VARCHAR(19), Which does not inlude Null and is Non-Unique. Values format like: ['2013-11-15 00:00:00', '2013-11-13 00:00:00', '2013-09-18 00:00:00']
+
+## Table productcategory:
+productcategoryid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2, 4, 1]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Components', 'Clothing', 'Accessories']
+rowguid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['10a7c342-ca82-48d4-8a38-46a2eb089b74', '2be3be36-d9a2-4eee-b593-ed895d97c2a6', 'c657828d-d808-4aba-91a3-af2ce02300e9']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2008-04-30 00:00:00']
+
+## Table productsubcategory:
+productsubcategoryid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [28, 31, 25]
+productcategoryid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 4, 2]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Helmets', 'Tires and Tubes', 'Saddles']
+rowguid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2d364ade-264a-433c-b092-4fcbf3804e01', '3002a5d5-fec3-464b-bef3-e0f81d35f431', '09e91437-ba4f-4b1a-8215-74184fd95db8']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2008-04-30 00:00:00']
+
+## Table salesorderdetail:
+salesorderid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52178, 59102, 45902]
+salesorderdetailid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [115694, 18726, 42881]
+carriertrackingnumber: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['BBAC-4A43-89', '4453-4267-A1', '8772-4C82-85']
+orderqty: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [24, 35, 17]
+productid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [934, 900, 868]
+specialofferid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [16, 9, 13]
+unitprice: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [1265, 234, 133]
+unitpricediscount: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]
+rowguid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['a977420c-09b2-41ee-997b-717420b4701c', 'e319df7e-bb4e-4120-964f-8ab50148375d', 'b69b04c8-d777-438e-a8a2-1d9ed9aab63b']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2012-07-22 00:00:00', '2012-03-21 00:00:00', '2012-07-18 00:00:00']
+
+## Table salesorderheader:
+salesorderid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [68886, 69345, 52274]
+revisionnumber: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [8, 9]
+orderdate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2012-04-16 00:00:00', '2011-09-01 00:00:00', '2012-03-02 00:00:00']
+duedate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2014-03-12 00:00:00', '2011-08-26 00:00:00', '2011-08-20 00:00:00']
+shipdate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2012-06-16 00:00:00', '2013-09-16 00:00:00', '2012-10-22 00:00:00']
+STATUS: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: [5]
+onlineorderflag: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: ['f', 't']
+purchaseordernumber: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PO4582126105', 'PO10440138648', 'PO8584112874']
+accountnumber: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['10-4030-017544', '10-4030-025230', '10-4030-011807']
+customerid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [15178, 26650, 19639]
+salespersonid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [290, 285, 286]
+territoryid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 5, 7]
+billtoaddressid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [27287, 957, 21899]
+shiptoaddressid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [15514, 24303, 19103]
+shipmethodid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [5, 1]
+creditcardid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [15651, 12112, 6886]
+creditcardapprovalcode: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['123508Vi74110', '1021365Vi87795', '443032Vi74639']
+currencyrateid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1113, 10525, 7707]
+subtotal: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [2503, 4294, 22]
+taxamt: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [67, 9418, 144]
+freight: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [1504, 2, 427]
+totaldue: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [4853, 4939, 7721]
+comment: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['']
+rowguid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['6b71ab41-8d3c-4f61-8c88-9d6a47fc9661', '20ad00e5-6918-4308-8cde-3b45188e1b6e', 'b2e18ebf-799e-4446-a82f-355d4bc8b283']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2012-06-10 00:00:00', '2013-09-01 00:00:00', '2012-08-28 00:00:00']
+
+## Table salesterritory:
+territoryid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [9, 5, 8]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Northwest', 'Southeast', 'Northeast']
+countryregioncode: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['DE', 'AU', 'GB']
+group: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Europe', 'Pacific', 'North America']
+salesytd: The type is FLOAT, Which does not inlude Null and is Unique. Values format like: [2538667, 3072175, 4772398]
+saleslastyear: The type is FLOAT, Which does not inlude Null and is Unique. Values format like: [3925071, 5366575, 3298694]
+costytd: The type is FLOAT, Which does not inlude Null and is Non-Unique. Value of this column must in: [0]
+costlastyear: The type is FLOAT, Which does not inlude Null and is Non-Unique. Value of this column must in: [0]
+rowguid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['dc3e9ea0-7950-4431-9428-99dbcbc33865', 'df6e7fd8-1a8d-468c-b103-ed8addb452c1', '05fc7e1f-2dea-414e-9ecd-09d150516fb5']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2008-04-30 00:00:00']
+
+## Table countryregioncurrency:
+countryregioncode: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['DE', 'JP', 'SV']
+currencycode: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['NPR', 'DEM', 'PHP']
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2014-02-08 10:17:21.51', '2008-04-30 00:00:00']
+
+## Table currencyrate:
+currencyrateid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3033, 647, 7627]
+currencyratedate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2013-01-09 00:00:00', '2012-09-30 00:00:00', '2012-06-10 00:00:00']
+fromcurrencycode: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['USD']
+tocurrencycode: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['EUR', 'CAD', 'CNY']
+averagerate: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [1, 0, 1]
+endofdayrate: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [2, 10, 2]
+modifieddate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2014-03-19 00:00:00', '2013-09-23 00:00:00', '2014-05-24 00:00:00']
+
+## Table SalesPersonQuotaHistory:
+BusinessEntityID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [280, 274, 279]
+QuotaDate: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2011-08-31 00:00:00', '2013-02-28 00:00:00', '2011-05-31 00:00:00']
+SalesQuota: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [675000, 418000, 324000]
+rowguid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['{7A09CD71-EED6-485B-8AF4-800C82AEC15A}', '{440AA05D-4BC7-4093-8C4E-54F7F8C74BB9}', '{A2B99573-AF8A-461A-B554-F489DE2FA266}']
+ModifiedDate: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2012-01-15 00:00:00', '2012-10-16 00:00:00', '2014-01-15 00:00:00']
+
+#Forigen keys:
+
+
+#Database Description:
+The AdventureWorks database is a comprehensive dataset designed to manage and analyze business operations related to sales, products, territories, currencies, and customer interactions. It includes detailed information about products, sales orders, territories, currencies, and associated entities. The database is structured to support business intelligence, reporting, and operational management.
+
+#Tables Descriptions:
+
+1. **SalesPerson**:  
+   Contains information about salespersons, including their business entity ID, territory ID, sales quota, bonus, commission percentage, year-to-date sales, last year's sales, and modification details.
+
+2. **Product**:  
+   Stores detailed information about products, including product ID, name, product number, manufacturing flags, color, stock levels, cost, price, size, weight, manufacturing time, product line, class, style, subcategory, model, and sales dates.
+
+3. **ProductModelProductDescriptionCulture**:  
+   Links product models to their descriptions and cultures, including modification details.
+
+4. **ProductDescription**:  
+   Contains descriptions of products, including their ID, text description, and modification details.
+
+5. **ProductReview**:  
+   Stores customer reviews for products, including reviewer name, review date, email address, rating, comments, and modification details.
+
+6. **ProductCategory**:  
+   Contains information about product categories, including category ID, name, and modification details.
+
+7. **ProductSubcategory**:  
+   Stores information about product subcategories, including subcategory ID, category ID, name, and modification details.
+
+8. **SalesOrderDetail**:  
+   Contains detailed information about sales orders, including order ID, detail ID, tracking number, quantity, product ID, special offer ID, unit price, discount, and modification details.
+
+9. **SalesOrderHeader**:  
+   Stores header information for sales orders, including order ID, revision number, order dates, shipping details, customer ID, salesperson ID, territory ID, billing and shipping addresses, payment details, and modification details.
+
+10. **SalesTerritory**:  
+    Contains information about sales territories, including territory ID, name, country region code, group, sales and cost data, and modification details.
+
+11. **CountryRegionCurrency**:  
+    Links countries to their currencies, including modification details.
+
+12. **CurrencyRate**:  
+    Stores currency exchange rates, including rate ID, date, source and target currencies, average and end-of-day rates, and modification details.
+
+13. **SalesPersonQuotaHistory**:  
+    Contains historical sales quota data for salespersons, including business entity ID, quota date, sales quota, and modification details.
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: How did each salesperson's annual total sales compare to their annual sales quota? Provide the difference between their total sales and the quota for each year, organized by salesperson and year. */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries the annual total sales and annual sales quota for each salesperson, and requires the difference between them. The related columns include salesperson's ID, annual sales quota, year-to-date sales, and quota date. 
+#columns: salesperson.businessentityid, salesperson.salesytd, salesperson.salesquota, salespersonquotahistory.quotadate
+#values: None
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+How did each salesperson's annual total sales compare to their annual sales quota? Provide the difference between their total sales and the quota for each year, organized by salesperson and year.
+
+############################## AI at step extract_query_noun ##############################
+
+"salesperson", "annual", "total sales", "sales quota", "difference", "quota", "year", "salesperson and year"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: How did each salesperson's annual total sales compare to their annual sales quota? Provide the difference between their total sales and the quota for each year, organized by salesperson and year.
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "How",
+      "J": null,
+      "I": ["each salesperson's annual total sales", "their annual sales quota"],
+      "C": ["compare to their annual sales quota"]
+    }
+  },
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "Provide",
+      "J": null,
+      "I": ["the difference between their total sales and the quota for each year"],
+      "C": ["organized by salesperson and year"]
+    }
+  }
+]
+```
+

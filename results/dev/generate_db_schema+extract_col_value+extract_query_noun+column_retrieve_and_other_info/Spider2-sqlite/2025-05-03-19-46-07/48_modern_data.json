@@ -1,0 +1,778 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: modern_data\n## Table pizza_names:\npizza_id: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [1, 2]\npizza_name: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['Meatlovers', 'Vegetarian']\n\n## Table companies_funding:\ncompany_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [524, 1048, 685]\nvaluation: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [95000000000, 10000000000, 12000000000]\nfunding: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [326000000, 389000000, 643000000]\nselect_investors: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['\"Greylock Partners, General Catalyst, Khosla Ventures\"', '\"Partech Partners, Index Ventures, Quadrille Capital\"', '\"Silicon Valley Bank, QED Investors, European Founders Fund\"']\n\n## Table pizza_customer_orders:\norder_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 7, 9]\ncustomer_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [103, 105, 104]\npizza_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]\nexclusions: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: [4, '2,6']\nextras: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['1,4', '1,5', 1]\norder_time: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-01-09 23:54:33', '2021-01-02 23:51:23', '2021-01-08 21:03:13']\n\n## Table pizza_toppings:\ntopping_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [12, 1, 9]\ntopping_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Bacon', 'Salami', 'Tomato Sauce']\n\n## Table trees:\nidx: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [594635, 368479, 60930]\ntree_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [650829, 590814, 165696]\ntree_dbh: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [159, 170, 60]\nstump_diam: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [29, 47, 53]\nstatus: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Dead', 'Alive', 'Stump']\nhealth: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Poor', 'Good', 'Fair']\nspc_latin: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Acer ginnala', 'Betula pendula', 'Maclura pomifera']\nspc_common: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['pignut hickory', 'golden raintree', 'Sophora']\naddress: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1762 76 STREET', '4108 15 AVENUE', '81-015 266 STREET']\nzipcode: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [10460, 11377, 10032]\nborocode: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 3, 4]\nboroname: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Staten Island', 'Queens', 'Manhattan']\nnta_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Cambria Heights', 'Hunters Point-Sunnyside-West Maspeth', 'Hamilton Heights']\nstate: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['New York']\nlatitude: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [40, 40, 40]\nlongitude: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [-74, -73, -73]\n\n## Table pizza_recipes:\npizza_id: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [1, 2]\ntoppings: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['1, 2, 3, 4, 5, 6, 8, 10', '4, 6, 7, 9, 11, 12']\n\n## Table statistics:\ndate: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-07-12 00:00:00', '2020-07-14 00:00:00', '2020-03-12 00:00:00']\nstate: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['MA', 'FL', 'CO']\ntotal_cases: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [25598, 11182, 29707]\ntotal_deaths: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4979, 14032, 8340]\n\n## Table income_trees:\nzipcode: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [10173, 11233, 11366]\nEstimate_Total: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [20243, 29255, 29345]\nMargin_of_Error_Total: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [363, 528, 660]\nEstimate_Median_income: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [193510, 34701, 66007]\nMargin_of_Error_Median_income: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3509, 17159, 8539]\nEstimate_Mean_income: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [179375, 59055, 79434]\nMargin_of_Error_Mean_income: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2736, 3754, 3210]\n\n## Table pizza_clean_runner_orders:\norder_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 8, 10]\nrunner_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 3, 1]\npickup_time: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2021-01-10 00:15:02', '2021-01-11 18:50:20', '2021-01-03 00:12:37']\ndistance: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [25, 23, 10]\nduration: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [15, 32, 40]\ncancellation: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['Restaurant Cancellation', 'Customer Cancellation']\n\n## Table pizza_runner_orders:\norder_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [8, 6, 3]\nrunner_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 1]\npickup_time: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2021-01-10 00:15:02', '2021-01-03 00:12:37', '2021-01-08 21:30:45']\ndistance: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['25km', '13.4km', '23.4 km']\nduration: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['15 minute', '25mins', '10minutes']\ncancellation: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['Restaurant Cancellation', 'Customer Cancellation']\n\n## Table word_list:\nwords: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['bucko', 'shruti', 'guerdoning']\n\n## Table companies_dates:\ncompany_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [302, 155, 465]\ndate_joined: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2022-03-23T00:00:00.000', '2019-05-06T00:00:00.000', '2021-12-31T00:00:00.000']\nyear_founded: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1990, 1997, 2004]\n\n## Table pizza_get_extras:\nrow_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]\norder_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 10, 7]\nextras: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 1, 5]\nextras_count: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]\n\n## Table pizza_get_exclusions:\nrow_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]\norder_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 4, 10]\nexclusions: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [6, 2, 4]\ntotal_exclusions: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 1, 2]\n\n## Table pizza_clean_customer_orders:\norder_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 1, 2]\ncustomer_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [101, 104, 103]\npizza_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]\nexclusions: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: [4, '2,6']\nextras: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: [1, '1,5', '1,4']\norder_time: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-01-01 19:00:52', '2021-01-02 23:51:23', '2021-01-01 18:05:02']\n\n## Table companies_industries:\ncompany_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [649, 85, 261]\nindustry: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Fintech', 'Mobile & telecommunications', 'E-commerce & direct-to-consumer']\n\n## Table pizza_runners:\nrunner_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 2, 4]\nregistration_date: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2021-01-01', '2021-01-03', '2021-01-08']\n\n#Forigen keys:\n\n\n#Database Description:\nThe database, named `modern_data`, is managed using SQLite and contains information related to pizzas, companies, trees, statistics, and income data. It includes details about pizza recipes, customer orders, runner orders, toppings, and extras/exclusions. Additionally, it provides insights into company funding, industries, and dates, as well as tree-related data and income statistics by zip code.\n\n#Tables Descriptions:\n\n1. **pizza_names**: Contains information about pizza types, including their unique IDs and names.\n\n2. **companies_funding**: Stores data about companies' funding, valuation, and selected investors.\n\n3. **pizza_customer_orders**: Tracks customer orders for pizzas, including order details, exclusions, extras, and order times.\n\n4. **pizza_toppings**: Provides a list of unique pizza toppings and their IDs.\n\n5. **trees**: Contains detailed information about trees, including their health, species, location, and dimensions.\n\n6. **pizza_recipes**: Defines the recipes for pizzas, including their IDs and associated toppings.\n\n7. **statistics**: Stores statistical data about total cases and deaths by state and date.\n\n8. **income_trees**: Provides income-related data by zip code, including estimates and margins of error for total, median, and mean income.\n\n9. **pizza_clean_runner_orders**: Tracks cleaned runner orders, including pickup times, distances, durations, and cancellations.\n\n10. **pizza_runner_orders**: Contains runner order details, including pickup times, distances, durations, and cancellations.\n\n11. **word_list**: Stores a list of words.\n\n12. **companies_dates**: Tracks company-related dates, including the date joined and year founded.\n\n13. **pizza_get_extras**: Provides details about extras added to pizza orders, including counts.\n\n14. **pizza_get_exclusions**: Contains information about exclusions in pizza orders, including total exclusions.\n\n15. **pizza_clean_customer_orders**: Tracks cleaned customer orders, including exclusions, extras, and order times.\n\n16. **companies_industries**: Stores information about companies and their respective industries.\n\n17. **pizza_runners**: Contains details about pizza runners, including their unique IDs and registration dates.\n\n#Foreign Keys:\n- `pizza_customer_orders.pizza_id` → `pizza_names.pizza_id`\n- `pizza_recipes.pizza_id` → `pizza_names.pizza_id`\n- `pizza_clean_customer_orders.pizza_id` → `pizza_names.pizza_id`\n- `pizza_clean_runner_orders.order_id` → `pizza_customer_orders.order_id`\n- `pizza_runner_orders.order_id` → `pizza_customer_orders.order_id`\n- `pizza_get_extras.order_id` → `pizza_customer_orders.order_id`\n- `pizza_get_exclusions.order_id` → `pizza_customer_orders.order_id`\n- `companies_funding.company_id` → `companies_dates.company_id`\n- `companies_industries.company_id` → `companies_dates.company_id`\n- `trees.zipcode` → `income_trees.zipcode`\n",
+        "db_col_dic": {
+            "pizza_names.pizza_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [1, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1, 2]"
+            ],
+            "pizza_names.pizza_name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['Meatlovers', 'Vegetarian']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Meatlovers', 'Vegetarian']"
+            ],
+            "companies_funding.company_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [524, 1048, 685]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[524, 1048, 685]"
+            ],
+            "companies_funding.valuation": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [95000000000, 10000000000, 12000000000]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[95000000000, 10000000000, 12000000000]"
+            ],
+            "companies_funding.funding": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [326000000, 389000000, 643000000]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[326000000, 389000000, 643000000]"
+            ],
+            "companies_funding.select_investors": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['\"Greylock Partners, General Catalyst, Khosla Ventures\"', '\"Partech Partners, Index Ventures, Quadrille Capital\"', '\"Silicon Valley Bank, QED Investors, European Founders Fund\"']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['\"Greylock Partners, General Catalyst, Khosla Ventures\"', '\"Partech Partners, Index Ventures, Quadrille Capital\"', '\"Silicon Valley Bank, QED Investors, European Founders Fund\"']"
+            ],
+            "pizza_customer_orders.order_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 7, 9]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 7, 9]"
+            ],
+            "pizza_customer_orders.customer_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [103, 105, 104]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[103, 105, 104]"
+            ],
+            "pizza_customer_orders.pizza_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 2]"
+            ],
+            "pizza_customer_orders.exclusions": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: [4, '2,6']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "[4, '2,6']"
+            ],
+            "pizza_customer_orders.extras": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['1,4', '1,5', 1]",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['1,4', '1,5', 1]"
+            ],
+            "pizza_customer_orders.order_time": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-01-09 23:54:33', '2021-01-02 23:51:23', '2021-01-08 21:03:13']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2021-01-09 23:54:33', '2021-01-02 23:51:23', '2021-01-08 21:03:13']"
+            ],
+            "pizza_toppings.topping_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [12, 1, 9]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[12, 1, 9]"
+            ],
+            "pizza_toppings.topping_name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Bacon', 'Salami', 'Tomato Sauce']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Bacon', 'Salami', 'Tomato Sauce']"
+            ],
+            "trees.idx": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [594635, 368479, 60930]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[594635, 368479, 60930]"
+            ],
+            "trees.tree_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [650829, 590814, 165696]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[650829, 590814, 165696]"
+            ],
+            "trees.tree_dbh": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [159, 170, 60]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[159, 170, 60]"
+            ],
+            "trees.stump_diam": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [29, 47, 53]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[29, 47, 53]"
+            ],
+            "trees.status": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Dead', 'Alive', 'Stump']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Dead', 'Alive', 'Stump']"
+            ],
+            "trees.health": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Poor', 'Good', 'Fair']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Poor', 'Good', 'Fair']"
+            ],
+            "trees.spc_latin": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Acer ginnala', 'Betula pendula', 'Maclura pomifera']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Acer ginnala', 'Betula pendula', 'Maclura pomifera']"
+            ],
+            "trees.spc_common": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['pignut hickory', 'golden raintree', 'Sophora']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['pignut hickory', 'golden raintree', 'Sophora']"
+            ],
+            "trees.address": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1762 76 STREET', '4108 15 AVENUE', '81-015 266 STREET']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['1762 76 STREET', '4108 15 AVENUE', '81-015 266 STREET']"
+            ],
+            "trees.zipcode": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [10460, 11377, 10032]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[10460, 11377, 10032]"
+            ],
+            "trees.borocode": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 3, 4]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 3, 4]"
+            ],
+            "trees.boroname": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Staten Island', 'Queens', 'Manhattan']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Staten Island', 'Queens', 'Manhattan']"
+            ],
+            "trees.nta_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Cambria Heights', 'Hunters Point-Sunnyside-West Maspeth', 'Hamilton Heights']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Cambria Heights', 'Hunters Point-Sunnyside-West Maspeth', 'Hamilton Heights']"
+            ],
+            "trees.state": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['New York']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['New York']"
+            ],
+            "trees.latitude": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [40, 40, 40]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[40, 40, 40]"
+            ],
+            "trees.longitude": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [-74, -73, -73]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[-74, -73, -73]"
+            ],
+            "pizza_recipes.pizza_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [1, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1, 2]"
+            ],
+            "pizza_recipes.toppings": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['1, 2, 3, 4, 5, 6, 8, 10', '4, 6, 7, 9, 11, 12']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['1, 2, 3, 4, 5, 6, 8, 10', '4, 6, 7, 9, 11, 12']"
+            ],
+            "statistics.date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-07-12 00:00:00', '2020-07-14 00:00:00', '2020-03-12 00:00:00']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2020-07-12 00:00:00', '2020-07-14 00:00:00', '2020-03-12 00:00:00']"
+            ],
+            "statistics.state": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['MA', 'FL', 'CO']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['MA', 'FL', 'CO']"
+            ],
+            "statistics.total_cases": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [25598, 11182, 29707]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[25598, 11182, 29707]"
+            ],
+            "statistics.total_deaths": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4979, 14032, 8340]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4979, 14032, 8340]"
+            ],
+            "income_trees.zipcode": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [10173, 11233, 11366]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[10173, 11233, 11366]"
+            ],
+            "income_trees.Estimate_Total": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [20243, 29255, 29345]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[20243, 29255, 29345]"
+            ],
+            "income_trees.Margin_of_Error_Total": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [363, 528, 660]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[363, 528, 660]"
+            ],
+            "income_trees.Estimate_Median_income": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [193510, 34701, 66007]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[193510, 34701, 66007]"
+            ],
+            "income_trees.Margin_of_Error_Median_income": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3509, 17159, 8539]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[3509, 17159, 8539]"
+            ],
+            "income_trees.Estimate_Mean_income": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [179375, 59055, 79434]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[179375, 59055, 79434]"
+            ],
+            "income_trees.Margin_of_Error_Mean_income": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2736, 3754, 3210]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2736, 3754, 3210]"
+            ],
+            "pizza_clean_runner_orders.order_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 8, 10]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1, 8, 10]"
+            ],
+            "pizza_clean_runner_orders.runner_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 3, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 3, 1]"
+            ],
+            "pizza_clean_runner_orders.pickup_time": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2021-01-10 00:15:02', '2021-01-11 18:50:20', '2021-01-03 00:12:37']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['2021-01-10 00:15:02', '2021-01-11 18:50:20', '2021-01-03 00:12:37']"
+            ],
+            "pizza_clean_runner_orders.distance": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [25, 23, 10]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[25, 23, 10]"
+            ],
+            "pizza_clean_runner_orders.duration": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [15, 32, 40]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[15, 32, 40]"
+            ],
+            "pizza_clean_runner_orders.cancellation": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['Restaurant Cancellation', 'Customer Cancellation']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Restaurant Cancellation', 'Customer Cancellation']"
+            ],
+            "pizza_runner_orders.order_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [8, 6, 3]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[8, 6, 3]"
+            ],
+            "pizza_runner_orders.runner_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 2, 1]"
+            ],
+            "pizza_runner_orders.pickup_time": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2021-01-10 00:15:02', '2021-01-03 00:12:37', '2021-01-08 21:30:45']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['2021-01-10 00:15:02', '2021-01-03 00:12:37', '2021-01-08 21:30:45']"
+            ],
+            "pizza_runner_orders.distance": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['25km', '13.4km', '23.4 km']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['25km', '13.4km', '23.4 km']"
+            ],
+            "pizza_runner_orders.duration": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['15 minute', '25mins', '10minutes']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['15 minute', '25mins', '10minutes']"
+            ],
+            "pizza_runner_orders.cancellation": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['Restaurant Cancellation', 'Customer Cancellation']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Restaurant Cancellation', 'Customer Cancellation']"
+            ],
+            "word_list.words": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['bucko', 'shruti', 'guerdoning']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['bucko', 'shruti', 'guerdoning']"
+            ],
+            "companies_dates.company_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [302, 155, 465]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[302, 155, 465]"
+            ],
+            "companies_dates.date_joined": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2022-03-23T00:00:00.000', '2019-05-06T00:00:00.000', '2021-12-31T00:00:00.000']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2022-03-23T00:00:00.000', '2019-05-06T00:00:00.000', '2021-12-31T00:00:00.000']"
+            ],
+            "companies_dates.year_founded": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1990, 1997, 2004]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1990, 1997, 2004]"
+            ],
+            "pizza_get_extras.row_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 2]"
+            ],
+            "pizza_get_extras.order_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 10, 7]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[5, 10, 7]"
+            ],
+            "pizza_get_extras.extras": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 1, 5]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4, 1, 5]"
+            ],
+            "pizza_get_extras.extras_count": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 2]"
+            ],
+            "pizza_get_exclusions.row_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 2]"
+            ],
+            "pizza_get_exclusions.order_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 4, 10]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[9, 4, 10]"
+            ],
+            "pizza_get_exclusions.exclusions": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [6, 2, 4]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[6, 2, 4]"
+            ],
+            "pizza_get_exclusions.total_exclusions": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 1, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 1, 2]"
+            ],
+            "pizza_clean_customer_orders.order_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 1, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[9, 1, 2]"
+            ],
+            "pizza_clean_customer_orders.customer_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [101, 104, 103]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[101, 104, 103]"
+            ],
+            "pizza_clean_customer_orders.pizza_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 2]"
+            ],
+            "pizza_clean_customer_orders.exclusions": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: [4, '2,6']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "[4, '2,6']"
+            ],
+            "pizza_clean_customer_orders.extras": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: [1, '1,5', '1,4']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "[1, '1,5', '1,4']"
+            ],
+            "pizza_clean_customer_orders.order_time": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-01-01 19:00:52', '2021-01-02 23:51:23', '2021-01-01 18:05:02']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2021-01-01 19:00:52', '2021-01-02 23:51:23', '2021-01-01 18:05:02']"
+            ],
+            "companies_industries.company_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [649, 85, 261]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[649, 85, 261]"
+            ],
+            "companies_industries.industry": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Fintech', 'Mobile & telecommunications', 'E-commerce & direct-to-consumer']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Fintech', 'Mobile & telecommunications', 'E-commerce & direct-to-consumer']"
+            ],
+            "pizza_runners.runner_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 2, 4]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1, 2, 4]"
+            ],
+            "pizza_runners.registration_date": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2021-01-01', '2021-01-03', '2021-01-08']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['2021-01-01', '2021-01-03', '2021-01-08']"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries the total quantity of each ingredient used in delivered pizzas. Relevant columns include pizza recipes for ingredients, pizza customer orders for order details, and pizza toppings for ingredient names. The filtering condition is based on delivered pizzas (excluding cancellations).\n#columns: pizza_recipes.toppings, pizza_customer_orders.pizza_id, pizza_toppings.topping_name, pizza_clean_runner_orders.order_id, pizza_clean_runner_orders.cancellation\n#values: \"delivered\"\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "total quantity",
+            "pizza",
+            "quantity",
+            "pizzas",
+            "name",
+            "order",
+            "information",
+            "ingredient",
+            "customer",
+            "delivered"
+        ],
+        "col": "pizza_recipes.toppings, pizza_customer_orders.pizza_id, pizza_toppings.topping_name, pizza_clean_runner_orders.order_id, pizza_clean_runner_orders.cancellation",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [
+            [
+                "word_list.words",
+                "customer"
+            ],
+            [
+                "word_list.words",
+                "delivered"
+            ],
+            [
+                "word_list.words",
+                "information"
+            ],
+            [
+                "word_list.words",
+                "ingredient"
+            ],
+            [
+                "word_list.words",
+                "name"
+            ],
+            [
+                "word_list.words",
+                "order"
+            ],
+            [
+                "word_list.words",
+                "pizza"
+            ],
+            [
+                "word_list.words",
+                "pizzas"
+            ],
+            [
+                "word_list.words",
+                "quantity"
+            ],
+            [
+                "word_list.words",
+                "total"
+            ]
+        ],
+        "column": "income_trees.Estimate_Total: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [20243, 29255, 29345]\npizza_clean_customer_orders.customer_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [101, 104, 103]\npizza_clean_customer_orders.order_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 1, 2]\npizza_clean_customer_orders.order_time: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-01-01 19:00:52', '2021-01-02 23:51:23', '2021-01-01 18:05:02']\npizza_clean_customer_orders.pizza_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]\npizza_clean_runner_orders.cancellation: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['Restaurant Cancellation', 'Customer Cancellation']\npizza_clean_runner_orders.order_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 8, 10]\npizza_customer_orders.customer_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [103, 105, 104]\npizza_customer_orders.order_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 7, 9]\npizza_customer_orders.order_time: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-01-09 23:54:33', '2021-01-02 23:51:23', '2021-01-08 21:03:13']\npizza_customer_orders.pizza_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]\npizza_get_exclusions.order_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 4, 10]\npizza_get_exclusions.total_exclusions: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 1, 2]\npizza_get_extras.order_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 10, 7]\npizza_names.pizza_id: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [1, 2]\npizza_names.pizza_name: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['Meatlovers', 'Vegetarian']\npizza_recipes.pizza_id: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [1, 2]\npizza_recipes.toppings: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['1, 2, 3, 4, 5, 6, 8, 10', '4, 6, 7, 9, 11, 12']\npizza_runner_orders.cancellation: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['Restaurant Cancellation', 'Customer Cancellation']\npizza_runner_orders.order_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [8, 6, 3]\npizza_toppings.topping_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Bacon', 'Salami', 'Tomato Sauce']\nstatistics.total_cases: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [25598, 11182, 29707]\nstatistics.total_deaths: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4979, 14032, 8340]\ntrees.address: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1762 76 STREET', '4108 15 AVENUE', '81-015 266 STREET']\nword_list.words: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['bucko', 'shruti', 'guerdoning']",
+        "foreign_keys": "",
+        "foreign_set": [],
+        "q_order": [
+            "the total quantity of each ingredient",
+            "the name",
+            "the quantity"
+        ],
+        "status": "success"
+    }
+]

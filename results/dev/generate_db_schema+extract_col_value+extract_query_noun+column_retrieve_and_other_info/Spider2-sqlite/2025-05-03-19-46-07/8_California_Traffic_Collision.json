@@ -1,0 +1,1182 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: California_Traffic_Collision\n## Table victims:\nid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [64982, 1935664, 2112442]\ncase_id: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [7016482, 5158342, 6578553]\nparty_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 12, 8]\nvictim_role: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other', 'pedestrian', 'passenger']\nvictim_sex: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: [2, 'male', 4]\nvictim_age: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [88, 41, 42]\nvictim_degree_of_injury: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['killed', 'suspected minor injury', 'complaint of pain']\nvictim_seating_position: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['position unknown', 'passenger seat 3', 'passenger seat 6']\nvictim_safety_equipment_1: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['child restraint in vehicle not used', 'child restraint in vehicle used', 'shoulder harness used']\nvictim_safety_equipment_2: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other', 'air bag deployed', 'lap belt used']\nvictim_ejected: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['partially ejected', 'fully ejected', 'unknown']\n\n## Table collisions:\ncase_id: The type is REAL, Which does not inlude Null and is Unique. Values format like: [8877599, 598341, 6582001]\njurisdiction: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [4111, 3325, 9150]\nofficer_id: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['F5137', 39308, 20258]\nreporting_district: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['11AC', '30E1', 20208]\nchp_shift: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['not chp', '1400 thru 2159', 'chp not stated']\npopulation: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['100000 to 250000', '25000 to 50000', '>250000']\ncounty_city_location: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2404, 1973, 4000]\ncounty_location: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['mariposa', 'riverside', 'placer']\nspecial_condition: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nbeat_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['schoolbus on city roadway', 'chp county roadarea', 'not chp']\nchp_beat_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['not chp', 'safety services program', 'us highway']\ncity_division_lapd: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['M', 'L', 'K']\nchp_beat_class: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['chp primary', 'chp other', 'not chp']\nbeat_number: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['19A97', 'S-1', 859]\nprimary_road: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['EL NORTE PY', 'CHRISMAN ROAD', 'GATEWAY']\nsecondary_road: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['MINERAL KING RD', 'DOROTHY LN', 'BALFOUR']\ndistance: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [740, 26928, 1023]\ndirection: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['west', 'north', 'east']\nintersection: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nweather_1: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['snowing', 'other', 'clear']\nweather_2: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other', 'raining', 'cloudy']\nstate_highway_indicator: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [1, 0]\ncaltrans_county: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['sutter', 'san francisco', 'san benito']\ncaltrans_district: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [6, 2, 5]\nstate_route: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [262, 395, 46]\nroute_suffix: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['B', 'S', 'U']\npostmile_prefix: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['C', 'S', 'D']\npostmile: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [76, 25, 18]\nlocation_type: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['intersection', 'ramp', 'highway']\nramp_intersection: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['mid-ramp', 'intersection', 'not state highway, intersection-related, within 250 feet']\nside_of_highway: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['northbound', 'westbound', 'eastbound']\ntow_away: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [1, 0]\ncollision_severity: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['property damage only', 'severe injury', 'fatal']\nkilled_victims: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [0, 4, 13]\ninjured_victims: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [7, 9, 31]\nparty_count: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [5, 4, 7]\nprimary_collision_factor: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['unknown', 'vehicle code violation', 'fell asleep']\npcf_violation_code: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['D', 'vehicle', 'A']\npcf_violation_category: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['wrong side of road', 'improper turning', 'following too closely']\npcf_violation: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [22210, 22521, 22510]\npcf_violation_subsection: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['G', 'A', 'E']\nhit_and_run: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['felony', 'not hit and run', 'misdemeanor']\ntype_of_collision: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['sideswipe', 'pedestrian', 'broadside']\nmotor_vehicle_involved_with: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['train', 'non-collision', 'parked motor vehicle']\npedestrian_action: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['no pedestrian involved', 'crossing in intersection crosswalk', 'using school bus']\nroad_surface: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['dry', 'snowy', 'slippery']\nroad_condition_1: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['normal', 'holes', 'loose material']\nroad_condition_2: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other', 'holes', 'loose material']\nlighting: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['dark with street lights not functioning', 'dark with no street lights', 'dark with street lights']\ncontrol_device: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['obscured', 'functioning', 'none']\nchp_road_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [2, 0, 4]\npedestrian_collision: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nbicycle_collision: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nmotorcycle_collision: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\ntruck_collision: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nnot_private_property: The type is REAL, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]\nalcohol_involved: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [1]\nstatewide_vehicle_type_at_fault: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other vehicle', 'moped', 'pickup or panel truck']\nchp_vehicle_type_at_fault: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['school bus private type ii', 'school pupil activity bus type i', 'pickup and camper: hazardous material']\nsevere_injury_count: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 5, 10]\nother_visible_injury_count: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [13, 3, 4]\ncomplaint_of_pain_injury_count: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [20, 3, 4]\npedestrian_killed_count: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 2, 1]\npedestrian_injured_count: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 4, 8]\nbicyclist_killed_count: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nbicyclist_injured_count: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 0, 1]\nmotorcyclist_killed_count: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 0, 2]\nmotorcyclist_injured_count: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [3, 0, 1]\nprimary_ramp: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['FR', 'westbound off-ramp', 'TR']\nsecondary_ramp: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['CO', 'northbound off-ramp', 'northbound on-ramp']\nlatitude: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [34, 35, 34]\nlongitude: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [-117, -121, -117]\ncollision_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-14', '2008-12-30', '2008-03-04']\ncollision_time: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['13:34:00', '19:59:00', '01:23:00']\nprocess_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2002-06-19', '2020-09-28', '2020-11-12']\n\n## Table case_ids:\ncase_id: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [1846548, 3979849, 8020258]\ndb_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2018, 2020, 2021]\n\n## Table parties:\nid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4803319, 1454033, 1990549]\ncase_id: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [7168462, 90110125, 6858155]\nparty_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [18, 15, 5]\nparty_type: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['pedestrian', 'other', 'parked vehicle']\nat_fault: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\nparty_sex: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['female', 'male', 'X']\nparty_age: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [87, 79, 51]\nparty_sobriety: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['had been drinking, not under influence', 'had been drinking, under influence', 'had not been drinking']\nparty_drug_physical: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['under drug influence', 'not applicable', 'G']\ndirection_of_travel: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['west', 'south', 'north']\nparty_safety_equipment_1: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['passive restraint used', 'child restraint in vehicle not used', 'lap belt not used']\nparty_safety_equipment_2: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['unknown', 'lap belt not used', 'lap/shoulder harness not used']\nfinancial_responsibility: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['no proof of insurance obtained', 'proof of insurance obtained', 'officer called away before obtained']\nhazardous_materials: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [1]\ncellphone_in_use: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [0, 1]\ncellphone_use_type: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['cellphone not in use', 'cellphone in use', 'no cellphone/unknown']\nschool_bus_related: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [1]\noaf_violation_code: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['vehicle', 'city health and safety', 'business and professions']\noaf_violation_category: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['off-highway vehicle violation', 'seat belt', 'child restraint']\noaf_violation_section: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [2818, 0, 21950]\noaf_violation_suffix: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['D', 'F', 'A']\nother_associate_factor_1: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['inattention, other', 'vision obscurements', 'violation']\nother_associate_factor_2: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['unfamiliar with road', 'inattention, radio/cd', 'uninvolved vehicle']\nparty_number_killed: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 6]\nparty_number_injured: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8, 6, 11]\nmovement_preceding_collision: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['making right turn', 'slowing/stopping', 'entering traffic']\nvehicle_year: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [2010, 1973, 2003]\nvehicle_make: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['mini', 'KUBOTA', 'ferrari']\nstatewide_vehicle_type: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other vehicle', 'highway construction equipment', 'bicycle']\nchp_vehicle_type_towing: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['farm labor transporter', 'utility', 'passenger car, station wagon, jeep: hazardous material']\nchp_vehicle_type_towed: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['container chassis', 'semi', 'emergency vehicle (on emergency run)']\nparty_race: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['black', 'white', 'hispanic']\n\n#Forigen keys:\n\n\n#Database Description:\nThe `California_Traffic_Collision` database is designed to store detailed information about traffic collisions in California. It includes data about victims, collisions, case IDs, and parties involved in the incidents. The database provides insights into various aspects of traffic collisions, such as severity, location, contributing factors, and demographics of the parties involved. This data can be used for analysis, reporting, and improving traffic safety measures.\n\n#Tables Descriptions:\n1. **Victims**: Contains information about individuals involved in traffic collisions, including their role, sex, age, degree of injury, seating position, safety equipment used, and whether they were ejected from the vehicle.\n\n2. **Collisions**: Stores detailed information about traffic collisions, including jurisdiction, officer ID, location, weather conditions, road conditions, collision severity, and contributing factors. It also includes data about the number of victims killed or injured, type of collision, and other related attributes.\n\n3. **Case IDs**: Provides a mapping of case IDs to the year of the database entry. This table helps track the year in which the collision data was recorded.\n\n4. **Parties**: Contains information about the parties involved in traffic collisions, including their type (e.g., pedestrian, vehicle), sex, age, sobriety, safety equipment used, and whether they were at fault. It also includes data about violations, injuries, and vehicle details.\n\n#Foreign Keys:\n- `victims.case_id` → `collisions.case_id`\n- `parties.case_id` → `collisions.case_id`\n- `parties.party_number` → `victims.party_number`\n",
+        "db_col_dic": {
+            "victims.id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [64982, 1935664, 2112442]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[64982, 1935664, 2112442]"
+            ],
+            "victims.case_id": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [7016482, 5158342, 6578553]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[7016482, 5158342, 6578553]"
+            ],
+            "victims.party_number": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 12, 8]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4, 12, 8]"
+            ],
+            "victims.victim_role": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other', 'pedestrian', 'passenger']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['other', 'pedestrian', 'passenger']"
+            ],
+            "victims.victim_sex": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: [2, 'male', 4]",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "[2, 'male', 4]"
+            ],
+            "victims.victim_age": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [88, 41, 42]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[88, 41, 42]"
+            ],
+            "victims.victim_degree_of_injury": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['killed', 'suspected minor injury', 'complaint of pain']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['killed', 'suspected minor injury', 'complaint of pain']"
+            ],
+            "victims.victim_seating_position": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['position unknown', 'passenger seat 3', 'passenger seat 6']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['position unknown', 'passenger seat 3', 'passenger seat 6']"
+            ],
+            "victims.victim_safety_equipment_1": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['child restraint in vehicle not used', 'child restraint in vehicle used', 'shoulder harness used']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['child restraint in vehicle not used', 'child restraint in vehicle used', 'shoulder harness used']"
+            ],
+            "victims.victim_safety_equipment_2": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other', 'air bag deployed', 'lap belt used']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['other', 'air bag deployed', 'lap belt used']"
+            ],
+            "victims.victim_ejected": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['partially ejected', 'fully ejected', 'unknown']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['partially ejected', 'fully ejected', 'unknown']"
+            ],
+            "collisions.case_id": [
+                "The type is REAL, Which does not inlude Null and is Unique. Values format like: [8877599, 598341, 6582001]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Unique",
+                "[8877599, 598341, 6582001]"
+            ],
+            "collisions.jurisdiction": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [4111, 3325, 9150]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[4111, 3325, 9150]"
+            ],
+            "collisions.officer_id": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['F5137', 39308, 20258]",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['F5137', 39308, 20258]"
+            ],
+            "collisions.reporting_district": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['11AC', '30E1', 20208]",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['11AC', '30E1', 20208]"
+            ],
+            "collisions.chp_shift": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['not chp', '1400 thru 2159', 'chp not stated']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['not chp', '1400 thru 2159', 'chp not stated']"
+            ],
+            "collisions.population": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['100000 to 250000', '25000 to 50000', '>250000']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['100000 to 250000', '25000 to 50000', '>250000']"
+            ],
+            "collisions.county_city_location": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2404, 1973, 4000]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2404, 1973, 4000]"
+            ],
+            "collisions.county_location": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['mariposa', 'riverside', 'placer']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['mariposa', 'riverside', 'placer']"
+            ],
+            "collisions.special_condition": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "collisions.beat_type": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['schoolbus on city roadway', 'chp county roadarea', 'not chp']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['schoolbus on city roadway', 'chp county roadarea', 'not chp']"
+            ],
+            "collisions.chp_beat_type": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['not chp', 'safety services program', 'us highway']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['not chp', 'safety services program', 'us highway']"
+            ],
+            "collisions.city_division_lapd": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['M', 'L', 'K']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['M', 'L', 'K']"
+            ],
+            "collisions.chp_beat_class": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['chp primary', 'chp other', 'not chp']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['chp primary', 'chp other', 'not chp']"
+            ],
+            "collisions.beat_number": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['19A97', 'S-1', 859]",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['19A97', 'S-1', 859]"
+            ],
+            "collisions.primary_road": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['EL NORTE PY', 'CHRISMAN ROAD', 'GATEWAY']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['EL NORTE PY', 'CHRISMAN ROAD', 'GATEWAY']"
+            ],
+            "collisions.secondary_road": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['MINERAL KING RD', 'DOROTHY LN', 'BALFOUR']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['MINERAL KING RD', 'DOROTHY LN', 'BALFOUR']"
+            ],
+            "collisions.distance": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [740, 26928, 1023]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[740, 26928, 1023]"
+            ],
+            "collisions.direction": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['west', 'north', 'east']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['west', 'north', 'east']"
+            ],
+            "collisions.intersection": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "collisions.weather_1": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['snowing', 'other', 'clear']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['snowing', 'other', 'clear']"
+            ],
+            "collisions.weather_2": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other', 'raining', 'cloudy']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['other', 'raining', 'cloudy']"
+            ],
+            "collisions.state_highway_indicator": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "collisions.caltrans_county": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['sutter', 'san francisco', 'san benito']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['sutter', 'san francisco', 'san benito']"
+            ],
+            "collisions.caltrans_district": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [6, 2, 5]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[6, 2, 5]"
+            ],
+            "collisions.state_route": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [262, 395, 46]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[262, 395, 46]"
+            ],
+            "collisions.route_suffix": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['B', 'S', 'U']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['B', 'S', 'U']"
+            ],
+            "collisions.postmile_prefix": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['C', 'S', 'D']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['C', 'S', 'D']"
+            ],
+            "collisions.postmile": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [76, 25, 18]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[76, 25, 18]"
+            ],
+            "collisions.location_type": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['intersection', 'ramp', 'highway']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['intersection', 'ramp', 'highway']"
+            ],
+            "collisions.ramp_intersection": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['mid-ramp', 'intersection', 'not state highway, intersection-related, within 250 feet']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['mid-ramp', 'intersection', 'not state highway, intersection-related, within 250 feet']"
+            ],
+            "collisions.side_of_highway": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['northbound', 'westbound', 'eastbound']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['northbound', 'westbound', 'eastbound']"
+            ],
+            "collisions.tow_away": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "collisions.collision_severity": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['property damage only', 'severe injury', 'fatal']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['property damage only', 'severe injury', 'fatal']"
+            ],
+            "collisions.killed_victims": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [0, 4, 13]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[0, 4, 13]"
+            ],
+            "collisions.injured_victims": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [7, 9, 31]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[7, 9, 31]"
+            ],
+            "collisions.party_count": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [5, 4, 7]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[5, 4, 7]"
+            ],
+            "collisions.primary_collision_factor": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['unknown', 'vehicle code violation', 'fell asleep']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['unknown', 'vehicle code violation', 'fell asleep']"
+            ],
+            "collisions.pcf_violation_code": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['D', 'vehicle', 'A']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['D', 'vehicle', 'A']"
+            ],
+            "collisions.pcf_violation_category": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['wrong side of road', 'improper turning', 'following too closely']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['wrong side of road', 'improper turning', 'following too closely']"
+            ],
+            "collisions.pcf_violation": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [22210, 22521, 22510]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[22210, 22521, 22510]"
+            ],
+            "collisions.pcf_violation_subsection": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['G', 'A', 'E']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['G', 'A', 'E']"
+            ],
+            "collisions.hit_and_run": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['felony', 'not hit and run', 'misdemeanor']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['felony', 'not hit and run', 'misdemeanor']"
+            ],
+            "collisions.type_of_collision": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['sideswipe', 'pedestrian', 'broadside']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['sideswipe', 'pedestrian', 'broadside']"
+            ],
+            "collisions.motor_vehicle_involved_with": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['train', 'non-collision', 'parked motor vehicle']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['train', 'non-collision', 'parked motor vehicle']"
+            ],
+            "collisions.pedestrian_action": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['no pedestrian involved', 'crossing in intersection crosswalk', 'using school bus']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['no pedestrian involved', 'crossing in intersection crosswalk', 'using school bus']"
+            ],
+            "collisions.road_surface": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['dry', 'snowy', 'slippery']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['dry', 'snowy', 'slippery']"
+            ],
+            "collisions.road_condition_1": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['normal', 'holes', 'loose material']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['normal', 'holes', 'loose material']"
+            ],
+            "collisions.road_condition_2": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other', 'holes', 'loose material']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['other', 'holes', 'loose material']"
+            ],
+            "collisions.lighting": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['dark with street lights not functioning', 'dark with no street lights', 'dark with street lights']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['dark with street lights not functioning', 'dark with no street lights', 'dark with street lights']"
+            ],
+            "collisions.control_device": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['obscured', 'functioning', 'none']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['obscured', 'functioning', 'none']"
+            ],
+            "collisions.chp_road_type": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [2, 0, 4]",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 0, 4]"
+            ],
+            "collisions.pedestrian_collision": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "collisions.bicycle_collision": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "collisions.motorcycle_collision": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "collisions.truck_collision": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "collisions.not_private_property": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[1]"
+            ],
+            "collisions.alcohol_involved": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [1]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[1]"
+            ],
+            "collisions.statewide_vehicle_type_at_fault": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other vehicle', 'moped', 'pickup or panel truck']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['other vehicle', 'moped', 'pickup or panel truck']"
+            ],
+            "collisions.chp_vehicle_type_at_fault": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['school bus private type ii', 'school pupil activity bus type i', 'pickup and camper: hazardous material']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['school bus private type ii', 'school pupil activity bus type i', 'pickup and camper: hazardous material']"
+            ],
+            "collisions.severe_injury_count": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 5, 10]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 5, 10]"
+            ],
+            "collisions.other_visible_injury_count": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [13, 3, 4]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[13, 3, 4]"
+            ],
+            "collisions.complaint_of_pain_injury_count": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [20, 3, 4]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[20, 3, 4]"
+            ],
+            "collisions.pedestrian_killed_count": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 2, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 2, 1]"
+            ],
+            "collisions.pedestrian_injured_count": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 4, 8]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 4, 8]"
+            ],
+            "collisions.bicyclist_killed_count": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "collisions.bicyclist_injured_count": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 0, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4, 0, 1]"
+            ],
+            "collisions.motorcyclist_killed_count": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 0, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0, 2]"
+            ],
+            "collisions.motorcyclist_injured_count": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [3, 0, 1]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 0, 1]"
+            ],
+            "collisions.primary_ramp": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['FR', 'westbound off-ramp', 'TR']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['FR', 'westbound off-ramp', 'TR']"
+            ],
+            "collisions.secondary_ramp": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['CO', 'northbound off-ramp', 'northbound on-ramp']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['CO', 'northbound off-ramp', 'northbound on-ramp']"
+            ],
+            "collisions.latitude": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [34, 35, 34]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[34, 35, 34]"
+            ],
+            "collisions.longitude": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [-117, -121, -117]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[-117, -121, -117]"
+            ],
+            "collisions.collision_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-14', '2008-12-30', '2008-03-04']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2018-02-14', '2008-12-30', '2008-03-04']"
+            ],
+            "collisions.collision_time": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['13:34:00', '19:59:00', '01:23:00']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['13:34:00', '19:59:00', '01:23:00']"
+            ],
+            "collisions.process_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2002-06-19', '2020-09-28', '2020-11-12']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2002-06-19', '2020-09-28', '2020-11-12']"
+            ],
+            "case_ids.case_id": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [1846548, 3979849, 8020258]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[1846548, 3979849, 8020258]"
+            ],
+            "case_ids.db_year": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2018, 2020, 2021]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2018, 2020, 2021]"
+            ],
+            "parties.id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4803319, 1454033, 1990549]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4803319, 1454033, 1990549]"
+            ],
+            "parties.case_id": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [7168462, 90110125, 6858155]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[7168462, 90110125, 6858155]"
+            ],
+            "parties.party_number": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [18, 15, 5]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[18, 15, 5]"
+            ],
+            "parties.party_type": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['pedestrian', 'other', 'parked vehicle']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['pedestrian', 'other', 'parked vehicle']"
+            ],
+            "parties.at_fault": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "parties.party_sex": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['female', 'male', 'X']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['female', 'male', 'X']"
+            ],
+            "parties.party_age": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [87, 79, 51]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[87, 79, 51]"
+            ],
+            "parties.party_sobriety": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['had been drinking, not under influence', 'had been drinking, under influence', 'had not been drinking']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['had been drinking, not under influence', 'had been drinking, under influence', 'had not been drinking']"
+            ],
+            "parties.party_drug_physical": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['under drug influence', 'not applicable', 'G']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['under drug influence', 'not applicable', 'G']"
+            ],
+            "parties.direction_of_travel": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['west', 'south', 'north']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['west', 'south', 'north']"
+            ],
+            "parties.party_safety_equipment_1": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['passive restraint used', 'child restraint in vehicle not used', 'lap belt not used']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['passive restraint used', 'child restraint in vehicle not used', 'lap belt not used']"
+            ],
+            "parties.party_safety_equipment_2": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['unknown', 'lap belt not used', 'lap/shoulder harness not used']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['unknown', 'lap belt not used', 'lap/shoulder harness not used']"
+            ],
+            "parties.financial_responsibility": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['no proof of insurance obtained', 'proof of insurance obtained', 'officer called away before obtained']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['no proof of insurance obtained', 'proof of insurance obtained', 'officer called away before obtained']"
+            ],
+            "parties.hazardous_materials": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [1]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[1]"
+            ],
+            "parties.cellphone_in_use": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "parties.cellphone_use_type": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['cellphone not in use', 'cellphone in use', 'no cellphone/unknown']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['cellphone not in use', 'cellphone in use', 'no cellphone/unknown']"
+            ],
+            "parties.school_bus_related": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [1]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[1]"
+            ],
+            "parties.oaf_violation_code": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['vehicle', 'city health and safety', 'business and professions']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['vehicle', 'city health and safety', 'business and professions']"
+            ],
+            "parties.oaf_violation_category": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['off-highway vehicle violation', 'seat belt', 'child restraint']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['off-highway vehicle violation', 'seat belt', 'child restraint']"
+            ],
+            "parties.oaf_violation_section": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [2818, 0, 21950]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[2818, 0, 21950]"
+            ],
+            "parties.oaf_violation_suffix": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['D', 'F', 'A']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['D', 'F', 'A']"
+            ],
+            "parties.other_associate_factor_1": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['inattention, other', 'vision obscurements', 'violation']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['inattention, other', 'vision obscurements', 'violation']"
+            ],
+            "parties.other_associate_factor_2": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['unfamiliar with road', 'inattention, radio/cd', 'uninvolved vehicle']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['unfamiliar with road', 'inattention, radio/cd', 'uninvolved vehicle']"
+            ],
+            "parties.party_number_killed": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 6]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 1, 6]"
+            ],
+            "parties.party_number_injured": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8, 6, 11]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[8, 6, 11]"
+            ],
+            "parties.movement_preceding_collision": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['making right turn', 'slowing/stopping', 'entering traffic']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['making right turn', 'slowing/stopping', 'entering traffic']"
+            ],
+            "parties.vehicle_year": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [2010, 1973, 2003]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[2010, 1973, 2003]"
+            ],
+            "parties.vehicle_make": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['mini', 'KUBOTA', 'ferrari']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['mini', 'KUBOTA', 'ferrari']"
+            ],
+            "parties.statewide_vehicle_type": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other vehicle', 'highway construction equipment', 'bicycle']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['other vehicle', 'highway construction equipment', 'bicycle']"
+            ],
+            "parties.chp_vehicle_type_towing": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['farm labor transporter', 'utility', 'passenger car, station wagon, jeep: hazardous material']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['farm labor transporter', 'utility', 'passenger car, station wagon, jeep: hazardous material']"
+            ],
+            "parties.chp_vehicle_type_towed": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['container chassis', 'semi', 'emergency vehicle (on emergency run)']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['container chassis', 'semi', 'emergency vehicle (on emergency run)']"
+            ],
+            "parties.party_race": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['black', 'white', 'hispanic']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['black', 'white', 'hispanic']"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries the year and compares the two most common causes of traffic accidents across different years. Relevant columns include the year of the accident and the causes of accidents. Filtering involves identifying the two most common causes for each year and comparing them across years.\n#columns: collisions.collision_date, collisions.primary_collision_factor\n#values: None\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "other years",
+            "traffic accidents",
+            "two most common causes of traffic accidents",
+            "causes",
+            "year"
+        ],
+        "col": "collisions.collision_date, collisions.primary_collision_factor",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [
+            [
+                "collisions.officer_id",
+                "OTHER"
+            ],
+            [
+                "collisions.road_condition_1",
+                "other"
+            ],
+            [
+                "collisions.road_condition_2",
+                "other"
+            ],
+            [
+                "collisions.type_of_collision",
+                "other"
+            ],
+            [
+                "collisions.weather_1",
+                "other"
+            ],
+            [
+                "collisions.weather_2",
+                "other"
+            ],
+            [
+                "parties.movement_preceding_collision",
+                "other"
+            ],
+            [
+                "parties.other_associate_factor_1",
+                "other"
+            ],
+            [
+                "parties.other_associate_factor_2",
+                "other"
+            ],
+            [
+                "parties.party_race",
+                "other"
+            ],
+            [
+                "parties.party_safety_equipment_1",
+                "other"
+            ],
+            [
+                "parties.party_safety_equipment_2",
+                "other"
+            ],
+            [
+                "parties.party_type",
+                "other"
+            ],
+            [
+                "victims.victim_role",
+                "other"
+            ],
+            [
+                "victims.victim_safety_equipment_1",
+                "other"
+            ],
+            [
+                "victims.victim_safety_equipment_2",
+                "other"
+            ]
+        ],
+        "column": "case_ids.case_id: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [1846548, 3979849, 8020258]\ncase_ids.db_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2018, 2020, 2021]\ncollisions.case_id: The type is REAL, Which does not inlude Null and is Unique. Values format like: [8877599, 598341, 6582001]\ncollisions.collision_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-14', '2008-12-30', '2008-03-04']\ncollisions.distance: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [740, 26928, 1023]\ncollisions.intersection: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [0, 1]\ncollisions.latitude: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [34, 35, 34]\ncollisions.officer_id: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['F5137', 39308, 20258]\ncollisions.primary_collision_factor: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['unknown', 'vehicle code violation', 'fell asleep']\ncollisions.process_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2002-06-19', '2020-09-28', '2020-11-12']\ncollisions.road_condition_1: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['normal', 'holes', 'loose material']\ncollisions.road_condition_2: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other', 'holes', 'loose material']\ncollisions.type_of_collision: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['sideswipe', 'pedestrian', 'broadside']\ncollisions.weather_1: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['snowing', 'other', 'clear']\ncollisions.weather_2: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other', 'raining', 'cloudy']\nparties.case_id: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [7168462, 90110125, 6858155]\nparties.id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4803319, 1454033, 1990549]\nparties.movement_preceding_collision: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['making right turn', 'slowing/stopping', 'entering traffic']\nparties.other_associate_factor_1: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['inattention, other', 'vision obscurements', 'violation']\nparties.other_associate_factor_2: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['unfamiliar with road', 'inattention, radio/cd', 'uninvolved vehicle']\nparties.party_race: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['black', 'white', 'hispanic']\nparties.party_safety_equipment_1: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['passive restraint used', 'child restraint in vehicle not used', 'lap belt not used']\nparties.party_safety_equipment_2: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['unknown', 'lap belt not used', 'lap/shoulder harness not used']\nparties.party_type: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['pedestrian', 'other', 'parked vehicle']\nparties.vehicle_year: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [2010, 1973, 2003]\nvictims.case_id: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [7016482, 5158342, 6578553]\nvictims.id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [64982, 1935664, 2112442]\nvictims.victim_role: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other', 'pedestrian', 'passenger']\nvictims.victim_safety_equipment_1: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['child restraint in vehicle not used', 'child restraint in vehicle used', 'shoulder harness used']\nvictims.victim_safety_equipment_2: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other', 'air bag deployed', 'lap belt used']",
+        "foreign_keys": "",
+        "foreign_set": [],
+        "q_order": [
+            "year"
+        ],
+        "status": "success"
+    }
+]

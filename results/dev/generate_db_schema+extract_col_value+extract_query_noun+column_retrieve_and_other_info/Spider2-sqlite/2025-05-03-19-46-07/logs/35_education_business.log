@@ -1,0 +1,595 @@
+############################## Human at step generate_db_schema ##############################
+
+/* Here is a examples about describe database */
+    #Forigen keys: 
+    Airlines.ORIGIN = Airports.Code, Airlines.DEST = Airports.Code, Airlines.OP_CARRIER_AIRLINE_ID = Air Carriers.Code
+    #Database Description: The database encompasses information related to flights, including airlines, airports, and flight operations.
+    #Tables Descriptions:
+    Air Carriers: Codes and descriptive information about airlines
+    Airports: IATA codes and descriptions of airports
+    Airlines: Detailed information about flights 
+
+    /* Here is a examples about describe database */
+    #Forigen keys:
+    data.ID = price.ID, production.ID = price.ID, production.ID = data.ID, production.country = country.origin
+    #Database Description: The database contains information related to cars, including country, price, specifications, Production
+    #Tables Descriptions:
+    Country: Names of the countries where the cars originate from.
+    Price: Price of the car in USD.
+    Data: Information about the car's specifications
+    Production: Information about car's production.
+
+    /* Describe the following database */
+    Database Management System: SQLite
+#Database name: education_business
+## Table hardware_dim_customer:
+customer_code: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [70003182, 90018105, 90013117]
+customer: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['walmart', 'Currys (Dixons Carphone)', 'Electricalsbea Stores']
+platform: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Brick & Mortar', 'E-Commerce']
+channel: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Retailer', 'Direct', 'Distributor']
+market: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['France', 'Spain', 'USA']
+sub_zone: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['NE', 'LATAM', 'SE']
+region: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['LATAM', 'EU', 'APAC']
+
+## Table hardware_fact_pre_invoice_deductions:
+customer_code: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [90021094, 90021095, 90011189]
+fiscal_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2020, 2021]
+pre_invoice_discount_pct: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]
+
+## Table web_sales_reps:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [321530, 321880, 321940]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Tia Amato', 'Elwood Shutt', 'Maren Musto']
+region_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 2, 3]
+
+## Table hardware_dim_product:
+product_code: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['A2821150801', 'A3421150603', 'A5520110307']
+division: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PC', 'P & A', 'N & S']
+segment: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Networking', 'Notebook', 'Peripherals']
+category: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Graphic Card', 'Keyboard', 'USB Flash Drives']
+product: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['AQ Master wired x1', 'AQ MB Lito 2', 'AQ Lumina']
+variant: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Plus 1', 'Plus 1 ', 'Standard 3']
+
+## Table web_orders:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [6163, 726, 612]
+account_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3911, 2001, 3961]
+occurred_at: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2014-12-11T02:42:26.000Z', '2016-06-23T08:18:36.000Z', '2016-11-13T03:16:03.000Z']
+standard_qty: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [259, 1448, 355]
+gloss_qty: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [504, 123, 719]
+poster_qty: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [488, 209, 250]
+total: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [164, 236, 184]
+standard_amt_usd: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [3612, 2639, 2075]
+gloss_amt_usd: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [232, 3145, 4209]
+poster_amt_usd: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [3191, 4401, 2736]
+total_amt_usd: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [1062, 2762, 2544]
+
+## Table StaffHours:
+StaffMember: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['D', 'E', 'L']
+EventDate: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2013-01-28', '2013-01-07', '2013-03-07']
+EventTime: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['15:30', '14:30', '08:10']
+EventType: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Enter', 'Exit']
+
+## Table university_enrollment:
+OfferNo: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9876, 5555, 6666]
+StdNo: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [345678901, 234567890, 456789012]
+EnrGrade: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 2]
+
+## Table university_faculty:
+FacNo: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [123456789, 654321098, 765432109]
+FacFirstName: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['JOHN', 'CRISTOPHER', 'NICKI']
+FacLastName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['MACON', 'SMITH', 'COLAN']
+FacCity: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['BELLEVUE', 'REDMOND', 'BOTHELL']
+FacState: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']
+FacDept: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['FIN', 'CS', 'MS']
+FacRank: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PROF', 'ASST', 'ASSC']
+FacSalary: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [35000, 55000, 40000]
+FacSupervisor: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [543210987, 765432109, 654321098]
+FacHireDate: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2002-03-15', '1996-05-01', '2005-06-15']
+FacZipCode: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['98011-2242', '98052-1234', '98114-9954']
+
+## Table university_student:
+StdNo: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [234567890, 890123456, 678901234]
+StdFirstName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['WILLIAM', 'HOMER', 'WALLY']
+StdLastName: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['COLAN', 'NORBERT', 'PILGRIM']
+StdCity: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['TACOMA', 'SEATTLE', 'REDMOND']
+StdState: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']
+StdZip: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['98114-1332', '98116-0021', '98114-0021']
+StdMajor: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ACCT', 'IS', 'FIN']
+StdClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['JR', 'FR', 'SR']
+StdGPA: The type is REAL, Which does not inlude Null and is Unique. Values format like: [3, 3, 2]
+
+## Table university_offering:
+OfferNo: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3333, 2222, 5678]
+CourseNo: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['IS460', 'FIN480', 'FIN450']
+OffTerm: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['SUMMER', 'FALL', 'SPRING']
+OffYear: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2010, 2009]
+OffLocation: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['BLM212', 'BLM305', 'BLM307']
+OffTime: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['3:30 PM', '10:30 AM', '8:30 AM']
+FacNo: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [654321098, 876543210, 98765432]
+OffDays: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['MW', 'TTH']
+
+## Table web_accounts:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1921, 2081, 4411]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Autoliv', 'Biogen', 'MasterCard']
+website: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['www.westrock.com', 'www.att.com', 'www.ingrammicro.com']
+lat: The type is REAL, Which does not inlude Null and is Unique. Values format like: [30, 36, 36]
+long: The type is REAL, Which does not inlude Null and is Unique. Values format like: [-84, -87, -121]
+primary_poc: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Horacio Weidman', 'Agnus Jenkin', 'Chin Coppola']
+sales_rep_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [321720, 321960, 321650]
+
+## Table web_events:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1986, 5607, 6456]
+account_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3381, 1741, 3171]
+occurred_at: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2015-08-05T14:17:14.000Z', '2016-04-26T02:23:47.000Z', '2016-04-28T03:35:32.000Z']
+channel: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['twitter', 'organic', 'direct']
+
+## Table SalaryDataset:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1889, 2516, 1013]
+CompanyName: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['KPMG', 'IDeaS - A SAS Company', 'Zoomcar']
+JobTitle: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Machine Learning Software Engineer', 'Machine Learning Consultant', 'Data Engineer']
+SalariesReported: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [36, 44, 33]
+Location: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Bangalore', 'New Delhi', 'Mumbai']
+Salary: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['₹4,87,335/yr', '₹9,59,911/yr', '₹8,56,429/yr']
+
+## Table web_region:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3, 2, 4]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['West', 'Southeast', 'Midwest']
+
+## Table hardware_fact_gross_price:
+product_code: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['A5419110201', 'A1320150402', 'A0519150201']
+fiscal_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2020, 2021]
+gross_price: The type is REAL, Which does not inlude Null and is Unique. Values format like: [14, 16, 602]
+
+## Table hardware_fact_manufacturing_cost:
+product_code: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['A2419150405', 'A5621110405', 'A5219110404']
+cost_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2020, 2021]
+manufacturing_cost: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [37, 5, 8]
+
+## Table university_course:
+CourseNo: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['IS480', 'FIN480', 'FIN300']
+CrsDesc: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['FUNDAMENTALS OF DATABASE MANAGEMENT', 'FUNDAMENTALS OF BUSINESS PROGRAMMING', 'FUNDAMENTALS OF FINANCE']
+CrsUnits: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [4]
+
+## Table hardware_fact_sales_monthly:
+date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-02-01', '2020-09-01', '2020-02-01']
+product_code: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['A5520110307', 'A0418150102', 'A2218150202']
+customer_code: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [90017055, 90002015, 70010047]
+sold_quantity: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1943, 2087, 1179]
+fiscal_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2020, 2021]
+
+#Forigen keys:
+
+
+    Please conclude the database in the following format:
+    #Database Description:
+    #Tables Descriptions:
+    
+
+############################## AI at step generate_db_schema ##############################
+
+#Database Description:
+The `education_business` database is designed to manage and analyze data related to education, business operations, hardware sales, manufacturing, and web-based activities. It includes information about customers, products, sales, manufacturing costs, university courses, faculty, students, and web-related events/accounts. The database is structured to support various analytical and operational needs, with relationships between tables established through foreign keys.
+
+#Tables Descriptions:
+
+1. **hardware_dim_customer**:  
+   Contains information about customers, including their unique codes, names, platforms, channels, markets, sub-zones, and regions.
+
+2. **hardware_fact_pre_invoice_deductions**:  
+   Stores pre-invoice deduction details, including customer codes, fiscal years, and discount percentages.
+
+3. **web_sales_reps**:  
+   Contains information about web sales representatives, including their unique IDs, names, and associated region IDs.
+
+4. **hardware_dim_product**:  
+   Provides details about hardware products, including product codes, divisions, segments, categories, product names, and variants.
+
+5. **web_orders**:  
+   Stores information about web orders, including order IDs, account IDs, timestamps, quantities, and amounts in USD for different product types.
+
+6. **StaffHours**:  
+   Tracks staff member activities, including event dates, times, and types (e.g., "Enter" or "Exit").
+
+7. **university_enrollment**:  
+   Contains enrollment data, including offer numbers, student numbers, and enrollment grades.
+
+8. **university_faculty**:  
+   Stores faculty information, including faculty numbers, names, cities, states, departments, ranks, salaries, supervisors, hire dates, and zip codes.
+
+9. **university_student**:  
+   Contains student information, including student numbers, names, cities, states, zip codes, majors, classes, and GPAs.
+
+10. **university_offering**:  
+    Provides details about course offerings, including offer numbers, course numbers, terms, years, locations, times, faculty numbers, and days.
+
+11. **web_accounts**:  
+    Contains information about web accounts, including account IDs, names, websites, geographical coordinates (latitude and longitude), primary points of contact, and associated sales representative IDs.
+
+12. **web_events**:  
+    Tracks web events, including event IDs, account IDs, timestamps, and channels.
+
+13. **SalaryDataset**:  
+    Stores salary-related data, including company names, job titles, salaries reported, locations, and salary amounts.
+
+14. **web_region**:  
+    Contains information about web regions, including region IDs and names.
+
+15. **hardware_fact_gross_price**:  
+    Stores gross price details for hardware products, including product codes, fiscal years, and gross prices.
+
+16. **hardware_fact_manufacturing_cost**:  
+    Contains manufacturing cost details for hardware products, including product codes, cost years, and manufacturing costs.
+
+17. **university_course**:  
+    Provides details about university courses, including course numbers, descriptions, and units.
+
+18. **hardware_fact_sales_monthly**:  
+    Tracks monthly sales data for hardware products, including dates, product codes, customer codes, sold quantities, and fiscal years.
+
+#Foreign Keys:
+1. `hardware_dim_customer.customer_code` = `hardware_fact_pre_invoice_deductions.customer_code`  
+2. `hardware_dim_customer.customer_code` = `hardware_fact_sales_monthly.customer_code`  
+3. `hardware_dim_product.product_code` = `hardware_fact_gross_price.product_code`  
+4. `hardware_dim_product.product_code` = `hardware_fact_manufacturing_cost.product_code`  
+5. `hardware_dim_product.product_code` = `hardware_fact_sales_monthly.product_code`  
+6. `web_sales_reps.region_id` = `web_region.id`  
+7. `web_accounts.sales_rep_id` = `web_sales
+
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: Which hardware product segments had at least a 20 % increase in the number of unique products sold from 2020 to 2021, and how many unique products did they sell in 2021? 20 % increase refers to percentage growth ≥ 20. */
+SELECT hp.segment,
+       COUNT(DISTINCT CASE WHEN fs.year = 2021 THEN fs.product_id END) AS unique_products_2021
+FROM hardware_products AS hp
+JOIN fact_sales         AS fs ON fs.product_id = hp.product_id
+GROUP BY hp.segment
+HAVING COUNT(DISTINCT CASE WHEN fs.year = 2020 THEN fs.product_id END) > 0
+   AND (COUNT(DISTINCT CASE WHEN fs.year = 2021 THEN fs.product_id END)
+        - COUNT(DISTINCT CASE WHEN fs.year = 2020 THEN fs.product_id END)) * 100.0
+        / COUNT(DISTINCT CASE WHEN fs.year = 2020 THEN fs.product_id END) >= 20;
+
+/* Answer the following: Which hardware product segment showed the largest growth in total revenue from 2020 to 2021? */
+SELECT hp.segment
+FROM   hardware_products AS hp
+JOIN   fact_sales        AS fs ON fs.product_id = hp.product_id
+GROUP  BY hp.segment
+ORDER  BY SUM(CASE WHEN fs.year = 2021 THEN fs.revenue END)
+        -  SUM(CASE WHEN fs.year = 2020 THEN fs.revenue END) DESC
+LIMIT  1;
+
+/* Answer the following: Give the percentage change in average selling price for every segment between 2020 and 2021. Average selling price refers to revenue / units_sold. */
+SELECT hp.segment,
+       (AVG(CASE WHEN fs.year = 2021 THEN fs.revenue * 1.0 / fs.units_sold END)
+      -  AVG(CASE WHEN fs.year = 2020 THEN fs.revenue * 1.0 / fs.units_sold END)) * 100.0
+      /  AVG(CASE WHEN fs.year = 2020 THEN fs.revenue * 1.0 / fs.units_sold END)   AS pct_change_avg_price
+FROM   hardware_products AS hp
+JOIN   fact_sales        AS fs ON fs.product_id = hp.product_id
+GROUP  BY hp.segment
+ORDER  BY pct_change_avg_price DESC;
+
+/* Answer the following: List the segments that had no sales in 2019 but recorded sales in 2020. */
+SELECT DISTINCT hp.segment
+FROM   hardware_products AS hp
+JOIN   fact_sales        AS fs ON fs.product_id = hp.product_id
+WHERE  fs.year = 2020
+  AND  hp.segment NOT IN (
+        SELECT DISTINCT hp2.segment
+        FROM   hardware_products AS hp2
+        JOIN   fact_sales        AS fs2 ON fs2.product_id = hp2.product_id
+        WHERE  fs2.year = 2019);
+
+/* Answer the following: For every month in 2021, how many unique hardware products were sold? */
+SELECT fs.month,
+       COUNT(DISTINCT fs.product_id) AS unique_products_2021
+FROM   fact_sales AS fs
+WHERE  fs.year = 2021
+GROUP  BY fs.month
+ORDER  BY fs.month;
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: education_business
+## Table hardware_dim_customer:
+customer_code: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [70003182, 90018105, 90013117]
+customer: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['walmart', 'Currys (Dixons Carphone)', 'Electricalsbea Stores']
+platform: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Brick & Mortar', 'E-Commerce']
+channel: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Retailer', 'Direct', 'Distributor']
+market: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['France', 'Spain', 'USA']
+sub_zone: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['NE', 'LATAM', 'SE']
+region: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['LATAM', 'EU', 'APAC']
+
+## Table hardware_fact_pre_invoice_deductions:
+customer_code: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [90021094, 90021095, 90011189]
+fiscal_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2020, 2021]
+pre_invoice_discount_pct: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]
+
+## Table web_sales_reps:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [321530, 321880, 321940]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Tia Amato', 'Elwood Shutt', 'Maren Musto']
+region_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 2, 3]
+
+## Table hardware_dim_product:
+product_code: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['A2821150801', 'A3421150603', 'A5520110307']
+division: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PC', 'P & A', 'N & S']
+segment: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Networking', 'Notebook', 'Peripherals']
+category: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Graphic Card', 'Keyboard', 'USB Flash Drives']
+product: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['AQ Master wired x1', 'AQ MB Lito 2', 'AQ Lumina']
+variant: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Plus 1', 'Plus 1 ', 'Standard 3']
+
+## Table web_orders:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [6163, 726, 612]
+account_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3911, 2001, 3961]
+occurred_at: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2014-12-11T02:42:26.000Z', '2016-06-23T08:18:36.000Z', '2016-11-13T03:16:03.000Z']
+standard_qty: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [259, 1448, 355]
+gloss_qty: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [504, 123, 719]
+poster_qty: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [488, 209, 250]
+total: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [164, 236, 184]
+standard_amt_usd: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [3612, 2639, 2075]
+gloss_amt_usd: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [232, 3145, 4209]
+poster_amt_usd: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [3191, 4401, 2736]
+total_amt_usd: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [1062, 2762, 2544]
+
+## Table StaffHours:
+StaffMember: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['D', 'E', 'L']
+EventDate: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2013-01-28', '2013-01-07', '2013-03-07']
+EventTime: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['15:30', '14:30', '08:10']
+EventType: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Enter', 'Exit']
+
+## Table university_enrollment:
+OfferNo: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9876, 5555, 6666]
+StdNo: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [345678901, 234567890, 456789012]
+EnrGrade: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 2]
+
+## Table university_faculty:
+FacNo: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [123456789, 654321098, 765432109]
+FacFirstName: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['JOHN', 'CRISTOPHER', 'NICKI']
+FacLastName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['MACON', 'SMITH', 'COLAN']
+FacCity: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['BELLEVUE', 'REDMOND', 'BOTHELL']
+FacState: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']
+FacDept: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['FIN', 'CS', 'MS']
+FacRank: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PROF', 'ASST', 'ASSC']
+FacSalary: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [35000, 55000, 40000]
+FacSupervisor: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [543210987, 765432109, 654321098]
+FacHireDate: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2002-03-15', '1996-05-01', '2005-06-15']
+FacZipCode: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['98011-2242', '98052-1234', '98114-9954']
+
+## Table university_student:
+StdNo: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [234567890, 890123456, 678901234]
+StdFirstName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['WILLIAM', 'HOMER', 'WALLY']
+StdLastName: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['COLAN', 'NORBERT', 'PILGRIM']
+StdCity: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['TACOMA', 'SEATTLE', 'REDMOND']
+StdState: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']
+StdZip: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['98114-1332', '98116-0021', '98114-0021']
+StdMajor: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ACCT', 'IS', 'FIN']
+StdClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['JR', 'FR', 'SR']
+StdGPA: The type is REAL, Which does not inlude Null and is Unique. Values format like: [3, 3, 2]
+
+## Table university_offering:
+OfferNo: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3333, 2222, 5678]
+CourseNo: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['IS460', 'FIN480', 'FIN450']
+OffTerm: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['SUMMER', 'FALL', 'SPRING']
+OffYear: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2010, 2009]
+OffLocation: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['BLM212', 'BLM305', 'BLM307']
+OffTime: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['3:30 PM', '10:30 AM', '8:30 AM']
+FacNo: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [654321098, 876543210, 98765432]
+OffDays: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['MW', 'TTH']
+
+## Table web_accounts:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1921, 2081, 4411]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Autoliv', 'Biogen', 'MasterCard']
+website: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['www.westrock.com', 'www.att.com', 'www.ingrammicro.com']
+lat: The type is REAL, Which does not inlude Null and is Unique. Values format like: [30, 36, 36]
+long: The type is REAL, Which does not inlude Null and is Unique. Values format like: [-84, -87, -121]
+primary_poc: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Horacio Weidman', 'Agnus Jenkin', 'Chin Coppola']
+sales_rep_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [321720, 321960, 321650]
+
+## Table web_events:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1986, 5607, 6456]
+account_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3381, 1741, 3171]
+occurred_at: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2015-08-05T14:17:14.000Z', '2016-04-26T02:23:47.000Z', '2016-04-28T03:35:32.000Z']
+channel: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['twitter', 'organic', 'direct']
+
+## Table SalaryDataset:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1889, 2516, 1013]
+CompanyName: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['KPMG', 'IDeaS - A SAS Company', 'Zoomcar']
+JobTitle: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Machine Learning Software Engineer', 'Machine Learning Consultant', 'Data Engineer']
+SalariesReported: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [36, 44, 33]
+Location: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Bangalore', 'New Delhi', 'Mumbai']
+Salary: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['₹4,87,335/yr', '₹9,59,911/yr', '₹8,56,429/yr']
+
+## Table web_region:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3, 2, 4]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['West', 'Southeast', 'Midwest']
+
+## Table hardware_fact_gross_price:
+product_code: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['A5419110201', 'A1320150402', 'A0519150201']
+fiscal_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2020, 2021]
+gross_price: The type is REAL, Which does not inlude Null and is Unique. Values format like: [14, 16, 602]
+
+## Table hardware_fact_manufacturing_cost:
+product_code: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['A2419150405', 'A5621110405', 'A5219110404']
+cost_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2020, 2021]
+manufacturing_cost: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [37, 5, 8]
+
+## Table university_course:
+CourseNo: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['IS480', 'FIN480', 'FIN300']
+CrsDesc: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['FUNDAMENTALS OF DATABASE MANAGEMENT', 'FUNDAMENTALS OF BUSINESS PROGRAMMING', 'FUNDAMENTALS OF FINANCE']
+CrsUnits: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [4]
+
+## Table hardware_fact_sales_monthly:
+date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-02-01', '2020-09-01', '2020-02-01']
+product_code: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['A5520110307', 'A0418150102', 'A2218150202']
+customer_code: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [90017055, 90002015, 70010047]
+sold_quantity: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1943, 2087, 1179]
+fiscal_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2020, 2021]
+
+#Forigen keys:
+
+
+#Database Description:
+The `education_business` database is designed to manage and analyze data related to education, business operations, hardware sales, manufacturing, and web-based activities. It includes information about customers, products, sales, manufacturing costs, university courses, faculty, students, and web-related events/accounts. The database is structured to support various analytical and operational needs, with relationships between tables established through foreign keys.
+
+#Tables Descriptions:
+
+1. **hardware_dim_customer**:  
+   Contains information about customers, including their unique codes, names, platforms, channels, markets, sub-zones, and regions.
+
+2. **hardware_fact_pre_invoice_deductions**:  
+   Stores pre-invoice deduction details, including customer codes, fiscal years, and discount percentages.
+
+3. **web_sales_reps**:  
+   Contains information about web sales representatives, including their unique IDs, names, and associated region IDs.
+
+4. **hardware_dim_product**:  
+   Provides details about hardware products, including product codes, divisions, segments, categories, product names, and variants.
+
+5. **web_orders**:  
+   Stores information about web orders, including order IDs, account IDs, timestamps, quantities, and amounts in USD for different product types.
+
+6. **StaffHours**:  
+   Tracks staff member activities, including event dates, times, and types (e.g., "Enter" or "Exit").
+
+7. **university_enrollment**:  
+   Contains enrollment data, including offer numbers, student numbers, and enrollment grades.
+
+8. **university_faculty**:  
+   Stores faculty information, including faculty numbers, names, cities, states, departments, ranks, salaries, supervisors, hire dates, and zip codes.
+
+9. **university_student**:  
+   Contains student information, including student numbers, names, cities, states, zip codes, majors, classes, and GPAs.
+
+10. **university_offering**:  
+    Provides details about course offerings, including offer numbers, course numbers, terms, years, locations, times, faculty numbers, and days.
+
+11. **web_accounts**:  
+    Contains information about web accounts, including account IDs, names, websites, geographical coordinates (latitude and longitude), primary points of contact, and associated sales representative IDs.
+
+12. **web_events**:  
+    Tracks web events, including event IDs, account IDs, timestamps, and channels.
+
+13. **SalaryDataset**:  
+    Stores salary-related data, including company names, job titles, salaries reported, locations, and salary amounts.
+
+14. **web_region**:  
+    Contains information about web regions, including region IDs and names.
+
+15. **hardware_fact_gross_price**:  
+    Stores gross price details for hardware products, including product codes, fiscal years, and gross prices.
+
+16. **hardware_fact_manufacturing_cost**:  
+    Contains manufacturing cost details for hardware products, including product codes, cost years, and manufacturing costs.
+
+17. **university_course**:  
+    Provides details about university courses, including course numbers, descriptions, and units.
+
+18. **hardware_fact_sales_monthly**:  
+    Tracks monthly sales data for hardware products, including dates, product codes, customer codes, sold quantities, and fiscal years.
+
+#Foreign Keys:
+1. `hardware_dim_customer.customer_code` = `hardware_fact_pre_invoice_deductions.customer_code`  
+2. `hardware_dim_customer.customer_code` = `hardware_fact_sales_monthly.customer_code`  
+3. `hardware_dim_product.product_code` = `hardware_fact_gross_price.product_code`  
+4. `hardware_dim_product.product_code` = `hardware_fact_manufacturing_cost.product_code`  
+5. `hardware_dim_product.product_code` = `hardware_fact_sales_monthly.product_code`  
+6. `web_sales_reps.region_id` = `web_region.id`  
+7. `web_accounts.sales_rep_id` = `web_sales
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: Can you provide a list of hardware product segments along with their unique product counts for 2020 in the output, ordered by the highest percentage increase in unique fact sales products from 2020 to 2021? */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries hardware product segments and their unique product counts for 2020, ordered by the highest percentage increase in unique fact sales products from 2020 to 2021. The related columns include product segment, year, and product ID for filtering and grouping.
+#columns: hardware_dim_product.segment, fact_sales.year, fact_sales.product_id
+#values: "2020", "2021"
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+Can you provide a list of hardware product segments along with their unique product counts for 2020 in the output, ordered by the highest percentage increase in unique fact sales products from 2020 to 2021?
+
+############################## AI at step extract_query_noun ##############################
+
+"list", "hardware", "product", "segments", "unique product counts", "output", "percentage increase", "unique fact sales products", "2020", "2021"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: Can you provide a list of hardware product segments along with their unique product counts for 2020 in the output, ordered by the highest percentage increase in unique fact sales products from 2020 to 2021?
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "provide a list",
+      "J": null,
+      "I": ["hardware product segments", "their unique product counts"],
+      "C": [
+        "for 2020 in the output",
+        "ordered by the highest percentage increase in unique fact sales products from 2020 to 2021"
+      ]
+    }
+  }
+]
+```
+

@@ -1,0 +1,1355 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: complex_oracle\n## Table countries:\ncountry_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [52793, 52785, 52784]\ncountry_iso_code: The type is CHAR(2), Which does not inlude Null and is Unique. Values format like: ['IL', 'NZ', 'EG']\ncountry_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Zimbabwe', 'Sweden', 'Netherlands']\ncountry_subregion: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Middle East', 'Western Europe', 'Southern America']\ncountry_subregion_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52798, 52794, 52795]\ncountry_region: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Asia', 'Oceania', 'Middle East']\ncountry_region_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52804, 52800, 52803]\ncountry_total: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['World total']\ncountry_total_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [52806]\n\n## Table customers:\ncust_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [8297, 47535, 16542]\ncust_first_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Rutherford', 'Carin', 'Morton']\ncust_last_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Mac', 'Ness', 'James']\ncust_gender: The type is CHAR(1), Which does not inlude Null and is Non-Unique. Value of this column must in: ['M', 'F']\ncust_year_of_birth: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1968, 1950, 1947]\ncust_marital_status: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['separated', 'widowed', 'married']\ncust_street_address: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['77 West Taney Avenue', '27 East Trego Boulevard', '17 East Yavapai Court']\ncust_postal_code: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [71138, 43209, 45036]\ncust_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Hatfield', 'Bethel Acres', 'Bradford']\ncust_city_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52512, 52029, 51505]\ncust_state_province: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Midi-Pyrenees', 'Rio Negro', 'Rheinland-Pfalz']\ncust_state_province_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52573, 52770, 52591]\ncountry_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52771, 52777, 52775]\ncust_main_phone_number: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['625-660-4049', '369-418-9314', '569-768-7273']\ncust_income_level: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['F: 110,000 - 129,999', 'B: 30,000 - 49,999', 'G: 130,000 - 149,999']\ncust_credit_limit: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [15000, 9000, 7000]\ncust_email: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Kiker@company.example.com', 'Lanston@company.example.com', 'olga.ireland@company2.example.com']\ncust_total: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Customer total']\ncust_total_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [52772]\ncust_src_id: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: None\ncust_eff_from: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2019-01-01']\ncust_eff_to: The type is DATE, Which inlude Null and is Non-Unique. Value of this column must in: None\ncust_valid: The type is CHAR(1), Which does not inlude Null and is Non-Unique. Value of this column must in: ['I', 'A']\n\n## Table promotions:\npromo_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [152, 236, 347]\npromo_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['newspaper promotion #16-265', 'newspaper promotion #19-78', 'internet promotion #29-405']\npromo_subcategory: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ad news', 'freeway billboard', 'loyal customer discount']\npromo_subcategory_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [14, 19, 13]\npromo_category: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['newspaper', 'post', 'flyer']\npromo_category_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 8, 7]\npromo_cost: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [41800, 7100, 92400]\npromo_begin_date: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2019-06-01', '2019-06-30', '2020-04-05']\npromo_end_date: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2020-04-15', '2020-04-20', '2020-01-14']\npromo_total: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Promotion total']\npromo_total_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]\n\n## Table products:\nprod_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [28, 14, 19]\nprod_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Cricket Gloves', 'Pro Maple Bat', 'Speed Trainer Bats and Training Program']\nprod_desc: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['New Zealand Cricket Team', 'Cricket Bat - Fiber Tape', 'Genuine Series MIX Wood Bat']\nprod_subcategory: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Cricket Fan Gear', 'Cricket Bat', 'Baseballs']\nprod_subcategory_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2036, 2055, 2035]\nprod_subcategory_desc: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Cricket', 'Cricket Bat', 'Cricket Fan Gear']\nprod_category: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Baseball', 'Cricket']\nprod_category_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [203, 205]\nprod_category_desc: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Baseball', 'Cricket']\nprod_weight_class: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]\nprod_unit_of_measure: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['U']\nprod_pack_size: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['P']\nsupplier_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]\nprod_status: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['STATUS']\nprod_list_price: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [89, 899, 999]\nprod_min_price: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [36, 199, 8]\nprod_total: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['TOTAL']\nprod_total_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]\nprod_src_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: ['']\nprod_eff_from: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2019-01-01 00:00:00']\nprod_eff_to: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['']\nprod_valid: The type is CHAR(1), Which does not inlude Null and is Non-Unique. Value of this column must in: ['A']\n\n## Table times:\ntime_id: The type is DATE, Which does not inlude Null and is Unique. Values format like: ['2023-12-11', '2023-10-21', '2019-12-19']\nday_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Saturday', 'Friday', 'Tuesday']\nday_number_in_week: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 6, 5]\nday_number_in_month: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [31, 23, 11]\ncalendar_week_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [12, 15, 10]\nfiscal_week_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [15, 21, 27]\nweek_ending_day: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2023-04-23', '2020-06-21', '2020-02-09']\nweek_ending_day_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1479, 1519, 1871]\ncalendar_month_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7, 3, 6]\nfiscal_month_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 5]\ncalendar_month_desc: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-10', '2021-04', '2021-10']\ncalendar_month_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1680, 1885, 1702]\nfiscal_month_desc: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-02', '2019-04', '2023-08']\nfiscal_month_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1748, 1724, 2070]\ndays_in_cal_month: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [30, 29, 31]\ndays_in_fis_month: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [35, 28, 25]\nend_of_cal_month: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2021-07-31', '2021-09-30', '2019-12-31']\nend_of_fis_month: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2020-12-26', '2019-04-26', '2020-04-25']\ncalendar_month_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['July', 'June', 'January']\nfiscal_month_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['December', 'August', 'November']\ncalendar_quarter_desc: The type is CHAR(7), Which does not inlude Null and is Non-Unique. Values format like: ['2020-03', '2021-02', '2019-04']\ncalendar_quarter_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1779, 1775, 1777]\nfiscal_quarter_desc: The type is CHAR(7), Which does not inlude Null and is Non-Unique. Values format like: ['2022-04', '2021-02', '2023-02']\nfiscal_quarter_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1800, 1796, 1801]\ndays_in_cal_quarter: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [90, 91, 92]\ndays_in_fis_quarter: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [91, 84, 98]\nend_of_cal_quarter: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2023-03-31', '2021-09-30', '2023-12-31']\nend_of_fis_quarter: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2022-03-25', '2020-12-26', '2023-12-29']\ncalendar_quarter_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 2, 3]\nfiscal_quarter_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 1, 2]\ncalendar_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2022, 2020, 2021]\ncalendar_year_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1802, 1813, 1803]\nfiscal_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2024, 2023, 2019]\nfiscal_year_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1810, 1806, 1808]\ndays_in_cal_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [365, 366]\ndays_in_fis_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [361, 371, 364]\nend_of_cal_year: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2022-12-31', '2023-12-31', '2021-12-31']\nend_of_fis_year: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2024-12-28', '2020-12-26', '2023-12-29']\n\n## Table channels:\nchannel_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2, 9, 4]\nchannel_desc: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Tele Sales', 'Catalog', 'Direct Sales']\nchannel_class: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Indirect', 'Direct', 'Others']\nchannel_class_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [12, 13, 14]\nchannel_total: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Channel total']\nchannel_total_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]\n\n## Table sales:\nprod_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [44, 122, 37]\ncust_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7385, 1444, 5321]\ntime_id: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2021-03-03', '2021-08-13', '2022-09-16']\nchannel_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 4, 3]\npromo_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [350, 351, 33]\nquantity_sold: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]\namount_sold: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [20, 45, 63]\n\n## Table costs:\nprod_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [146, 120, 137]\ntime_id: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2020-05-31', '2019-04-01', '2022-05-07']\npromo_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [350, 999, 351]\nchannel_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 4]\nunit_cost: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [549, 507, 19]\nunit_price: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [8, 9, 30]\n\n## Table supplementary_demographics:\ncust_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [101820, 100294, 100764]\neducation: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['11th', 'HS-grad', '1st-4th']\noccupation: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Handler', 'Armed-F', 'TechSup']\nhousehold_size: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['6-8', '9+', 3]\nyrs_residence: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [10, 6, 8]\naffinity_card: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\ncricket: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nbaseball: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\ntennis: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\nsoccer: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\ngolf: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]\nunknown: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nmisc: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\ncomments: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['I love it. Will never shop at other shops again!', 'I used to shop at your store, but have stopped now. I tried to return some electronic items and your store manager was a pain to deal with.', \"I purchased a new model recently, but the instructions weren't included.  Could you ship them to me directly?\"]\n\n## Table currency:\ncountry: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Canada', 'Kuwait', 'Italy']\nyear: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2020, 2021, 2019]\nmonth: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 1, 8]\nto_us: The type is REAL, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\n\n#Forigen keys:\ncustomers.country_id = countries.country_id, sales.time_id = times.time_id, sales.channel_id = channels.channel_id, sales.prod_id = products.prod_id, sales.cust_id = customers.cust_id, sales.promo_id = promotions.promo_id, costs.channel_id = channels.channel_id, costs.time_id = times.time_id, costs.prod_id = products.prod_id, costs.promo_id = promotions.promo_id\n\n# Database Description:\nThe `complex_oracle` database is designed to manage and analyze data related to sales, promotions, products, customers, time periods, channels, costs, demographics, and currency exchange rates. It provides a comprehensive structure for tracking and analyzing business operations, customer information, product details, promotional campaigns, and financial metrics. The database is implemented using SQLite and includes foreign key relationships to ensure data integrity across tables.\n\n# Tables Descriptions:\n\n## Table `countries`:\nContains information about countries, including unique identifiers, ISO codes, names, subregions, regions, and totals. This table is used to categorize and identify countries in relation to customers and other entities.\n\n## Table `customers`:\nStores detailed information about customers, including personal details (e.g., name, gender, marital status), location data (e.g., address, city, state, country), financial data (e.g., income level, credit limit), and other attributes such as phone numbers, email addresses, and validity status. This table is linked to the `countries` table via `country_id`.\n\n## Table `promotions`:\nTracks promotional campaigns, including unique identifiers, names, subcategories, categories, costs, and time periods. This table is used to analyze the effectiveness of promotions and is linked to the `sales` and `costs` tables.\n\n## Table `products`:\nContains information about products, including unique identifiers, names, descriptions, categories, subcategories, pricing, and supplier details. This table is linked to the `sales` and `costs` tables via `prod_id`.\n\n## Table `times`:\nStores time-related data, including dates, day names, calendar and fiscal week/month/quarter/year details, and the number of days in each period. This table is used for time-based analysis and is linked to the `sales` and `costs` tables via `time_id`.\n\n## Table `channels`:\nTracks sales channels, including unique identifiers, descriptions, classes, and totals. This table is used to categorize sales channels and is linked to the `sales` and `costs` tables via `channel_id`.\n\n## Table `sales`:\nRecords sales transactions, including product IDs, customer IDs, time IDs, channel IDs, promotion IDs, quantities sold, and amounts sold. This table serves as the central point for analyzing sales data and is linked to multiple tables (`products`, `customers`, `times`, `channels`, `promotions`).\n\n## Table `costs`:\nTracks cost-related data, including product IDs, time IDs, channel IDs, promotion IDs, unit costs, and unit prices. This table is used to analyze the cost structure of products and is linked to multiple tables (`products`, `times`, `channels`, `promotions`).\n\n## Table `supplementary_demographics`:\nContains additional demographic information about customers, including education, occupation, household size, years of residence, affinity card usage, sports interests, and comments. This table is linked to the `customers` table via `cust_id`.\n\n## Table `currency`:\nStores currency exchange rates for different countries, years, and months, with conversion rates to USD. This table is used for financial analysis and currency conversion.\n\n# Foreign Keys:\n- `customers.country_id` → `countries.country_id`\n- `sales.time_id` → `times.time_id`\n- `sales.channel_id` → `channels.channel_id`\n- `sales.prod_id` → `products.prod_id`\n- `sales.cust_id` → `customers.cust_id`\n- `sales.promo_id` → `promotions.promo_id`\n- `costs.channel_id` → `channels.channel_id`\n- `costs.time_id` → `times.time_id`\n- `costs.prod_id` → `products.prod_id`\n- `costs.promo_id` → `promotions.promo_id`\n",
+        "db_col_dic": {
+            "countries.country_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [52793, 52785, 52784]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[52793, 52785, 52784]"
+            ],
+            "countries.country_iso_code": [
+                "The type is CHAR(2), Which does not inlude Null and is Unique. Values format like: ['IL', 'NZ', 'EG']",
+                "",
+                "",
+                "CHAR(2)",
+                "Non-Null",
+                "Unique",
+                "['IL', 'NZ', 'EG']"
+            ],
+            "countries.country_name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Zimbabwe', 'Sweden', 'Netherlands']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Zimbabwe', 'Sweden', 'Netherlands']"
+            ],
+            "countries.country_subregion": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Middle East', 'Western Europe', 'Southern America']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Middle East', 'Western Europe', 'Southern America']"
+            ],
+            "countries.country_subregion_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52798, 52794, 52795]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[52798, 52794, 52795]"
+            ],
+            "countries.country_region": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Asia', 'Oceania', 'Middle East']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Asia', 'Oceania', 'Middle East']"
+            ],
+            "countries.country_region_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52804, 52800, 52803]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[52804, 52800, 52803]"
+            ],
+            "countries.country_total": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['World total']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['World total']"
+            ],
+            "countries.country_total_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [52806]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[52806]"
+            ],
+            "customers.cust_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [8297, 47535, 16542]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[8297, 47535, 16542]"
+            ],
+            "customers.cust_first_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Rutherford', 'Carin', 'Morton']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Rutherford', 'Carin', 'Morton']"
+            ],
+            "customers.cust_last_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Mac', 'Ness', 'James']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Mac', 'Ness', 'James']"
+            ],
+            "customers.cust_gender": [
+                "The type is CHAR(1), Which does not inlude Null and is Non-Unique. Value of this column must in: ['M', 'F']",
+                "",
+                "",
+                "CHAR(1)",
+                "Non-Null",
+                "Non-Unique",
+                "['M', 'F']"
+            ],
+            "customers.cust_year_of_birth": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1968, 1950, 1947]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1968, 1950, 1947]"
+            ],
+            "customers.cust_marital_status": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['separated', 'widowed', 'married']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['separated', 'widowed', 'married']"
+            ],
+            "customers.cust_street_address": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['77 West Taney Avenue', '27 East Trego Boulevard', '17 East Yavapai Court']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['77 West Taney Avenue', '27 East Trego Boulevard', '17 East Yavapai Court']"
+            ],
+            "customers.cust_postal_code": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [71138, 43209, 45036]",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "[71138, 43209, 45036]"
+            ],
+            "customers.cust_city": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Hatfield', 'Bethel Acres', 'Bradford']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Hatfield', 'Bethel Acres', 'Bradford']"
+            ],
+            "customers.cust_city_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52512, 52029, 51505]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[52512, 52029, 51505]"
+            ],
+            "customers.cust_state_province": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Midi-Pyrenees', 'Rio Negro', 'Rheinland-Pfalz']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Midi-Pyrenees', 'Rio Negro', 'Rheinland-Pfalz']"
+            ],
+            "customers.cust_state_province_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52573, 52770, 52591]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[52573, 52770, 52591]"
+            ],
+            "customers.country_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52771, 52777, 52775]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[52771, 52777, 52775]"
+            ],
+            "customers.cust_main_phone_number": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['625-660-4049', '369-418-9314', '569-768-7273']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['625-660-4049', '369-418-9314', '569-768-7273']"
+            ],
+            "customers.cust_income_level": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['F: 110,000 - 129,999', 'B: 30,000 - 49,999', 'G: 130,000 - 149,999']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['F: 110,000 - 129,999', 'B: 30,000 - 49,999', 'G: 130,000 - 149,999']"
+            ],
+            "customers.cust_credit_limit": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [15000, 9000, 7000]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[15000, 9000, 7000]"
+            ],
+            "customers.cust_email": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Kiker@company.example.com', 'Lanston@company.example.com', 'olga.ireland@company2.example.com']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Kiker@company.example.com', 'Lanston@company.example.com', 'olga.ireland@company2.example.com']"
+            ],
+            "customers.cust_total": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Customer total']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Customer total']"
+            ],
+            "customers.cust_total_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [52772]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[52772]"
+            ],
+            "customers.cust_src_id": [
+                "The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: None",
+                "",
+                "",
+                "INTEGER",
+                "Include Null",
+                "Non-Unique",
+                "None"
+            ],
+            "customers.cust_eff_from": [
+                "The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2019-01-01']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Non-Unique",
+                "['2019-01-01']"
+            ],
+            "customers.cust_eff_to": [
+                "The type is DATE, Which inlude Null and is Non-Unique. Value of this column must in: None",
+                "",
+                "",
+                "DATE",
+                "Include Null",
+                "Non-Unique",
+                "None"
+            ],
+            "customers.cust_valid": [
+                "The type is CHAR(1), Which does not inlude Null and is Non-Unique. Value of this column must in: ['I', 'A']",
+                "",
+                "",
+                "CHAR(1)",
+                "Non-Null",
+                "Non-Unique",
+                "['I', 'A']"
+            ],
+            "promotions.promo_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [152, 236, 347]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[152, 236, 347]"
+            ],
+            "promotions.promo_name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['newspaper promotion #16-265', 'newspaper promotion #19-78', 'internet promotion #29-405']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['newspaper promotion #16-265', 'newspaper promotion #19-78', 'internet promotion #29-405']"
+            ],
+            "promotions.promo_subcategory": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ad news', 'freeway billboard', 'loyal customer discount']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['ad news', 'freeway billboard', 'loyal customer discount']"
+            ],
+            "promotions.promo_subcategory_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [14, 19, 13]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[14, 19, 13]"
+            ],
+            "promotions.promo_category": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['newspaper', 'post', 'flyer']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['newspaper', 'post', 'flyer']"
+            ],
+            "promotions.promo_category_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 8, 7]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 8, 7]"
+            ],
+            "promotions.promo_cost": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [41800, 7100, 92400]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[41800, 7100, 92400]"
+            ],
+            "promotions.promo_begin_date": [
+                "The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2019-06-01', '2019-06-30', '2020-04-05']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Non-Unique",
+                "['2019-06-01', '2019-06-30', '2020-04-05']"
+            ],
+            "promotions.promo_end_date": [
+                "The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2020-04-15', '2020-04-20', '2020-01-14']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Non-Unique",
+                "['2020-04-15', '2020-04-20', '2020-01-14']"
+            ],
+            "promotions.promo_total": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Promotion total']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Promotion total']"
+            ],
+            "promotions.promo_total_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1]"
+            ],
+            "products.prod_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [28, 14, 19]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[28, 14, 19]"
+            ],
+            "products.prod_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Cricket Gloves', 'Pro Maple Bat', 'Speed Trainer Bats and Training Program']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Cricket Gloves', 'Pro Maple Bat', 'Speed Trainer Bats and Training Program']"
+            ],
+            "products.prod_desc": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['New Zealand Cricket Team', 'Cricket Bat - Fiber Tape', 'Genuine Series MIX Wood Bat']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['New Zealand Cricket Team', 'Cricket Bat - Fiber Tape', 'Genuine Series MIX Wood Bat']"
+            ],
+            "products.prod_subcategory": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Cricket Fan Gear', 'Cricket Bat', 'Baseballs']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Cricket Fan Gear', 'Cricket Bat', 'Baseballs']"
+            ],
+            "products.prod_subcategory_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2036, 2055, 2035]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2036, 2055, 2035]"
+            ],
+            "products.prod_subcategory_desc": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Cricket', 'Cricket Bat', 'Cricket Fan Gear']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Cricket', 'Cricket Bat', 'Cricket Fan Gear']"
+            ],
+            "products.prod_category": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Baseball', 'Cricket']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Baseball', 'Cricket']"
+            ],
+            "products.prod_category_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [203, 205]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[203, 205]"
+            ],
+            "products.prod_category_desc": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Baseball', 'Cricket']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Baseball', 'Cricket']"
+            ],
+            "products.prod_weight_class": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1]"
+            ],
+            "products.prod_unit_of_measure": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['U']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['U']"
+            ],
+            "products.prod_pack_size": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['P']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['P']"
+            ],
+            "products.supplier_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1]"
+            ],
+            "products.prod_status": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['STATUS']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['STATUS']"
+            ],
+            "products.prod_list_price": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [89, 899, 999]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[89, 899, 999]"
+            ],
+            "products.prod_min_price": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [36, 199, 8]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[36, 199, 8]"
+            ],
+            "products.prod_total": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['TOTAL']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['TOTAL']"
+            ],
+            "products.prod_total_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1]"
+            ],
+            "products.prod_src_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: ['']",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "['']"
+            ],
+            "products.prod_eff_from": [
+                "The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2019-01-01 00:00:00']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Non-Unique",
+                "['2019-01-01 00:00:00']"
+            ],
+            "products.prod_eff_to": [
+                "The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Non-Unique",
+                "['']"
+            ],
+            "products.prod_valid": [
+                "The type is CHAR(1), Which does not inlude Null and is Non-Unique. Value of this column must in: ['A']",
+                "",
+                "",
+                "CHAR(1)",
+                "Non-Null",
+                "Non-Unique",
+                "['A']"
+            ],
+            "times.time_id": [
+                "The type is DATE, Which does not inlude Null and is Unique. Values format like: ['2023-12-11', '2023-10-21', '2019-12-19']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Unique",
+                "['2023-12-11', '2023-10-21', '2019-12-19']"
+            ],
+            "times.day_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Saturday', 'Friday', 'Tuesday']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Saturday', 'Friday', 'Tuesday']"
+            ],
+            "times.day_number_in_week": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 6, 5]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 6, 5]"
+            ],
+            "times.day_number_in_month": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [31, 23, 11]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[31, 23, 11]"
+            ],
+            "times.calendar_week_number": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [12, 15, 10]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[12, 15, 10]"
+            ],
+            "times.fiscal_week_number": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [15, 21, 27]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[15, 21, 27]"
+            ],
+            "times.week_ending_day": [
+                "The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2023-04-23', '2020-06-21', '2020-02-09']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Non-Unique",
+                "['2023-04-23', '2020-06-21', '2020-02-09']"
+            ],
+            "times.week_ending_day_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1479, 1519, 1871]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1479, 1519, 1871]"
+            ],
+            "times.calendar_month_number": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7, 3, 6]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[7, 3, 6]"
+            ],
+            "times.fiscal_month_number": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 5]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 1, 5]"
+            ],
+            "times.calendar_month_desc": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-10', '2021-04', '2021-10']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2019-10', '2021-04', '2021-10']"
+            ],
+            "times.calendar_month_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1680, 1885, 1702]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1680, 1885, 1702]"
+            ],
+            "times.fiscal_month_desc": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-02', '2019-04', '2023-08']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2021-02', '2019-04', '2023-08']"
+            ],
+            "times.fiscal_month_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1748, 1724, 2070]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1748, 1724, 2070]"
+            ],
+            "times.days_in_cal_month": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [30, 29, 31]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[30, 29, 31]"
+            ],
+            "times.days_in_fis_month": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [35, 28, 25]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[35, 28, 25]"
+            ],
+            "times.end_of_cal_month": [
+                "The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2021-07-31', '2021-09-30', '2019-12-31']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Non-Unique",
+                "['2021-07-31', '2021-09-30', '2019-12-31']"
+            ],
+            "times.end_of_fis_month": [
+                "The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2020-12-26', '2019-04-26', '2020-04-25']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Non-Unique",
+                "['2020-12-26', '2019-04-26', '2020-04-25']"
+            ],
+            "times.calendar_month_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['July', 'June', 'January']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['July', 'June', 'January']"
+            ],
+            "times.fiscal_month_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['December', 'August', 'November']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['December', 'August', 'November']"
+            ],
+            "times.calendar_quarter_desc": [
+                "The type is CHAR(7), Which does not inlude Null and is Non-Unique. Values format like: ['2020-03', '2021-02', '2019-04']",
+                "",
+                "",
+                "CHAR(7)",
+                "Non-Null",
+                "Non-Unique",
+                "['2020-03', '2021-02', '2019-04']"
+            ],
+            "times.calendar_quarter_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1779, 1775, 1777]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1779, 1775, 1777]"
+            ],
+            "times.fiscal_quarter_desc": [
+                "The type is CHAR(7), Which does not inlude Null and is Non-Unique. Values format like: ['2022-04', '2021-02', '2023-02']",
+                "",
+                "",
+                "CHAR(7)",
+                "Non-Null",
+                "Non-Unique",
+                "['2022-04', '2021-02', '2023-02']"
+            ],
+            "times.fiscal_quarter_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1800, 1796, 1801]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1800, 1796, 1801]"
+            ],
+            "times.days_in_cal_quarter": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [90, 91, 92]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[90, 91, 92]"
+            ],
+            "times.days_in_fis_quarter": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [91, 84, 98]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[91, 84, 98]"
+            ],
+            "times.end_of_cal_quarter": [
+                "The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2023-03-31', '2021-09-30', '2023-12-31']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Non-Unique",
+                "['2023-03-31', '2021-09-30', '2023-12-31']"
+            ],
+            "times.end_of_fis_quarter": [
+                "The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2022-03-25', '2020-12-26', '2023-12-29']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Non-Unique",
+                "['2022-03-25', '2020-12-26', '2023-12-29']"
+            ],
+            "times.calendar_quarter_number": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 2, 3]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4, 2, 3]"
+            ],
+            "times.fiscal_quarter_number": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 1, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 1, 2]"
+            ],
+            "times.calendar_year": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2022, 2020, 2021]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2022, 2020, 2021]"
+            ],
+            "times.calendar_year_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1802, 1813, 1803]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1802, 1813, 1803]"
+            ],
+            "times.fiscal_year": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2024, 2023, 2019]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2024, 2023, 2019]"
+            ],
+            "times.fiscal_year_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1810, 1806, 1808]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1810, 1806, 1808]"
+            ],
+            "times.days_in_cal_year": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [365, 366]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[365, 366]"
+            ],
+            "times.days_in_fis_year": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [361, 371, 364]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[361, 371, 364]"
+            ],
+            "times.end_of_cal_year": [
+                "The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2022-12-31', '2023-12-31', '2021-12-31']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Non-Unique",
+                "['2022-12-31', '2023-12-31', '2021-12-31']"
+            ],
+            "times.end_of_fis_year": [
+                "The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2024-12-28', '2020-12-26', '2023-12-29']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Non-Unique",
+                "['2024-12-28', '2020-12-26', '2023-12-29']"
+            ],
+            "channels.channel_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2, 9, 4]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[2, 9, 4]"
+            ],
+            "channels.channel_desc": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Tele Sales', 'Catalog', 'Direct Sales']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Tele Sales', 'Catalog', 'Direct Sales']"
+            ],
+            "channels.channel_class": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Indirect', 'Direct', 'Others']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Indirect', 'Direct', 'Others']"
+            ],
+            "channels.channel_class_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [12, 13, 14]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[12, 13, 14]"
+            ],
+            "channels.channel_total": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Channel total']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Channel total']"
+            ],
+            "channels.channel_total_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1]"
+            ],
+            "sales.prod_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [44, 122, 37]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[44, 122, 37]"
+            ],
+            "sales.cust_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7385, 1444, 5321]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[7385, 1444, 5321]"
+            ],
+            "sales.time_id": [
+                "The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2021-03-03', '2021-08-13', '2022-09-16']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Non-Unique",
+                "['2021-03-03', '2021-08-13', '2022-09-16']"
+            ],
+            "sales.channel_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 4, 3]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 4, 3]"
+            ],
+            "sales.promo_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [350, 351, 33]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[350, 351, 33]"
+            ],
+            "sales.quantity_sold": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1]"
+            ],
+            "sales.amount_sold": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [20, 45, 63]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[20, 45, 63]"
+            ],
+            "costs.prod_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [146, 120, 137]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[146, 120, 137]"
+            ],
+            "costs.time_id": [
+                "The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2020-05-31', '2019-04-01', '2022-05-07']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Non-Unique",
+                "['2020-05-31', '2019-04-01', '2022-05-07']"
+            ],
+            "costs.promo_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [350, 999, 351]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[350, 999, 351]"
+            ],
+            "costs.channel_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 4]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 2, 4]"
+            ],
+            "costs.unit_cost": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [549, 507, 19]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[549, 507, 19]"
+            ],
+            "costs.unit_price": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [8, 9, 30]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[8, 9, 30]"
+            ],
+            "supplementary_demographics.cust_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [101820, 100294, 100764]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[101820, 100294, 100764]"
+            ],
+            "supplementary_demographics.education": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['11th', 'HS-grad', '1st-4th']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['11th', 'HS-grad', '1st-4th']"
+            ],
+            "supplementary_demographics.occupation": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Handler', 'Armed-F', 'TechSup']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Handler', 'Armed-F', 'TechSup']"
+            ],
+            "supplementary_demographics.household_size": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['6-8', '9+', 3]",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['6-8', '9+', 3]"
+            ],
+            "supplementary_demographics.yrs_residence": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [10, 6, 8]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[10, 6, 8]"
+            ],
+            "supplementary_demographics.affinity_card": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "supplementary_demographics.cricket": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "supplementary_demographics.baseball": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "supplementary_demographics.tennis": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "supplementary_demographics.soccer": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "supplementary_demographics.golf": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1]"
+            ],
+            "supplementary_demographics.unknown": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "supplementary_demographics.misc": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "supplementary_demographics.comments": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['I love it. Will never shop at other shops again!', 'I used to shop at your store, but have stopped now. I tried to return some electronic items and your store manager was a pain to deal with.', \"I purchased a new model recently, but the instructions weren't included.  Could you ship them to me directly?\"]",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['I love it. Will never shop at other shops again!', 'I used to shop at your store, but have stopped now. I tried to return some electronic items and your store manager was a pain to deal with.', \"I purchased a new model recently, but the instructions weren't included.  Could you ship them to me directly?\"]"
+            ],
+            "currency.country": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Canada', 'Kuwait', 'Italy']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Canada', 'Kuwait', 'Italy']"
+            ],
+            "currency.year": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2020, 2021, 2019]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2020, 2021, 2019]"
+            ],
+            "currency.month": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 1, 8]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[9, 1, 8]"
+            ],
+            "currency.to_us": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries Italian customers, their profits, and buckets for December 2021. Relevant columns include customer details (e.g., country, customer ID), sales data (e.g., quantity sold, time), and cost data (e.g., unit price, unit cost). Filters include \"Italy\" and \"December 2021\".\n#columns: customers.country_id, countries.country_name, sales.cust_id, sales.quantity_sold, sales.time_id, costs.prod_id, costs.unit_price, costs.unit_cost, times.calendar_month_desc, times.calendar_year\n#values: \"Italy\", \"December 2021\"\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "products",
+            "quantity_sold",
+            "profits",
+            "Italy",
+            "profit",
+            "unit_price",
+            "unit_cost",
+            "difference",
+            "total monthly profits",
+            "intervals",
+            "bucket",
+            "buckets",
+            "maximum total profits",
+            "minimum total profits",
+            "December 2021",
+            "customers",
+            "range",
+            "number of customers"
+        ],
+        "col": "customers.country_id, countries.country_name, sales.cust_id, sales.quantity_sold, sales.time_id, costs.prod_id, costs.unit_price, costs.unit_cost, times.calendar_month_desc, times.calendar_year",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [
+            [
+                "countries.country_name",
+                "Italy"
+            ],
+            [
+                "currency.country",
+                "Italy"
+            ],
+            [
+                "customers.cust_last_name",
+                "Buckett"
+            ],
+            [
+                "customers.cust_total",
+                "Customer total"
+            ],
+            [
+                "times.calendar_month_name",
+                "December"
+            ],
+            [
+                "times.fiscal_month_name",
+                "December"
+            ]
+        ],
+        "column": "channels.channel_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2, 9, 4]\ncosts.channel_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 4]\ncosts.prod_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [146, 120, 137]\ncosts.promo_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [350, 999, 351]\ncosts.time_id: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2020-05-31', '2019-04-01', '2022-05-07']\ncosts.unit_cost: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [549, 507, 19]\ncosts.unit_price: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [8, 9, 30]\ncountries.country_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [52793, 52785, 52784]\ncountries.country_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Zimbabwe', 'Sweden', 'Netherlands']\ncountries.country_region: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Asia', 'Oceania', 'Middle East']\ncountries.country_total: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['World total']\ncurrency.country: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Canada', 'Kuwait', 'Italy']\ncurrency.month: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 1, 8]\ncurrency.year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2020, 2021, 2019]\ncustomers.country_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52771, 52777, 52775]\ncustomers.cust_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Hatfield', 'Bethel Acres', 'Bradford']\ncustomers.cust_city_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52512, 52029, 51505]\ncustomers.cust_eff_from: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2019-01-01']\ncustomers.cust_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [8297, 47535, 16542]\ncustomers.cust_last_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Mac', 'Ness', 'James']\ncustomers.cust_main_phone_number: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['625-660-4049', '369-418-9314', '569-768-7273']\ncustomers.cust_total: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Customer total']\ncustomers.cust_total_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [52772]\nproducts.prod_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [28, 14, 19]\nproducts.prod_list_price: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [89, 899, 999]\nproducts.prod_min_price: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [36, 199, 8]\nproducts.prod_total: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['TOTAL']\nproducts.prod_unit_of_measure: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['U']\npromotions.promo_cost: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [41800, 7100, 92400]\npromotions.promo_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [152, 236, 347]\npromotions.promo_total: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Promotion total']\nsales.amount_sold: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [20, 45, 63]\nsales.channel_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 4, 3]\nsales.cust_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7385, 1444, 5321]\nsales.prod_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [44, 122, 37]\nsales.promo_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [350, 351, 33]\nsales.quantity_sold: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]\nsales.time_id: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2021-03-03', '2021-08-13', '2022-09-16']\nsupplementary_demographics.cust_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [101820, 100294, 100764]\nsupplementary_demographics.unknown: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\ntimes.calendar_month_desc: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-10', '2021-04', '2021-10']\ntimes.calendar_month_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['July', 'June', 'January']\ntimes.calendar_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2022, 2020, 2021]\ntimes.fiscal_month_desc: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-02', '2019-04', '2023-08']\ntimes.fiscal_month_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['December', 'August', 'November']\ntimes.time_id: The type is DATE, Which does not inlude Null and is Unique. Values format like: ['2023-12-11', '2023-10-21', '2019-12-19']",
+        "foreign_keys": "customers.country_id = countries.country_id, sales.time_id = times.time_id, sales.channel_id = channels.channel_id, sales.prod_id = products.prod_id, sales.cust_id = customers.cust_id, sales.promo_id = promotions.promo_id, costs.channel_id = channels.channel_id, costs.time_id = times.time_id, costs.prod_id = products.prod_id, costs.promo_id = promotions.promo_id",
+        "foreign_set": [
+            "costs.time_id",
+            "costs.prod_id",
+            "costs.channel_id",
+            "products.prod_id",
+            "sales.channel_id",
+            "customers.country_id",
+            "sales.prod_id",
+            "countries.country_id",
+            "channels.channel_id",
+            "sales.promo_id",
+            "sales.cust_id",
+            "sales.time_id",
+            "costs.promo_id",
+            "promotions.promo_id",
+            "times.time_id",
+            "customers.cust_id"
+        ],
+        "q_order": [
+            "all Italian customers",
+            "the overall range of total monthly profits",
+            "the number of customers",
+            "the minimum and maximum total profits"
+        ],
+        "status": "success"
+    }
+]

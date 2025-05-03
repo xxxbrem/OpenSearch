@@ -1,0 +1,668 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: chinook\n## Table albums:\nAlbumId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [10, 120, 56]\nTitle: The type is NVARCHAR(160), Which does not inlude Null and is Unique. Values format like: [\"All That You Can't Leave Behind\", 'Strauss: Waltzes', 'Supernatural']\nArtistId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [21, 259, 37]\n\n## Table artists:\nArtistId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [143, 101, 247]\nName: The type is NVARCHAR(120), Which does not inlude Null and is Unique. Values format like: ['Milton Nascimento & Bebeto', 'Os Paralamas Do Sucesso', 'Stone Temple Pilots']\n\n## Table customers:\nCustomerId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [21, 32, 42]\nFirstName: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Johannes', 'František', 'Lucas']\nLastName: The type is NVARCHAR(20), Which does not inlude Null and is Unique. Values format like: ['Sampaio', 'Tremblay', 'Mitchell']\nCompany: The type is NVARCHAR(80), Which inlude Null and is Non-Unique. Values format like: ['Apple Inc.', 'Embraer - Empresa Brasileira de Aeronáutica S.A.', 'Banco do Brasil S.A.']\nAddress: The type is NVARCHAR(70), Which does not inlude Null and is Unique. Values format like: ['Erzsébet krt. 58.', 'Rua da Assunção 53', 'Celsiusg. 9']\nCity: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Bordeaux', 'Helsinki', 'Mountain View']\nState: The type is NVARCHAR(40), Which inlude Null and is Non-Unique. Values format like: ['BC', 'AZ', 'VV']\nCountry: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Ireland', 'India', 'Belgium']\nPostalCode: The type is NVARCHAR(10), Which inlude Null and is Non-Unique. Values format like: [60611, 11230, 171]\nPhone: The type is NVARCHAR(24), Which inlude Null and is Unique. Values format like: ['+33 05 56 96 96 96', '+43 01 5134505', '+453 3331 9991']\nFax: The type is NVARCHAR(24), Which inlude Null and is Non-Unique. Values format like: ['+1 (408) 996-1011', '+55 (11) 3033-4564', '+55 (61) 3363-7855']\nEmail: The type is NVARCHAR(60), Which does not inlude Null and is Unique. Values format like: ['nschroder@surfeu.de', 'bjorn.hansen@yahoo.no', 'steve.murray@yahoo.uk']\nSupportRepId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 5, 4]\n\n## Table employees:\nEmployeeId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [4, 5, 1]\nLastName: The type is NVARCHAR(20), Which does not inlude Null and is Unique. Values format like: ['Adams', 'King', 'Johnson']\nFirstName: The type is NVARCHAR(20), Which does not inlude Null and is Unique. Values format like: ['Michael', 'Margaret', 'Robert']\nTitle: The type is NVARCHAR(30), Which does not inlude Null and is Non-Unique. Values format like: ['Sales Support Agent', 'General Manager', 'IT Staff']\nReportsTo: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [6, 1, 2]\nBirthDate: The type is DATETIME, Which does not inlude Null and is Unique. Values format like: ['1970-05-29 00:00:00', '1962-02-18 00:00:00', '1973-07-01 00:00:00']\nHireDate: The type is DATETIME, Which does not inlude Null and is Non-Unique. Values format like: ['2004-01-02 00:00:00', '2004-03-04 00:00:00', '2002-08-14 00:00:00']\nAddress: The type is NVARCHAR(70), Which does not inlude Null and is Unique. Values format like: ['5827 Bowness Road NW', '1111 6 Ave SW', '683 10 Street SW']\nCity: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Lethbridge', 'Calgary', 'Edmonton']\nState: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Value of this column must in: ['AB']\nCountry: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Value of this column must in: ['Canada']\nPostalCode: The type is NVARCHAR(10), Which does not inlude Null and is Unique. Values format like: ['T3B 1Y7', 'T2P 5G3', 'T5K 2N1']\nPhone: The type is NVARCHAR(24), Which does not inlude Null and is Non-Unique. Values format like: ['+1 (403) 262-3443', '+1 (780) 428-9482', '+1 (403) 467-3351']\nFax: The type is NVARCHAR(24), Which does not inlude Null and is Unique. Values format like: ['+1 (780) 428-3457', '+1 (403) 262-3322', '+1 (403) 262-6712']\nEmail: The type is NVARCHAR(60), Which does not inlude Null and is Unique. Values format like: ['laura@chinookcorp.com', 'andrew@chinookcorp.com', 'steve@chinookcorp.com']\n\n## Table genres:\nGenreId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7, 6, 13]\nName: The type is NVARCHAR(120), Which does not inlude Null and is Unique. Values format like: ['TV Shows', 'Blues', 'World']\n\n## Table invoices:\nInvoiceId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [382, 152, 335]\nCustomerId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [24, 46, 34]\nInvoiceDate: The type is DATETIME, Which does not inlude Null and is Non-Unique. Values format like: ['2011-01-20 00:00:00', '2011-05-24 00:00:00', '2011-06-24 00:00:00']\nBillingAddress: The type is NVARCHAR(70), Which does not inlude Null and is Non-Unique. Values format like: ['Qe 7 Bloco G', 'Lijnbaansgracht 120bg', '68, Rue Jouvence']\nBillingCity: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Fort Worth', 'Paris', 'Rome']\nBillingState: The type is NVARCHAR(40), Which inlude Null and is Non-Unique. Values format like: ['NV', 'NS', 'VV']\nBillingCountry: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Belgium', 'Sweden', 'Germany']\nBillingPostalCode: The type is NVARCHAR(10), Which inlude Null and is Non-Unique. Values format like: ['T6G 2C7', 14700, 192]\nTotal: The type is NUMERIC(10,2), Which does not inlude Null and is Non-Unique. Values format like: [7, 0, 1]\n\n## Table invoice_items:\nInvoiceLineId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1085, 2185, 1616]\nInvoiceId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [216, 412, 129]\nTrackId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1900, 3155, 1202]\nUnitPrice: The type is NUMERIC(10,2), Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nQuantity: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]\n\n## Table media_types:\nMediaTypeId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [5, 2, 3]\nName: The type is NVARCHAR(120), Which does not inlude Null and is Unique. Values format like: ['AAC audio file', 'Protected MPEG-4 video file', 'Purchased AAC audio file']\n\n## Table playlists:\nPlaylistId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7, 4, 5]\nName: The type is NVARCHAR(120), Which does not inlude Null and is Non-Unique. Values format like: ['Music Videos', 'On-The-Go 1', 'Grunge']\n\n## Table playlist_track:\nPlaylistId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 10, 3]\nTrackId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [512, 3131, 1530]\n\n## Table tracks:\nTrackId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1187, 3083, 386]\nName: The type is NVARCHAR(200), Which does not inlude Null and is Non-Unique. Values format like: ['Black Mountain Side', 'From Afar', 'New Faces']\nAlbumId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [322, 76, 150]\nMediaTypeId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 4, 1]\nGenreId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [17, 13, 12]\nComposer: The type is NVARCHAR(220), Which inlude Null and is Non-Unique. Values format like: ['Jerry Ragavoy', 'Green Day', 'Smith, Toby']\nMilliseconds: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [194873, 212297, 228571]\nBytes: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8581414, 13213824, 8570929]\nUnitPrice: The type is NUMERIC(10,2), Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\n\n## Table sqlite_stat1:\ntbl: The type is , Which does not inlude Null and is Non-Unique. Values format like: ['albums', 'invoice_items', 'invoices']\nidx: The type is , Which inlude Null and is Non-Unique. Values format like: ['IFK_TrackGenreId', 'IFK_AlbumArtistId', 'IFK_InvoiceLineTrackId']\nstat: The type is , Which does not inlude Null and is Unique. Values format like: [275, '3503 11', 18]\n\n#Forigen keys:\nemployees.ReportsTo = employees.EmployeeId, invoices.CustomerId = customers.CustomerId, invoice_items.InvoiceId = invoices.InvoiceId, playlist_track.PlaylistId = playlists.PlaylistId, tracks.MediaTypeId = media_types.MediaTypeId, tracks.GenreId = genres.GenreId, tracks.AlbumId = albums.AlbumId\n\n# Database Description:\nThe `chinook` database is a sample database designed for managing a digital music store. It contains information about albums, artists, customers, employees, genres, invoices, invoice items, media types, playlists, playlist tracks, and tracks. The database is structured to support operations such as tracking music sales, managing customer and employee data, and organizing music collections.\n\n# Tables Descriptions:\n1. **Albums**: Contains information about music albums, including their unique IDs, titles, and associated artist IDs.\n   - Foreign Key: `albums.ArtistId = artists.ArtistId`\n\n2. **Artists**: Stores details about artists, including their unique IDs and names.\n\n3. **Customers**: Holds customer information such as unique IDs, names, contact details, and the support representative assigned to them.\n   - Foreign Key: `customers.SupportRepId = employees.EmployeeId`\n\n4. **Employees**: Contains employee details, including unique IDs, names, titles, and reporting relationships.\n   - Foreign Key: `employees.ReportsTo = employees.EmployeeId`\n\n5. **Genres**: Stores information about music genres, including unique IDs and names.\n\n6. **Invoices**: Tracks customer purchases, including unique invoice IDs, customer IDs, billing details, and total amounts.\n   - Foreign Key: `invoices.CustomerId = customers.CustomerId`\n\n7. **Invoice_Items**: Represents individual items in an invoice, including unique IDs, invoice IDs, track IDs, unit prices, and quantities.\n   - Foreign Keys: \n     - `invoice_items.InvoiceId = invoices.InvoiceId`\n     - `invoice_items.TrackId = tracks.TrackId`\n\n8. **Media_Types**: Contains information about media types, such as unique IDs and names.\n\n9. **Playlists**: Stores playlists, including unique IDs and names.\n\n10. **Playlist_Track**: Represents the relationship between playlists and tracks, including playlist IDs and track IDs.\n    - Foreign Keys:\n      - `playlist_track.PlaylistId = playlists.PlaylistId`\n      - `playlist_track.TrackId = tracks.TrackId`\n\n11. **Tracks**: Contains detailed information about tracks, including unique IDs, names, album IDs, media type IDs, genre IDs, composers, durations, file sizes, and unit prices.\n    - Foreign Keys:\n      - `tracks.AlbumId = albums.AlbumId`\n      - `tracks.MediaTypeId = media_types.MediaTypeId`\n      - `tracks.GenreId = genres.GenreId`\n\n12. **SQLite_Stat1**: A system table used by SQLite for query optimization. It contains statistical information about the database tables and indexes.\n\n# Foreign Keys:\n- `employees.ReportsTo = employees.EmployeeId`\n- `invoices.CustomerId = customers.CustomerId`\n- `invoice_items.InvoiceId = invoices.InvoiceId`\n- `invoice_items.TrackId = tracks.TrackId`\n- `playlist_track.PlaylistId = playlists.PlaylistId`\n- `playlist_track.TrackId = tracks.TrackId`\n- `tracks.MediaTypeId = media_types.MediaTypeId`\n- `tracks.GenreId = genres.GenreId`\n- `tracks.AlbumId = albums.AlbumId`\n",
+        "db_col_dic": {
+            "albums.AlbumId": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [10, 120, 56]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[10, 120, 56]"
+            ],
+            "albums.Title": [
+                "The type is NVARCHAR(160), Which does not inlude Null and is Unique. Values format like: [\"All That You Can't Leave Behind\", 'Strauss: Waltzes', 'Supernatural']",
+                "",
+                "",
+                "NVARCHAR(160)",
+                "Non-Null",
+                "Unique",
+                "[\"All That You Can't Leave Behind\", 'Strauss: Waltzes', 'Supernatural']"
+            ],
+            "albums.ArtistId": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [21, 259, 37]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[21, 259, 37]"
+            ],
+            "artists.ArtistId": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [143, 101, 247]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[143, 101, 247]"
+            ],
+            "artists.Name": [
+                "The type is NVARCHAR(120), Which does not inlude Null and is Unique. Values format like: ['Milton Nascimento & Bebeto', 'Os Paralamas Do Sucesso', 'Stone Temple Pilots']",
+                "",
+                "",
+                "NVARCHAR(120)",
+                "Non-Null",
+                "Unique",
+                "['Milton Nascimento & Bebeto', 'Os Paralamas Do Sucesso', 'Stone Temple Pilots']"
+            ],
+            "customers.CustomerId": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [21, 32, 42]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[21, 32, 42]"
+            ],
+            "customers.FirstName": [
+                "The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Johannes', 'František', 'Lucas']",
+                "",
+                "",
+                "NVARCHAR(40)",
+                "Non-Null",
+                "Non-Unique",
+                "['Johannes', 'František', 'Lucas']"
+            ],
+            "customers.LastName": [
+                "The type is NVARCHAR(20), Which does not inlude Null and is Unique. Values format like: ['Sampaio', 'Tremblay', 'Mitchell']",
+                "",
+                "",
+                "NVARCHAR(20)",
+                "Non-Null",
+                "Unique",
+                "['Sampaio', 'Tremblay', 'Mitchell']"
+            ],
+            "customers.Company": [
+                "The type is NVARCHAR(80), Which inlude Null and is Non-Unique. Values format like: ['Apple Inc.', 'Embraer - Empresa Brasileira de Aeronáutica S.A.', 'Banco do Brasil S.A.']",
+                "",
+                "",
+                "NVARCHAR(80)",
+                "Include Null",
+                "Non-Unique",
+                "['Apple Inc.', 'Embraer - Empresa Brasileira de Aeronáutica S.A.', 'Banco do Brasil S.A.']"
+            ],
+            "customers.Address": [
+                "The type is NVARCHAR(70), Which does not inlude Null and is Unique. Values format like: ['Erzsébet krt. 58.', 'Rua da Assunção 53', 'Celsiusg. 9']",
+                "",
+                "",
+                "NVARCHAR(70)",
+                "Non-Null",
+                "Unique",
+                "['Erzsébet krt. 58.', 'Rua da Assunção 53', 'Celsiusg. 9']"
+            ],
+            "customers.City": [
+                "The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Bordeaux', 'Helsinki', 'Mountain View']",
+                "",
+                "",
+                "NVARCHAR(40)",
+                "Non-Null",
+                "Non-Unique",
+                "['Bordeaux', 'Helsinki', 'Mountain View']"
+            ],
+            "customers.State": [
+                "The type is NVARCHAR(40), Which inlude Null and is Non-Unique. Values format like: ['BC', 'AZ', 'VV']",
+                "",
+                "",
+                "NVARCHAR(40)",
+                "Include Null",
+                "Non-Unique",
+                "['BC', 'AZ', 'VV']"
+            ],
+            "customers.Country": [
+                "The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Ireland', 'India', 'Belgium']",
+                "",
+                "",
+                "NVARCHAR(40)",
+                "Non-Null",
+                "Non-Unique",
+                "['Ireland', 'India', 'Belgium']"
+            ],
+            "customers.PostalCode": [
+                "The type is NVARCHAR(10), Which inlude Null and is Non-Unique. Values format like: [60611, 11230, 171]",
+                "",
+                "",
+                "NVARCHAR(10)",
+                "Include Null",
+                "Non-Unique",
+                "[60611, 11230, 171]"
+            ],
+            "customers.Phone": [
+                "The type is NVARCHAR(24), Which inlude Null and is Unique. Values format like: ['+33 05 56 96 96 96', '+43 01 5134505', '+453 3331 9991']",
+                "",
+                "",
+                "NVARCHAR(24)",
+                "Include Null",
+                "Unique",
+                "['+33 05 56 96 96 96', '+43 01 5134505', '+453 3331 9991']"
+            ],
+            "customers.Fax": [
+                "The type is NVARCHAR(24), Which inlude Null and is Non-Unique. Values format like: ['+1 (408) 996-1011', '+55 (11) 3033-4564', '+55 (61) 3363-7855']",
+                "",
+                "",
+                "NVARCHAR(24)",
+                "Include Null",
+                "Non-Unique",
+                "['+1 (408) 996-1011', '+55 (11) 3033-4564', '+55 (61) 3363-7855']"
+            ],
+            "customers.Email": [
+                "The type is NVARCHAR(60), Which does not inlude Null and is Unique. Values format like: ['nschroder@surfeu.de', 'bjorn.hansen@yahoo.no', 'steve.murray@yahoo.uk']",
+                "",
+                "",
+                "NVARCHAR(60)",
+                "Non-Null",
+                "Unique",
+                "['nschroder@surfeu.de', 'bjorn.hansen@yahoo.no', 'steve.murray@yahoo.uk']"
+            ],
+            "customers.SupportRepId": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 5, 4]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 5, 4]"
+            ],
+            "employees.EmployeeId": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [4, 5, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[4, 5, 1]"
+            ],
+            "employees.LastName": [
+                "The type is NVARCHAR(20), Which does not inlude Null and is Unique. Values format like: ['Adams', 'King', 'Johnson']",
+                "",
+                "",
+                "NVARCHAR(20)",
+                "Non-Null",
+                "Unique",
+                "['Adams', 'King', 'Johnson']"
+            ],
+            "employees.FirstName": [
+                "The type is NVARCHAR(20), Which does not inlude Null and is Unique. Values format like: ['Michael', 'Margaret', 'Robert']",
+                "",
+                "",
+                "NVARCHAR(20)",
+                "Non-Null",
+                "Unique",
+                "['Michael', 'Margaret', 'Robert']"
+            ],
+            "employees.Title": [
+                "The type is NVARCHAR(30), Which does not inlude Null and is Non-Unique. Values format like: ['Sales Support Agent', 'General Manager', 'IT Staff']",
+                "",
+                "",
+                "NVARCHAR(30)",
+                "Non-Null",
+                "Non-Unique",
+                "['Sales Support Agent', 'General Manager', 'IT Staff']"
+            ],
+            "employees.ReportsTo": [
+                "The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [6, 1, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Include Null",
+                "Non-Unique",
+                "[6, 1, 2]"
+            ],
+            "employees.BirthDate": [
+                "The type is DATETIME, Which does not inlude Null and is Unique. Values format like: ['1970-05-29 00:00:00', '1962-02-18 00:00:00', '1973-07-01 00:00:00']",
+                "",
+                "",
+                "DATETIME",
+                "Non-Null",
+                "Unique",
+                "['1970-05-29 00:00:00', '1962-02-18 00:00:00', '1973-07-01 00:00:00']"
+            ],
+            "employees.HireDate": [
+                "The type is DATETIME, Which does not inlude Null and is Non-Unique. Values format like: ['2004-01-02 00:00:00', '2004-03-04 00:00:00', '2002-08-14 00:00:00']",
+                "",
+                "",
+                "DATETIME",
+                "Non-Null",
+                "Non-Unique",
+                "['2004-01-02 00:00:00', '2004-03-04 00:00:00', '2002-08-14 00:00:00']"
+            ],
+            "employees.Address": [
+                "The type is NVARCHAR(70), Which does not inlude Null and is Unique. Values format like: ['5827 Bowness Road NW', '1111 6 Ave SW', '683 10 Street SW']",
+                "",
+                "",
+                "NVARCHAR(70)",
+                "Non-Null",
+                "Unique",
+                "['5827 Bowness Road NW', '1111 6 Ave SW', '683 10 Street SW']"
+            ],
+            "employees.City": [
+                "The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Lethbridge', 'Calgary', 'Edmonton']",
+                "",
+                "",
+                "NVARCHAR(40)",
+                "Non-Null",
+                "Non-Unique",
+                "['Lethbridge', 'Calgary', 'Edmonton']"
+            ],
+            "employees.State": [
+                "The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Value of this column must in: ['AB']",
+                "",
+                "",
+                "NVARCHAR(40)",
+                "Non-Null",
+                "Non-Unique",
+                "['AB']"
+            ],
+            "employees.Country": [
+                "The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Value of this column must in: ['Canada']",
+                "",
+                "",
+                "NVARCHAR(40)",
+                "Non-Null",
+                "Non-Unique",
+                "['Canada']"
+            ],
+            "employees.PostalCode": [
+                "The type is NVARCHAR(10), Which does not inlude Null and is Unique. Values format like: ['T3B 1Y7', 'T2P 5G3', 'T5K 2N1']",
+                "",
+                "",
+                "NVARCHAR(10)",
+                "Non-Null",
+                "Unique",
+                "['T3B 1Y7', 'T2P 5G3', 'T5K 2N1']"
+            ],
+            "employees.Phone": [
+                "The type is NVARCHAR(24), Which does not inlude Null and is Non-Unique. Values format like: ['+1 (403) 262-3443', '+1 (780) 428-9482', '+1 (403) 467-3351']",
+                "",
+                "",
+                "NVARCHAR(24)",
+                "Non-Null",
+                "Non-Unique",
+                "['+1 (403) 262-3443', '+1 (780) 428-9482', '+1 (403) 467-3351']"
+            ],
+            "employees.Fax": [
+                "The type is NVARCHAR(24), Which does not inlude Null and is Unique. Values format like: ['+1 (780) 428-3457', '+1 (403) 262-3322', '+1 (403) 262-6712']",
+                "",
+                "",
+                "NVARCHAR(24)",
+                "Non-Null",
+                "Unique",
+                "['+1 (780) 428-3457', '+1 (403) 262-3322', '+1 (403) 262-6712']"
+            ],
+            "employees.Email": [
+                "The type is NVARCHAR(60), Which does not inlude Null and is Unique. Values format like: ['laura@chinookcorp.com', 'andrew@chinookcorp.com', 'steve@chinookcorp.com']",
+                "",
+                "",
+                "NVARCHAR(60)",
+                "Non-Null",
+                "Unique",
+                "['laura@chinookcorp.com', 'andrew@chinookcorp.com', 'steve@chinookcorp.com']"
+            ],
+            "genres.GenreId": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7, 6, 13]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[7, 6, 13]"
+            ],
+            "genres.Name": [
+                "The type is NVARCHAR(120), Which does not inlude Null and is Unique. Values format like: ['TV Shows', 'Blues', 'World']",
+                "",
+                "",
+                "NVARCHAR(120)",
+                "Non-Null",
+                "Unique",
+                "['TV Shows', 'Blues', 'World']"
+            ],
+            "invoices.InvoiceId": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [382, 152, 335]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[382, 152, 335]"
+            ],
+            "invoices.CustomerId": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [24, 46, 34]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[24, 46, 34]"
+            ],
+            "invoices.InvoiceDate": [
+                "The type is DATETIME, Which does not inlude Null and is Non-Unique. Values format like: ['2011-01-20 00:00:00', '2011-05-24 00:00:00', '2011-06-24 00:00:00']",
+                "",
+                "",
+                "DATETIME",
+                "Non-Null",
+                "Non-Unique",
+                "['2011-01-20 00:00:00', '2011-05-24 00:00:00', '2011-06-24 00:00:00']"
+            ],
+            "invoices.BillingAddress": [
+                "The type is NVARCHAR(70), Which does not inlude Null and is Non-Unique. Values format like: ['Qe 7 Bloco G', 'Lijnbaansgracht 120bg', '68, Rue Jouvence']",
+                "",
+                "",
+                "NVARCHAR(70)",
+                "Non-Null",
+                "Non-Unique",
+                "['Qe 7 Bloco G', 'Lijnbaansgracht 120bg', '68, Rue Jouvence']"
+            ],
+            "invoices.BillingCity": [
+                "The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Fort Worth', 'Paris', 'Rome']",
+                "",
+                "",
+                "NVARCHAR(40)",
+                "Non-Null",
+                "Non-Unique",
+                "['Fort Worth', 'Paris', 'Rome']"
+            ],
+            "invoices.BillingState": [
+                "The type is NVARCHAR(40), Which inlude Null and is Non-Unique. Values format like: ['NV', 'NS', 'VV']",
+                "",
+                "",
+                "NVARCHAR(40)",
+                "Include Null",
+                "Non-Unique",
+                "['NV', 'NS', 'VV']"
+            ],
+            "invoices.BillingCountry": [
+                "The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Belgium', 'Sweden', 'Germany']",
+                "",
+                "",
+                "NVARCHAR(40)",
+                "Non-Null",
+                "Non-Unique",
+                "['Belgium', 'Sweden', 'Germany']"
+            ],
+            "invoices.BillingPostalCode": [
+                "The type is NVARCHAR(10), Which inlude Null and is Non-Unique. Values format like: ['T6G 2C7', 14700, 192]",
+                "",
+                "",
+                "NVARCHAR(10)",
+                "Include Null",
+                "Non-Unique",
+                "['T6G 2C7', 14700, 192]"
+            ],
+            "invoices.Total": [
+                "The type is NUMERIC(10,2), Which does not inlude Null and is Non-Unique. Values format like: [7, 0, 1]",
+                "",
+                "",
+                "NUMERIC(10,2)",
+                "Non-Null",
+                "Non-Unique",
+                "[7, 0, 1]"
+            ],
+            "invoice_items.InvoiceLineId": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1085, 2185, 1616]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1085, 2185, 1616]"
+            ],
+            "invoice_items.InvoiceId": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [216, 412, 129]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[216, 412, 129]"
+            ],
+            "invoice_items.TrackId": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1900, 3155, 1202]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1900, 3155, 1202]"
+            ],
+            "invoice_items.UnitPrice": [
+                "The type is NUMERIC(10,2), Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "NUMERIC(10,2)",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "invoice_items.Quantity": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1]"
+            ],
+            "media_types.MediaTypeId": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [5, 2, 3]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[5, 2, 3]"
+            ],
+            "media_types.Name": [
+                "The type is NVARCHAR(120), Which does not inlude Null and is Unique. Values format like: ['AAC audio file', 'Protected MPEG-4 video file', 'Purchased AAC audio file']",
+                "",
+                "",
+                "NVARCHAR(120)",
+                "Non-Null",
+                "Unique",
+                "['AAC audio file', 'Protected MPEG-4 video file', 'Purchased AAC audio file']"
+            ],
+            "playlists.PlaylistId": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7, 4, 5]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[7, 4, 5]"
+            ],
+            "playlists.Name": [
+                "The type is NVARCHAR(120), Which does not inlude Null and is Non-Unique. Values format like: ['Music Videos', 'On-The-Go 1', 'Grunge']",
+                "",
+                "",
+                "NVARCHAR(120)",
+                "Non-Null",
+                "Non-Unique",
+                "['Music Videos', 'On-The-Go 1', 'Grunge']"
+            ],
+            "playlist_track.PlaylistId": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 10, 3]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[9, 10, 3]"
+            ],
+            "playlist_track.TrackId": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [512, 3131, 1530]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[512, 3131, 1530]"
+            ],
+            "tracks.TrackId": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1187, 3083, 386]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1187, 3083, 386]"
+            ],
+            "tracks.Name": [
+                "The type is NVARCHAR(200), Which does not inlude Null and is Non-Unique. Values format like: ['Black Mountain Side', 'From Afar', 'New Faces']",
+                "",
+                "",
+                "NVARCHAR(200)",
+                "Non-Null",
+                "Non-Unique",
+                "['Black Mountain Side', 'From Afar', 'New Faces']"
+            ],
+            "tracks.AlbumId": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [322, 76, 150]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[322, 76, 150]"
+            ],
+            "tracks.MediaTypeId": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 4, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[5, 4, 1]"
+            ],
+            "tracks.GenreId": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [17, 13, 12]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[17, 13, 12]"
+            ],
+            "tracks.Composer": [
+                "The type is NVARCHAR(220), Which inlude Null and is Non-Unique. Values format like: ['Jerry Ragavoy', 'Green Day', 'Smith, Toby']",
+                "",
+                "",
+                "NVARCHAR(220)",
+                "Include Null",
+                "Non-Unique",
+                "['Jerry Ragavoy', 'Green Day', 'Smith, Toby']"
+            ],
+            "tracks.Milliseconds": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [194873, 212297, 228571]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[194873, 212297, 228571]"
+            ],
+            "tracks.Bytes": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8581414, 13213824, 8570929]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[8581414, 13213824, 8570929]"
+            ],
+            "tracks.UnitPrice": [
+                "The type is NUMERIC(10,2), Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "NUMERIC(10,2)",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "sqlite_stat1.tbl": [
+                "The type is , Which does not inlude Null and is Non-Unique. Values format like: ['albums', 'invoice_items', 'invoices']",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "['albums', 'invoice_items', 'invoices']"
+            ],
+            "sqlite_stat1.idx": [
+                "The type is , Which inlude Null and is Non-Unique. Values format like: ['IFK_TrackGenreId', 'IFK_AlbumArtistId', 'IFK_InvoiceLineTrackId']",
+                "",
+                "",
+                "",
+                "Include Null",
+                "Non-Unique",
+                "['IFK_TrackGenreId', 'IFK_AlbumArtistId', 'IFK_InvoiceLineTrackId']"
+            ],
+            "sqlite_stat1.stat": [
+                "The type is , Which does not inlude Null and is Unique. Values format like: [275, '3503 11', 18]",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Unique",
+                "[275, '3503 11', 18]"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries the median value of total sales, filtered by countries where the number of customers is greater than 4. Relevant columns include sales data (total sales) and customer count per country. Filtering involves countries with more than 4 customers.\n#columns: invoices.Total, invoices.BillingCountry, customers.CustomerId\n#values: \"4\"\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "data",
+            "countries",
+            "median",
+            "number",
+            "customers",
+            "total sales",
+            "sales",
+            "4",
+            "value"
+        ],
+        "col": "invoices.Total, invoices.BillingCountry, customers.CustomerId",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [
+            [
+                "sqlite_stat1.tbl",
+                "customers"
+            ],
+            [
+                "tracks.Name",
+                "Numbers"
+            ]
+        ],
+        "column": "albums.AlbumId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [10, 120, 56]\nartists.Name: The type is NVARCHAR(120), Which does not inlude Null and is Unique. Values format like: ['Milton Nascimento & Bebeto', 'Os Paralamas Do Sucesso', 'Stone Temple Pilots']\ncustomers.Address: The type is NVARCHAR(70), Which does not inlude Null and is Unique. Values format like: ['Erzsébet krt. 58.', 'Rua da Assunção 53', 'Celsiusg. 9']\ncustomers.City: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Bordeaux', 'Helsinki', 'Mountain View']\ncustomers.Company: The type is NVARCHAR(80), Which inlude Null and is Non-Unique. Values format like: ['Apple Inc.', 'Embraer - Empresa Brasileira de Aeronáutica S.A.', 'Banco do Brasil S.A.']\ncustomers.Country: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Ireland', 'India', 'Belgium']\ncustomers.CustomerId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [21, 32, 42]\ncustomers.Phone: The type is NVARCHAR(24), Which inlude Null and is Unique. Values format like: ['+33 05 56 96 96 96', '+43 01 5134505', '+453 3331 9991']\ncustomers.State: The type is NVARCHAR(40), Which inlude Null and is Non-Unique. Values format like: ['BC', 'AZ', 'VV']\nemployees.Address: The type is NVARCHAR(70), Which does not inlude Null and is Unique. Values format like: ['5827 Bowness Road NW', '1111 6 Ave SW', '683 10 Street SW']\nemployees.BirthDate: The type is DATETIME, Which does not inlude Null and is Unique. Values format like: ['1970-05-29 00:00:00', '1962-02-18 00:00:00', '1973-07-01 00:00:00']\nemployees.City: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Lethbridge', 'Calgary', 'Edmonton']\nemployees.Country: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Value of this column must in: ['Canada']\nemployees.EmployeeId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [4, 5, 1]\nemployees.Phone: The type is NVARCHAR(24), Which does not inlude Null and is Non-Unique. Values format like: ['+1 (403) 262-3443', '+1 (780) 428-9482', '+1 (403) 467-3351']\nemployees.ReportsTo: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [6, 1, 2]\nemployees.State: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Value of this column must in: ['AB']\ngenres.GenreId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7, 6, 13]\ngenres.Name: The type is NVARCHAR(120), Which does not inlude Null and is Unique. Values format like: ['TV Shows', 'Blues', 'World']\ninvoice_items.InvoiceId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [216, 412, 129]\ninvoice_items.Quantity: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]\ninvoices.BillingCountry: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Belgium', 'Sweden', 'Germany']\ninvoices.CustomerId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [24, 46, 34]\ninvoices.InvoiceId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [382, 152, 335]\ninvoices.Total: The type is NUMERIC(10,2), Which does not inlude Null and is Non-Unique. Values format like: [7, 0, 1]\nmedia_types.MediaTypeId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [5, 2, 3]\nmedia_types.Name: The type is NVARCHAR(120), Which does not inlude Null and is Unique. Values format like: ['AAC audio file', 'Protected MPEG-4 video file', 'Purchased AAC audio file']\nplaylist_track.PlaylistId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 10, 3]\nplaylists.Name: The type is NVARCHAR(120), Which does not inlude Null and is Non-Unique. Values format like: ['Music Videos', 'On-The-Go 1', 'Grunge']\nplaylists.PlaylistId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7, 4, 5]\nsqlite_stat1.stat: The type is , Which does not inlude Null and is Unique. Values format like: [275, '3503 11', 18]\nsqlite_stat1.tbl: The type is , Which does not inlude Null and is Non-Unique. Values format like: ['albums', 'invoice_items', 'invoices']\ntracks.AlbumId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [322, 76, 150]\ntracks.Bytes: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8581414, 13213824, 8570929]\ntracks.GenreId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [17, 13, 12]\ntracks.MediaTypeId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 4, 1]\ntracks.Name: The type is NVARCHAR(200), Which does not inlude Null and is Non-Unique. Values format like: ['Black Mountain Side', 'From Afar', 'New Faces']",
+        "foreign_keys": "employees.ReportsTo = employees.EmployeeId, invoices.CustomerId = customers.CustomerId, invoice_items.InvoiceId = invoices.InvoiceId, playlist_track.PlaylistId = playlists.PlaylistId, tracks.MediaTypeId = media_types.MediaTypeId, tracks.GenreId = genres.GenreId, tracks.AlbumId = albums.AlbumId",
+        "foreign_set": [
+            "invoices.CustomerId",
+            "tracks.GenreId",
+            "media_types.MediaTypeId",
+            "playlists.PlaylistId",
+            "employees.EmployeeId",
+            "tracks.AlbumId",
+            "invoice_items.InvoiceId",
+            "playlist_track.PlaylistId",
+            "tracks.MediaTypeId",
+            "invoices.InvoiceId",
+            "albums.AlbumId",
+            "employees.ReportsTo",
+            "genres.GenreId",
+            "customers.CustomerId"
+        ],
+        "q_order": [
+            "median value of total sales"
+        ],
+        "status": "success"
+    }
+]

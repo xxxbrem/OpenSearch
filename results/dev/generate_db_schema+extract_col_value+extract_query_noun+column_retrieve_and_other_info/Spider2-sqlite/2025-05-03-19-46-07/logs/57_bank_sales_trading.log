@@ -1,0 +1,374 @@
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: How many movies were released in the year 1995? */
+SELECT COUNT(*) 
+FROM movie
+WHERE year = 1995;
+
+/* Answer the following: List the names of the 3 directors who have directed the largest number of movies. */
+SELECT p.name
+FROM director AS d
+JOIN person  AS p ON d.person_id = p.id
+GROUP BY p.name
+ORDER BY COUNT(*) DESC
+LIMIT 3;
+
+/* Answer the following: For every genre, what is the average movie rank of films released after the year 2000? */
+SELECT g.genre , AVG(m.rank) AS avg_rank
+FROM movie   AS m
+JOIN genres  AS g ON m.id = g.movie_id
+WHERE m.year > 2000
+GROUP BY g.genre;
+
+/* Answer the following: Which actor has appeared in the greatest number of films released before 1980?  */
+SELECT p.name
+FROM movie_cast AS mc
+JOIN movie      AS m ON mc.movie_id = m.id
+JOIN person     AS p ON mc.person_id = p.id
+WHERE m.year < 1980
+GROUP BY p.name
+ORDER BY COUNT(*) DESC
+LIMIT 1;
+
+/* Answer the following: What is the earliest year in which more than 10 horror movies were released? */
+SELECT m.year
+FROM movie  AS m
+JOIN genres AS g ON m.id = g.movie_id
+WHERE g.genre = 'Horror'
+GROUP BY m.year
+HAVING COUNT(*) > 10
+ORDER BY m.year
+LIMIT 1;
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: bank_sales_trading
+## Table weekly_sales:
+week_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['30/3/20', '8/4/19', '20/7/20']
+region: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['SOUTH AMERICA', 'EUROPE', 'CANADA']
+platform: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Retail', 'Shopify']
+segment: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['C2', 'C4', 'C1']
+customer_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['New', 'Existing', 'Guest']
+transactions: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1189, 188391, 361447]
+sales: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8655, 614, 7326993]
+
+## Table shopping_cart_users:
+user_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [378, 52, 342]
+cookie_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['b0b666', '0d4a40', '007c20']
+start_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-01-07', '2020-05-04', '2020-02-12']
+
+## Table bitcoin_members:
+member_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['eccbc8', 'c20ad4', 'e4da3b']
+first_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Rowan', 'Enoch', 'Abe']
+region: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Asia', 'India', 'Australia']
+
+## Table interest_metrics:
+_month: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [2, 7, 6]
+_year: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [2018, 2019]
+month_year: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['11-2018', '07-2018', '06-2019']
+interest_id: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [166, 5925, 40436]
+composition: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [1, 4, 9]
+index_value: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [1, 0, 1]
+ranking: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [634, 856, 726]
+percentile_ranking: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [94, 27, 39]
+
+## Table customer_regions:
+region_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2, 4, 1]
+region_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Africa', 'Asia', 'Australia']
+
+## Table customer_transactions:
+customer_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [53, 396, 265]
+txn_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-04-05', '2020-02-23', '2020-01-01']
+txn_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['withdrawal', 'deposit', 'purchase']
+txn_amount: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [389, 364, 139]
+
+## Table bitcoin_transactions:
+txn_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [20297, 8682, 4723]
+member_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['c20ad4', 'c9f0f8', '6512bd']
+ticker: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['BTC', 'ETH']
+txn_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['17-12-2017', '23-02-2018', '23-10-2018']
+txn_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['BUY', 'SELL']
+quantity: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [8, 2, 9]
+percentage_fee: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]
+txn_time: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-10-31T09:42:54.060Z', '2017-06-29T15:31:14.616Z', '2020-02-13T03:55:05.159Z']
+
+## Table customer_nodes:
+customer_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [61, 252, 329]
+region_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 3, 1]
+node_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 4, 1]
+start_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-02-09', '2020-01-08', '2020-02-22']
+end_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-04-06', '2020-02-25', '2020-03-19']
+
+## Table cleaned_weekly_sales:
+week_date_formatted: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-4-8', '2019-4-22', '2018-7-2']
+week_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-03-25', '2019-04-01', '2018-05-28']
+region: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ASIA', 'SOUTH AMERICA', 'AFRICA']
+platform: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Retail', 'Shopify']
+segment: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['C2', 'unknown', 'C3']
+customer_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Guest', 'Existing', 'New']
+transactions: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [39035, 6628, 17603]
+sales: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [787254, 21732, 5783]
+week_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [36, 24, 25]
+month_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 5, 8]
+calendar_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2018, 2019, 2020]
+age_band: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Young Adults', 'Retirees', 'unknown']
+demographic: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Families', 'unknown', 'Couples']
+avg_transaction: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [130, 31, 56]
+
+## Table veg_txn_df:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [678473, 116721, 728409]
+txn_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-10-27 00:00:00', '2022-09-21 00:00:00', '2023-03-01 00:00:00']
+txn_time: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['13:15:10', '14:35:00', '20:10:15']
+item_code: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [102900011011058, 106949711300068, 102900011008492]
+`qty_sold(kg)`: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [0, 1, 3]
+`unit_selling_px_rmb/kg`: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [2, 16, 10]
+`sale/return`: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['sale', 'return']
+`discount(%)`: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]
+day_of_week: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Sunday', 'Thursday', 'Tuesday']
+
+## Table shopping_cart_events:
+visit_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1c0a41', '735e4b', '89165e']
+cookie_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['4351a6', '48c3fb', '6d5f7c']
+page_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8, 9, 11]
+event_type: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 3, 5]
+sequence_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 19, 4]
+event_time: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2020-03-22 14:27:43.940716', '2020-03-07 04:35:34.153491', '2020-03-02 09:02:27.695243']
+
+## Table shopping_cart_page_hierarchy:
+page_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [9, 3, 11]
+page_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Abalone', 'Oyster', 'Lobster']
+product_category: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Fish', 'Shellfish', 'Luxury']
+product_id: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [7, 2, 5]
+
+## Table bitcoin_prices:
+ticker: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['ETH', 'BTC']
+market_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['29-09-2017', '23-12-2018', '03-10-2017']
+price: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [1091, 1024, 218]
+open: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [8737, 244, 1099]
+high: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [472, 7400, 2043]
+low: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [14, 135, 326]
+volume: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1.86M', '886.88K', '814.33K']
+change: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['-1.71%', '-3.49%', '-0.60%']
+
+## Table interest_map:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [21237, 44582, 6169]
+interest_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Call of Duty Enthusiasts', 'Investment Banking Professionals', 'Moving Services Shoppers']
+interest_summary: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Professionals reading industry news and medical information on psychiatry.', 'People researching attractions and accommodations in Atlanta. These consumers are more likely to spend money on flights, hotels, and local attractions.', 'Consumers in-market for Seattle trips and vacations.']
+created_at: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-12-20 12:00:04', '2017-01-27 17:46:24', '2017-09-20 11:40:01']
+last_modified: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-04-24 18:30:04', '2018-11-02 17:10:04', '2019-04-17 08:49:16']
+
+## Table veg_loss_rate_df:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [241, 57, 191]
+item_code: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [102900011008485, 102900011030622, 102900051009336]
+item_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Water Chestnut (Bag)', 'Sophora Japonica', 'Niushou Shengcai']
+`loss_rate_%`: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [15, 7, 0]
+
+## Table shopping_cart_campaign_identifier:
+campaign_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 3, 2]
+products: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['6-8', '1-3', '4-5']
+campaign_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['25% Off - Living The Lux Life', 'Half Off - Treat Your Shellf(ish)', 'BOGOF - Fishing For Compliments']
+start_date: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2020-02-01', '2020-01-01', '2020-01-15']
+end_date: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2020-01-14', '2020-03-31', '2020-01-28']
+
+## Table veg_cat:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [154, 155, 195]
+item_code: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [102900011032350, 102900011032206, 102900011032244]
+item_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['White Caitai', 'Muercai (Bag)', 'Haixian Mushroom (Bag) (3)']
+category_code: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1011010201, 1011010402, 1011010501]
+category_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Capsicum', 'Flower/Leaf\xa0Vegetables', 'Edible Mushroom']
+
+## Table veg_whsle_df:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [38931, 9004, 52204]
+whsle_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-05-21 00:00:00', '2022-08-18 00:00:00', '2022-07-13 00:00:00']
+item_code: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [102900011034323, 102900005116790, 102900005119104]
+`whsle_px_rmb-kg`: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [7, 1, 20]
+
+## Table shopping_cart_event_identifier:
+event_type: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [5, 2, 1]
+event_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Page View', 'Ad Click', 'Ad Impression']
+
+#Forigen keys:
+
+
+#Database Description:
+The `bank_sales_trading` database is designed to manage and analyze data related to sales, trading, customer behavior, and product information across various platforms and regions. It includes detailed information about weekly sales, shopping cart activities, bitcoin transactions, customer demographics, vegetable sales, and interest metrics. The database is structured to support business intelligence, marketing campaigns, and operational insights.
+
+#Tables Descriptions:
+
+1. **weekly_sales**: Contains weekly sales data, including the date, region, platform, customer type, transaction count, and sales amount.
+
+2. **shopping_cart_users**: Tracks shopping cart users with unique cookie IDs, user IDs, and their start dates.
+
+3. **bitcoin_members**: Stores information about Bitcoin members, including their unique member IDs, first names, and regions.
+
+4. **interest_metrics**: Provides metrics related to interest composition, rankings, and percentile rankings for specific months and years.
+
+5. **customer_regions**: Defines customer regions with unique region IDs and names.
+
+6. **customer_transactions**: Contains customer transaction data, including transaction type, date, and amount.
+
+7. **bitcoin_transactions**: Tracks Bitcoin transactions, including transaction IDs, member IDs, ticker types, transaction dates, types, quantities, fees, and times.
+
+8. **customer_nodes**: Maps customers to regions and nodes, with start and end dates for their association.
+
+9. **cleaned_weekly_sales**: A cleaned version of weekly sales data, including formatted dates, demographic information, and calculated metrics like average transaction value.
+
+10. **veg_txn_df**: Contains vegetable transaction data, including transaction dates, times, item codes, quantities sold, unit selling prices, discounts, and day of the week.
+
+11. **shopping_cart_events**: Tracks shopping cart events, including visit IDs, cookie IDs, page IDs, event types, sequence numbers, and event times.
+
+12. **shopping_cart_page_hierarchy**: Defines the hierarchy of shopping cart pages, including page IDs, names, product categories, and product IDs.
+
+13. **bitcoin_prices**: Provides Bitcoin price data, including ticker types, market dates, prices, open, high, low values, volume, and percentage changes.
+
+14. **interest_map**: Maps interests to unique IDs, names, summaries, and timestamps for creation and modification.
+
+15. **veg_loss_rate_df**: Contains vegetable loss rate data, including item codes, names, and loss rates.
+
+16. **shopping_cart_campaign_identifier**: Identifies shopping cart campaigns with unique campaign IDs, names, products, and start/end dates.
+
+17. **veg_cat**: Categorizes vegetables with unique item codes, names, category codes, and category names.
+
+18. **veg_whsle_df**: Tracks wholesale vegetable data, including wholesale dates, item codes, and wholesale prices.
+
+19. **shopping_cart_event_identifier**: Maps event types to unique IDs and names for shopping cart events.
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: Please analyze our interest data from September 2018 to August 2019. For each month, calculate the average composition for each interest by dividing the composition by the index value. Identify the interest with the highest average composition value each month and report its average composition as the max index composition for that month. Compute the three-month rolling average of these monthly max index compositions. Ensure the output includes the date, the interest name, the max index composition for that month, the rolling average, and the names and max index compositions of the top interests from one month ago and two months ago. */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries interest data analysis over a specific time range (September 2018 to August 2019). It requires calculating average composition for each interest, identifying the interest with the highest average composition each month, and computing a three-month rolling average of monthly max index compositions. The output must include the date, interest name, max index composition, rolling average, and details of top interests from previous months. Relevant columns include those related to time, interest names, composition, and index values.
+#columns: interest_metrics.month_year, interest_metrics.composition, interest_metrics.index_value, interest_map.interest_name
+#values: "09-2018", "08-2019"
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+Please analyze our interest data from September 2018 to August 2019. For each month, calculate the average composition for each interest by dividing the composition by the index value. Identify the interest with the highest average composition value each month and report its average composition as the max index composition for that month. Compute the three-month rolling average of these monthly max index compositions. Ensure the output includes the date, the interest name, the max index composition for that month, the rolling average, and the names and max index compositions of the top interests from one month ago and two months ago.
+
+############################## AI at step extract_query_noun ##############################
+
+"interest", "data", "September 2018", "August 2019", "month", "average composition", "interest", "composition", "index value", "interest", "highest average composition value", "month", "average composition", "max index composition", "month", "three-month rolling average", "monthly max index compositions", "output", "date", "interest name", "max index composition", "month", "rolling average", "names", "max index compositions", "top interests", "month ago", "two months ago"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: Please analyze our interest data from September 2018 to August 2019. For each month, calculate the average composition for each interest by dividing the composition by the index value. Identify the interest with the highest average composition value each month and report its average composition as the max index composition for that month. Compute the three-month rolling average of these monthly max index compositions. Ensure the output includes the date, the interest name, the max index composition for that month, the rolling average, and the names and max index compositions of the top interests from one month ago and two months ago.
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "Please analyze",
+      "J": null,
+      "I": ["our interest data"],
+      "C": ["from September 2018 to August 2019"]
+    }
+  },
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "calculate",
+      "J": null,
+      "I": ["the average composition for each interest"],
+      "C": ["by dividing the composition by the index value"]
+    }
+  },
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "Identify",
+      "J": null,
+      "I": ["the interest with the highest average composition value each month"],
+      "C": ["report its average composition as the max index composition for that month"]
+    }
+  },
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "Compute",
+      "J": null,
+      "I": ["the three-month rolling average of these monthly max index compositions"],
+      "C": null
+    }
+  },
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "Ensure",
+      "J": null,
+      "I": [
+        "the output includes the date",
+        "the interest name",
+        "the max index composition for that month",
+        "the rolling average",
+        "the names and max index compositions of the top interests from one month ago and two months ago"
+      ],
+      "C": null
+    }
+  }
+]
+```
+

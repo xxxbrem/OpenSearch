@@ -1,0 +1,504 @@
+############################## Human at step generate_db_schema ##############################
+
+/* Here is a examples about describe database */
+    #Forigen keys: 
+    Airlines.ORIGIN = Airports.Code, Airlines.DEST = Airports.Code, Airlines.OP_CARRIER_AIRLINE_ID = Air Carriers.Code
+    #Database Description: The database encompasses information related to flights, including airlines, airports, and flight operations.
+    #Tables Descriptions:
+    Air Carriers: Codes and descriptive information about airlines
+    Airports: IATA codes and descriptions of airports
+    Airlines: Detailed information about flights 
+
+    /* Here is a examples about describe database */
+    #Forigen keys:
+    data.ID = price.ID, production.ID = price.ID, production.ID = data.ID, production.country = country.origin
+    #Database Description: The database contains information related to cars, including country, price, specifications, Production
+    #Tables Descriptions:
+    Country: Names of the countries where the cars originate from.
+    Price: Price of the car in USD.
+    Data: Information about the car's specifications
+    Production: Information about car's production.
+
+    /* Describe the following database */
+    Database Management System: SQLite
+#Database name: Brazilian_E_Commerce
+## Table olist_customers:
+customer_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['a9c4afe35d4118f574a3173117e1a3a8', '10031ad7752b10374ba516be41953b6c', '11438b1c01227d2058484d74b0d71a54']
+customer_unique_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['06f627751c6010c4c1efa16a711b2764', '8356af66c0132c203bc366a3d6720ca2', '13784315377079cd446a18c98dd70591']
+customer_zip_code_prefix: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [79604, 9080, 33902]
+customer_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['lagoa formosa', 'serranopolis de minas', 'santo eduardo']
+customer_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['GO', 'CE', 'MS']
+
+## Table olist_sellers:
+seller_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['6338ea67c41078a46ad99cc009654956', '65b081a070633e057c462abdd6fb9dd8', '1c5e4e49b9079480255b49d50aac1aa9']
+seller_zip_code_prefix: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [49980, 12942, 6340]
+seller_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['jacutinga', 'embu das artes', 'tres de maio']
+seller_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['DF', 'RO', 'GO']
+
+## Table olist_order_reviews:
+review_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['3a43fb2825683f295a9d3c669dd6d430', '7aa912de7dbbd563551b3f48c51fc023', 'fd97851970b52770d59150cd05ea2638']
+order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['36377e52aa9971718dd22913580b7799', '8f4350670751e101afb4d732a2ec8ac8', 'b2cc014ee51b0ca758fa72abdc54d199']
+review_score: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [1, 3, 2]
+review_comment_title: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['RECOMENDADO', 'boa loja', 'Recomendo parcialmente']
+review_comment_message: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Se o produto não chegou, como pode ser obrigatório o preenchimento da avaliação geral ou se eu recomendo a loja?! Piada né?!', 'produto amassado', 'O produto chegou certinho! Porém eu percebi que a caixa vem toda amassada parecendo que sentaram nela. Eu desconfio que poderia vim com a caixa perfeita e não velha e destruída. ']
+review_creation_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-04-15 00:00:00', '2017-09-21 00:00:00', '2017-11-05 00:00:00']
+review_answer_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-07-14 13:30:34', '2018-03-11 04:07:33', '2018-01-31 20:12:51']
+
+## Table olist_order_items:
+order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['40bd3f61e145286843c42286ac7bab0e', '5d636e00c8235b39e3149dd8ddc949b8', '99154e0d0a403c1c7dc3f38886f6776b']
+order_item_id: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [8, 11, 4]
+product_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['9bb64a6bd98df95fcfad9599bfdd1cdf', '5c909f03b5baf836858186d3d5867020', '76f71ec385ad031b06d5ad8be0440260']
+seller_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['e5c84227854980f1db19a58958c551d9', '4d9fea3499bdc22aa4da4e339365f215', 'f4c4daa86e30c7e5a553a8d518ac03a5']
+shipping_limit_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-11-09 08:10:23', '2017-06-08 01:25:06', '2017-12-20 08:52:15']
+price: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [62, 18, 92]
+freight_value: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [47, 40, 15]
+
+## Table olist_products:
+product_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['bdb0adfd465b18548a50bafc2a8e8ea6', '668677432cb5132ddfa6f1738479d0c0', '3bce6b72fbbfc2ec3bcffb83745cc24e']
+product_category_name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['musica', 'ferramentas_jardim', 'livros_importados']
+product_name_lenght: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [64, 7, 37]
+product_description_lenght: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [132, 3561, 3557]
+product_photos_qty: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [4, 1, 7]
+product_weight_g: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [1625, 14450, 400]
+product_length_cm: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [53, 54, 76]
+product_height_cm: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [67, 105, 4]
+product_width_cm: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [36, 53, 57]
+
+## Table olist_geolocation:
+geolocation_zip_code_prefix: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [95548, 5020, 84030]
+geolocation_lat: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [-23, -11, -23]
+geolocation_lng: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [-42, -43, -49]
+geolocation_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['alegrete do piaui', 'florínea', 'prado ferreira']
+geolocation_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['MA', 'RO', 'RR']
+
+## Table product_category_name_translation:
+product_category_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['artigos_de_festas', 'sinalizacao_e_seguranca', 'industria_comercio_e_negocios']
+product_category_name_english: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['party_supplies', 'small_appliances_home_oven_and_coffee', 'small_appliances']
+
+## Table olist_orders:
+order_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['ef57c0c31600c0a1c7366ff29a71896a', 'f5ef2dc393fb470c2dbd4293efcc160e', '6ad7cdd50237385fec54699a2834eda3']
+customer_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['3bf822526ed19260365ce453f2271fef', '08fc5058d39f827b41d726cac116dfbc', 'e60ec15a7023a30e9edf3b9af2c7d0a4']
+order_status: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['delivered', 'invoiced', 'shipped']
+order_purchase_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-10-22 19:59:11', '2018-04-06 12:10:51', '2017-11-17 10:26:28']
+order_approved_at: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-02-25 14:30:28', '2017-05-21 11:45:12', '2017-05-23 17:45:16']
+order_delivered_carrier_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2017-09-12 23:10:05', '2017-12-01 22:32:18', '2018-03-05 22:59:02']
+order_delivered_customer_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-05-22 22:12:08', '2018-08-29 17:18:43', '2018-04-16 18:31:51']
+order_estimated_delivery_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-03-14 00:00:00', '2017-06-29 00:00:00', '2018-04-30 00:00:00']
+
+## Table olist_order_payments:
+order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['f581282a5c459a970507563bf9893ba3', '10dcadee7d291d6dd245b3f85b11fa65', 'b47397056102b8fc054c6d969532376a']
+payment_sequential: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [16, 10, 28]
+payment_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['not_defined', 'credit_card', 'boleto']
+payment_installments: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [20, 3, 1]
+payment_value: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [251, 551, 226]
+
+## Table olist_products_dataset:
+index: The type is BIGINT, Which does not inlude Null and is Unique. Values format like: [21798, 14582, 6858]
+product_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['7ad1208884270048a2176ff437f49a9b', 'c56cdaacd8e2dca5489236a4875c0b89', 'f0a06cc25ae22358b10378bf4dafdf0a']
+product_category_name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['livros_interesse_geral', 'fashion_calcados', 'portateis_cozinha_e_preparadores_de_alimentos']
+product_name_lenght: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [22, 7, 36]
+product_description_lenght: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [249, 519, 1706]
+product_photos_qty: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [19, 4, 18]
+product_weight_g: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [4017, 3474, 239]
+product_length_cm: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [7, 101, 18]
+product_height_cm: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [56, 27, 16]
+product_width_cm: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [33, 38, 23]
+
+#Forigen keys:
+
+
+    Please conclude the database in the following format:
+    #Database Description:
+    #Tables Descriptions:
+    
+
+############################## AI at step generate_db_schema ##############################
+
+# Database Description:
+The `Brazilian_E_Commerce` database is designed to store and manage data related to an e-commerce platform in Brazil. It contains information about customers, sellers, orders, products, reviews, payments, and geolocation data. The database is structured to facilitate analysis of customer behavior, product performance, and order fulfillment processes.
+
+# Tables Descriptions:
+
+### 1. `olist_customers`:
+- **Description**: Contains information about customers, including their unique identifiers, location details, and city/state information.
+- **Primary Key**: `customer_id`
+- **Columns**:
+  - `customer_id`: Unique identifier for each customer.
+  - `customer_unique_id`: Non-unique identifier for customers (e.g., for tracking repeat customers).
+  - `customer_zip_code_prefix`: ZIP code prefix of the customer.
+  - `customer_city`: City of the customer.
+  - `customer_state`: State of the customer.
+
+---
+
+### 2. `olist_sellers`:
+- **Description**: Contains information about sellers, including their unique identifiers and location details.
+- **Primary Key**: `seller_id`
+- **Columns**:
+  - `seller_id`: Unique identifier for each seller.
+  - `seller_zip_code_prefix`: ZIP code prefix of the seller.
+  - `seller_city`: City of the seller.
+  - `seller_state`: State of the seller.
+
+---
+
+### 3. `olist_order_reviews`:
+- **Description**: Stores customer reviews for orders, including review scores, comments, and timestamps.
+- **Primary Key**: `review_id`
+- **Columns**:
+  - `review_id`: Unique identifier for each review.
+  - `order_id`: Identifier for the order being reviewed.
+  - `review_score`: Numeric score given by the customer.
+  - `review_comment_title`: Title of the review (nullable).
+  - `review_comment_message`: Detailed review message (nullable).
+  - `review_creation_date`: Date the review was created.
+  - `review_answer_timestamp`: Timestamp when the review was answered.
+
+---
+
+### 4. `olist_order_items`:
+- **Description**: Contains details about items in each order, including product and seller information, shipping deadlines, and pricing.
+- **Primary Key**: Composite key (`order_id`, `order_item_id`)
+- **Columns**:
+  - `order_id`: Identifier for the order.
+  - `order_item_id`: Identifier for the item within the order.
+  - `product_id`: Identifier for the product.
+  - `seller_id`: Identifier for the seller.
+  - `shipping_limit_date`: Deadline for shipping the item.
+  - `price`: Price of the item.
+  - `freight_value`: Freight cost for the item.
+
+---
+
+### 5. `olist_products`:
+- **Description**: Contains information about products, including their categories, dimensions, and weights.
+- **Primary Key**: `product_id`
+- **Columns**:
+  - `product_id`: Unique identifier for each product.
+  - `product_category_name`: Category of the product (nullable).
+  - `product_name_lenght`: Length of the product name (nullable).
+  - `product_description_lenght`: Length of the product description (nullable).
+  - `product_photos_qty`: Number of photos for the product (nullable).
+  - `product_weight_g`: Weight of the product in grams (nullable).
+  - `product_length_cm`: Length of the product in centimeters (nullable).
+  - `product_height_cm`: Height of the product in centimeters (nullable).
+  - `product_width_cm`: Width of the product in centimeters (nullable).
+
+---
+
+### 6. `olist_geolocation`:
+- **Description**: Stores geolocation data, including ZIP code prefixes, latitude, longitude, and city/state information.
+- **Primary Key**: None
+- **Columns**:
+ 
+
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: How many orders were placed in 2018? */
+SELECT COUNT(*) 
+FROM orders
+WHERE strftime('%Y', order_date) = '2018';
+
+/* Answer the following: What is the total sales amount for each product category in 2017? */
+SELECT c.name AS category,
+       SUM(oi.quantity * oi.unit_price) AS total_sales
+FROM orders AS o
+JOIN order_items AS oi ON o.id = oi.order_id
+JOIN products AS p      ON p.id = oi.product_id
+JOIN categories AS c    ON c.id = p.category
+WHERE strftime('%Y', o.order_date) = '2017'
+GROUP BY c.name
+ORDER BY total_sales DESC;
+
+/* Answer the following: List the five customers who spent the most in 2016. */
+SELECT c.first_name || ' ' || c.last_name AS customer,
+       SUM(o.total_amount) AS total_spent
+FROM customers AS c
+JOIN orders    AS o ON o.customer_id = c.id
+WHERE strftime('%Y', o.order_date) = '2016'
+GROUP BY c.id
+ORDER BY total_spent DESC
+LIMIT 5;
+
+/* Answer the following: What was the average delivery time (in days) for each month of 2018? */
+SELECT strftime('%m', o.order_date) AS month,
+       AVG(julianday(o.delivered_date) - julianday(o.order_date)) AS avg_delivery_days
+FROM orders AS o
+WHERE strftime('%Y', o.order_date) = '2018'
+  AND o.delivered_date IS NOT NULL
+GROUP BY month
+ORDER BY month;
+
+/* Answer the following: Which product has the highest number of returned orders? */
+SELECT p.name
+FROM products AS p
+JOIN order_items AS oi ON oi.product_id = p.id
+JOIN orders      AS o  ON o.id = oi.order_id
+WHERE o.status = 'returned'
+GROUP BY p.id
+ORDER BY COUNT(*) DESC
+LIMIT 1;
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: Brazilian_E_Commerce
+## Table olist_customers:
+customer_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['a9c4afe35d4118f574a3173117e1a3a8', '10031ad7752b10374ba516be41953b6c', '11438b1c01227d2058484d74b0d71a54']
+customer_unique_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['06f627751c6010c4c1efa16a711b2764', '8356af66c0132c203bc366a3d6720ca2', '13784315377079cd446a18c98dd70591']
+customer_zip_code_prefix: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [79604, 9080, 33902]
+customer_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['lagoa formosa', 'serranopolis de minas', 'santo eduardo']
+customer_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['GO', 'CE', 'MS']
+
+## Table olist_sellers:
+seller_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['6338ea67c41078a46ad99cc009654956', '65b081a070633e057c462abdd6fb9dd8', '1c5e4e49b9079480255b49d50aac1aa9']
+seller_zip_code_prefix: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [49980, 12942, 6340]
+seller_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['jacutinga', 'embu das artes', 'tres de maio']
+seller_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['DF', 'RO', 'GO']
+
+## Table olist_order_reviews:
+review_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['3a43fb2825683f295a9d3c669dd6d430', '7aa912de7dbbd563551b3f48c51fc023', 'fd97851970b52770d59150cd05ea2638']
+order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['36377e52aa9971718dd22913580b7799', '8f4350670751e101afb4d732a2ec8ac8', 'b2cc014ee51b0ca758fa72abdc54d199']
+review_score: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [1, 3, 2]
+review_comment_title: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['RECOMENDADO', 'boa loja', 'Recomendo parcialmente']
+review_comment_message: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Se o produto não chegou, como pode ser obrigatório o preenchimento da avaliação geral ou se eu recomendo a loja?! Piada né?!', 'produto amassado', 'O produto chegou certinho! Porém eu percebi que a caixa vem toda amassada parecendo que sentaram nela. Eu desconfio que poderia vim com a caixa perfeita e não velha e destruída. ']
+review_creation_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-04-15 00:00:00', '2017-09-21 00:00:00', '2017-11-05 00:00:00']
+review_answer_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-07-14 13:30:34', '2018-03-11 04:07:33', '2018-01-31 20:12:51']
+
+## Table olist_order_items:
+order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['40bd3f61e145286843c42286ac7bab0e', '5d636e00c8235b39e3149dd8ddc949b8', '99154e0d0a403c1c7dc3f38886f6776b']
+order_item_id: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [8, 11, 4]
+product_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['9bb64a6bd98df95fcfad9599bfdd1cdf', '5c909f03b5baf836858186d3d5867020', '76f71ec385ad031b06d5ad8be0440260']
+seller_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['e5c84227854980f1db19a58958c551d9', '4d9fea3499bdc22aa4da4e339365f215', 'f4c4daa86e30c7e5a553a8d518ac03a5']
+shipping_limit_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-11-09 08:10:23', '2017-06-08 01:25:06', '2017-12-20 08:52:15']
+price: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [62, 18, 92]
+freight_value: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [47, 40, 15]
+
+## Table olist_products:
+product_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['bdb0adfd465b18548a50bafc2a8e8ea6', '668677432cb5132ddfa6f1738479d0c0', '3bce6b72fbbfc2ec3bcffb83745cc24e']
+product_category_name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['musica', 'ferramentas_jardim', 'livros_importados']
+product_name_lenght: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [64, 7, 37]
+product_description_lenght: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [132, 3561, 3557]
+product_photos_qty: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [4, 1, 7]
+product_weight_g: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [1625, 14450, 400]
+product_length_cm: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [53, 54, 76]
+product_height_cm: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [67, 105, 4]
+product_width_cm: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [36, 53, 57]
+
+## Table olist_geolocation:
+geolocation_zip_code_prefix: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [95548, 5020, 84030]
+geolocation_lat: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [-23, -11, -23]
+geolocation_lng: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [-42, -43, -49]
+geolocation_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['alegrete do piaui', 'florínea', 'prado ferreira']
+geolocation_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['MA', 'RO', 'RR']
+
+## Table product_category_name_translation:
+product_category_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['artigos_de_festas', 'sinalizacao_e_seguranca', 'industria_comercio_e_negocios']
+product_category_name_english: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['party_supplies', 'small_appliances_home_oven_and_coffee', 'small_appliances']
+
+## Table olist_orders:
+order_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['ef57c0c31600c0a1c7366ff29a71896a', 'f5ef2dc393fb470c2dbd4293efcc160e', '6ad7cdd50237385fec54699a2834eda3']
+customer_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['3bf822526ed19260365ce453f2271fef', '08fc5058d39f827b41d726cac116dfbc', 'e60ec15a7023a30e9edf3b9af2c7d0a4']
+order_status: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['delivered', 'invoiced', 'shipped']
+order_purchase_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-10-22 19:59:11', '2018-04-06 12:10:51', '2017-11-17 10:26:28']
+order_approved_at: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-02-25 14:30:28', '2017-05-21 11:45:12', '2017-05-23 17:45:16']
+order_delivered_carrier_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2017-09-12 23:10:05', '2017-12-01 22:32:18', '2018-03-05 22:59:02']
+order_delivered_customer_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-05-22 22:12:08', '2018-08-29 17:18:43', '2018-04-16 18:31:51']
+order_estimated_delivery_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-03-14 00:00:00', '2017-06-29 00:00:00', '2018-04-30 00:00:00']
+
+## Table olist_order_payments:
+order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['f581282a5c459a970507563bf9893ba3', '10dcadee7d291d6dd245b3f85b11fa65', 'b47397056102b8fc054c6d969532376a']
+payment_sequential: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [16, 10, 28]
+payment_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['not_defined', 'credit_card', 'boleto']
+payment_installments: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [20, 3, 1]
+payment_value: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [251, 551, 226]
+
+## Table olist_products_dataset:
+index: The type is BIGINT, Which does not inlude Null and is Unique. Values format like: [21798, 14582, 6858]
+product_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['7ad1208884270048a2176ff437f49a9b', 'c56cdaacd8e2dca5489236a4875c0b89', 'f0a06cc25ae22358b10378bf4dafdf0a']
+product_category_name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['livros_interesse_geral', 'fashion_calcados', 'portateis_cozinha_e_preparadores_de_alimentos']
+product_name_lenght: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [22, 7, 36]
+product_description_lenght: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [249, 519, 1706]
+product_photos_qty: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [19, 4, 18]
+product_weight_g: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [4017, 3474, 239]
+product_length_cm: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [7, 101, 18]
+product_height_cm: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [56, 27, 16]
+product_width_cm: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [33, 38, 23]
+
+#Forigen keys:
+
+
+# Database Description:
+The `Brazilian_E_Commerce` database is designed to store and manage data related to an e-commerce platform in Brazil. It contains information about customers, sellers, orders, products, reviews, payments, and geolocation data. The database is structured to facilitate analysis of customer behavior, product performance, and order fulfillment processes.
+
+# Tables Descriptions:
+
+### 1. `olist_customers`:
+- **Description**: Contains information about customers, including their unique identifiers, location details, and city/state information.
+- **Primary Key**: `customer_id`
+- **Columns**:
+  - `customer_id`: Unique identifier for each customer.
+  - `customer_unique_id`: Non-unique identifier for customers (e.g., for tracking repeat customers).
+  - `customer_zip_code_prefix`: ZIP code prefix of the customer.
+  - `customer_city`: City of the customer.
+  - `customer_state`: State of the customer.
+
+---
+
+### 2. `olist_sellers`:
+- **Description**: Contains information about sellers, including their unique identifiers and location details.
+- **Primary Key**: `seller_id`
+- **Columns**:
+  - `seller_id`: Unique identifier for each seller.
+  - `seller_zip_code_prefix`: ZIP code prefix of the seller.
+  - `seller_city`: City of the seller.
+  - `seller_state`: State of the seller.
+
+---
+
+### 3. `olist_order_reviews`:
+- **Description**: Stores customer reviews for orders, including review scores, comments, and timestamps.
+- **Primary Key**: `review_id`
+- **Columns**:
+  - `review_id`: Unique identifier for each review.
+  - `order_id`: Identifier for the order being reviewed.
+  - `review_score`: Numeric score given by the customer.
+  - `review_comment_title`: Title of the review (nullable).
+  - `review_comment_message`: Detailed review message (nullable).
+  - `review_creation_date`: Date the review was created.
+  - `review_answer_timestamp`: Timestamp when the review was answered.
+
+---
+
+### 4. `olist_order_items`:
+- **Description**: Contains details about items in each order, including product and seller information, shipping deadlines, and pricing.
+- **Primary Key**: Composite key (`order_id`, `order_item_id`)
+- **Columns**:
+  - `order_id`: Identifier for the order.
+  - `order_item_id`: Identifier for the item within the order.
+  - `product_id`: Identifier for the product.
+  - `seller_id`: Identifier for the seller.
+  - `shipping_limit_date`: Deadline for shipping the item.
+  - `price`: Price of the item.
+  - `freight_value`: Freight cost for the item.
+
+---
+
+### 5. `olist_products`:
+- **Description**: Contains information about products, including their categories, dimensions, and weights.
+- **Primary Key**: `product_id`
+- **Columns**:
+  - `product_id`: Unique identifier for each product.
+  - `product_category_name`: Category of the product (nullable).
+  - `product_name_lenght`: Length of the product name (nullable).
+  - `product_description_lenght`: Length of the product description (nullable).
+  - `product_photos_qty`: Number of photos for the product (nullable).
+  - `product_weight_g`: Weight of the product in grams (nullable).
+  - `product_length_cm`: Length of the product in centimeters (nullable).
+  - `product_height_cm`: Height of the product in centimeters (nullable).
+  - `product_width_cm`: Width of the product in centimeters (nullable).
+
+---
+
+### 6. `olist_geolocation`:
+- **Description**: Stores geolocation data, including ZIP code prefixes, latitude, longitude, and city/state information.
+- **Primary Key**: None
+- **Columns**:
+ 
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: Could you generate a report that shows the number of delivered orders for each month in the years 2016, 2017, and 2018? Each column represents a year, and each row represents a month */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries the number of delivered orders grouped by month and year. The related columns include the order status, order delivery date, and order purchase timestamp to filter and group the data by year and month.
+#columns: olist_orders.order_status, olist_orders.order_delivered_customer_date, olist_orders.order_purchase_timestamp
+#values: "delivered", "2016", "2017", "2018"
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+Could you generate a report that shows the number of delivered orders for each month in the years 2016, 2017, and 2018? Each column represents a year, and each row represents a month
+
+############################## AI at step extract_query_noun ##############################
+
+"report", "number", "delivered orders", "month", "years", "2016", "2017", "2018", "column", "year", "row", "month"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: Could you generate a report that shows the number of delivered orders for each month in the years 2016, 2017, and 2018? Each column represents a year, and each row represents a month
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+    {
+        "Type": "QIC",
+        "Extract": {
+            "Q": "generate",
+            "J": null,
+            "I": ["a report that shows the number of delivered orders for each month"],
+            "C": ["in the years 2016, 2017, and 2018", "Each column represents a year", "Each row represents a month"]
+        }
+    }
+]
+```
+

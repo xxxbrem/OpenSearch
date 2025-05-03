@@ -1,0 +1,252 @@
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: What is the maximum number of runs scored by any striker in a single match? runs scored refers to SUM(Batsman_Scored) over all balls faced by the striker in that match */
+SELECT MAX(runs_scored) 
+FROM (
+    SELECT Striker, Match_id, SUM(Batsman_Scored) AS runs_scored
+    FROM ball_by_ball
+    GROUP BY Striker, Match_id
+) AS T
+
+/* Answer the following: List the top 5 strikers who have the highest aggregate runs across all seasons. aggregate runs refers to SUM(Batsman_Scored) grouped by Striker */
+SELECT Striker 
+FROM ball_by_ball
+GROUP BY Striker
+ORDER BY SUM(Batsman_Scored) DESC
+LIMIT 5
+
+/* Answer the following: How many matches were won by the team that also won the toss? toss winner equals match winner refers to Toss_winner = Match_winner */
+SELECT COUNT(*) 
+FROM match
+WHERE Toss_winner = Match_winner
+
+/* Answer the following: Which stadium has hosted the greatest number of matches? greatest number refers to MAX(COUNT(*)) over Stadium_name */
+SELECT Stadium_name 
+FROM match
+GROUP BY Stadium_name
+ORDER BY COUNT(*) DESC
+LIMIT 1
+
+/* Answer the following: How many centuries were scored in the 2015 season? century refers to SUM(Batsman_Scored) >= 100 for a striker within a match; season refers to Season_year = 2015 */
+SELECT COUNT(*) 
+FROM (
+    SELECT Match_id, Striker, SUM(Batsman_Scored) AS runs_scored
+    FROM ball_by_ball
+    WHERE Match_id IN (SELECT Match_id FROM match WHERE Season_year = 2015)
+    GROUP BY Match_id, Striker
+    HAVING SUM(Batsman_Scored) >= 100
+) AS Century_Innings
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: IPL
+## Table player:
+player_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [83, 4, 193]
+player_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['RT Ponting', 'AP Tare', 'M Manhas']
+dob: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['1989-12-14', '1984-04-14', '1984-12-31']
+batting_hand: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Left-hand bat', 'Right-hand bat']
+bowling_skill: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Left-arm medium', 'Slow left-arm chinaman', 'Slow left-arm orthodox']
+country_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['India', 'West Indies', 'Bangladesh']
+
+## Table team:
+team_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7, 9, 2]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Rising Pune Supergiants', 'Sunrisers Hyderabad', 'Gujarat Lions']
+
+## Table match:
+match_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [598036, 501259, 598071]
+team_1: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 1, 11]
+team_2: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7, 3, 10]
+match_date: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2016-04-18', '2009-05-15', '2013-04-27']
+season_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 8, 7]
+venue: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Punjab Cricket Association IS Bindra Stadium Mohali', 'Sawai Mansingh Stadium', 'Eden Gardens']
+toss_winner: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 10, 12]
+toss_decision: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['field', 'bat']
+win_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['runs', 'wickets']
+win_margin: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8, 32, 34]
+outcome_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Result']
+match_winner: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [11, 12, 4]
+man_of_the_match: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [235, 254, 350]
+
+## Table player_match:
+match_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [336031, 829798, 392213]
+player_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [187, 115, 403]
+role: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Player', 'Keeper', 'Captain']
+team_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [10, 9, 6]
+
+## Table ball_by_ball:
+match_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [501245, 392242, 980928]
+over_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [17, 6, 19]
+ball_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 5, 9]
+innings_no: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2, 1]
+team_batting: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 1, 13]
+team_bowling: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [13, 7, 1]
+striker_batting_position: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 10, 4]
+striker: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [46, 103, 286]
+non_striker: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [364, 167, 427]
+bowler: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [153, 235, 102]
+
+## Table batsman_scored:
+match_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [980946, 598032, 598028]
+over_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [11, 15, 19]
+ball_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 6, 5]
+runs_scored: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 5, 3]
+innings_no: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2, 1]
+
+## Table wicket_taken:
+match_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [501271, 336017, 734044]
+over_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [13, 2, 20]
+ball_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 7, 8]
+player_out: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [202, 224, 400]
+kind_out: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['caught and bowled', 'obstructing the field', 'bowled']
+innings_no: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]
+
+## Table extra_runs:
+match_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [501251, 501258, 392206]
+over_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 4, 16]
+ball_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [6, 9, 3]
+extra_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['legbyes', 'noballs', 'penalty']
+extra_runs: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 4, 1]
+innings_no: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]
+
+#Forigen keys:
+
+
+#Database Description:
+The IPL database is designed to store and manage detailed information about Indian Premier League (IPL) cricket matches, players, teams, and match events. It includes data related to players, teams, matches, ball-by-ball events, runs scored, wickets taken, and extra runs. The database is structured to facilitate analysis of IPL matches, player performance, and team statistics.
+
+#Tables Descriptions:
+
+## Player:
+- **player_id**: Unique identifier for each player (INTEGER, NOT NULL, UNIQUE).
+- **player_name**: Name of the player (TEXT, NOT NULL, UNIQUE).
+- **dob**: Date of birth of the player (DATE, NOT NULL, NON-UNIQUE).
+- **batting_hand**: Batting style of the player (TEXT, NOT NULL, NON-UNIQUE; values: 'Left-hand bat', 'Right-hand bat').
+- **bowling_skill**: Bowling style of the player (TEXT, NOT NULL, NON-UNIQUE; examples: 'Left-arm medium', 'Slow left-arm chinaman').
+- **country_name**: Country the player represents (TEXT, NOT NULL, NON-UNIQUE).
+
+## Team:
+- **team_id**: Unique identifier for each team (INTEGER, NOT NULL, UNIQUE).
+- **name**: Name of the team (TEXT, NOT NULL, UNIQUE).
+
+## Match:
+- **match_id**: Unique identifier for each match (INTEGER, NOT NULL, UNIQUE).
+- **team_1**: ID of the first team in the match (INTEGER, NOT NULL, NON-UNIQUE).
+- **team_2**: ID of the second team in the match (INTEGER, NOT NULL, NON-UNIQUE).
+- **match_date**: Date of the match (DATE, NOT NULL, NON-UNIQUE).
+- **season_id**: Identifier for the IPL season (INTEGER, NOT NULL, NON-UNIQUE).
+- **venue**: Venue where the match was played (TEXT, NOT NULL, NON-UNIQUE).
+- **toss_winner**: ID of the team that won the toss (INTEGER, NOT NULL, NON-UNIQUE).
+- **toss_decision**: Decision made by the toss winner (TEXT, NOT NULL, NON-UNIQUE; values: 'field', 'bat').
+- **win_type**: Type of win (TEXT, NOT NULL, NON-UNIQUE; values: 'runs', 'wickets').
+- **win_margin**: Margin of victory (INTEGER, NOT NULL, NON-UNIQUE).
+- **outcome_type**: Type of match outcome (TEXT, NOT NULL, NON-UNIQUE; value: 'Result').
+- **match_winner**: ID of the team that won the match (INTEGER, NOT NULL, NON-UNIQUE).
+- **man_of_the_match**: ID of the player awarded "Man of the Match" (INTEGER, NOT NULL, NON-UNIQUE).
+
+## Player_Match:
+- **match_id**: ID of the match (INTEGER, NOT NULL, NON-UNIQUE).
+- **player_id**: ID of the player (INTEGER, NOT NULL, NON-UNIQUE).
+- **role**: Role of the player in the match (TEXT, NOT NULL, NON-UNIQUE; examples: 'Player', 'Keeper', 'Captain').
+- **team_id**: ID of the team the player belongs to (INTEGER, NOT NULL, NON-UNIQUE).
+
+## Ball_By_Ball:
+- **match_id**: ID of the match (INTEGER, NOT NULL, NON-UNIQUE).
+- **over_id**: ID of the over (INTEGER, NOT NULL, NON-UNIQUE).
+- **ball_id**: ID of the ball (INTEGER, NOT NULL, NON-UNIQUE).
+- **innings_no**: Inning number (INTEGER, NOT NULL, NON-
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: Which bowler has the lowest bowling average per wicket taken? */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries the bowler with the lowest bowling average per wicket taken. The related columns include bowler (ball_by_ball.bowler), runs conceded (batsman_scored.runs_scored + extra_runs.extra_runs), and wickets taken (wicket_taken.player_out). The calculation involves dividing total runs conceded by total wickets taken for each bowler.
+#columns: ball_by_ball.bowler, batsman_scored.runs_scored, extra_runs.extra_runs, wicket_taken.player_out
+#values: None
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+Which bowler has the lowest bowling average per wicket taken?
+
+############################## AI at step extract_query_noun ##############################
+
+"bowler", "bowling average", "wicket", "lowest bowling average per wicket taken"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: Which bowler has the lowest bowling average per wicket taken?
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[{
+  "Type": "QIC",
+  "Extract": {
+    "Q": "Which",
+    "J": null,
+    "I": ["bowler"],
+    "C": ["has the lowest bowling average per wicket taken"]
+  }
+}]
+```
+

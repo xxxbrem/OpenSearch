@@ -1,0 +1,517 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: IPL\n## Table player:\nplayer_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [83, 4, 193]\nplayer_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['RT Ponting', 'AP Tare', 'M Manhas']\ndob: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['1989-12-14', '1984-04-14', '1984-12-31']\nbatting_hand: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Left-hand bat', 'Right-hand bat']\nbowling_skill: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Left-arm medium', 'Slow left-arm chinaman', 'Slow left-arm orthodox']\ncountry_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['India', 'West Indies', 'Bangladesh']\n\n## Table team:\nteam_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7, 9, 2]\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Rising Pune Supergiants', 'Sunrisers Hyderabad', 'Gujarat Lions']\n\n## Table match:\nmatch_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [598036, 501259, 598071]\nteam_1: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 1, 11]\nteam_2: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7, 3, 10]\nmatch_date: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2016-04-18', '2009-05-15', '2013-04-27']\nseason_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 8, 7]\nvenue: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Punjab Cricket Association IS Bindra Stadium Mohali', 'Sawai Mansingh Stadium', 'Eden Gardens']\ntoss_winner: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 10, 12]\ntoss_decision: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['field', 'bat']\nwin_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['runs', 'wickets']\nwin_margin: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8, 32, 34]\noutcome_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Result']\nmatch_winner: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [11, 12, 4]\nman_of_the_match: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [235, 254, 350]\n\n## Table player_match:\nmatch_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [336031, 829798, 392213]\nplayer_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [187, 115, 403]\nrole: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Player', 'Keeper', 'Captain']\nteam_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [10, 9, 6]\n\n## Table ball_by_ball:\nmatch_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [501245, 392242, 980928]\nover_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [17, 6, 19]\nball_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 5, 9]\ninnings_no: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2, 1]\nteam_batting: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 1, 13]\nteam_bowling: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [13, 7, 1]\nstriker_batting_position: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 10, 4]\nstriker: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [46, 103, 286]\nnon_striker: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [364, 167, 427]\nbowler: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [153, 235, 102]\n\n## Table batsman_scored:\nmatch_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [980946, 598032, 598028]\nover_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [11, 15, 19]\nball_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 6, 5]\nruns_scored: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 5, 3]\ninnings_no: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2, 1]\n\n## Table wicket_taken:\nmatch_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [501271, 336017, 734044]\nover_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [13, 2, 20]\nball_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 7, 8]\nplayer_out: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [202, 224, 400]\nkind_out: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['caught and bowled', 'obstructing the field', 'bowled']\ninnings_no: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]\n\n## Table extra_runs:\nmatch_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [501251, 501258, 392206]\nover_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 4, 16]\nball_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [6, 9, 3]\nextra_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['legbyes', 'noballs', 'penalty']\nextra_runs: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 4, 1]\ninnings_no: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]\n\n#Forigen keys:\n\n\n#Database Description:\nThe IPL database is designed to store and manage detailed information about Indian Premier League (IPL) cricket matches, players, teams, and match events. It includes data related to players, teams, matches, ball-by-ball events, runs scored, wickets taken, and extra runs. The database is structured to facilitate analysis of IPL matches, player performance, and team statistics.\n\n#Tables Descriptions:\n\n## Player:\n- **player_id**: Unique identifier for each player (INTEGER, NOT NULL, UNIQUE).\n- **player_name**: Name of the player (TEXT, NOT NULL, UNIQUE).\n- **dob**: Date of birth of the player (DATE, NOT NULL, NON-UNIQUE).\n- **batting_hand**: Batting style of the player (TEXT, NOT NULL, NON-UNIQUE; values: 'Left-hand bat', 'Right-hand bat').\n- **bowling_skill**: Bowling style of the player (TEXT, NOT NULL, NON-UNIQUE; examples: 'Left-arm medium', 'Slow left-arm chinaman').\n- **country_name**: Country the player represents (TEXT, NOT NULL, NON-UNIQUE).\n\n## Team:\n- **team_id**: Unique identifier for each team (INTEGER, NOT NULL, UNIQUE).\n- **name**: Name of the team (TEXT, NOT NULL, UNIQUE).\n\n## Match:\n- **match_id**: Unique identifier for each match (INTEGER, NOT NULL, UNIQUE).\n- **team_1**: ID of the first team in the match (INTEGER, NOT NULL, NON-UNIQUE).\n- **team_2**: ID of the second team in the match (INTEGER, NOT NULL, NON-UNIQUE).\n- **match_date**: Date of the match (DATE, NOT NULL, NON-UNIQUE).\n- **season_id**: Identifier for the IPL season (INTEGER, NOT NULL, NON-UNIQUE).\n- **venue**: Venue where the match was played (TEXT, NOT NULL, NON-UNIQUE).\n- **toss_winner**: ID of the team that won the toss (INTEGER, NOT NULL, NON-UNIQUE).\n- **toss_decision**: Decision made by the toss winner (TEXT, NOT NULL, NON-UNIQUE; values: 'field', 'bat').\n- **win_type**: Type of win (TEXT, NOT NULL, NON-UNIQUE; values: 'runs', 'wickets').\n- **win_margin**: Margin of victory (INTEGER, NOT NULL, NON-UNIQUE).\n- **outcome_type**: Type of match outcome (TEXT, NOT NULL, NON-UNIQUE; value: 'Result').\n- **match_winner**: ID of the team that won the match (INTEGER, NOT NULL, NON-UNIQUE).\n- **man_of_the_match**: ID of the player awarded \"Man of the Match\" (INTEGER, NOT NULL, NON-UNIQUE).\n\n## Player_Match:\n- **match_id**: ID of the match (INTEGER, NOT NULL, NON-UNIQUE).\n- **player_id**: ID of the player (INTEGER, NOT NULL, NON-UNIQUE).\n- **role**: Role of the player in the match (TEXT, NOT NULL, NON-UNIQUE; examples: 'Player', 'Keeper', 'Captain').\n- **team_id**: ID of the team the player belongs to (INTEGER, NOT NULL, NON-UNIQUE).\n\n## Ball_By_Ball:\n- **match_id**: ID of the match (INTEGER, NOT NULL, NON-UNIQUE).\n- **over_id**: ID of the over (INTEGER, NOT NULL, NON-UNIQUE).\n- **ball_id**: ID of the ball (INTEGER, NOT NULL, NON-UNIQUE).\n- **innings_no**: Inning number (INTEGER, NOT NULL, NON-\n",
+        "db_col_dic": {
+            "player.player_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [83, 4, 193]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[83, 4, 193]"
+            ],
+            "player.player_name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['RT Ponting', 'AP Tare', 'M Manhas']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['RT Ponting', 'AP Tare', 'M Manhas']"
+            ],
+            "player.dob": [
+                "The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['1989-12-14', '1984-04-14', '1984-12-31']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Non-Unique",
+                "['1989-12-14', '1984-04-14', '1984-12-31']"
+            ],
+            "player.batting_hand": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Left-hand bat', 'Right-hand bat']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Left-hand bat', 'Right-hand bat']"
+            ],
+            "player.bowling_skill": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Left-arm medium', 'Slow left-arm chinaman', 'Slow left-arm orthodox']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Left-arm medium', 'Slow left-arm chinaman', 'Slow left-arm orthodox']"
+            ],
+            "player.country_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['India', 'West Indies', 'Bangladesh']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['India', 'West Indies', 'Bangladesh']"
+            ],
+            "team.team_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7, 9, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[7, 9, 2]"
+            ],
+            "team.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Rising Pune Supergiants', 'Sunrisers Hyderabad', 'Gujarat Lions']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Rising Pune Supergiants', 'Sunrisers Hyderabad', 'Gujarat Lions']"
+            ],
+            "match.match_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [598036, 501259, 598071]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[598036, 501259, 598071]"
+            ],
+            "match.team_1": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 1, 11]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4, 1, 11]"
+            ],
+            "match.team_2": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7, 3, 10]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[7, 3, 10]"
+            ],
+            "match.match_date": [
+                "The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2016-04-18', '2009-05-15', '2013-04-27']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Non-Unique",
+                "['2016-04-18', '2009-05-15', '2013-04-27']"
+            ],
+            "match.season_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 8, 7]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[5, 8, 7]"
+            ],
+            "match.venue": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Punjab Cricket Association IS Bindra Stadium Mohali', 'Sawai Mansingh Stadium', 'Eden Gardens']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Punjab Cricket Association IS Bindra Stadium Mohali', 'Sawai Mansingh Stadium', 'Eden Gardens']"
+            ],
+            "match.toss_winner": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 10, 12]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[5, 10, 12]"
+            ],
+            "match.toss_decision": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['field', 'bat']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['field', 'bat']"
+            ],
+            "match.win_type": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['runs', 'wickets']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['runs', 'wickets']"
+            ],
+            "match.win_margin": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8, 32, 34]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[8, 32, 34]"
+            ],
+            "match.outcome_type": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Result']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Result']"
+            ],
+            "match.match_winner": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [11, 12, 4]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[11, 12, 4]"
+            ],
+            "match.man_of_the_match": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [235, 254, 350]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[235, 254, 350]"
+            ],
+            "player_match.match_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [336031, 829798, 392213]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[336031, 829798, 392213]"
+            ],
+            "player_match.player_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [187, 115, 403]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[187, 115, 403]"
+            ],
+            "player_match.role": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Player', 'Keeper', 'Captain']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Player', 'Keeper', 'Captain']"
+            ],
+            "player_match.team_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [10, 9, 6]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[10, 9, 6]"
+            ],
+            "ball_by_ball.match_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [501245, 392242, 980928]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[501245, 392242, 980928]"
+            ],
+            "ball_by_ball.over_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [17, 6, 19]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[17, 6, 19]"
+            ],
+            "ball_by_ball.ball_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 5, 9]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4, 5, 9]"
+            ],
+            "ball_by_ball.innings_no": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 1]"
+            ],
+            "ball_by_ball.team_batting": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 1, 13]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[9, 1, 13]"
+            ],
+            "ball_by_ball.team_bowling": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [13, 7, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[13, 7, 1]"
+            ],
+            "ball_by_ball.striker_batting_position": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 10, 4]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 10, 4]"
+            ],
+            "ball_by_ball.striker": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [46, 103, 286]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[46, 103, 286]"
+            ],
+            "ball_by_ball.non_striker": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [364, 167, 427]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[364, 167, 427]"
+            ],
+            "ball_by_ball.bowler": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [153, 235, 102]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[153, 235, 102]"
+            ],
+            "batsman_scored.match_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [980946, 598032, 598028]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[980946, 598032, 598028]"
+            ],
+            "batsman_scored.over_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [11, 15, 19]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[11, 15, 19]"
+            ],
+            "batsman_scored.ball_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 6, 5]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 6, 5]"
+            ],
+            "batsman_scored.runs_scored": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 5, 3]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4, 5, 3]"
+            ],
+            "batsman_scored.innings_no": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 1]"
+            ],
+            "wicket_taken.match_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [501271, 336017, 734044]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[501271, 336017, 734044]"
+            ],
+            "wicket_taken.over_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [13, 2, 20]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[13, 2, 20]"
+            ],
+            "wicket_taken.ball_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 7, 8]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[5, 7, 8]"
+            ],
+            "wicket_taken.player_out": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [202, 224, 400]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[202, 224, 400]"
+            ],
+            "wicket_taken.kind_out": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['caught and bowled', 'obstructing the field', 'bowled']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['caught and bowled', 'obstructing the field', 'bowled']"
+            ],
+            "wicket_taken.innings_no": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 2]"
+            ],
+            "extra_runs.match_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [501251, 501258, 392206]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[501251, 501258, 392206]"
+            ],
+            "extra_runs.over_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 4, 16]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[9, 4, 16]"
+            ],
+            "extra_runs.ball_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [6, 9, 3]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[6, 9, 3]"
+            ],
+            "extra_runs.extra_type": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['legbyes', 'noballs', 'penalty']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['legbyes', 'noballs', 'penalty']"
+            ],
+            "extra_runs.extra_runs": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 4, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 4, 1]"
+            ],
+            "extra_runs.innings_no": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 2]"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries the bowler with the lowest bowling average per wicket taken. The related columns include bowler (ball_by_ball.bowler), runs conceded (batsman_scored.runs_scored + extra_runs.extra_runs), and wickets taken (wicket_taken.player_out). The calculation involves dividing total runs conceded by total wickets taken for each bowler.\n#columns: ball_by_ball.bowler, batsman_scored.runs_scored, extra_runs.extra_runs, wicket_taken.player_out\n#values: None\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "wicket",
+            "lowest bowling average per wicket taken",
+            "bowler",
+            "bowling average"
+        ],
+        "col": "ball_by_ball.bowler, batsman_scored.runs_scored, extra_runs.extra_runs, wicket_taken.player_out",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [
+            [
+                "match.win_type",
+                "wickets"
+            ],
+            [
+                "wicket_taken.kind_out",
+                "bowled"
+            ],
+            [
+                "wicket_taken.kind_out",
+                "hit wicket"
+            ]
+        ],
+        "column": "ball_by_ball.ball_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 5, 9]\nball_by_ball.bowler: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [153, 235, 102]\nball_by_ball.striker: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [46, 103, 286]\nball_by_ball.striker_batting_position: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 10, 4]\nball_by_ball.team_batting: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 1, 13]\nball_by_ball.team_bowling: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [13, 7, 1]\nbatsman_scored.ball_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 6, 5]\nbatsman_scored.runs_scored: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 5, 3]\nextra_runs.ball_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [6, 9, 3]\nextra_runs.extra_runs: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 4, 1]\nmatch.match_date: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2016-04-18', '2009-05-15', '2013-04-27']\nmatch.venue: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Punjab Cricket Association IS Bindra Stadium Mohali', 'Sawai Mansingh Stadium', 'Eden Gardens']\nmatch.win_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['runs', 'wickets']\nplayer.batting_hand: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Left-hand bat', 'Right-hand bat']\nplayer.bowling_skill: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Left-arm medium', 'Slow left-arm chinaman', 'Slow left-arm orthodox']\nplayer.country_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['India', 'West Indies', 'Bangladesh']\nplayer.player_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['RT Ponting', 'AP Tare', 'M Manhas']\nplayer_match.team_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [10, 9, 6]\nteam.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Rising Pune Supergiants', 'Sunrisers Hyderabad', 'Gujarat Lions']\nteam.team_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7, 9, 2]\nwicket_taken.ball_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 7, 8]\nwicket_taken.kind_out: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['caught and bowled', 'obstructing the field', 'bowled']\nwicket_taken.player_out: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [202, 224, 400]",
+        "foreign_keys": "",
+        "foreign_set": [],
+        "q_order": [
+            "Which bowler"
+        ],
+        "status": "success"
+    }
+]

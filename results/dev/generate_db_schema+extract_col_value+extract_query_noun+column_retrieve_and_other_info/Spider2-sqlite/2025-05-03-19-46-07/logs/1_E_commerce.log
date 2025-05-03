@@ -1,0 +1,346 @@
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: How many “delivered” orders has every customer placed during the last 30 days? 30 days refers to order_ts >= DATE('now','-30 day'); delivered refers to status = 'delivered'. */
+SELECT 
+    customer_id,
+    COUNT(*) AS delivered_orders_last_30_days
+FROM orders
+WHERE status = 'delivered' 
+  AND order_ts >= DATE('now','-30 day')
+GROUP BY customer_id;
+
+/* Answer the following: What is the overall average order value considering only delivered orders? order value refers to total_amount; delivered refers to status = 'delivered'. */
+SELECT 
+    AVG(total_amount) AS avg_order_value_delivered
+FROM orders
+WHERE status = 'delivered';
+
+/* Answer the following: List the top 5 customers who spent the most money on delivered orders in the previous calendar year. previous calendar year refers to strftime('%Y', order_ts) = strftime('%Y','now','-1 year'); delivered refers to status = 'delivered'. */
+SELECT 
+    c.customer_id,
+    c.name,
+    SUM(o.total_amount) AS total_spend_last_year
+FROM customers AS c
+JOIN orders AS o 
+  ON c.customer_id = o.customer_id
+WHERE o.status = 'delivered'
+  AND strftime('%Y', o.order_ts) = strftime('%Y','now','-1 year')
+GROUP BY c.customer_id, c.name
+ORDER BY total_spend_last_year DESC
+LIMIT 5;
+
+/* Answer the following: For every customer, calculate Recency in days based on the most recent delivered order. Recency refers to JULIANDAY('now') - JULIANDAY(MAX(order_ts)). */
+SELECT
+    customer_id,
+    CAST(JULIANDAY('now') - JULIANDAY(MAX(order_ts)) AS INTEGER) AS recency_days
+FROM orders
+WHERE status = 'delivered'
+GROUP BY customer_id;
+
+/* Answer the following: Classify each customer into an RFM segment using the following cut–offs: Recency ≤ 30 days = 'Champions'; 31–90 = 'Potential'; 91–180 = 'Hibernating'; > 180 = 'Lost'. Frequency refers to number of delivered orders; Monetary refers to total delivered spend. Produce the segment per customer. */
+WITH rfm AS (
+    SELECT
+        customer_id,
+        CAST(JULIANDAY('now') - JULIANDAY(MAX(order_ts)) AS INTEGER) AS recency,
+        COUNT(*) AS frequency,
+        SUM(total_amount) AS monetary
+    FROM orders
+    WHERE status = 'delivered'
+    GROUP BY customer_id
+)
+SELECT
+    customer_id,
+    CASE
+        WHEN recency <= 30  THEN 'Champions'
+        WHEN recency <= 90  THEN 'Potential'
+        WHEN recency <= 180 THEN 'Hibernating'
+        ELSE 'Lost'
+    END AS rfm_segment
+FROM rfm;
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: E_commerce
+## Table product_category_name_translation:
+product_category_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['artes', 'fashion_underwear_e_moda_praia', 'agro_industria_e_comercio']
+product_category_name_english: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['perfumery', 'electronics', 'home_construction']
+
+## Table sellers:
+seller_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['7b3f6ce5c6c22e9b96e7581ebf0df6e1', '98115075dd26cb8835946fc6086f5d30', '913fd0ebba70bb919f7254a02239173c']
+seller_zip_code_prefix: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [22713, 12924, 17032]
+seller_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['santa cruz do sul', 'ampere', 'olimpia']
+seller_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['GO', 'PA', 'DF']
+
+## Table customers:
+customer_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['a15cfa97b62e30ca2e0f9ad649cc7774', '744712b9c80935dedc6c1995e32bfdd9', '24919b72996bb428094aac6b57ff53de']
+customer_unique_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2ec795a39feac8b0ffac1f2aedcdbbfe', '0339119d431b8dd1b361567e4fc48a58', '25901d663386536f4a705f6ba76a7616']
+customer_zip_code_prefix: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [53350, 89535, 7436]
+customer_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['simonesia', 'aracuai', 'diamantino']
+customer_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PR', 'MG', 'MS']
+
+## Table geolocation:
+geolocation_zip_code_prefix: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [29027, 3448, 12335]
+geolocation_lat: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [-30, -30, -23]
+geolocation_lng: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [-46, -46, -46]
+geolocation_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['quatituba', 'são domingos do norte', 'conceicao da barra de minas']
+geolocation_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['MT', 'PA', 'CE']
+
+## Table order_items:
+order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['6355eaa9ea0d6a5946978835f89effbb', 'd66296945273987f899b24ce13f32f81', '8cdf6f8f13da3e9e57245ad6a35e5eaa']
+order_item_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 6, 4]
+product_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['42c28e0e09e582dfd979242c53111e6e', '1a41f6016e828ff1d37f2ecc2f2a0dfd', 'c144fdb6fc3bda28fb58900cdb37247c']
+seller_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['a435b009cd956ea60748b5cfbddf2e24', 'f4c4daa86e30c7e5a553a8d518ac03a5', 'ce3ad9de960102d0677a81f5d0bb7b2d']
+shipping_limit_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-13 20:55:50', '2018-06-21 02:58:50', '2017-05-23 19:43:26']
+price: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [277, 229, 159]
+freight_value: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [211, 33, 23]
+
+## Table order_payments:
+order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['8281751e57c88c456c81120e259c4367', '056a21113c096b87e87743862452a7d3', 'a404ea50be6a196526edbedda3d1d083']
+payment_sequential: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [17, 20, 15]
+payment_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['voucher', 'not_defined', 'debit_card']
+payment_installments: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 0, 24]
+payment_value: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [819, 134, 178]
+
+## Table order_reviews:
+review_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['3590167a693b2f2312743bc9a03a8d28', '0a451903f2fd4f369e6f037a343e3c1c', 'c6c40b1caf7e48b48b2ad47fa88cf78d']
+order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['6be4d639e28647dfcf1002b1e2f3e84c', '7deef94321f75bede64577871cf3147a', '5561adcb0fd46da4cad3048fa4e7fc00']
+review_score: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 5, 3]
+review_comment_title: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Atraso no entrega ', 'Excelentes!', 'entregue rapido']
+review_comment_message: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['A melhor loja entrega rápida recomendo a todos ', 'quero meu dinheiro de volta', 'NAO RECEBI MEUS PRODUTOS COMPLETO']
+review_creation_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-05-16 00:00:00', '2016-12-16 00:00:00', '2017-10-23 00:00:00']
+review_answer_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-03 17:37:22', '2018-05-06 18:52:02', '2017-10-07 05:12:30']
+
+## Table orders:
+order_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['cc9b441239dbd3786773a5c8724547ba', 'c256d21967285da68304dbc784bae3d4', 'e9de409fda259726830399eaf5fb4e42']
+customer_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['67127c6c29a10ac3bccb1fff10fe5758', '194e5864217a3571944250937dec0a41', '3ecd1b9b4c5f6f6288f6e95485527938']
+order_status: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['invoiced', 'created', 'approved']
+order_purchase_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-03-23 20:23:25', '2017-10-17 18:12:23', '2017-03-03 15:55:48']
+order_approved_at: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2017-11-20 16:06:44', '2018-02-06 16:11:40', '2017-11-23 21:27:49']
+order_delivered_carrier_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-01-08 18:16:45', '2018-02-27 16:23:50', '2017-07-07 12:43:39']
+order_delivered_customer_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-08-24 21:40:59', '2017-05-18 12:36:48', '2018-04-02 13:18:34']
+order_estimated_delivery_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-03-16 00:00:00', '2017-05-02 00:00:00', '2017-11-07 00:00:00']
+
+## Table products:
+product_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['d7d794641d5ada503ecda1a6f19199d5', '3fdb534dccf5bc9ab0406944b913787d', '7c8e2b381bb0fcba5b368961d7823cd2']
+product_category_name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['instrumentos_musicais', 'casa_conforto', 'livros_importados']
+product_name_lenght: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [72, 60, 34]
+product_description_lenght: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [1789, 2416, 588]
+product_photos_qty: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [11, 15, 3]
+product_weight_g: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [8325, 948, 1277]
+product_length_cm: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [30, 71, 98]
+product_height_cm: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [27, 73, 86]
+product_width_cm: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [23, 42, 100]
+
+## Table leads_qualified:
+mql_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['ea9bfa88b4322f8cc046e06cfd8c8856', 'ff0ff1ca67906b0ffaef9f6eaff010c6', '77487ac14aa5a4e7e5521642407eea5c']
+first_contact_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-05-15', '2017-10-20', '2017-08-07']
+landing_page_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['fa5a0151e1f37d0055a3478fbb48827a', '87732658ba41d8775e8577df347a64db', '0f25be78376bbbaba8553051e980b83c']
+origin: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other_publicities', 'paid_search', 'social']
+
+## Table leads_closed:
+mql_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['a4caf71cf38708eaf17117f78fa61c9f', 'a2de60ae969948c62475144651c21281', '92ad56ab29e347d1779a07879d38c67a']
+seller_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['ec5b3cd9d6bf0a880edfda73562a7cea', '4a4da369ad50f14d48337aa52eb826f5', 'c1849d4d32d7a6cecd5aa471809d3135']
+sdr_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['0cdad77786224a7cefea567b8c75c3c1', 'de63de0d10a6012430098db33c679b0b', '068066e24f0c643eb1d089c7dd20cd73']
+sr_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['d3d1e91a157ea7f90548eef82f1955e3', 'b90f87164b5f8c2cfa5c8572834dbe3f', '9d12ef1a7eca3ec58c545c678af7869c']
+won_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-03-07 17:11:48', '2018-05-09 21:35:58', '2018-05-10 19:16:27']
+business_segment: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['car_accessories', 'food_drink', 'health_beauty']
+lead_type: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['online_small', 'online_medium', 'industry']
+lead_behaviour_profile: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['cat', 'shark, wolf', 'eagle']
+has_company: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [1, 0]
+has_gtin: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [1, 0]
+average_stock: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['200+', '50-200', '20-50']
+business_type: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['reseller', 'manufacturer', 'other']
+declared_product_catalog_size: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [5, 1000, 305]
+declared_monthly_revenue: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [130000, 150000, 20000]
+
+#Forigen keys:
+
+
+#Database Description:
+The `E_commerce` database is designed to manage and analyze data related to an e-commerce platform. It contains information about products, sellers, customers, orders, payments, reviews, geolocation, and leads. The database facilitates tracking product details, seller and customer information, order processing, payment transactions, customer reviews, and lead management. It is structured to support business operations, customer insights, and sales analysis.
+
+#Tables Descriptions:
+
+1. **product_category_name_translation**:
+   - Contains translations of product category names into English.
+   - Includes columns for the original product category name (`product_category_name`) and its English translation (`product_category_name_english`).
+
+2. **sellers**:
+   - Stores information about sellers on the platform.
+   - Includes seller ID (`seller_id`), zip code prefix (`seller_zip_code_prefix`), city (`seller_city`), and state (`seller_state`).
+
+3. **customers**:
+   - Stores information about customers.
+   - Includes customer ID (`customer_id`), unique customer ID (`customer_unique_id`), zip code prefix (`customer_zip_code_prefix`), city (`customer_city`), and state (`customer_state`).
+
+4. **geolocation**:
+   - Contains geolocation data for zip codes.
+   - Includes zip code prefix (`geolocation_zip_code_prefix`), latitude (`geolocation_lat`), longitude (`geolocation_lng`), city (`geolocation_city`), and state (`geolocation_state`).
+
+5. **order_items**:
+   - Stores details about items in orders.
+   - Includes order ID (`order_id`), item ID (`order_item_id`), product ID (`product_id`), seller ID (`seller_id`), shipping limit date (`shipping_limit_date`), price (`price`), and freight value (`freight_value`).
+
+6. **order_payments**:
+   - Contains payment information for orders.
+   - Includes order ID (`order_id`), payment sequential number (`payment_sequential`), payment type (`payment_type`), number of installments (`payment_installments`), and payment value (`payment_value`).
+
+7. **order_reviews**:
+   - Stores customer reviews for orders.
+   - Includes review ID (`review_id`), order ID (`order_id`), review score (`review_score`), review comment title (`review_comment_title`), review comment message (`review_comment_message`), review creation date (`review_creation_date`), and review answer timestamp (`review_answer_timestamp`).
+
+8. **orders**:
+   - Contains information about orders placed on the platform.
+   - Includes order ID (`order_id`), customer ID (`customer_id`), order status (`order_status`), purchase timestamp (`order_purchase_timestamp`), approval timestamp (`order_approved_at`), carrier delivery date (`order_delivered_carrier_date`), customer delivery date (`order_delivered_customer_date`), and estimated delivery date (`order_estimated_delivery_date`).
+
+9. **products**:
+   - Stores details about products available on the platform.
+   - Includes product ID (`product_id`), category name (`product_category_name`), name length (`product_name_lenght`), description length (`product_description_lenght`), number of photos (`product_photos_qty`), weight (`product_weight_g`), dimensions (length, height, width in cm).
+
+10. **leads_qualified**:
+    - Contains information about qualified leads.
+    - Includes lead ID (`mql_id`), first contact date (`first_contact_date`), landing page ID (`landing_page_id`), and origin (`origin`).
+
+11. **leads_closed**:
+    - Stores information about closed leads.
+    - Includes lead ID (`mql_id`), seller ID (`seller_id`), SDR ID (`sdr_id`), SR ID (`sr_id`), won date (`won_date`), business segment (`business_segment`
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: According to the RFM definition document, calculate the average sales per order for each customer within distinct RFM segments, considering only 'delivered' orders. Use the customer unique identifier. Clearly define how to calculate Recency based on the latest purchase timestamp and specify the criteria for classifying RFM segments. The average sales should be computed as the total spend divided by the total number of orders. Please analyze and report the differences in average sales across the RFM segments */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries the average sales per order for each customer within distinct RFM segments, considering only 'delivered' orders. It requires calculating Recency based on the latest purchase timestamp, classifying RFM segments, and computing average sales as total spend divided by the total number of orders. The related columns include customer unique identifier, order status, order timestamp, total amount, and customer ID.
+#columns: orders.customer_id, customers.customer_unique_id, orders.order_status, orders.order_purchase_timestamp, orders.order_id, order_items.price, order_items.freight_value
+#values: "delivered"
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+According to the RFM definition document, calculate the average sales per order for each customer within distinct RFM segments, considering only 'delivered' orders. Use the customer unique identifier. Clearly define how to calculate Recency based on the latest purchase timestamp and specify the criteria for classifying RFM segments. The average sales should be computed as the total spend divided by the total number of orders. Please analyze and report the differences in average sales across the RFM segments
+
+############################## AI at step extract_query_noun ##############################
+
+"RFM definition document", "average sales", "order", "customer", "distinct RFM segments", "delivered orders", "customer unique identifier", "Recency", "latest purchase timestamp", "criteria", "RFM segments", "total spend", "total number of orders", "differences", "average sales", "RFM segments"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: According to the RFM definition document, calculate the average sales per order for each customer within distinct RFM segments, considering only 'delivered' orders. Use the customer unique identifier. Clearly define how to calculate Recency based on the latest purchase timestamp and specify the criteria for classifying RFM segments. The average sales should be computed as the total spend divided by the total number of orders. Please analyze and report the differences in average sales across the RFM segments
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+    {
+        "Type": "QIC",
+        "Extract": {
+            "Q": "calculate",
+            "J": null,
+            "I": ["the average sales per order for each customer"],
+            "C": [
+                "within distinct RFM segments",
+                "considering only 'delivered' orders",
+                "using the customer unique identifier"
+            ]
+        }
+    },
+    {
+        "Type": "QIC",
+        "Extract": {
+            "Q": "Clearly define",
+            "J": null,
+            "I": ["how to calculate Recency"],
+            "C": ["based on the latest purchase timestamp"]
+        }
+    },
+    {
+        "Type": "QIC",
+        "Extract": {
+            "Q": "specify",
+            "J": null,
+            "I": ["the criteria for classifying RFM segments"],
+            "C": []
+        }
+    },
+    {
+        "Type": "QIC",
+        "Extract": {
+            "Q": "calculate",
+            "J": null,
+            "I": ["the average sales"],
+            "C": [
+                "as the total spend divided by the total number of orders"
+            ]
+        }
+    },
+    {
+        "Type": "QIC",
+        "Extract": {
+            "Q": "analyze and report",
+            "J": null,
+            "I": ["the differences in average sales"],
+            "C": ["across the RFM segments"]
+        }
+    }
+]
+```
+

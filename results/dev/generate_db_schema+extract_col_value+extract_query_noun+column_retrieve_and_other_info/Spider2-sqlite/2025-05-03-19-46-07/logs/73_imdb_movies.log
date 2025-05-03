@@ -1,0 +1,348 @@
+############################## Human at step generate_db_schema ##############################
+
+/* Here is a examples about describe database */
+    #Forigen keys: 
+    Airlines.ORIGIN = Airports.Code, Airlines.DEST = Airports.Code, Airlines.OP_CARRIER_AIRLINE_ID = Air Carriers.Code
+    #Database Description: The database encompasses information related to flights, including airlines, airports, and flight operations.
+    #Tables Descriptions:
+    Air Carriers: Codes and descriptive information about airlines
+    Airports: IATA codes and descriptions of airports
+    Airlines: Detailed information about flights 
+
+    /* Here is a examples about describe database */
+    #Forigen keys:
+    data.ID = price.ID, production.ID = price.ID, production.ID = data.ID, production.country = country.origin
+    #Database Description: The database contains information related to cars, including country, price, specifications, Production
+    #Tables Descriptions:
+    Country: Names of the countries where the cars originate from.
+    Price: Price of the car in USD.
+    Data: Information about the car's specifications
+    Production: Information about car's production.
+
+    /* Describe the following database */
+    Database Management System: SQLite
+#Database name: imdb_movies
+## Table ERD:
+table: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['names', 'ratings', 'role_mapping']
+column: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['id', 'known_for_movies', 'country']
+`Unnamed: 2`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None
+`Unnamed: 3`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None
+`Unnamed: 4`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None
+`Unnamed: 5`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None
+`Unnamed: 6`: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['category', 'role_mapping', '* name_id']
+`Unnamed: 7`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None
+`Unnamed: 8`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None
+`Unnamed: 9`: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['date_of_birth', 'duration', 'movie']
+`Unnamed: 10`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None
+`Unnamed: 11`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None
+`Unnamed: 12`: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['median_rating', 'director_mapping', 'ratings']
+
+## Table movies:
+id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt9251598', 'tt0443474', 'tt6175402']
+title: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Les fauves', 'An International Local Story', 'Ga wo man see geng']
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2019, 2017, 2018]
+date_published: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Values format like: ['2017-04-10 00:00:00', '2019-07-05 00:00:00', '2018-07-14 00:00:00']
+duration: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [177, 105, 160]
+country: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Hong Kong, China', 'Iran', 'Palestine, Germany, Netherlands, Mexico']
+worlwide_gross_income: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['$ 226945087', '$ 4080073', '$ 17702']
+languages: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Turkish, English', 'English, Spanish, French', 'English, Arabic, Hebrew']
+production_company: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Open Road Films (II)', 'MK', 'Abhishek Films']
+
+## Table genre:
+movie_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt4654472', 'tt6824598', 'tt6807256']
+genre: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Crime', 'Drama', 'Fantasy']
+
+## Table director_mapping:
+movie_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt7768846', 'tt10370402', 'tt8286894']
+name_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['nm0764367', 'nm0298807', 'nm2051948']
+
+## Table role_mapping:
+movie_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt5674698', 'tt7969140', 'tt7367960']
+name_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['nm3589654', 'nm2790534', 'nm5591758']
+category: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['actor', 'actress']
+
+## Table names:
+id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['nm6037329', 'nm0421232', 'nm0410667']
+name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Ishaa Saha', 'Jennie Lynn', 'Yetkin Dikinciler']
+height: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [81, 147, 190]
+date_of_birth: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['1936-10-02', '1935-01-19', '1976-08-27']
+known_for_movies: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['tt7345034', 'tt7216068,tt5242548', 'tt3465026']
+
+## Table ratings:
+movie_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt10214842', 'tt8587142', 'tt6270596']
+avg_rating: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [6, 3, 9]
+total_votes: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5670, 651, 1262]
+median_rating: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [10, 5, 4]
+
+#Forigen keys:
+
+
+    Please conclude the database in the following format:
+    #Database Description:
+    #Tables Descriptions:
+    
+
+############################## AI at step generate_db_schema ##############################
+
+#Database Description:
+The `imdb_movies` database is designed to store and manage information related to movies, including their genres, directors, actors, ratings, and production details. It provides a comprehensive structure to analyze movie data, including metadata about movies, their associated personnel, and performance metrics such as ratings and votes.
+
+#Tables Descriptions:
+1. **movies**: Contains detailed information about movies, including their unique ID, title, release year, publication date, duration, country of origin, worldwide gross income, languages, and production company.
+
+2. **genre**: Stores the genre(s) associated with each movie, linking movies via their unique IDs.
+
+3. **director_mapping**: Maps movies to their directors using movie IDs and director IDs.
+
+4. **role_mapping**: Maps movies to their actors/actresses, specifying their roles (actor/actress) using movie IDs and personnel IDs.
+
+5. **names**: Contains information about individuals (actors, actresses, directors, etc.), including their unique ID, name, height, date of birth, and movies they are known for.
+
+6. **ratings**: Stores rating information for movies, including the average rating, total votes, and median rating, linked via movie IDs.
+
+#Foreign Keys:
+1. `genre.movie_id` → `movies.id`: Links genres to their respective movies.
+2. `director_mapping.movie_id` → `movies.id`: Links directors to their respective movies.
+3. `director_mapping.name_id` → `names.id`: Links directors to their personal information.
+4. `role_mapping.movie_id` → `movies.id`: Links actors/actresses to their respective movies.
+5. `role_mapping.name_id` → `names.id`: Links actors/actresses to their personal information.
+6. `ratings.movie_id` → `movies.id`: Links ratings to their respective movies.
+
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: What is the total number of remote job postings for the title 'Data Scientist' that report an annual average salary greater than 120000? remote refers to location_type = 'Remote'; annual average salary refers to salary_avg_annual */
+SELECT COUNT(*) 
+FROM job_postings 
+WHERE title = 'Data Scientist' 
+  AND location_type = 'Remote' 
+  AND salary_avg_annual > 120000;
+
+/* Answer the following: List the three most frequently required skills for 'Data Analyst' positions, ordered from most to least in demand. 'Data Analyst' refers to title = 'Data Analyst'. */
+SELECT s.name
+FROM skills AS s
+JOIN job_skills AS js   ON s.id = js.skill_id
+JOIN job_postings AS jp ON jp.id = js.job_id
+WHERE jp.title = 'Data Analyst'
+GROUP BY s.name
+ORDER BY COUNT(*) DESC
+LIMIT 3;
+
+/* Answer the following: Among on-site 'Business Analyst' postings with non-null salary, what is the minimum annual average salary? on-site refers to location_type = 'On-site'; non-null salary refers to salary_avg_annual IS NOT NULL. */
+SELECT MIN(salary_avg_annual)
+FROM job_postings
+WHERE title = 'Business Analyst'
+  AND location_type = 'On-site'
+  AND salary_avg_annual IS NOT NULL;
+
+/* Answer the following: How many unique skills are required across all remote postings that offer a salary greater than the average salary of all remote postings? remote refers to location_type = 'Remote'; salary refers to salary_avg_annual. */
+SELECT COUNT(DISTINCT s.name)
+FROM skills AS s
+JOIN job_skills AS js   ON s.id = js.skill_id
+JOIN job_postings AS jp ON jp.id = js.job_id
+WHERE jp.location_type = 'Remote'
+  AND jp.salary_avg_annual > (
+        SELECT AVG(salary_avg_annual)
+        FROM job_postings
+        WHERE location_type = 'Remote'
+     );
+
+/* Answer the following: For each employment type, what is the average annual salary of 'Data Engineer' postings that specify a salary? employment type refers to employment_type; salary specified refers to salary_avg_annual IS NOT NULL. */
+SELECT employment_type,
+       AVG(salary_avg_annual) AS avg_salary
+FROM job_postings
+WHERE title = 'Data Engineer'
+  AND salary_avg_annual IS NOT NULL
+GROUP BY employment_type;
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: imdb_movies
+## Table ERD:
+table: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['names', 'ratings', 'role_mapping']
+column: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['id', 'known_for_movies', 'country']
+`Unnamed: 2`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None
+`Unnamed: 3`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None
+`Unnamed: 4`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None
+`Unnamed: 5`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None
+`Unnamed: 6`: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['category', 'role_mapping', '* name_id']
+`Unnamed: 7`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None
+`Unnamed: 8`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None
+`Unnamed: 9`: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['date_of_birth', 'duration', 'movie']
+`Unnamed: 10`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None
+`Unnamed: 11`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None
+`Unnamed: 12`: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['median_rating', 'director_mapping', 'ratings']
+
+## Table movies:
+id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt9251598', 'tt0443474', 'tt6175402']
+title: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Les fauves', 'An International Local Story', 'Ga wo man see geng']
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2019, 2017, 2018]
+date_published: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Values format like: ['2017-04-10 00:00:00', '2019-07-05 00:00:00', '2018-07-14 00:00:00']
+duration: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [177, 105, 160]
+country: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Hong Kong, China', 'Iran', 'Palestine, Germany, Netherlands, Mexico']
+worlwide_gross_income: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['$ 226945087', '$ 4080073', '$ 17702']
+languages: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Turkish, English', 'English, Spanish, French', 'English, Arabic, Hebrew']
+production_company: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Open Road Films (II)', 'MK', 'Abhishek Films']
+
+## Table genre:
+movie_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt4654472', 'tt6824598', 'tt6807256']
+genre: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Crime', 'Drama', 'Fantasy']
+
+## Table director_mapping:
+movie_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt7768846', 'tt10370402', 'tt8286894']
+name_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['nm0764367', 'nm0298807', 'nm2051948']
+
+## Table role_mapping:
+movie_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt5674698', 'tt7969140', 'tt7367960']
+name_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['nm3589654', 'nm2790534', 'nm5591758']
+category: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['actor', 'actress']
+
+## Table names:
+id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['nm6037329', 'nm0421232', 'nm0410667']
+name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Ishaa Saha', 'Jennie Lynn', 'Yetkin Dikinciler']
+height: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [81, 147, 190]
+date_of_birth: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['1936-10-02', '1935-01-19', '1976-08-27']
+known_for_movies: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['tt7345034', 'tt7216068,tt5242548', 'tt3465026']
+
+## Table ratings:
+movie_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt10214842', 'tt8587142', 'tt6270596']
+avg_rating: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [6, 3, 9]
+total_votes: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5670, 651, 1262]
+median_rating: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [10, 5, 4]
+
+#Forigen keys:
+
+
+#Database Description:
+The `imdb_movies` database is designed to store and manage information related to movies, including their genres, directors, actors, ratings, and production details. It provides a comprehensive structure to analyze movie data, including metadata about movies, their associated personnel, and performance metrics such as ratings and votes.
+
+#Tables Descriptions:
+1. **movies**: Contains detailed information about movies, including their unique ID, title, release year, publication date, duration, country of origin, worldwide gross income, languages, and production company.
+
+2. **genre**: Stores the genre(s) associated with each movie, linking movies via their unique IDs.
+
+3. **director_mapping**: Maps movies to their directors using movie IDs and director IDs.
+
+4. **role_mapping**: Maps movies to their actors/actresses, specifying their roles (actor/actress) using movie IDs and personnel IDs.
+
+5. **names**: Contains information about individuals (actors, actresses, directors, etc.), including their unique ID, name, height, date of birth, and movies they are known for.
+
+6. **ratings**: Stores rating information for movies, including the average rating, total votes, and median rating, linked via movie IDs.
+
+#Foreign Keys:
+1. `genre.movie_id` → `movies.id`: Links genres to their respective movies.
+2. `director_mapping.movie_id` → `movies.id`: Links directors to their respective movies.
+3. `director_mapping.name_id` → `names.id`: Links directors to their personal information.
+4. `role_mapping.movie_id` → `movies.id`: Links actors/actresses to their respective movies.
+5. `role_mapping.name_id` → `names.id`: Links actors/actresses to their personal information.
+6. `ratings.movie_id` → `movies.id`: Links ratings to their respective movies.
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: Can you provide the top 9 directors by movie count, including their ID, name, number of movies, average inter-movie duration (rounded to the nearest integer), average rating (rounded to 2 decimals), total votes, minimum and maximum ratings, and total movie duration? Sort the output first by movie count in descending order and then by total movie duration in descending order. */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries the top 9 directors by movie count and requires details such as ID, name, number of movies, average inter-movie duration, average rating, total votes, minimum and maximum ratings, and total movie duration. The related columns include director information, movie details, and ratings.
+#columns: director_mapping.name_id, names.name, COUNT(director_mapping.movie_id), AVG(movies.duration), AVG(ratings.avg_rating), SUM(ratings.total_votes), MIN(ratings.avg_rating), MAX(ratings.avg_rating), SUM(movies.duration)
+#values: None
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+Can you provide the top 9 directors by movie count, including their ID, name, number of movies, average inter-movie duration (rounded to the nearest integer), average rating (rounded to 2 decimals), total votes, minimum and maximum ratings, and total movie duration? Sort the output first by movie count in descending order and then by total movie duration in descending order.
+
+############################## AI at step extract_query_noun ##############################
+
+"directors", "movie count", "ID", "name", "number of movies", "average inter-movie duration", "integer", "average rating", "decimals", "total votes", "minimum ratings", "maximum ratings", "total movie duration", "output", "movie count", "descending order", "total movie duration", "descending order"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: Can you provide the top 9 directors by movie count, including their ID, name, number of movies, average inter-movie duration (rounded to the nearest integer), average rating (rounded to 2 decimals), total votes, minimum and maximum ratings, and total movie duration? Sort the output first by movie count in descending order and then by total movie duration in descending order.
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "provide",
+      "J": null,
+      "I": [
+        "the top 9 directors",
+        "their ID",
+        "name",
+        "number of movies",
+        "average inter-movie duration (rounded to the nearest integer)",
+        "average rating (rounded to 2 decimals)",
+        "total votes",
+        "minimum and maximum ratings",
+        "total movie duration"
+      ],
+      "C": [
+        "by movie count",
+        "Sort the output first by movie count in descending order and then by total movie duration in descending order"
+      ]
+    }
+  }
+]
+```
+

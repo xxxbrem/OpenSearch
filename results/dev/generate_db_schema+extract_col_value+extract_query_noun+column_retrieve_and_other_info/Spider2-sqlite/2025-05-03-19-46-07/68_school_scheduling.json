@@ -1,0 +1,753 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: school_scheduling\n## Table Buildings:\nBuildingCode: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['LB', 'IB', 'GYM']\nBuildingName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Library', 'Arts and Sciences', 'Technology Building']\nNumberOfFloors: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 1, 2]\nElevatorAccess: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\nSiteParkingAvailable: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\n\n## Table Categories:\nCategoryID: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['ENG', 'MAT', 'ACC']\nCategoryDescription: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['History', 'French', 'Art']\nDepartmentID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 3, 5]\n\n## Table Class_Rooms:\nClassRoomID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3315, 1622, 3415]\nBuildingCode: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['CC', 'TB', 'LB']\nPhoneAvailable: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\n\n## Table Classes:\nClassID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [6031, 1560, 5639]\nSubjectID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [56, 12, 1]\nClassRoomID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1641, 1142, 3343]\nCredits: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 5, 2]\nStartDate: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2017-09-16', '2018-01-20', '2018-01-15']\nStartTime: The type is TIME, Which does not inlude Null and is Non-Unique. Values format like: ['12:00:00', '10:00:00', '18:00:00']\nDuration: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [140, 280, 110]\nMondaySchedule: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nTuesdaySchedule: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\nWednesdaySchedule: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\nThursdaySchedule: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\nFridaySchedule: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\nSaturdaySchedule: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\n\n## Table Departments:\nDepartmentID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2, 4, 5]\nDeptName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Business Administration', 'Sciences', 'Social Sciences']\nDeptChair: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [98007, 98005, 98059]\n\n## Table Faculty:\nStaffID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [98013, 98019, 98052]\nTitle: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Instructor', 'Associate Professor', 'Professor']\nStatus: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Full Time', 'Part Time', 'On Leave']\nTenured: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\n\n## Table Faculty_Categories:\nStaffID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [98020, 98030, 98062]\nCategoryID: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['POL', 'HIS', 'CIS']\n\n## Table Faculty_Classes:\nClassID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1006, 6090, 1030]\nStaffID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [98064, 98048, 98025]\n\n## Table Faculty_Subjects:\nStaffID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [98063, 98062, 98010]\nSubjectID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 39, 19]\nProficiencyRating: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [10, 9, 8]\n\n## Table Majors:\nMajorID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2, 6, 1]\nMajor: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Accounting', 'Information Sciences', 'Music']\n\n## Table Staff:\nStaffID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [98014, 98042, 98020]\nStfFirstName: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Katherine', 'Maria', 'Jim']\nStfLastname: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Hernandez', 'Wilson', 'Sergienko']\nStfStreetAddress: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['672 Lamont Ave', '16 Maple Lane', '15127 NE 24th, #383']\nStfCity: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Kirkland', 'Marysville', 'Bellevue']\nStfState: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['WA', 'CA', 'TX']\nStfZipCode: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [97208, 90809, 98125]\nStfAreaCode: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [425, 503, 915]\nStfPhoneNumber: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['555-2531', '555-2491', '555-2611']\nSalary: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [44000, 49000, 35000]\nDateHired: The type is DATE, Which does not inlude Null and is Unique. Values format like: ['1983-01-28', '1986-09-17', '1990-08-20']\nPosition: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Graduate Advisor', 'Registrar', 'Secretary']\n\n## Table Student_Class_Status:\nClassStatus: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 2, 3]\nClassStatusDescription: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Completed', 'Enrolled', 'Withdrew']\n\n## Table Student_Schedules:\nStudentID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1016, 1009, 1003]\nClassID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1162, 5071, 3085]\nClassStatus: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 3]\nGrade: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [88, 97, 82]\n\n## Table Students:\nStudentID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1011, 1009, 1007]\nStudFirstName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Richard', 'John', 'George']\nStudLastName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Bonnicksen', 'Hamilton', 'Chavez']\nStudStreetAddress: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['611 Alpine Drive', 'Route 2, Box 203B', '66 Spring Valley Drive']\nStudCity: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Palm Springs', 'Portland', 'Medford']\nStudState: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['OR', 'CA', 'WA']\nStudZipCode: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [97401, 97501, 78284]\nStudAreaCode: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [541, 806, 206]\nStudPhoneNumber: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['555-2716', '555-2296', '555-2696']\nStudGPA: The type is REAL, Which does not inlude Null and is Unique. Values format like: [85, 77, 72]\nStudMajor: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [3, 5, 6]\n\n## Table Subjects:\nSubjectID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [18, 22, 39]\nCategoryID: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['BUS', 'MAT', 'ART']\nSubjectCode: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['PHY 201', 'HIS 112', 'PHY 203']\nSubjectName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['U.S. History to 1877', 'American Government', 'Elementary Algebra']\nSubjectPreReq: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['ACC 220', 'MAT 098', 'ENG 101']\nSubjectDescription: The type is TEXT, Which does not inlude Null and is Unique. Values format: <Long text>\n\n#Forigen keys:\nClass_Rooms.BuildingCode = Buildings.BuildingCode, Classes.ClassRoomID = Class_Rooms.ClassRoomID, Faculty_Categories.StaffID = Faculty.StaffID, Faculty_Categories.CategoryID = Categories.CategoryID, Faculty_Classes.ClassID = Classes.ClassID, Faculty_Subjects.StaffID = Faculty.StaffID, Student_Schedules.ClassStatus = Student_Class_Status.ClassStatus, Student_Schedules.ClassID = Classes.ClassID, Students.StudMajor = Majors.MajorID, Subjects.SubjectPreReq = Subjects.SubjectCode, Subjects.CategoryID = Categories.CategoryID\n\n#Database Description:\nThe `school_scheduling` database is designed to manage and organize information related to school operations, including buildings, classrooms, classes, faculty, students, subjects, and schedules. It provides a comprehensive structure for tracking relationships between entities such as faculty assignments, student schedules, class details, and subject prerequisites.\n\n#Tables Descriptions:\n\n## Buildings:\nContains information about school buildings, including their codes, names, number of floors, elevator access, and parking availability.\n\n## Categories:\nStores categories of subjects, including unique category IDs, descriptions, and associated department IDs.\n\n## Class_Rooms:\nTracks classroom details, including unique classroom IDs, associated building codes, and whether phones are available in the room.\n\n## Classes:\nManages class details, including unique class IDs, associated subjects, classroom assignments, credits, start dates and times, durations, and weekly schedules.\n\n## Departments:\nContains information about school departments, including unique department IDs, names, and department chairs.\n\n## Faculty:\nStores faculty information, including unique staff IDs, titles, employment statuses, tenure status, and other details.\n\n## Faculty_Categories:\nTracks the relationship between faculty members and subject categories, linking staff IDs to category IDs.\n\n## Faculty_Classes:\nManages faculty assignments to classes, linking unique class IDs to staff IDs.\n\n## Faculty_Subjects:\nTracks faculty proficiency in specific subjects, linking staff IDs to subject IDs and including a proficiency rating.\n\n## Majors:\nContains information about academic majors, including unique major IDs and names.\n\n## Staff:\nStores detailed information about staff members, including unique staff IDs, names, addresses, phone numbers, salaries, hire dates, and positions.\n\n## Student_Class_Status:\nDefines the status of a class for students, including unique class status IDs and descriptions (e.g., \"Completed,\" \"Enrolled,\" \"Withdrew\").\n\n## Student_Schedules:\nTracks student schedules, linking student IDs to class IDs, class statuses, and grades.\n\n## Students:\nContains detailed information about students, including unique student IDs, names, addresses, phone numbers, GPAs, and associated majors.\n\n## Subjects:\nStores subject information, including unique subject IDs, category IDs, subject codes, names, prerequisites, and descriptions.\n\n#Foreign Keys:\n- `Class_Rooms.BuildingCode` = `Buildings.BuildingCode`\n- `Classes.ClassRoomID` = `Class_Rooms.ClassRoomID`\n- `Faculty_Categories.StaffID` = `Faculty.StaffID`\n- `Faculty_Categories.CategoryID` = `Categories.CategoryID`\n- `Faculty_Classes.ClassID` = `Classes.ClassID`\n- `Faculty_Subjects.StaffID` = `Faculty.StaffID`\n- `Student_Schedules.ClassStatus` = `Student_Class_Status.ClassStatus`\n- `Student_Schedules.ClassID` = `Classes.ClassID`\n- `Students.StudMajor` = `Majors.MajorID`\n- `Subjects.SubjectPreReq` = `Subjects.SubjectCode`\n- `Subjects.CategoryID` = `Categories.CategoryID`\n",
+        "db_col_dic": {
+            "Buildings.BuildingCode": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['LB', 'IB', 'GYM']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['LB', 'IB', 'GYM']"
+            ],
+            "Buildings.BuildingName": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Library', 'Arts and Sciences', 'Technology Building']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Library', 'Arts and Sciences', 'Technology Building']"
+            ],
+            "Buildings.NumberOfFloors": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 1, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 1, 2]"
+            ],
+            "Buildings.ElevatorAccess": [
+                "The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "BOOLEAN",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "Buildings.SiteParkingAvailable": [
+                "The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "BOOLEAN",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "Categories.CategoryID": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['ENG', 'MAT', 'ACC']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['ENG', 'MAT', 'ACC']"
+            ],
+            "Categories.CategoryDescription": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['History', 'French', 'Art']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['History', 'French', 'Art']"
+            ],
+            "Categories.DepartmentID": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 3, 5]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4, 3, 5]"
+            ],
+            "Class_Rooms.ClassRoomID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3315, 1622, 3415]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[3315, 1622, 3415]"
+            ],
+            "Class_Rooms.BuildingCode": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['CC', 'TB', 'LB']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['CC', 'TB', 'LB']"
+            ],
+            "Class_Rooms.PhoneAvailable": [
+                "The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "BOOLEAN",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "Classes.ClassID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [6031, 1560, 5639]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[6031, 1560, 5639]"
+            ],
+            "Classes.SubjectID": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [56, 12, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[56, 12, 1]"
+            ],
+            "Classes.ClassRoomID": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1641, 1142, 3343]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1641, 1142, 3343]"
+            ],
+            "Classes.Credits": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 5, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 5, 2]"
+            ],
+            "Classes.StartDate": [
+                "The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2017-09-16', '2018-01-20', '2018-01-15']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Non-Unique",
+                "['2017-09-16', '2018-01-20', '2018-01-15']"
+            ],
+            "Classes.StartTime": [
+                "The type is TIME, Which does not inlude Null and is Non-Unique. Values format like: ['12:00:00', '10:00:00', '18:00:00']",
+                "",
+                "",
+                "TIME",
+                "Non-Null",
+                "Non-Unique",
+                "['12:00:00', '10:00:00', '18:00:00']"
+            ],
+            "Classes.Duration": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [140, 280, 110]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[140, 280, 110]"
+            ],
+            "Classes.MondaySchedule": [
+                "The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "BOOLEAN",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "Classes.TuesdaySchedule": [
+                "The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "BOOLEAN",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "Classes.WednesdaySchedule": [
+                "The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "BOOLEAN",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "Classes.ThursdaySchedule": [
+                "The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "BOOLEAN",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "Classes.FridaySchedule": [
+                "The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "BOOLEAN",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "Classes.SaturdaySchedule": [
+                "The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "BOOLEAN",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "Departments.DepartmentID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2, 4, 5]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[2, 4, 5]"
+            ],
+            "Departments.DeptName": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Business Administration', 'Sciences', 'Social Sciences']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Business Administration', 'Sciences', 'Social Sciences']"
+            ],
+            "Departments.DeptChair": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [98007, 98005, 98059]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[98007, 98005, 98059]"
+            ],
+            "Faculty.StaffID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [98013, 98019, 98052]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[98013, 98019, 98052]"
+            ],
+            "Faculty.Title": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Instructor', 'Associate Professor', 'Professor']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Instructor', 'Associate Professor', 'Professor']"
+            ],
+            "Faculty.Status": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Full Time', 'Part Time', 'On Leave']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Full Time', 'Part Time', 'On Leave']"
+            ],
+            "Faculty.Tenured": [
+                "The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "BOOLEAN",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "Faculty_Categories.StaffID": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [98020, 98030, 98062]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[98020, 98030, 98062]"
+            ],
+            "Faculty_Categories.CategoryID": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['POL', 'HIS', 'CIS']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['POL', 'HIS', 'CIS']"
+            ],
+            "Faculty_Classes.ClassID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1006, 6090, 1030]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1006, 6090, 1030]"
+            ],
+            "Faculty_Classes.StaffID": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [98064, 98048, 98025]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[98064, 98048, 98025]"
+            ],
+            "Faculty_Subjects.StaffID": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [98063, 98062, 98010]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[98063, 98062, 98010]"
+            ],
+            "Faculty_Subjects.SubjectID": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 39, 19]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 39, 19]"
+            ],
+            "Faculty_Subjects.ProficiencyRating": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [10, 9, 8]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[10, 9, 8]"
+            ],
+            "Majors.MajorID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2, 6, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[2, 6, 1]"
+            ],
+            "Majors.Major": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Accounting', 'Information Sciences', 'Music']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Accounting', 'Information Sciences', 'Music']"
+            ],
+            "Staff.StaffID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [98014, 98042, 98020]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[98014, 98042, 98020]"
+            ],
+            "Staff.StfFirstName": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Katherine', 'Maria', 'Jim']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Katherine', 'Maria', 'Jim']"
+            ],
+            "Staff.StfLastname": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Hernandez', 'Wilson', 'Sergienko']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Hernandez', 'Wilson', 'Sergienko']"
+            ],
+            "Staff.StfStreetAddress": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['672 Lamont Ave', '16 Maple Lane', '15127 NE 24th, #383']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['672 Lamont Ave', '16 Maple Lane', '15127 NE 24th, #383']"
+            ],
+            "Staff.StfCity": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Kirkland', 'Marysville', 'Bellevue']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Kirkland', 'Marysville', 'Bellevue']"
+            ],
+            "Staff.StfState": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['WA', 'CA', 'TX']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['WA', 'CA', 'TX']"
+            ],
+            "Staff.StfZipCode": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [97208, 90809, 98125]",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "[97208, 90809, 98125]"
+            ],
+            "Staff.StfAreaCode": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [425, 503, 915]",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "[425, 503, 915]"
+            ],
+            "Staff.StfPhoneNumber": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['555-2531', '555-2491', '555-2611']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['555-2531', '555-2491', '555-2611']"
+            ],
+            "Staff.Salary": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [44000, 49000, 35000]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[44000, 49000, 35000]"
+            ],
+            "Staff.DateHired": [
+                "The type is DATE, Which does not inlude Null and is Unique. Values format like: ['1983-01-28', '1986-09-17', '1990-08-20']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Unique",
+                "['1983-01-28', '1986-09-17', '1990-08-20']"
+            ],
+            "Staff.Position": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Graduate Advisor', 'Registrar', 'Secretary']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Graduate Advisor', 'Registrar', 'Secretary']"
+            ],
+            "Student_Class_Status.ClassStatus": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 2, 3]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1, 2, 3]"
+            ],
+            "Student_Class_Status.ClassStatusDescription": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Completed', 'Enrolled', 'Withdrew']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Completed', 'Enrolled', 'Withdrew']"
+            ],
+            "Student_Schedules.StudentID": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1016, 1009, 1003]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1016, 1009, 1003]"
+            ],
+            "Student_Schedules.ClassID": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1162, 5071, 3085]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1162, 5071, 3085]"
+            ],
+            "Student_Schedules.ClassStatus": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 3]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 1, 3]"
+            ],
+            "Student_Schedules.Grade": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [88, 97, 82]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[88, 97, 82]"
+            ],
+            "Students.StudentID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1011, 1009, 1007]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1011, 1009, 1007]"
+            ],
+            "Students.StudFirstName": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Richard', 'John', 'George']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Richard', 'John', 'George']"
+            ],
+            "Students.StudLastName": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Bonnicksen', 'Hamilton', 'Chavez']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Bonnicksen', 'Hamilton', 'Chavez']"
+            ],
+            "Students.StudStreetAddress": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['611 Alpine Drive', 'Route 2, Box 203B', '66 Spring Valley Drive']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['611 Alpine Drive', 'Route 2, Box 203B', '66 Spring Valley Drive']"
+            ],
+            "Students.StudCity": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Palm Springs', 'Portland', 'Medford']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Palm Springs', 'Portland', 'Medford']"
+            ],
+            "Students.StudState": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['OR', 'CA', 'WA']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['OR', 'CA', 'WA']"
+            ],
+            "Students.StudZipCode": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [97401, 97501, 78284]",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "[97401, 97501, 78284]"
+            ],
+            "Students.StudAreaCode": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [541, 806, 206]",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "[541, 806, 206]"
+            ],
+            "Students.StudPhoneNumber": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['555-2716', '555-2296', '555-2696']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['555-2716', '555-2296', '555-2696']"
+            ],
+            "Students.StudGPA": [
+                "The type is REAL, Which does not inlude Null and is Unique. Values format like: [85, 77, 72]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Unique",
+                "[85, 77, 72]"
+            ],
+            "Students.StudMajor": [
+                "The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [3, 5, 6]",
+                "",
+                "",
+                "INTEGER",
+                "Include Null",
+                "Non-Unique",
+                "[3, 5, 6]"
+            ],
+            "Subjects.SubjectID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [18, 22, 39]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[18, 22, 39]"
+            ],
+            "Subjects.CategoryID": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['BUS', 'MAT', 'ART']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['BUS', 'MAT', 'ART']"
+            ],
+            "Subjects.SubjectCode": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['PHY 201', 'HIS 112', 'PHY 203']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['PHY 201', 'HIS 112', 'PHY 203']"
+            ],
+            "Subjects.SubjectName": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['U.S. History to 1877', 'American Government', 'Elementary Algebra']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['U.S. History to 1877', 'American Government', 'Elementary Algebra']"
+            ],
+            "Subjects.SubjectPreReq": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['ACC 220', 'MAT 098', 'ENG 101']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['ACC 220', 'MAT 098', 'ENG 101']"
+            ],
+            "Subjects.SubjectDescription": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format: <Long text>",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "<Long text>"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries last names of students who completed English courses, their grades, and their quintile ranks. Relevant columns include student names, grades, course names, and class status. Filters include \"Completed\" and \"English\".\n#columns: Students.StudLastName, Student_Schedules.Grade, Student_Schedules.ClassStatus, Subjects.SubjectName\n#values: \"Completed\", \"English\"\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "students",
+            "English courses",
+            "individual grades",
+            "English",
+            "grades",
+            "courses",
+            "grade quintile",
+            "Completed",
+            "quintile ranks",
+            "quintiles",
+            "list",
+            "last names"
+        ],
+        "col": "Students.StudLastName, Student_Schedules.Grade, Student_Schedules.ClassStatus, Subjects.SubjectName",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [
+            [
+                "Categories.CategoryDescription",
+                "English"
+            ],
+            [
+                "Majors.Major",
+                "English"
+            ],
+            [
+                "Student_Class_Status.ClassStatusDescription",
+                "Completed"
+            ]
+        ],
+        "column": "Buildings.BuildingCode: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['LB', 'IB', 'GYM']\nBuildings.BuildingName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Library', 'Arts and Sciences', 'Technology Building']\nBuildings.NumberOfFloors: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 1, 2]\nCategories.CategoryDescription: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['History', 'French', 'Art']\nCategories.CategoryID: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['ENG', 'MAT', 'ACC']\nClass_Rooms.BuildingCode: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['CC', 'TB', 'LB']\nClass_Rooms.ClassRoomID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3315, 1622, 3415]\nClasses.ClassID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [6031, 1560, 5639]\nClasses.ClassRoomID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1641, 1142, 3343]\nClasses.Credits: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 5, 2]\nFaculty.StaffID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [98013, 98019, 98052]\nFaculty.Status: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Full Time', 'Part Time', 'On Leave']\nFaculty_Categories.CategoryID: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['POL', 'HIS', 'CIS']\nFaculty_Categories.StaffID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [98020, 98030, 98062]\nFaculty_Classes.ClassID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1006, 6090, 1030]\nFaculty_Classes.StaffID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [98064, 98048, 98025]\nFaculty_Subjects.ProficiencyRating: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [10, 9, 8]\nFaculty_Subjects.StaffID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [98063, 98062, 98010]\nMajors.Major: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Accounting', 'Information Sciences', 'Music']\nMajors.MajorID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2, 6, 1]\nStaff.Position: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Graduate Advisor', 'Registrar', 'Secretary']\nStaff.StaffID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [98014, 98042, 98020]\nStaff.StfFirstName: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Katherine', 'Maria', 'Jim']\nStaff.StfPhoneNumber: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['555-2531', '555-2491', '555-2611']\nStudent_Class_Status.ClassStatus: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 2, 3]\nStudent_Class_Status.ClassStatusDescription: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Completed', 'Enrolled', 'Withdrew']\nStudent_Schedules.ClassID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1162, 5071, 3085]\nStudent_Schedules.ClassStatus: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 3]\nStudent_Schedules.Grade: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [88, 97, 82]\nStudents.StudLastName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Bonnicksen', 'Hamilton', 'Chavez']\nStudents.StudMajor: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [3, 5, 6]\nStudents.StudPhoneNumber: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['555-2716', '555-2296', '555-2696']\nSubjects.CategoryID: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['BUS', 'MAT', 'ART']\nSubjects.SubjectCode: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['PHY 201', 'HIS 112', 'PHY 203']\nSubjects.SubjectName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['U.S. History to 1877', 'American Government', 'Elementary Algebra']\nSubjects.SubjectPreReq: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['ACC 220', 'MAT 098', 'ENG 101']",
+        "foreign_keys": "Class_Rooms.BuildingCode = Buildings.BuildingCode, Classes.ClassRoomID = Class_Rooms.ClassRoomID, Faculty_Categories.StaffID = Faculty.StaffID, Faculty_Categories.CategoryID = Categories.CategoryID, Faculty_Classes.ClassID = Classes.ClassID, Faculty_Subjects.StaffID = Faculty.StaffID, Student_Schedules.ClassStatus = Student_Class_Status.ClassStatus, Student_Schedules.ClassID = Classes.ClassID, Students.StudMajor = Majors.MajorID, Subjects.SubjectPreReq = Subjects.SubjectCode, Subjects.CategoryID = Categories.CategoryID",
+        "foreign_set": [
+            "Students.StudMajor",
+            "Subjects.SubjectCode",
+            "Faculty_Categories.CategoryID",
+            "Student_Class_Status.ClassStatus",
+            "Faculty.StaffID",
+            "Majors.MajorID",
+            "Classes.ClassRoomID",
+            "Subjects.SubjectPreReq",
+            "Faculty_Categories.StaffID",
+            "Faculty_Subjects.StaffID",
+            "Student_Schedules.ClassID",
+            "Faculty_Classes.ClassID",
+            "Subjects.CategoryID",
+            "Student_Schedules.ClassStatus",
+            "Buildings.BuildingCode",
+            "Class_Rooms.ClassRoomID",
+            "Class_Rooms.BuildingCode",
+            "Classes.ClassID",
+            "Categories.CategoryID"
+        ],
+        "q_order": [
+            "last names for all students",
+            "quintile ranks based on their individual grades in those courses"
+        ],
+        "status": "success"
+    }
+]

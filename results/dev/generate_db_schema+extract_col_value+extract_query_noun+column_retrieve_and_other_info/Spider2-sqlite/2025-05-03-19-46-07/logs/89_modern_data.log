@@ -1,0 +1,313 @@
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: What is the maximum overall rating ever registered for any player? */
+SELECT MAX(overall_rating)
+FROM player_attributes;
+
+/* Answer the following: List the names of the 5 heaviest players. */
+SELECT player_name
+FROM player
+ORDER BY weight DESC
+LIMIT 5;
+
+/* Answer the following: Which season had the highest average number of goals per match across all leagues? average number of goals per match refers to AVG(home_team_goal + away_team_goal) */
+SELECT season
+FROM match
+GROUP BY season
+ORDER BY AVG(home_team_goal + away_team_goal) DESC
+LIMIT 1;
+
+/* Answer the following: How many matches ended in a goalless draw? goalless draw refers to home_team_goal = 0 AND away_team_goal = 0 */
+SELECT COUNT(*)
+FROM match
+WHERE home_team_goal = 0 AND away_team_goal = 0;
+
+/* Answer the following: In the 2013/2014 season, which league hosted the most matches? */
+SELECT L.name
+FROM league AS L
+JOIN match  AS M ON L.id = M.league_id
+WHERE M.season = '2013/2014'
+GROUP BY L.name
+ORDER BY COUNT(*) DESC
+LIMIT 1;
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: modern_data
+## Table pizza_names:
+pizza_id: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [1, 2]
+pizza_name: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['Meatlovers', 'Vegetarian']
+
+## Table companies_funding:
+company_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [524, 1048, 685]
+valuation: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [95000000000, 10000000000, 12000000000]
+funding: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [326000000, 389000000, 643000000]
+select_investors: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['"Greylock Partners, General Catalyst, Khosla Ventures"', '"Partech Partners, Index Ventures, Quadrille Capital"', '"Silicon Valley Bank, QED Investors, European Founders Fund"']
+
+## Table pizza_customer_orders:
+order_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 7, 9]
+customer_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [103, 105, 104]
+pizza_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]
+exclusions: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: [4, '2,6']
+extras: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['1,4', '1,5', 1]
+order_time: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-01-09 23:54:33', '2021-01-02 23:51:23', '2021-01-08 21:03:13']
+
+## Table pizza_toppings:
+topping_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [12, 1, 9]
+topping_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Bacon', 'Salami', 'Tomato Sauce']
+
+## Table trees:
+idx: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [594635, 368479, 60930]
+tree_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [650829, 590814, 165696]
+tree_dbh: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [159, 170, 60]
+stump_diam: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [29, 47, 53]
+status: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Dead', 'Alive', 'Stump']
+health: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Poor', 'Good', 'Fair']
+spc_latin: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Acer ginnala', 'Betula pendula', 'Maclura pomifera']
+spc_common: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['pignut hickory', 'golden raintree', 'Sophora']
+address: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1762 76 STREET', '4108 15 AVENUE', '81-015 266 STREET']
+zipcode: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [10460, 11377, 10032]
+borocode: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 3, 4]
+boroname: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Staten Island', 'Queens', 'Manhattan']
+nta_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Cambria Heights', 'Hunters Point-Sunnyside-West Maspeth', 'Hamilton Heights']
+state: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['New York']
+latitude: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [40, 40, 40]
+longitude: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [-74, -73, -73]
+
+## Table pizza_recipes:
+pizza_id: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [1, 2]
+toppings: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['1, 2, 3, 4, 5, 6, 8, 10', '4, 6, 7, 9, 11, 12']
+
+## Table statistics:
+date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-07-12 00:00:00', '2020-07-14 00:00:00', '2020-03-12 00:00:00']
+state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['MA', 'FL', 'CO']
+total_cases: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [25598, 11182, 29707]
+total_deaths: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4979, 14032, 8340]
+
+## Table income_trees:
+zipcode: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [10173, 11233, 11366]
+Estimate_Total: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [20243, 29255, 29345]
+Margin_of_Error_Total: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [363, 528, 660]
+Estimate_Median_income: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [193510, 34701, 66007]
+Margin_of_Error_Median_income: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3509, 17159, 8539]
+Estimate_Mean_income: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [179375, 59055, 79434]
+Margin_of_Error_Mean_income: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2736, 3754, 3210]
+
+## Table pizza_clean_runner_orders:
+order_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 8, 10]
+runner_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 3, 1]
+pickup_time: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2021-01-10 00:15:02', '2021-01-11 18:50:20', '2021-01-03 00:12:37']
+distance: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [25, 23, 10]
+duration: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [15, 32, 40]
+cancellation: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['Restaurant Cancellation', 'Customer Cancellation']
+
+## Table pizza_runner_orders:
+order_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [8, 6, 3]
+runner_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 1]
+pickup_time: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2021-01-10 00:15:02', '2021-01-03 00:12:37', '2021-01-08 21:30:45']
+distance: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['25km', '13.4km', '23.4 km']
+duration: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['15 minute', '25mins', '10minutes']
+cancellation: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['Restaurant Cancellation', 'Customer Cancellation']
+
+## Table word_list:
+words: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['bucko', 'shruti', 'guerdoning']
+
+## Table companies_dates:
+company_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [302, 155, 465]
+date_joined: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2022-03-23T00:00:00.000', '2019-05-06T00:00:00.000', '2021-12-31T00:00:00.000']
+year_founded: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1990, 1997, 2004]
+
+## Table pizza_get_extras:
+row_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]
+order_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 10, 7]
+extras: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 1, 5]
+extras_count: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]
+
+## Table pizza_get_exclusions:
+row_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]
+order_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 4, 10]
+exclusions: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [6, 2, 4]
+total_exclusions: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 1, 2]
+
+## Table pizza_clean_customer_orders:
+order_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 1, 2]
+customer_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [101, 104, 103]
+pizza_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]
+exclusions: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: [4, '2,6']
+extras: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: [1, '1,5', '1,4']
+order_time: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-01-01 19:00:52', '2021-01-02 23:51:23', '2021-01-01 18:05:02']
+
+## Table companies_industries:
+company_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [649, 85, 261]
+industry: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Fintech', 'Mobile & telecommunications', 'E-commerce & direct-to-consumer']
+
+## Table pizza_runners:
+runner_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 2, 4]
+registration_date: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2021-01-01', '2021-01-03', '2021-01-08']
+
+#Forigen keys:
+
+
+#Database Description:
+The database, named `modern_data`, is managed using SQLite and contains information related to pizzas, companies, trees, statistics, and income data. It includes details about pizza recipes, customer orders, runner orders, toppings, and extras/exclusions. Additionally, it provides insights into company funding, industries, and dates, as well as tree-related data and income statistics by zip code.
+
+#Tables Descriptions:
+
+1. **pizza_names**: Contains information about pizza types, including their unique IDs and names.
+
+2. **companies_funding**: Stores data about companies' funding, valuation, and selected investors.
+
+3. **pizza_customer_orders**: Tracks customer orders for pizzas, including order details, exclusions, extras, and order times.
+
+4. **pizza_toppings**: Provides a list of unique pizza toppings and their IDs.
+
+5. **trees**: Contains detailed information about trees, including their health, species, location, and dimensions.
+
+6. **pizza_recipes**: Defines the recipes for pizzas, including their IDs and associated toppings.
+
+7. **statistics**: Stores statistical data about total cases and deaths by state and date.
+
+8. **income_trees**: Provides income-related data by zip code, including estimates and margins of error for total, median, and mean income.
+
+9. **pizza_clean_runner_orders**: Tracks cleaned runner orders, including pickup times, distances, durations, and cancellations.
+
+10. **pizza_runner_orders**: Contains runner order details, including pickup times, distances, durations, and cancellations.
+
+11. **word_list**: Stores a list of words.
+
+12. **companies_dates**: Tracks company-related dates, including the date joined and year founded.
+
+13. **pizza_get_extras**: Provides details about extras added to pizza orders, including counts.
+
+14. **pizza_get_exclusions**: Contains information about exclusions in pizza orders, including total exclusions.
+
+15. **pizza_clean_customer_orders**: Tracks cleaned customer orders, including exclusions, extras, and order times.
+
+16. **companies_industries**: Stores information about companies and their respective industries.
+
+17. **pizza_runners**: Contains details about pizza runners, including their unique IDs and registration dates.
+
+#Foreign Keys:
+- `pizza_customer_orders.pizza_id` → `pizza_names.pizza_id`
+- `pizza_recipes.pizza_id` → `pizza_names.pizza_id`
+- `pizza_clean_customer_orders.pizza_id` → `pizza_names.pizza_id`
+- `pizza_clean_runner_orders.order_id` → `pizza_customer_orders.order_id`
+- `pizza_runner_orders.order_id` → `pizza_customer_orders.order_id`
+- `pizza_get_extras.order_id` → `pizza_customer_orders.order_id`
+- `pizza_get_exclusions.order_id` → `pizza_customer_orders.order_id`
+- `companies_funding.company_id` → `companies_dates.company_id`
+- `companies_industries.company_id` → `companies_dates.company_id`
+- `trees.zipcode` → `income_trees.zipcode`
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: Identify the first 10 words, sorted alphabetically, that are 4 to 5 characters long, start with 'r', and have at least one anagram of the same length, considering case-sensitive letters. Provide the count of such anagrams for each word. */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries words that are 4 to 5 characters long, start with 'r', and have at least one anagram of the same length. The related column includes `word_list.words`. The values include filtering conditions such as length (4 to 5 characters), starting letter ('r'), and anagrams of the same length.
+#columns: word_list.words
+#values: "4", "5", "r"
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+Identify the first 10 words, sorted alphabetically, that are 4 to 5 characters long, start with 'r', and have at least one anagram of the same length, considering case-sensitive letters. Provide the count of such anagrams for each word.
+
+############################## AI at step extract_query_noun ##############################
+
+"words", "characters", "anagram", "letters", "count", "first 10 words", "4 to 5 characters", "start with 'r'", "case-sensitive letters", "at least one anagram", "same length", "sorted alphabetically"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: Identify the first 10 words, sorted alphabetically, that are 4 to 5 characters long, start with 'r', and have at least one anagram of the same length, considering case-sensitive letters. Provide the count of such anagrams for each word.
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "Identify",
+      "J": null,
+      "I": ["the first 10 words"],
+      "C": [
+        "sorted alphabetically",
+        "that are 4 to 5 characters long",
+        "start with 'r'",
+        "have at least one anagram of the same length",
+        "considering case-sensitive letters"
+      ]
+    }
+  },
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "Provide",
+      "J": null,
+      "I": ["the count of such anagrams for each word"],
+      "C": []
+    }
+  }
+]
+```
+

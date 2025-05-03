@@ -1,0 +1,369 @@
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: For each movie rating, what is the average rental price of films with that rating? */
+SELECT rating, AVG(rental_rate) AS avg_rental_price
+FROM film
+GROUP BY rating;
+
+/* Answer the following: Which rating category contains the longest films on average? */
+SELECT rating
+FROM film
+GROUP BY rating
+ORDER BY AVG(length) DESC
+LIMIT 1;
+
+/* Answer the following: What is the total payment amount collected in February 2006? */
+SELECT SUM(amount) AS total_feb_2006_revenue
+FROM payment
+WHERE DATE_TRUNC('month', payment_date) = DATE '2006-02-01';
+
+/* Answer the following: Which customer has spent the highest total amount on rentals? */
+SELECT c.first_name || ' ' || c.last_name AS customer_name
+FROM customer AS c
+JOIN payment  AS p ON c.customer_id = p.customer_id
+GROUP BY c.customer_id, c.first_name, c.last_name
+ORDER BY SUM(p.amount) DESC
+LIMIT 1;
+
+/* Answer the following: List the names of customers who have rented more than 30 films in total. */
+SELECT c.first_name, c.last_name
+FROM customer AS c
+JOIN rental   AS r ON c.customer_id = r.customer_id
+GROUP BY c.customer_id, c.first_name, c.last_name
+HAVING COUNT(r.rental_id) > 30;
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: city_legislation
+## Table aliens_details:
+detail_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [10314, 1512, 37127]
+favorite_food: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Hummingbird (unidentified)', 'Crested barbet', 'Lion, asian']
+feeding_frequency: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Monthly', 'Seldom', 'Never']
+aggressive: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]
+
+## Table skills_dim:
+skill_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [84, 12, 30]
+skills: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['lua', 'qlik', 'perl']
+type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['programming', 'analyst_tools', 'cloud']
+
+## Table legislators_terms:
+id_bioguide: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['A000177', 'B000346', 'M000149']
+term_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 9, 14]
+term_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['M000479-0', 'L000180-2', 'L000174-7']
+term_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['rep', 'sen']
+term_start: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1986-11-04', '1978-12-30', '1806-02-24']
+term_end: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1828-11-14', '1906-01-30', '2019-02-10']
+state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PR', 'OH', 'ND']
+district: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [46, 39, 45]
+class: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [3, 1, 2]
+party: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Union', 'Anti Jackson', 'Law and Order']
+how: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['appointment']
+url: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['http://kevinmccarthy.house.gov', 'https://mckinley.house.gov', 'https://fortenberry.house.gov']
+address: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['1529 Longworth House Office Building; Washington DC 20515-3211', '125 Cannon HOB; Washington DC 20515-2802', '1404 Longworth HOB; Washington DC 20515-4004']
+phone: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['202-225-4261', '202-224-6542', '202-225-4965']
+fax: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['202-225-7856', '202-228-2862', '202-228-1371']
+contact_form: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['https://kinzinger.house.gov/email-adam', 'https://lance.house.gov/contact-me1', 'https://forms.house.gov/carney/webforms/email-me.shtml']
+office: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2232 Rayburn House Office Building', '2078 Rayburn House Office Building', '341 Cannon House Office Building']
+state_rank: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['senior', 'junior']
+rss_url: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['http://daines.house.gov/rss/press-releases.xml', 'http://capito.house.gov/common/rss//index.cfm?rss=85', 'http://clyburn.house.gov/rss.xml']
+caucus: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['Democrat']
+
+## Table cities_currencies:
+currency_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [127, 119, 125]
+country_code_2: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['gi', 'tr', 'lb']
+currency_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['unidad de fomento', 'lebanese pound', 'bahamian dollar']
+currency_code: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['vuv', 'kes', 'usd']
+
+## Table legislators:
+full_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['James McLachlan', 'John Worth Kern', 'Gilbert Motier Woodward']
+first_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Paula', 'Luke', 'Emilio']
+last_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Andrew', 'Radford', 'Kern']
+middle_name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Duhurst', 'Amos Rogers', 'Virgil Milton']
+nickname: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Joe', 'Lex', 'Maggie']
+suffix: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Jr.', 'IV', 'Sr.']
+other_names_end: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['1995-09-03', '1995-01-03', '1846-01-12']
+other_names_middle: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None
+other_names_last: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Levy', 'Bono', 'Lambert']
+birthday: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['1756-02-12', '1943-06-29', '1952-07-24']
+gender: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['M', 'F']
+id_bioguide: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['C000169', 'D000057', 'B001077']
+id_bioguide_previous_0: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['F000246', 'W000790', 'L000266']
+id_govtrack: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [407512, 409619, 401801]
+id_icpsr: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [7966, 29719, 9288]
+id_wikipedia: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['George W. Gillie', 'Thomas Vernor Smith', 'Amos Gustine']
+id_wikidata: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Q1701946', 'Q1118694', 'Q13219163']
+id_google_entity_id: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['kg:/m/03wc2px', 'kg:/m/0dvl98', 'kg:/m/03lkwh']
+id_house_history: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [18242, 15035, 21440]
+id_house_history_alternate: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [13283]
+id_thomas: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [1982, 1713, 194]
+id_cspan: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [61856, 89806, 26480]
+id_votesmart: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [27522, 26917, 172678]
+id_lis: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['S360', 'S358', 'S209']
+id_ballotpedia: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Henry C. Johnson, Jr.', 'Doug Lamborn', 'Jan Schakowsky']
+id_opensecrets: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['N00004128', 'N00030957', 'N00000245']
+id_fec_0: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['S2ME00158', 'H2FL00250', 'H6IL18088']
+id_fec_1: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['S4AR00103', 'H6SD00044', 'S2IN00091']
+id_fec_2: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['S8ND00120', 'S0NV00237', 'H0GA03017']
+
+## Table skills_job_dim:
+job_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1270464, 1367071, 66401]
+skill_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [239, 195, 6]
+
+## Table job_postings_fact:
+job_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [558676, 1199107, 175303]
+company_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [157176, 9051, 531610]
+job_title_short: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Senior Data Analyst', 'Cloud Engineer', 'Software Engineer']
+job_title: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['DATA SCIENTIST / ANALITYK DANYCH DS. PRICINGU', 'Jr Data Consultant', 'Experienced System Validation Development Engineer']
+job_location: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Manila, Metro Manila, Philippines', 'Vallejo, CA', 'Santa Cruz, CA']
+job_via: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['via Vodafone Careers', 'via IHireTechnology', 'via Kimley-Horn - ICIMS']
+job_schedule_type: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Full-time', 'Part-time and Full-time', 'Pekerjaan tetap']
+job_work_from_home: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+search_location: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Austria', 'Ireland', 'New York, United States']
+job_posted_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2023-06-14 16:16:21', '2023-05-15 13:00:17', '2023-04-07 22:33:26']
+job_no_degree_mention: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]
+job_health_insurance: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+job_country: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['China', 'Nicaragua', 'Bahrain']
+salary_rate: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['day', 'year', 'hour']
+salary_year_avg: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [197500, 111116, 206500]
+salary_hour_avg: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [77, 50, 73]
+
+## Table alien_data:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [44421, 30666, 7180]
+first_name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['elihu', 'kirbie', 'barrett']
+last_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['mcdarmid', 'pattison', 'twigge']
+email: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['dchilleyqbp@diigo.com', 'ldepke5ea@dell.com', 'abuchettune@wikispaces.com']
+gender: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['non-binary', 'male', 'female']
+type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['flatwoods', 'reptile', 'green']
+birth_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1707, 1766, 1806]
+age: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [218, 275, 98]
+favorite_food: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ["gonolek, burchell's", 'sage grouse', 'red-tailed hawk']
+feeding_frequency: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['monthly', 'once', 'yearly']
+aggressive: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]
+occupation: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['human resources assistant i', 'senior financial analyst', 'compensation analyst']
+current_location: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ocala', 'north hollywood', 'las cruces']
+state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['pennsylvania', 'idaho', 'tennessee']
+us_region: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['rocky mountain', 'great lakes', 'plains']
+country: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['united states']
+
+## Table cities_countries:
+country_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [181, 155, 218]
+country_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['brazil', 'ivory coast', 'monaco']
+country_code_2: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['pr', 'rw', 'sa']
+country_code_3: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['cmr', 'cub', 'mdg']
+region: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['asia', 'americas', 'europe']
+sub_region: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['eastern europe', 'northern africa', 'subsaharan africa']
+intermediate_region: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['eastern africa', 'southern africa', 'channel islands']
+created_on: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2024-07-18']
+
+## Table legislation_date_dim:
+date: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['1923-05-17', '1967-06-28', '1993-05-16']
+month_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['June', 'April', 'January']
+day_of_month: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [19, 21, 22]
+
+## Table cities:
+city_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [34817, 30001, 34944]
+city_name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['cayirova', 'maracanau', 'auterive']
+latitude: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [-52, 87, -84]
+longitude: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [22, -1, 48]
+country_code_2: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['sb', 'fi', 'qa']
+capital: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]
+population: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [52394, 15744, 15361]
+insert_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2022-10-03', '2023-06-17', '2022-06-25']
+
+## Table aliens_location:
+loc_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [41303, 37975, 9276]
+current_location: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Gary', 'Akron', 'Gilbert']
+state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Kentucky', 'Nebraska', 'Maine']
+country: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['United States']
+occupation: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Structural Analysis Engineer', 'Geological Engineer', 'Clinical Specialist']
+
+## Table aliens:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [21799, 22299, 8901]
+first_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Pavia', 'Rosalind', 'Mitzi']
+last_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Catlow', 'Larderot', 'Grouen']
+email: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['hbowlesworth10z4@ibm.com', 'vneadsjny@linkedin.com', 'alathleiffurefrs@dell.com']
+gender: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Male', 'Genderfluid', 'Agender']
+type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Green', 'Grey', 'Flatwoods']
+birth_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1932, 1871, 1809]
+
+## Table cities_languages:
+language_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [350, 402, 489]
+language: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['venda', 'icelandic', 'cantonese']
+country_code_2: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['mo', 're', 'zm']
+
+## Table job_company:
+company_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [249801, 582649, 135004]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Odit-e', 'Darwin', 'Скайтек']
+link: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['http://www.flsmidth.com/', 'http://alithya.com/', 'http://www.adeccogroup.com/']
+link_google: The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>
+thumbnail: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQklUfJmUa67LDK0Wwxx3nAdtqC1p7HtXAi-SW&s=0', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIokzJS3FAe7vdyGXnVsTuJjgl_FuJMkQSCcCU4eY&s', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX0HrSlLn64gMODgl-uEtS3OzxeyN1RENmeUcGS9I&s']
+
+#Forigen keys:
+
+
+#Database Description:
+The `city_legislation` database is designed to store and manage information related to cities, legislation, aliens, job postings, and associated entities. It includes details about cities, countries, languages, currencies, legislators, aliens, job postings, companies, and skills. The database is structured to support analysis and reporting on various aspects such as alien demographics, job postings, city information, and legislative data.
+
+#Tables Descriptions:
+
+1. **aliens_details**:  
+   Contains detailed information about aliens, including their favorite food, feeding frequency, and aggression level.
+
+2. **skills_dim**:  
+   Stores information about various skills, including skill types and unique identifiers.
+
+3. **legislators_terms**:  
+   Contains information about legislators' terms, including their bioguide ID, term type, start and end dates, state, district, party affiliation, and contact details.
+
+4. **cities_currencies**:  
+   Stores information about currencies used in different countries, including currency names, codes, and associated country codes.
+
+5. **legislators**:  
+   Contains detailed information about legislators, including their names, gender, bioguide ID, and various other identifiers.
+
+6. **skills_job_dim**:  
+   Maps job IDs to skill IDs, linking jobs to required skills.
+
+7. **job_postings_fact**:  
+   Contains detailed information about job postings, including job titles, locations, schedules, salaries, and company associations.
+
+8. **alien_data**:  
+   Stores demographic and personal information about aliens, including their names, email, gender, type, birth year, age, favorite food, feeding frequency, and occupation.
+
+9. **cities_countries**:  
+   Contains information about countries, including their names, codes, regions, sub-regions, and creation dates.
+
+10. **legislation_date_dim**:  
+    Stores date-related information for legislation, including the date, month name, and day of the month.
+
+11. **cities**:  
+    Contains information about cities, including their names, coordinates, population, and associated country codes.
+
+12. **aliens_location**:  
+    Stores location information for aliens, including their current location, state, country, and occupation.
+
+13. **aliens**:  
+    Contains basic information about aliens, including their names, email, gender, type, and birth year.
+
+14. **cities_languages**:  
+    Stores information about languages spoken in different countries, including language names and associated country codes.
+
+15. **job_company**:  
+    Contains information about companies, including their names, IDs, links, and thumbnails.
+
+#Foreign Keys:
+- `aliens_details.favorite_food` = `alien_data.favorite_food`
+- `aliens_details.feeding_frequency` = `alien_data.feeding_frequency`
+- `aliens_details.aggressive` = `alien_data.aggressive`
+- `skills_job_dim.skill_id` = `skills_dim.skill_id`
+- `skills_job_dim.job_id` = `job_postings_fact.job_id`
+- `job_postings_fact.company_id` = `job_company.company_id`
+- `cities_currencies.country_code_2` = `cities.country_code_2`
+- `cities_languages.country_code_2` = `cities.country_code_2`
+- `aliens_location.current_location` = `alien_data.current_location`
+- `aliens_location.state` = `alien_data.state`
+- `aliens_location.country` = `alien_data.country`
+- `legislators_terms.id_bioguide` = `legislators.id_bioguide`
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: For male legislators from Louisiana, how many distinct legislators were actively serving on December 31 of each year from more than 30 years since their first term up to less than 50 years, grouping the results by the exact number of years elapsed since their first term? */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries male legislators from Louisiana, their active status on December 31 of each year, and the number of years elapsed since their first term (more than 30 years and less than 50 years). Relevant columns include gender, state, term_start, term_end, and term_number for filtering and grouping.
+#columns: legislators.gender, legislators_terms.state, legislators_terms.term_start, legislators_terms.term_end, legislators_terms.term_number
+#values: "M", "Louisiana", "December 31", "30", "50"
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+For male legislators from Louisiana, how many distinct legislators were actively serving on December 31 of each year from more than 30 years since their first term up to less than 50 years, grouping the results by the exact number of years elapsed since their first term?
+
+############################## AI at step extract_query_noun ##############################
+
+"male legislators", "Louisiana", "legislators", "December 31", "year", "years", "first term", "term", "50 years", "30 years", "results", "number of years", "years elapsed"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: For male legislators from Louisiana, how many distinct legislators were actively serving on December 31 of each year from more than 30 years since their first term up to less than 50 years, grouping the results by the exact number of years elapsed since their first term?
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "how many",
+      "J": null,
+      "I": ["distinct legislators"],
+      "C": [
+        "For male legislators from Louisiana",
+        "actively serving on December 31 of each year",
+        "more than 30 years since their first term up to less than 50 years",
+        "grouping the results by the exact number of years elapsed since their first term"
+      ]
+    }
+  }
+]
+```
+

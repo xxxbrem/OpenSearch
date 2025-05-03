@@ -1,0 +1,711 @@
+############################## Human at step generate_db_schema ##############################
+
+/* Here is a examples about describe database */
+    #Forigen keys: 
+    Airlines.ORIGIN = Airports.Code, Airlines.DEST = Airports.Code, Airlines.OP_CARRIER_AIRLINE_ID = Air Carriers.Code
+    #Database Description: The database encompasses information related to flights, including airlines, airports, and flight operations.
+    #Tables Descriptions:
+    Air Carriers: Codes and descriptive information about airlines
+    Airports: IATA codes and descriptions of airports
+    Airlines: Detailed information about flights 
+
+    /* Here is a examples about describe database */
+    #Forigen keys:
+    data.ID = price.ID, production.ID = price.ID, production.ID = data.ID, production.country = country.origin
+    #Database Description: The database contains information related to cars, including country, price, specifications, Production
+    #Tables Descriptions:
+    Country: Names of the countries where the cars originate from.
+    Price: Price of the car in USD.
+    Data: Information about the car's specifications
+    Production: Information about car's production.
+
+    /* Describe the following database */
+    Database Management System: SQLite
+#Database name: EU_soccer
+## Table Player_Attributes:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [61822, 154067, 11792]
+player_fifa_api_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [219740, 208185, 225152]
+player_api_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [25160, 113631, 5243]
+date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2013-06-07 00:00:00', '2010-02-22 00:00:00', '2013-03-22 00:00:00']
+overall_rating: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [47, 33, 82]
+potential: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [39, 61, 75]
+preferred_foot: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['right', 'left']
+attacking_work_rate: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['medium', 'y', 'le']
+defensive_work_rate: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['es', 6, 4]
+crossing: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [79, 27, 73]
+finishing: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [84, 70, 60]
+heading_accuracy: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [50, 4, 70]
+short_passing: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [77, 72, 6]
+volleys: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [54, 46, 91]
+dribbling: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [43, 32, 11]
+curve: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [4, 52, 88]
+free_kick_accuracy: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [64, 89, 95]
+long_passing: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [24, 69, 34]
+ball_control: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [62, 81, 26]
+acceleration: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [94, 49, 77]
+sprint_speed: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [69, 80, 96]
+agility: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [33, 27, 86]
+reactions: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [85, 67, 95]
+balance: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [72, 74, 56]
+shot_power: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [61, 73, 53]
+jumping: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [33, 93, 91]
+stamina: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [15, 23, 43]
+strength: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [41, 64, 92]
+long_shots: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [88, 57, 5]
+aggression: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [35, 62, 48]
+interceptions: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [95, 13, 76]
+positioning: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [63, 28, 84]
+vision: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [73, 96, 22]
+penalties: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [55, 80, 67]
+marking: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [10, 14, 25]
+standing_tackle: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [36, 74, 73]
+sliding_tackle: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [2, 30, 40]
+gk_diving: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [88, 32, 20]
+gk_handling: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [49, 63, 62]
+gk_kicking: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [26, 16, 33]
+gk_positioning: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [48, 87, 54]
+gk_reflexes: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [65, 79, 44]
+
+## Table Player:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3228, 7331, 3230]
+player_api_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [19908, 166672, 375790]
+player_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Ignasi Miquel', 'Antonio Barragan', 'Jonas Olsson']
+player_fifa_api_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [226790, 159354, 140017]
+birthday: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1984-12-20 00:00:00', '1997-08-19 00:00:00', '1993-01-18 00:00:00']
+height: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [208, 200, 167]
+weight: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [190, 168, 207]
+
+## Table Match:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [25264, 17032, 25331]
+country_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [19694, 24558, 7809]
+league_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [15722, 17642, 13274]
+season: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2013/2014', '2008/2009', '2009/2010']
+stage: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [32, 27, 18]
+date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2010-01-19 00:00:00', '2014-12-20 00:00:00', '2010-11-19 00:00:00']
+match_api_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [875631, 1051970, 1259985]
+home_team_api_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9831, 8573, 10213]
+away_team_api_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8636, 9824, 9747]
+home_team_goal: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 7, 4]
+away_team_goal: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 2, 8]
+home_player_X1: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [2, 1, 0]
+home_player_X2: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [5, 6, 7]
+home_player_X3: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [1, 8, 7]
+home_player_X4: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [3, 2, 8]
+home_player_X5: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [6, 4, 1]
+home_player_X6: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [9, 8, 7]
+home_player_X7: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [5, 4, 8]
+home_player_X8: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [7, 9, 3]
+home_player_X9: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [3, 4, 1]
+home_player_X10: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [5, 9, 3]
+home_player_X11: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [6, 7, 5]
+away_player_X1: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [2, 6, 1]
+away_player_X2: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [7, 1, 2]
+away_player_X3: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [2, 4, 8]
+away_player_X4: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [6, 4, 7]
+away_player_X5: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [5, 6, 3]
+away_player_X6: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [5, 9, 3]
+away_player_X7: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [8, 2, 3]
+away_player_X8: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [1, 5, 3]
+away_player_X9: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [7, 2, 8]
+away_player_X10: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [1, 5, 4]
+away_player_X11: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [8, 3, 6]
+home_player_Y1: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [3, 1, 0]
+home_player_Y2: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [3, 0]
+home_player_Y3: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [3, 5]
+home_player_Y4: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [3, 5]
+home_player_Y5: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [6, 8, 7]
+home_player_Y6: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [7, 9, 6]
+home_player_Y7: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [3, 5, 9]
+home_player_Y8: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [3, 5, 8]
+home_player_Y9: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [8, 9, 10]
+home_player_Y10: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [11, 10, 3]
+home_player_Y11: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [3, 1, 11]
+away_player_Y1: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [1, 3]
+away_player_Y2: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [3]
+away_player_Y3: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [3, 7]
+away_player_Y4: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [7, 5, 3]
+away_player_Y5: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [3, 9, 6]
+away_player_Y6: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [7, 3, 8]
+away_player_Y7: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [9, 10, 5]
+away_player_Y8: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [5, 7, 9]
+away_player_Y9: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [8, 7, 6]
+away_player_Y10: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [10, 11, 9]
+away_player_Y11: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [8, 10, 11]
+home_player_1: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [94678, 35626, 23794]
+home_player_2: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [49543, 27276, 45852]
+home_player_3: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [200718, 139898, 67363]
+home_player_4: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [485047, 35500, 24166]
+home_player_5: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [37972, 30577, 213688]
+home_player_6: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [41749, 39578, 25517]
+home_player_7: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [41404, 279109, 24807]
+home_player_8: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [25525, 38956, 102912]
+home_player_9: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [279879, 67393, 210692]
+home_player_10: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [47190, 24624, 32427]
+home_player_11: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [38820, 371538, 88986]
+away_player_1: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [114018, 196126, 25947]
+away_player_2: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [159663, 115591, 23571]
+away_player_3: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [159882, 32553, 43158]
+away_player_4: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [11801, 30739, 22337]
+away_player_5: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [33338, 40220, 41196]
+away_player_6: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [240539, 434325, 67003]
+away_player_7: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [447417, 35417, 193174]
+away_player_8: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [26519, 2973, 26331]
+away_player_9: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [112035, 132809, 27234]
+away_player_10: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [419136, 45256, 192504]
+away_player_11: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [40707, 26222, 144998]
+goal: The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>
+shoton: The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>
+shotoff: The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>
+foulcommit: The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>
+card: The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>
+cross: The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>
+corner: The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>
+possession: The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>
+B365H: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [7, 2, 6]
+B365D: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [5, 4, 15]
+B365A: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [3, 17, 10]
+BWH: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [1, 5, 7]
+BWD: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [8, 3, 5]
+BWA: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [3, 18, 3]
+IWH: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [1, 13, 4]
+IWD: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [2, 3, 9]
+IWA: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [3, 1, 5]
+LBH: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [2, 1, 1]
+LBD: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [4, 3, 9]
+LBA: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [1, 3, 2]
+PSH: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [7, 3, 22]
+PSD: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [7, 11, 6]
+PSA: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [22, 6, 2]
+WHH: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [1, 1, 1]
+WHD: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [1, 4, 10]
+WHA: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [11, 2, 8]
+SJH: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [10, 4, 1]
+SJD: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [5, 3, 5]
+SJA: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [2, 34, 3]
+VCH: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [9, 2, 1]
+VCD: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [4, 3, 2]
+VCA: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [5, 41, 6]
+GBH: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [1, 2, 2]
+GBD: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [9, 2, 6]
+GBA: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [8, 1, 1]
+BSH: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [7, 1, 1]
+BSD: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [3, 4, 4]
+BSA: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [6, 26, 1]
+
+## Table League:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [19694, 1, 15722]
+country_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [17642, 15722, 7809]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Netherlands Eredivisie', 'France Ligue 1', 'Belgium Jupiler League']
+
+## Table Country:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 24558, 15722]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Poland', 'Netherlands', 'England']
+
+## Table Team:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2, 24288, 10312]
+team_api_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [8024, 9860, 8558]
+team_fifa_api_id: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [110569, 100081, 900]
+team_long_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Wigan Athletic', 'Málaga CF', 'Zagłębie Lubin']
+team_short_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['SAS', 'FEY', 'FRE']
+
+## Table Team_Attributes:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [781, 699, 433]
+team_fifa_api_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1900, 100634, 21]
+team_api_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2182, 9803, 8033]
+date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2011-02-22 00:00:00', '2014-09-19 00:00:00', '2013-09-20 00:00:00']
+buildUpPlaySpeed: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [50, 49, 55]
+buildUpPlaySpeedClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Fast', 'Balanced', 'Slow']
+buildUpPlayDribbling: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [70, 29, 34]
+buildUpPlayDribblingClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Little', 'Lots', 'Normal']
+buildUpPlayPassing: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [22, 62, 48]
+buildUpPlayPassingClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Mixed', 'Short', 'Long']
+buildUpPlayPositioningClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Organised', 'Free Form']
+chanceCreationPassing: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [48, 33, 60]
+chanceCreationPassingClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Risky', 'Normal', 'Safe']
+chanceCreationCrossing: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [50, 44, 59]
+chanceCreationCrossingClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Lots', 'Normal', 'Little']
+chanceCreationShooting: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [43, 48, 39]
+chanceCreationShootingClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Little', 'Normal', 'Lots']
+chanceCreationPositioningClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Organised', 'Free Form']
+defencePressure: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [51, 55, 54]
+defencePressureClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Medium', 'Deep', 'High']
+defenceAggression: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [28, 60, 45]
+defenceAggressionClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Press', 'Double', 'Contain']
+defenceTeamWidth: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [34, 45, 29]
+defenceTeamWidthClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Narrow', 'Normal', 'Wide']
+defenceDefenderLineClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Cover', 'Offside Trap']
+
+#Forigen keys:
+Match.away_player_11 = Player.player_api_id, Match.away_player_10 = Player.player_api_id, Match.away_player_9 = Player.player_api_id, Match.away_player_8 = Player.player_api_id, Match.away_player_7 = Player.player_api_id, Match.away_player_6 = Player.player_api_id, Match.away_player_5 = Player.player_api_id, Match.away_player_4 = Player.player_api_id, Match.away_player_3 = Player.player_api_id, Match.away_player_2 = Player.player_api_id, Match.away_player_1 = Player.player_api_id, Match.home_player_11 = Player.player_api_id, Match.home_player_10 = Player.player_api_id, Match.home_player_9 = Player.player_api_id, Match.home_player_8 = Player.player_api_id, Match.home_player_7 = Player.player_api_id, Match.home_player_6 = Player.player_api_id, Match.home_player_5 = Player.player_api_id, Match.home_player_4 = Player.player_api_id, Match.home_player_3 = Player.player_api_id, Match.home_player_2 = Player.player_api_id, Match.home_player_1 = Player.player_api_id, Team_Attributes.team_api_id = Team.team_api_id, Team_Attributes.team_fifa_api_id = Team.team_fifa_api_id
+
+    Please conclude the database in the following format:
+    #Database Description:
+    #Tables Descriptions:
+    
+
+############################## AI at step generate_db_schema ##############################
+
+#Database Description:
+The `EU_soccer` database is designed to store and manage information related to European soccer matches, players, teams, leagues, and their attributes. It provides detailed data about player performance, match statistics, team characteristics, and betting odds. The database is structured to support analysis of soccer-related data, including player attributes, team strategies, match outcomes, and league standings.
+
+#Tables Descriptions:
+1. **Player_Attributes**:  
+   Contains detailed attributes of players, including their skills, physical characteristics, and performance metrics. This table includes information such as overall rating, potential, preferred foot, work rates, and various skill ratings like crossing, finishing, dribbling, and goalkeeper-specific attributes.
+
+2. **Player**:  
+   Stores basic information about players, including their unique identifiers, names, FIFA API IDs, birthdates, height, and weight.
+
+3. **Match**:  
+   Contains detailed information about soccer matches, including match IDs, dates, teams involved, goals scored, player positions, and betting odds. It also includes data on player participation and positional coordinates during matches.
+
+4. **League**:  
+   Stores information about soccer leagues, including their unique IDs, associated country IDs, and league names.
+
+5. **Country**:  
+   Contains information about countries, including their unique IDs and names.
+
+6. **Team**:  
+   Stores basic information about soccer teams, including their unique IDs, API IDs, FIFA API IDs, long names, and short names.
+
+7. **Team_Attributes**:  
+   Contains detailed attributes of teams, including their playing styles, strategies, and defensive/offensive characteristics. This table includes data such as build-up play speed, passing styles, chance creation strategies, and defensive pressure.
+
+#Foreign Keys:
+- `Match.away_player_1` to `Match.away_player_11` and `Match.home_player_1` to `Match.home_player_11` reference `Player.player_api_id`.
+- `Team_Attributes.team_api_id` references `Team.team_api_id`.
+- `Team_Attributes.team_fifa_api_id` references `Team.team_fifa_api_id`.
+
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: Which partnership recorded the single-highest number of runs in the entire tournament?  Return the match id, the two player ids (player with more runs first, or higher id when tied), their individual runs and the partnership total. */
+SELECT
+    match_id,
+    CASE
+        WHEN player_runs > partner_runs
+             OR (player_runs = partner_runs AND player_id > partner_id)
+             THEN player_id ELSE partner_id
+    END   AS player1_id,
+    CASE
+        WHEN player_runs > partner_runs
+             OR (player_runs = partner_runs AND player_id > partner_id)
+             THEN partner_id ELSE player_id
+    END   AS player2_id,
+    CASE
+        WHEN player_runs > partner_runs
+             OR (player_runs = partner_runs AND player_id > partner_id)
+             THEN player_runs ELSE partner_runs
+    END   AS player1_runs,
+    CASE
+        WHEN player_runs > partner_runs
+             OR (player_runs = partner_runs AND player_id > partner_id)
+             THEN partner_runs ELSE player_runs
+    END   AS player2_runs,
+    partnership_runs
+FROM Partnership
+ORDER BY partnership_runs DESC
+LIMIT 1;
+
+/* Answer the following: For match 101, list the top three partnerships by runs, showing the two player ids (higher scorer first) together with their individual and partnership scores. */
+SELECT
+    match_id,
+    CASE
+        WHEN player_runs > partner_runs
+             OR (player_runs = partner_runs AND player_id > partner_id)
+             THEN player_id ELSE partner_id
+    END   AS player1_id,
+    CASE
+        WHEN player_runs > partner_runs
+             OR (player_runs = partner_runs AND player_id > partner_id)
+             THEN partner_id ELSE player_id
+    END   AS player2_id,
+    CASE
+        WHEN player_runs > partner_runs
+             OR (player_runs = partner_runs AND player_id > partner_id)
+             THEN player_runs ELSE partner_runs
+    END   AS player1_runs,
+    CASE
+        WHEN player_runs > partner_runs
+             OR (player_runs = partner_runs AND player_id > partner_id)
+             THEN partner_runs ELSE player_runs
+    END   AS player2_runs,
+    partnership_runs
+FROM Partnership
+WHERE match_id = 101
+ORDER BY partnership_runs DESC
+LIMIT 3;
+
+/* Answer the following: Provide the average partnership-runs for each match. */
+SELECT
+    match_id,
+    AVG(partnership_runs) AS avg_partnership_runs
+FROM Partnership
+GROUP BY match_id;
+
+/* Answer the following: For every player, show the total runs he scored in all his partnerships (counting only his own runs, not his partner’s). */
+SELECT
+    player_id,
+    SUM(player_runs) AS total_individual_runs_in_partnerships
+FROM (
+    SELECT player_id, player_runs FROM Partnership
+    UNION ALL
+    SELECT partner_id AS player_id, partner_runs AS player_runs FROM Partnership
+) AS all_parts
+GROUP BY player_id;
+
+/* Answer the following: Which pair of players (over all matches combined) has accumulated the highest total partnership runs together?  Return player1 id, player2 id (lower id first), and their cumulative runs. */
+SELECT
+    LEAST(p1.player_id , p1.partner_id)  AS player_low_id,
+    GREATEST(p1.player_id , p1.partner_id) AS player_high_id,
+    SUM(p1.partnership_runs)              AS total_runs_together
+FROM Partnership AS p1
+GROUP BY LEAST(p1.player_id , p1.partner_id),
+         GREATEST(p1.player_id , p1.partner_id)
+ORDER BY total_runs_together DESC
+LIMIT 1;
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: EU_soccer
+## Table Player_Attributes:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [61822, 154067, 11792]
+player_fifa_api_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [219740, 208185, 225152]
+player_api_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [25160, 113631, 5243]
+date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2013-06-07 00:00:00', '2010-02-22 00:00:00', '2013-03-22 00:00:00']
+overall_rating: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [47, 33, 82]
+potential: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [39, 61, 75]
+preferred_foot: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['right', 'left']
+attacking_work_rate: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['medium', 'y', 'le']
+defensive_work_rate: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['es', 6, 4]
+crossing: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [79, 27, 73]
+finishing: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [84, 70, 60]
+heading_accuracy: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [50, 4, 70]
+short_passing: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [77, 72, 6]
+volleys: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [54, 46, 91]
+dribbling: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [43, 32, 11]
+curve: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [4, 52, 88]
+free_kick_accuracy: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [64, 89, 95]
+long_passing: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [24, 69, 34]
+ball_control: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [62, 81, 26]
+acceleration: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [94, 49, 77]
+sprint_speed: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [69, 80, 96]
+agility: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [33, 27, 86]
+reactions: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [85, 67, 95]
+balance: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [72, 74, 56]
+shot_power: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [61, 73, 53]
+jumping: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [33, 93, 91]
+stamina: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [15, 23, 43]
+strength: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [41, 64, 92]
+long_shots: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [88, 57, 5]
+aggression: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [35, 62, 48]
+interceptions: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [95, 13, 76]
+positioning: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [63, 28, 84]
+vision: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [73, 96, 22]
+penalties: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [55, 80, 67]
+marking: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [10, 14, 25]
+standing_tackle: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [36, 74, 73]
+sliding_tackle: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [2, 30, 40]
+gk_diving: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [88, 32, 20]
+gk_handling: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [49, 63, 62]
+gk_kicking: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [26, 16, 33]
+gk_positioning: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [48, 87, 54]
+gk_reflexes: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [65, 79, 44]
+
+## Table Player:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3228, 7331, 3230]
+player_api_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [19908, 166672, 375790]
+player_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Ignasi Miquel', 'Antonio Barragan', 'Jonas Olsson']
+player_fifa_api_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [226790, 159354, 140017]
+birthday: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1984-12-20 00:00:00', '1997-08-19 00:00:00', '1993-01-18 00:00:00']
+height: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [208, 200, 167]
+weight: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [190, 168, 207]
+
+## Table Match:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [25264, 17032, 25331]
+country_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [19694, 24558, 7809]
+league_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [15722, 17642, 13274]
+season: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2013/2014', '2008/2009', '2009/2010']
+stage: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [32, 27, 18]
+date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2010-01-19 00:00:00', '2014-12-20 00:00:00', '2010-11-19 00:00:00']
+match_api_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [875631, 1051970, 1259985]
+home_team_api_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9831, 8573, 10213]
+away_team_api_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8636, 9824, 9747]
+home_team_goal: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 7, 4]
+away_team_goal: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 2, 8]
+home_player_X1: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [2, 1, 0]
+home_player_X2: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [5, 6, 7]
+home_player_X3: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [1, 8, 7]
+home_player_X4: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [3, 2, 8]
+home_player_X5: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [6, 4, 1]
+home_player_X6: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [9, 8, 7]
+home_player_X7: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [5, 4, 8]
+home_player_X8: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [7, 9, 3]
+home_player_X9: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [3, 4, 1]
+home_player_X10: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [5, 9, 3]
+home_player_X11: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [6, 7, 5]
+away_player_X1: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [2, 6, 1]
+away_player_X2: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [7, 1, 2]
+away_player_X3: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [2, 4, 8]
+away_player_X4: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [6, 4, 7]
+away_player_X5: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [5, 6, 3]
+away_player_X6: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [5, 9, 3]
+away_player_X7: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [8, 2, 3]
+away_player_X8: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [1, 5, 3]
+away_player_X9: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [7, 2, 8]
+away_player_X10: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [1, 5, 4]
+away_player_X11: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [8, 3, 6]
+home_player_Y1: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [3, 1, 0]
+home_player_Y2: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [3, 0]
+home_player_Y3: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [3, 5]
+home_player_Y4: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [3, 5]
+home_player_Y5: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [6, 8, 7]
+home_player_Y6: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [7, 9, 6]
+home_player_Y7: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [3, 5, 9]
+home_player_Y8: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [3, 5, 8]
+home_player_Y9: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [8, 9, 10]
+home_player_Y10: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [11, 10, 3]
+home_player_Y11: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [3, 1, 11]
+away_player_Y1: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [1, 3]
+away_player_Y2: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [3]
+away_player_Y3: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [3, 7]
+away_player_Y4: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [7, 5, 3]
+away_player_Y5: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [3, 9, 6]
+away_player_Y6: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [7, 3, 8]
+away_player_Y7: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [9, 10, 5]
+away_player_Y8: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [5, 7, 9]
+away_player_Y9: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [8, 7, 6]
+away_player_Y10: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [10, 11, 9]
+away_player_Y11: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [8, 10, 11]
+home_player_1: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [94678, 35626, 23794]
+home_player_2: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [49543, 27276, 45852]
+home_player_3: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [200718, 139898, 67363]
+home_player_4: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [485047, 35500, 24166]
+home_player_5: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [37972, 30577, 213688]
+home_player_6: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [41749, 39578, 25517]
+home_player_7: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [41404, 279109, 24807]
+home_player_8: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [25525, 38956, 102912]
+home_player_9: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [279879, 67393, 210692]
+home_player_10: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [47190, 24624, 32427]
+home_player_11: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [38820, 371538, 88986]
+away_player_1: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [114018, 196126, 25947]
+away_player_2: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [159663, 115591, 23571]
+away_player_3: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [159882, 32553, 43158]
+away_player_4: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [11801, 30739, 22337]
+away_player_5: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [33338, 40220, 41196]
+away_player_6: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [240539, 434325, 67003]
+away_player_7: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [447417, 35417, 193174]
+away_player_8: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [26519, 2973, 26331]
+away_player_9: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [112035, 132809, 27234]
+away_player_10: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [419136, 45256, 192504]
+away_player_11: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [40707, 26222, 144998]
+goal: The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>
+shoton: The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>
+shotoff: The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>
+foulcommit: The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>
+card: The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>
+cross: The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>
+corner: The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>
+possession: The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>
+B365H: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [7, 2, 6]
+B365D: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [5, 4, 15]
+B365A: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [3, 17, 10]
+BWH: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [1, 5, 7]
+BWD: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [8, 3, 5]
+BWA: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [3, 18, 3]
+IWH: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [1, 13, 4]
+IWD: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [2, 3, 9]
+IWA: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [3, 1, 5]
+LBH: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [2, 1, 1]
+LBD: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [4, 3, 9]
+LBA: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [1, 3, 2]
+PSH: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [7, 3, 22]
+PSD: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [7, 11, 6]
+PSA: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [22, 6, 2]
+WHH: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [1, 1, 1]
+WHD: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [1, 4, 10]
+WHA: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [11, 2, 8]
+SJH: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [10, 4, 1]
+SJD: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [5, 3, 5]
+SJA: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [2, 34, 3]
+VCH: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [9, 2, 1]
+VCD: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [4, 3, 2]
+VCA: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [5, 41, 6]
+GBH: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [1, 2, 2]
+GBD: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [9, 2, 6]
+GBA: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [8, 1, 1]
+BSH: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [7, 1, 1]
+BSD: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [3, 4, 4]
+BSA: The type is NUMERIC, Which inlude Null and is Non-Unique. Values format like: [6, 26, 1]
+
+## Table League:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [19694, 1, 15722]
+country_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [17642, 15722, 7809]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Netherlands Eredivisie', 'France Ligue 1', 'Belgium Jupiler League']
+
+## Table Country:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 24558, 15722]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Poland', 'Netherlands', 'England']
+
+## Table Team:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2, 24288, 10312]
+team_api_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [8024, 9860, 8558]
+team_fifa_api_id: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [110569, 100081, 900]
+team_long_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Wigan Athletic', 'Málaga CF', 'Zagłębie Lubin']
+team_short_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['SAS', 'FEY', 'FRE']
+
+## Table Team_Attributes:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [781, 699, 433]
+team_fifa_api_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1900, 100634, 21]
+team_api_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2182, 9803, 8033]
+date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2011-02-22 00:00:00', '2014-09-19 00:00:00', '2013-09-20 00:00:00']
+buildUpPlaySpeed: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [50, 49, 55]
+buildUpPlaySpeedClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Fast', 'Balanced', 'Slow']
+buildUpPlayDribbling: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [70, 29, 34]
+buildUpPlayDribblingClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Little', 'Lots', 'Normal']
+buildUpPlayPassing: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [22, 62, 48]
+buildUpPlayPassingClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Mixed', 'Short', 'Long']
+buildUpPlayPositioningClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Organised', 'Free Form']
+chanceCreationPassing: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [48, 33, 60]
+chanceCreationPassingClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Risky', 'Normal', 'Safe']
+chanceCreationCrossing: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [50, 44, 59]
+chanceCreationCrossingClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Lots', 'Normal', 'Little']
+chanceCreationShooting: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [43, 48, 39]
+chanceCreationShootingClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Little', 'Normal', 'Lots']
+chanceCreationPositioningClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Organised', 'Free Form']
+defencePressure: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [51, 55, 54]
+defencePressureClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Medium', 'Deep', 'High']
+defenceAggression: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [28, 60, 45]
+defenceAggressionClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Press', 'Double', 'Contain']
+defenceTeamWidth: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [34, 45, 29]
+defenceTeamWidthClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Narrow', 'Normal', 'Wide']
+defenceDefenderLineClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Cover', 'Offside Trap']
+
+#Forigen keys:
+Match.away_player_11 = Player.player_api_id, Match.away_player_10 = Player.player_api_id, Match.away_player_9 = Player.player_api_id, Match.away_player_8 = Player.player_api_id, Match.away_player_7 = Player.player_api_id, Match.away_player_6 = Player.player_api_id, Match.away_player_5 = Player.player_api_id, Match.away_player_4 = Player.player_api_id, Match.away_player_3 = Player.player_api_id, Match.away_player_2 = Player.player_api_id, Match.away_player_1 = Player.player_api_id, Match.home_player_11 = Player.player_api_id, Match.home_player_10 = Player.player_api_id, Match.home_player_9 = Player.player_api_id, Match.home_player_8 = Player.player_api_id, Match.home_player_7 = Player.player_api_id, Match.home_player_6 = Player.player_api_id, Match.home_player_5 = Player.player_api_id, Match.home_player_4 = Player.player_api_id, Match.home_player_3 = Player.player_api_id, Match.home_player_2 = Player.player_api_id, Match.home_player_1 = Player.player_api_id, Team_Attributes.team_api_id = Team.team_api_id, Team_Attributes.team_fifa_api_id = Team.team_fifa_api_id
+
+#Database Description:
+The `EU_soccer` database is designed to store and manage information related to European soccer matches, players, teams, leagues, and their attributes. It provides detailed data about player performance, match statistics, team characteristics, and betting odds. The database is structured to support analysis of soccer-related data, including player attributes, team strategies, match outcomes, and league standings.
+
+#Tables Descriptions:
+1. **Player_Attributes**:  
+   Contains detailed attributes of players, including their skills, physical characteristics, and performance metrics. This table includes information such as overall rating, potential, preferred foot, work rates, and various skill ratings like crossing, finishing, dribbling, and goalkeeper-specific attributes.
+
+2. **Player**:  
+   Stores basic information about players, including their unique identifiers, names, FIFA API IDs, birthdates, height, and weight.
+
+3. **Match**:  
+   Contains detailed information about soccer matches, including match IDs, dates, teams involved, goals scored, player positions, and betting odds. It also includes data on player participation and positional coordinates during matches.
+
+4. **League**:  
+   Stores information about soccer leagues, including their unique IDs, associated country IDs, and league names.
+
+5. **Country**:  
+   Contains information about countries, including their unique IDs and names.
+
+6. **Team**:  
+   Stores basic information about soccer teams, including their unique IDs, API IDs, FIFA API IDs, long names, and short names.
+
+7. **Team_Attributes**:  
+   Contains detailed attributes of teams, including their playing styles, strategies, and defensive/offensive characteristics. This table includes data such as build-up play speed, passing styles, chance creation strategies, and defensive pressure.
+
+#Foreign Keys:
+- `Match.away_player_1` to `Match.away_player_11` and `Match.home_player_1` to `Match.home_player_11` reference `Player.player_api_id`.
+- `Team_Attributes.team_api_id` references `Team.team_api_id`.
+- `Team_Attributes.team_fifa_api_id` references `Team.team_fifa_api_id`.
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: Can you calculate the median from the highest season goals of each team? */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries the median of the highest season goals for each team. Relevant columns include team identifiers, season identifiers, and goals scored. The calculation involves aggregating goals by team and season, finding the maximum goals per team, and then calculating the median.
+#columns: Match.home_team_api_id, Match.away_team_api_id, Match.season, Match.home_team_goal, Match.away_team_goal
+#values: None
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+Can you calculate the median from the highest season goals of each team?
+
+############################## AI at step extract_query_noun ##############################
+
+"median", "highest season goals", "team"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: Can you calculate the median from the highest season goals of each team?
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "calculate",
+      "J": null,
+      "I": ["the median"],
+      "C": ["from the highest season goals of each team"]
+    }
+  }
+]
+```
+

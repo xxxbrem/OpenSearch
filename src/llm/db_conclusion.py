@@ -176,8 +176,9 @@ class db_agent:
             table_df = pd.DataFrame()
             table_info, columns = self.get_complete_table_info(
                 conn, table[0], table_df)
-            db_info.append(table_info)
-            db_col.update(columns)
+            if table_info is not None:
+                db_info.append(table_info)
+                db_col.update(columns)
         db_info = "\n".join(db_info)
         cursor.close()
         conn.close()
@@ -256,69 +257,71 @@ class db_agent_string(db_agent):
                 print(e)
                 dic[col] = "", ""
         # 获取外键信息
-        row = list(
-            cursor.execute(f"SELECT * FROM `{table_name}` LIMIT 1").fetchall()
-            [0])
-        for i, col in enumerate(df.columns):
-            try:
-                df_tmp=df[col].dropna().drop_duplicates()
-                if len(df_tmp)>=3:
-                    vals = df_tmp.sample(3).values
+        res = cursor.execute(f"SELECT * FROM `{table_name}` LIMIT 1").fetchall()
+        if res:
+            row = list(res[0])
+            for i, col in enumerate(df.columns):
+                try:
+                    df_tmp=df[col].dropna().drop_duplicates()
+                    if len(df_tmp)>=3:
+                        vals = df_tmp.sample(3).values
+                    else:
+                        vals=df_tmp.values
+                    val_p = []
+                    for val in vals:
+                        try:
+                            val_p.append(int(val))
+                        except:
+                            val_p.append(val)
+                    if len(vals) == 0:
+                        raise ValueError
+                    row[i] = val_p
+                except:
+                    pass
+            # 构建schema表示
+            schema_str = f"## Table {table_name}:\n"
+            columns = {}
+            for column, val in zip(columns_info, row):
+                schema_str_single = ""
+                column_name, column_type, not_null, default_value, pk = column[1:6]
+                tmp_col = column_name.strip()
+                column_name = quote_field(column_name)
+
+                # schema_str_single += f"{column_name}: "
+                col_des, val_des = dic.get(tmp_col, ["", ""])
+                if col_des != "":
+                    schema_str_single += f" The column is {col_des}. "
+                if val_des != "":
+                    schema_str_single += f" The values' format are {val_des}. "
+
+                schema_str_single += f"The type is {column_type}, "
+                if contains_null[tmp_col]:
+                    schema_str_single += f"Which inlude Null"
                 else:
-                    vals=df_tmp.values
-                val_p = []
-                for val in vals:
-                    try:
-                        val_p.append(int(val))
-                    except:
-                        val_p.append(val)
-                if len(vals) == 0:
-                    raise ValueError
-                row[i] = val_p
-            except:
-                pass
-        # 构建schema表示
-        schema_str = f"## Table {table_name}:\n"
-        columns = {}
-        for column, val in zip(columns_info, row):
-            schema_str_single = ""
-            column_name, column_type, not_null, default_value, pk = column[1:6]
-            tmp_col = column_name.strip()
-            column_name = quote_field(column_name)
+                    schema_str_single += f"Which does not inlude Null"
 
-            # schema_str_single += f"{column_name}: "
-            col_des, val_des = dic.get(tmp_col, ["", ""])
-            if col_des != "":
-                schema_str_single += f" The column is {col_des}. "
-            if val_des != "":
-                schema_str_single += f" The values' format are {val_des}. "
+                if contains_duplicates[tmp_col]:
+                    schema_str_single += " and is Non-Unique. "
+                else:
+                    schema_str_single += " and is Unique. "
 
-            schema_str_single += f"The type is {column_type}, "
-            if contains_null[tmp_col]:
-                schema_str_single += f"Which inlude Null"
-            else:
-                schema_str_single += f"Which does not inlude Null"
-
-            if contains_duplicates[tmp_col]:
-                schema_str_single += " and is Non-Unique. "
-            else:
-                schema_str_single += " and is Unique. "
-
-            include_null = f"{'Include Null' if contains_null[tmp_col] else 'Non-Null'}"
-            # schema_str_single += f"{include_null}| "
-            unique = f"{'Non-Unique' if contains_duplicates[tmp_col] else 'Unique'}"
-            # schema_str_single += f"{unique}| "
-            if len(str(val)) > 360:  ## ddl展示 索引正常
-                val="<Long text>"
-                schema_str_single+= f"Values format: <Long text>"
-            elif  type(val) is not list or len(val)<3 :
-                schema_str_single+= f"Value of this column must in: {val}"
-            else:
-                schema_str_single += f"Values format like: {val}"
-            schema_str += f"{column_name}: {schema_str_single}\n"
-            columns[f"{table_name}.{column_name}"] = (schema_str_single,
-                                                      col_des, val_des,
-                                                      column_type,
-                                                      include_null, unique,
-                                                      str(val))
+                include_null = f"{'Include Null' if contains_null[tmp_col] else 'Non-Null'}"
+                # schema_str_single += f"{include_null}| "
+                unique = f"{'Non-Unique' if contains_duplicates[tmp_col] else 'Unique'}"
+                # schema_str_single += f"{unique}| "
+                if len(str(val)) > 360:  ## ddl展示 索引正常
+                    val="<Long text>"
+                    schema_str_single+= f"Values format: <Long text>"
+                elif  type(val) is not list or len(val)<3 :
+                    schema_str_single+= f"Value of this column must in: {val}"
+                else:
+                    schema_str_single += f"Values format like: {val}"
+                schema_str += f"{column_name}: {schema_str_single}\n"
+                columns[f"{table_name}.{column_name}"] = (schema_str_single,
+                                                        col_des, val_des,
+                                                        column_type,
+                                                        include_null, unique,
+                                                        str(val))
+        else:
+            schema_str, columns = None, None
         return schema_str, columns

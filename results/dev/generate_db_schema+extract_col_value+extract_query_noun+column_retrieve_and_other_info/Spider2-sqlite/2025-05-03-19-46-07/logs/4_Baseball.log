@@ -1,0 +1,618 @@
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: How many players have hit at least 50 home runs in a single season? at least 50 home runs refers to HR >= 50 */
+SELECT COUNT(DISTINCT playerID)
+FROM Batting
+WHERE HR >= 50;
+
+/* Answer the following: What is the average height and weight of pitchers born in Texas? pitchers refers to those listed in Pitching; born in Texas refers to birthState = 'TX' */
+SELECT AVG(People.height)  AS avg_height,
+       AVG(People.weight)  AS avg_weight
+FROM People
+INNER JOIN Pitching ON People.playerID = Pitching.playerID
+WHERE People.birthState = 'TX';
+
+/* Answer the following: List the last names of players who have won the Most Valuable Player award more than once. Most Valuable Player award refers to awardID = 'MVP'; more than once refers to COUNT(*) > 1 */
+SELECT DISTINCT People.nameLast
+FROM People
+INNER JOIN AwardsPlayers ON People.playerID = AwardsPlayers.playerID
+WHERE AwardsPlayers.awardID = 'MVP'
+GROUP BY People.playerID
+HAVING COUNT(*) > 1;
+
+/* Answer the following: Which team had the highest average attendance in the 2019 season? highest average attendance refers to MAX(attendance); 2019 season refers to yearID = 2019 */
+SELECT teamID
+FROM Teams
+WHERE yearID = 2019
+ORDER BY attendance DESC
+LIMIT 1;
+
+/* Answer the following: Find the player with the highest batting average (H divided by AB) in the 1980s, provided the player logged at least 2000 at-bats during that decade. 1980s refers to yearID BETWEEN 1980 AND 1989; at least 2000 at-bats refers to SUM(AB) >= 2000 */
+SELECT People.nameFirst,
+       People.nameLast
+FROM People
+INNER JOIN (
+        SELECT playerID,
+               SUM(H)   AS total_hits,
+               SUM(AB)  AS total_ab,
+               CAST(SUM(H) AS FLOAT) / SUM(AB) AS batting_avg
+        FROM Batting
+        WHERE yearID BETWEEN 1980 AND 1989
+        GROUP BY playerID
+        HAVING SUM(AB) >= 2000
+) AS Decade ON People.playerID = Decade.playerID
+ORDER BY Decade.batting_avg DESC
+LIMIT 1;
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: Baseball
+## Table all_star:
+player_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['muellra01', 'davisto02', 'koosmje01']
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1983, 1949, 1941]
+game_num: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 2, 1]
+game_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['NLS197007140', 'NLS200207090', 'ALS200807150']
+team_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['SLN', 'ARI', 'ML1']
+league_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['AL', 'NL']
+gp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: ['', 1, 0]
+starting_pos: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [2, 4, 7]
+
+## Table appearances:
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2003, 1984, 1960]
+team_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PH4', 'SLU', 'MLU']
+league_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['FL', 'UA', 'PL']
+player_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['rikarcu01', 'freemfr01', 'hogange01']
+g_all: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [93, 108, 56]
+gs: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [18, 112, 96]
+g_batting: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [63, 10, 80]
+g_defense: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [76, 141, 117]
+g_p: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [92, 62, 22]
+g_c: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [93, 136, 72]
+g_1b: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 148, 140]
+g_2b: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [39, 10, 78]
+g_3b: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [56, 164, 59]
+g_ss: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [144, 77, 122]
+g_lf: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [127, 20, 100]
+g_cf: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [126, 141, 84]
+g_rf: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [63, 113, 68]
+g_of: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 142, 110]
+g_dh: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [122, 27, 14]
+g_ph: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [18, 72, 49]
+g_pr: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [29, 64, 35]
+
+## Table manager_award:
+player_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['dierkla01', 'baylodo01', 'foxch01']
+award_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['BBWAA Manager of the year', 'TSN Manager of the Year']
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2007, 1955, 1999]
+league_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ML', 'AL', 'NL']
+tie: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['', 'Y']
+notes: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Value of this column must in: ['']
+
+## Table player_award:
+player_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['montejo01', 'masiph01', 'matheed01']
+award_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Rolaids Relief Man Award', 'TSN Player of the Year', 'Most Valuable Player']
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1997, 2003, 1996]
+league_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ML', 'AA', 'AL']
+tie: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['', 'Y']
+notes: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['C4', 'C1', 'C']
+
+## Table manager_award_vote:
+award_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Mgr of the year', 'Mgr of the Year']
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1986, 1991, 2012]
+league_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['AL', 'NL']
+player_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['gibsoki01', 'raderdo02', 'trebeto99']
+points_won: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [134, 57, 35]
+points_max: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [120, 160, 150]
+votes_first: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [30, 28, 9]
+
+## Table player_award_vote:
+award_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Rookie of the Year', 'Cy Young', 'MVP']
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1979, 1965, 1969]
+league_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['AL', 'NL', 'ML']
+player_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['penaca01', 'coxbi02', 'handlle01']
+points_won: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [339, 264, 46]
+points_max: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [280, 420, 196]
+votes_first: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [31, 0, 8]
+
+## Table batting:
+player_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['settlme01', 'brownji03', 'crawfjo01']
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1933, 1951, 1915]
+stint: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 3, 4]
+team_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['BOS', 'DET', 'PH3']
+league_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['AA', 'UA', 'NL']
+g: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [6, 75, 27]
+ab: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [6, 224, 544]
+r: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [80, 27, 78]
+h: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [33, 169, 109]
+double: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [48, 34, 37]
+triple: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [27, 4, 31]
+hr: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [28, 11, 33]
+rbi: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [37, 55, 13]
+sb: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [43, 107, 22]
+cs: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [3, 1, 15]
+bb: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [129, 148, 39]
+so: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [26, 22, 42]
+ibb: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [9, 18, 12]
+hbp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [28, 15, 9]
+sh: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [27, 67, 41]
+sf: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [5, 1, 19]
+g_idp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [7, 28, 22]
+
+## Table batting_postseason:
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1970, 1935, 1926]
+round: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['NWDIV', 'ALCS', 'AWDIV']
+player_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['coscape01', 'mcdonja03', 'brinked01']
+team_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ML1', 'OAK', 'ATL']
+league_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['NL', 'AA', 'AL']
+g: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 5, 14]
+ab: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [30, 3, 4]
+r: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [13, 9, 3]
+h: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 9, 10]
+double: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 0, 1]
+triple: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 0, 3]
+hr: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 2, 6]
+rbi: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [11, 10, 5]
+sb: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 15, 8]
+cs: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [4, 3, '']
+bb: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 9, 12]
+so: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 5, 8]
+ibb: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [7, 1, 4]
+hbp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 1, 2]
+sh: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [5, 1, 3]
+sf: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [2, 3, 0]
+g_idp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, '', 4]
+
+## Table player_college:
+player_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['frankmi02', 'woodyma01', 'sawyewi01']
+college_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['okstate', 'kshutch', 'flmdkjc']
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2010, 1913, 1988]
+
+## Table fielding:
+player_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['sylvelo01', 'adamsjo01', 'theriry01']
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1878, 1923, 1966]
+stint: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 3, 5]
+team_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['BRO', 'CHA', 'TL2']
+league_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['AL', 'NL', 'PL']
+pos: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['3B', '1B', '2B']
+g: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [39, 25, 93]
+gs: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [69, 46, 98]
+inn_outs: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [1737, 214, 202]
+po: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [1318, 391, 651]
+a: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [49, 137, 540]
+e: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [45, 71, 114]
+dp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [91, 120, 89]
+pb: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [35, 4, 60]
+wp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [29, 23, 11]
+sb: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [103, 113, 66]
+cs: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [19, 38, 10]
+zr: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [5, 8, 0]
+
+## Table fielding_outfield:
+player_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['morrijo03', 'dicksjo01', 'oneilji01']
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1920, 1941, 1923]
+stint: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 5, 3]
+glf: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [122, 5, 86]
+gcf: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [10, 2, 22]
+grf: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [88, 14, 69]
+
+## Table fielding_postseason:
+player_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['gosligo01', 'clarkwi02', 'cozarza01']
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1936, 1966, 2004]
+team_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['HOU', 'PHA', 'PHI']
+league_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['AL', 'NL']
+round: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['NEDIV', 'ALWC', 'AWDIV']
+pos: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['DH', 'SS', 'LF']
+g: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [6, 8, 1]
+gs: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 4, 6]
+inn_outs: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [155, 206, 121]
+po: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [61, 16, 55]
+a: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [21, 18, 20]
+e: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 0, 8]
+dp: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [13, 1, 0]
+tp: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+pb: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [1, '', 0]
+sb: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [9, 2, 16]
+cs: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [4, 6, 2]
+
+## Table hall_of_fame:
+player_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['richaha01', 'seaveto01', 'grossgr01']
+yearid: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1959, 2005, 2008]
+votedby: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Veterans', 'Special Election', 'Negro League']
+ballots: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [379, 201, 515]
+needed: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [288, 336, 430]
+votes: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [444, 52, 23]
+inducted: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Y', 'N']
+category: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Pioneer/Executive', 'Player', 'Manager']
+needed_note: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Top 20', '1st', '']
+
+## Table home_game:
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1874, 1881, 1998]
+league_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['FL', '', 'UA']
+team_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['WSU', 'NY3', 'BL4']
+park_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['NYC03', 'CIN02', 'IND07']
+span_first: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1886-05-01', '1894-05-16', '1885-09-04']
+span_last: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1911-09-14', '1970-09-17', '1927-09-28']
+games: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [70, 53, 31]
+openings: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [18, 9, 7]
+attendance: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [708247, 854902, 2468925]
+
+## Table manager:
+player_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['mackde01', 'sweasch01', 'lopesda01']
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1991, 1953, 1992]
+team_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ELI', 'BL4', 'ANA']
+league_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['UA', 'PL', '']
+inseason: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 7, 3]
+g: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [63, 107, 150]
+w: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [18, 41, 23]
+l: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [60, 70, 1]
+rank: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [9, 12, 10]
+plyr_mgr: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Y', 'N']
+
+## Table manager_half:
+player_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['powerpa99', 'buckeal99', 'gorege01']
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1892, 1981]
+team_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['CAL', 'CL4', 'LS3']
+league_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['NL', 'AL']
+inseason: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 2, 4]
+half: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]
+g: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [76, 51, 80]
+w: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [17, 46, 52]
+l: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [25, 29, 30]
+rank: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 4, 1]
+
+## Table player:
+player_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['hernaje01', 'remmewi01', 'giggibo01']
+birth_year: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [1884, 1854, 1852]
+birth_month: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [5, 12, 7]
+birth_day: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [2, 24, 20]
+birth_country: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Sweden', 'Japan', 'Poland']
+birth_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['AR', 'Cheshire', 'AK']
+birth_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Gloucester', 'Varina', 'Ringgold']
+death_year: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [1992, 1944, 1889]
+death_month: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [10, 12, 7]
+death_day: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [20, 11, 29]
+death_country: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['P.R.', 'American Samoa', 'Philippines']
+death_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Canal Zone', 'Guanajuato', 'NY']
+death_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Pontiac', 'Apalachicola', 'Swedesboro']
+name_first: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Kurt', 'Myril', 'Bob']
+name_last: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Dugey', 'Addis', 'Asche']
+name_given: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Jay D.', 'Antonio Pedro', 'Elmer Young']
+weight: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [244, 235, 221]
+height: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [63, 64, 67]
+bats: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['R', 'L', '']
+throws: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['', 'L', 'R']
+debut: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1879-07-14', '1926-04-23', '2000-06-16']
+final_game: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1968-07-23', '2010-10-03', '1948-07-31']
+retro_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['penat003', 'cosmj101', 'scrut001']
+bbref_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['kainedo01', 'crowled01', 'youngj.01']
+
+## Table park:
+park_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['MIL06', 'WAS09', 'CHI04']
+park_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Rogers Centre', 'Monumental Park', 'Howard Avenue Grounds']
+park_alias: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Brewster Park', "Walte's Pasture", 'Upper Field']
+city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Miami', 'Washington', 'Detroit']
+state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['FL', 'MN', 'PA']
+country: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['AU', 'PR', 'US']
+
+## Table pitching:
+player_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['scotted01', 'lylesp01', 'forembr01']
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1995, 1881, 1892]
+stint: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 4, 1]
+team_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['TBA', 'BS2', 'KEO']
+league_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['', 'UA', 'AA']
+w: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 37, 22]
+l: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [33, 5, 6]
+g: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [11, 72, 65]
+gs: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [74, 10, 18]
+cg: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [34, 15, 66]
+sho: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [6, 12, 1]
+sv: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7, 57, 2]
+ipouts: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [637, 426, 32]
+h: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [57, 43, 158]
+er: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [101, 108, 59]
+hr: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 6, 18]
+bb: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [147, 35, 108]
+so: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [383, 237, 70]
+baopp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]
+era: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [13, 13, 3]
+ibb: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [7, 3, 17]
+wp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [24, 9, 31]
+hbp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [16, 4, 6]
+bk: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 4, 3]
+bfp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [1134, 632, 1321]
+gf: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [58, 66, 44]
+r: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [334, 38, 49]
+sh: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [10, 14, 2]
+sf: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [4, 0, 9]
+g_idp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [7, 18, 9]
+
+## Table pitching_postseason:
+player_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['sauersc01', 'fordwh01', 'irabuhi01']
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1884, 1909, 1886]
+round: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['AEDIV', 'ALWC', 'NLWC']
+team_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['CIN', 'CHA', 'ATL']
+league_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['NL', 'AA', 'AL']
+w: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 3, 4]
+l: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 2, 3]
+g: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8, 6, 5]
+gs: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 6, 0]
+cg: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 4, 2]
+sho: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 2, 1]
+sv: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 3, 4]
+ipouts: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [64, 111, 17]
+h: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [10, 19, 9]
+er: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 2, 6]
+hr: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 5, 2]
+bb: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [16, 8, 14]
+so: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [18, 20, 17]
+baopp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['0.286', '0.05', '0.714']
+era: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [1, 5, 4]
+ibb: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [3, 0, '']
+wp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 2, '']
+hbp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 2, '']
+bk: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, '', 1]
+bfp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [28, '', 16]
+gf: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 0, 6]
+r: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 22, 0]
+sh: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [6, 5, 2]
+sf: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 1]
+g_idp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [6, 0, 1]
+
+## Table salary:
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1990, 2000, 2009]
+team_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['SLN', 'LAN', 'KCA']
+league_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['NL', 'AL']
+player_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['gilge01', 'smithda05', 'weaveje02']
+salary: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [391800, 240750, 5750000]
+
+## Table college:
+college_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['mansfield', 'wake', 'trinityct']
+name_full: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Albion College', 'University of Hartford', 'Savannah College of Arts and Design']
+city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Wilkes-Barre', 'Boone', 'Napa']
+state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['TX', 'CA', 'TN']
+country: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['USA']
+
+## Table postseason:
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1930, 1970, 1993]
+round: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ALDS2', 'NLDS2', 'ALDS1']
+team_id_winner: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['CHN', 'SLN', 'ML1']
+league_id_winner: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['AL', 'AA', 'NL']
+team_id_loser: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ATL', 'BOS', 'STL']
+league_id_loser: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['AL', 'NL', 'AA']
+wins: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [10, 1, 5]
+losses: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 4, 5]
+ties: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+
+## Table team:
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1876, 1925, 2001]
+league_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['UA', 'AL', '']
+team_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['BSP', 'BLF', 'PH2']
+franchise_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['WST', 'BLU', 'ATL']
+div_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['E', 'W', '']
+rank: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 2, 5]
+g: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [55, 140, 135]
+ghome: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [49, 65, 82]
+w: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [62, 107, 65]
+l: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [78, 37, 43]
+div_win: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['N', '', 'Y']
+wc_win: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Y', '', 'N']
+lg_win: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['', 'Y', 'N']
+ws_win: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['', 'N', 'Y']
+r: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [647, 906, 957]
+ab: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4748, 5182, 3657]
+h: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [323, 1188, 1547]
+double: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [153, 26, 202]
+triple: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [103, 60, 87]
+hr: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [232, 194, 0]
+bb: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [689, 536, 24]
+so: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [943, 549, 1308]
+sb: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [60, 19, 441]
+cs: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [77, 21, 107]
+hbp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [81, 49, 52]
+sf: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [37, 53, 24]
+ra: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [713, 409, 619]
+er: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [97, 391, 712]
+era: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [3, 3, 3]
+cg: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [38, 41, 13]
+sho: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [18, 11, 5]
+sv: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [64, 44, 1]
+ipouts: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3693, 828, 4128]
+ha: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [882, 1149, 291]
+hra: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [77, 161, 191]
+bba: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [480, 297, 250]
+soa: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1147, 1264, 395]
+e: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [277, 74, 293]
+dp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [44, 69, 161]
+fp: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]
+name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Philadelphia Blue Jays', 'Worcester Ruby Legs', 'Troy Haymakers']
+park: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Polo Grounds III', 'Union Base-Ball Grounds', 'Enron Field']
+attendance: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [470517, 1207881, 1131562]
+bpf: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [89, 84, 121]
+ppf: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [92, 91, 103]
+team_id_br: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['SDP', 'MAR', 'KCP']
+team_id_lahman45: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PTF', 'PHN', 'PIT']
+team_id_retro: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['CL3', 'SLU', 'WS2']
+
+## Table team_franchise:
+franchise_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['ATL', 'WBL', 'BLC']
+franchise_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Boston Red Sox', 'Indianapolis Blues', 'Brooklyn Gladiators']
+active: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Y', '', 'N']
+na_assoc: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['NYU', 'HNA', 'SBS']
+
+## Table team_half:
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1981]
+league_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['NL', 'AL']
+team_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['SDN', 'SFN', 'BAL']
+half: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]
+div_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['W', 'E']
+div_win: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['N']
+rank: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 3, 1]
+g: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [56, 55, 57]
+w: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [20, 21, 37]
+l: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [24, 26, 20]
+
+#Forigen keys:
+
+
+# Database Description:
+The "Baseball" database is a comprehensive collection of data related to professional baseball. It includes information about players, teams, games, awards, salaries, colleges, parks, and various statistics for both regular and postseason play. The database is designed to provide detailed insights into the history and performance of baseball players, teams, and franchises.
+
+# Tables Descriptions:
+
+1. **all_star**: Contains information about players who participated in All-Star games, including their team, league, and starting position.
+
+2. **appearances**: Tracks player appearances in games, including their positions and roles (e.g., batting, defense, pitching).
+
+3. **manager_award**: Records awards given to managers, including the year, league, and award type.
+
+4. **player_award**: Contains information about awards given to players, including the year, league, and award type.
+
+5. **manager_award_vote**: Tracks voting results for manager awards, including points won, maximum points, and first-place votes.
+
+6. **player_award_vote**: Tracks voting results for player awards, including points won, maximum points, and first-place votes.
+
+7. **batting**: Contains regular-season batting statistics for players, including hits, runs, home runs, and other metrics.
+
+8. **batting_postseason**: Contains postseason batting statistics for players, including hits, runs, home runs, and other metrics.
+
+9. **player_college**: Links players to the colleges they attended, including the year of attendance.
+
+10. **fielding**: Contains regular-season fielding statistics for players, including games played, assists, errors, and double plays.
+
+11. **fielding_outfield**: Tracks fielding statistics specifically for outfield positions, including games played in left field, center field, and right field.
+
+12. **fielding_postseason**: Contains postseason fielding statistics for players, including games played, assists, errors, and double plays.
+
+13. **hall_of_fame**: Records Hall of Fame voting results, including votes received, induction status, and voting category.
+
+14. **home_game**: Tracks home game statistics for teams, including attendance, games played, and park information.
+
+15. **manager**: Contains information about managers, including their team, league, games managed, wins, losses, and rank.
+
+16. **manager_half**: Tracks manager statistics for specific halves of seasons, including games managed, wins, losses, and rank.
+
+17. **player**: Contains biographical information about players, including birth and death details, physical attributes, and career information.
+
+18. **park**: Contains information about baseball parks, including their name, alias, location, and unique identifier.
+
+19. **pitching**: Contains regular-season pitching statistics for players, including wins, losses, strikeouts, and earned run average (ERA).
+
+20. **pitching_postseason**: Contains postseason pitching statistics for players, including wins, losses, strikeouts, and earned run average (ERA).
+
+21. **salary**: Tracks player salaries by year, team, and league.
+
+22. **college**: Contains information about colleges, including their name, location, and unique identifier.
+
+23. **postseason**: Tracks postseason series results, including winning and losing teams, leagues, and scores.
+
+24. **team**: Contains information about teams, including their performance, attendance, and statistics for regular seasons.
+
+25. **team_franchise**: Contains information about franchises, including their name, active status, and association.
+
+26. **team_half**: Tracks team statistics for specific halves of seasons, including games played, wins, losses, and rank.
+
+# Foreign Keys:
+1. **all_star.player_id** → **player.player_id**
+2. **appearances.player_id** → **player.player_id**
+3. **manager_award.player_id** → **player.player
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: I would like to know the given names of baseball players who have achieved the highest value of games played, runs, hits, and home runs, with their corresponding score values. */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries the highest value of games played, runs, hits, and home runs, and the corresponding players' given names. The related columns include player.name_given for the player's name and batting.g, batting.r, batting.h, batting.hr for the statistics.
+#columns: player.name_given, batting.g, batting.r, batting.h, batting.hr
+#values: None
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+I would like to know the given names of baseball players who have achieved the highest value of games played, runs, hits, and home runs, with their corresponding score values.
+
+############################## AI at step extract_query_noun ##############################
+
+"names", "baseball players", "value", "games played", "runs", "hits", "home runs", "score values"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: I would like to know the given names of baseball players who have achieved the highest value of games played, runs, hits, and home runs, with their corresponding score values.
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "know",
+      "J": null,
+      "I": ["the given names of baseball players"],
+      "C": [
+        "who have achieved the highest value of games played, runs, hits, and home runs",
+        "with their corresponding score values"
+      ]
+    }
+  }
+]
+```
+

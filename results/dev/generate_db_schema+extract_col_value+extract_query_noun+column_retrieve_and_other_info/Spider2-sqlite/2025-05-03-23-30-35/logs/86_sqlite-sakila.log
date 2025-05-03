@@ -1,0 +1,328 @@
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: Which store has the lowest total sales amount among stores located in 'New York'? */
+SELECT s.store_name
+FROM stores AS s
+JOIN orders AS o ON o.store_id = s.store_id
+WHERE s.city = 'New York'
+GROUP BY s.store_id , s.store_name
+ORDER BY SUM(o.total_amount) ASC
+LIMIT 1;
+
+/* Answer the following: How many orders placed in 2022 do not yet have any delivery record? */
+SELECT COUNT(*)
+FROM orders AS o
+WHERE EXTRACT(YEAR FROM o.order_date) = 2022
+  AND NOT EXISTS (
+        SELECT 1
+        FROM deliveries AS d
+        WHERE d.order_id = o.order_id
+    );
+
+/* Answer the following: List the top 5 stores with the highest average order value for orders that were delivered successfully. */
+SELECT s.store_name
+FROM stores AS s
+JOIN orders AS o ON o.store_id = s.store_id
+JOIN deliveries AS d ON d.order_id = o.order_id
+WHERE d.status = 'DELIVERED'
+GROUP BY s.store_id , s.store_name
+ORDER BY AVG(o.total_amount) DESC
+LIMIT 5;
+
+/* Answer the following: For each month in 2023, what is the count of distinct customers who placed at least one order? */
+SELECT EXTRACT(MONTH FROM o.order_date) AS month,
+       COUNT(DISTINCT o.customer_id)      AS customer_cnt
+FROM orders AS o
+WHERE EXTRACT(YEAR FROM o.order_date) = 2023
+GROUP BY EXTRACT(MONTH FROM o.order_date)
+ORDER BY month;
+
+/* Answer the following: What percentage of all orders have a delivery record with status 'RETURNED'?  (Return the value as a decimal between 0 and 1.) */
+SELECT CAST(COUNT(DISTINCT CASE WHEN d.status = 'RETURNED' THEN o.order_id END) AS FLOAT)
+       / COUNT(*) AS return_ratio
+FROM orders AS o
+LEFT JOIN deliveries AS d ON d.order_id = o.order_id;
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: sqlite-sakila
+## Table actor:
+actor_id: The type is numeric, Which does not inlude Null and is Unique. Values format like: [2, 105, 195]
+first_name: The type is VARCHAR(45), Which does not inlude Null and is Non-Unique. Values format like: ['CAMERON', 'OLYMPIA', 'MERYL']
+last_name: The type is VARCHAR(45), Which does not inlude Null and is Non-Unique. Values format like: ['GIBSON', 'HOFFMAN', 'MARX']
+last_update: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2021-03-06 15:51:59', '2021-03-06 15:52:00']
+
+## Table country:
+country_id: The type is SMALLINT, Which does not inlude Null and is Unique. Values format like: [35, 63, 90]
+country: The type is VARCHAR(50), Which does not inlude Null and is Unique. Values format like: ['United Arab Emirates', 'American Samoa', 'Gambia']
+last_update: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2021-03-06 15:51:49']
+
+## Table city:
+city_id: The type is INT, Which does not inlude Null and is Unique. Values format like: [422, 497, 304]
+city: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Values format like: ['Sultanbeyli', 'Iwakuni', 'Songkhla']
+country_id: The type is SMALLINT, Which does not inlude Null and is Non-Unique. Values format like: [42, 45, 51]
+last_update: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Values format like: ['2021-03-06 15:51:51', '2021-03-06 15:51:49', '2021-03-06 15:51:50']
+
+## Table address:
+address_id: The type is INT, Which does not inlude Null and is Unique. Values format like: [572, 6, 63]
+address: The type is VARCHAR(50), Which does not inlude Null and is Unique. Values format like: ['752 Ondo Loop', '397 Sunnyvale Avenue', '1872 Toulon Loop']
+address2: The type is VARCHAR(50), Which inlude Null and is Non-Unique. Value of this column must in: None
+district: The type is VARCHAR(20), Which does not inlude Null and is Non-Unique. Value of this column must in: [' ']
+city_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [415, 27, 10]
+postal_code: The type is VARCHAR(10), Which inlude Null and is Non-Unique. Values format like: [30861, 95509, 45298]
+phone: The type is VARCHAR(20), Which does not inlude Null and is Non-Unique. Value of this column must in: [' ']
+last_update: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Values format like: ['2021-03-06 15:51:56', '2021-03-06 15:51:54', '2021-03-06 15:51:55']
+
+## Table language:
+language_id: The type is SMALLINT, Which does not inlude Null and is Unique. Values format like: [2, 3, 5]
+name: The type is CHAR(20), Which does not inlude Null and is Unique. Values format like: ['Mandarin', 'German', 'Japanese']
+last_update: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2021-03-06 15:51:48']
+
+## Table category:
+category_id: The type is SMALLINT, Which does not inlude Null and is Unique. Values format like: [8, 11, 9]
+name: The type is VARCHAR(25), Which does not inlude Null and is Unique. Values format like: ['Action', 'Animation', 'Family']
+last_update: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2021-03-06 15:52:00']
+
+## Table customer:
+customer_id: The type is INT, Which does not inlude Null and is Unique. Values format like: [420, 192, 182]
+store_id: The type is INT, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]
+first_name: The type is VARCHAR(45), Which does not inlude Null and is Non-Unique. Values format like: ['DAN', 'MELISSA', 'TANYA']
+last_name: The type is VARCHAR(45), Which does not inlude Null and is Unique. Values format like: ['HORTON', 'LINTON', 'MCCOY']
+email: The type is VARCHAR(50), Which does not inlude Null and is Unique. Values format like: ['LINDA.WILLIAMS@sakilacustomer.org', 'JEFFREY.SPEAR@sakilacustomer.org', 'BONNIE.HUGHES@sakilacustomer.org']
+address_id: The type is INT, Which does not inlude Null and is Unique. Values format like: [225, 553, 547]
+active: The type is CHAR(1), Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]
+create_date: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2006-02-14 22:04:36.000', '2006-02-14 22:04:37.000']
+last_update: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Values format like: ['2021-03-06 15:53:39', '2021-03-06 15:53:37', '2021-03-06 15:53:38']
+
+## Table film:
+film_id: The type is INT, Which does not inlude Null and is Unique. Values format like: [74, 61, 58]
+title: The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['PILOT HOOSIERS', 'UNTOUCHABLES SUNRISE', 'LIGHTS DEER']
+description: The type is BLOB SUB_TYPE TEXT, Which does not inlude Null and is Unique. Values format like: ['A Epic Display of a Dog And a Boat who must Succumb a Mad Scientist in An Abandoned Mine Shaft', 'A Emotional Drama of a Mad Cow And a Boat who must Redeem a Secret Agent in A Shark Tank', 'A Awe-Inspiring Panorama of a Composer And a Secret Agent who must Sink a Composer in A Shark Tank']
+release_year: The type is VARCHAR(4), Which does not inlude Null and is Non-Unique. Value of this column must in: [2006]
+language_id: The type is SMALLINT, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]
+original_language_id: The type is SMALLINT, Which inlude Null and is Non-Unique. Value of this column must in: None
+rental_duration: The type is SMALLINT, Which does not inlude Null and is Non-Unique. Values format like: [3, 7, 6]
+rental_rate: The type is DECIMAL(4,2), Which does not inlude Null and is Non-Unique. Values format like: [2, 4, 0]
+length: The type is SMALLINT, Which does not inlude Null and is Non-Unique. Values format like: [161, 168, 173]
+replacement_cost: The type is DECIMAL(5,2), Which does not inlude Null and is Non-Unique. Values format like: [26, 12, 17]
+rating: The type is VARCHAR(10), Which does not inlude Null and is Non-Unique. Values format like: ['G', 'R', 'NC-17']
+special_features: The type is VARCHAR(100), Which does not inlude Null and is Non-Unique. Values format like: ['Trailers,Commentaries,Deleted Scenes,Behind the Scenes', 'Trailers,Commentaries,Behind the Scenes', 'Behind the Scenes']
+last_update: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Values format like: ['2021-03-06 15:52:07', '2021-03-06 15:52:01', '2021-03-06 15:52:02']
+
+## Table film_actor:
+actor_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [153, 23, 198]
+film_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [636, 929, 366]
+last_update: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Values format like: ['2021-03-06 15:53:00', '2021-03-06 15:52:46', '2021-03-06 15:53:11']
+
+## Table film_category:
+film_id: The type is INT, Which does not inlude Null and is Unique. Values format like: [927, 397, 334]
+category_id: The type is SMALLINT, Which does not inlude Null and is Non-Unique. Values format like: [7, 10, 8]
+last_update: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Values format like: ['2021-03-06 15:53:29', '2021-03-06 15:53:34', '2021-03-06 15:53:28']
+
+## Table inventory:
+inventory_id: The type is INT, Which does not inlude Null and is Unique. Values format like: [3530, 277, 517]
+film_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [507, 755, 504]
+store_id: The type is INT, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]
+last_update: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Values format like: ['2021-03-06 15:52:30', '2021-03-06 15:52:19', '2021-03-06 15:52:38']
+
+## Table staff:
+staff_id: The type is SMALLINT, Which does not inlude Null and is Unique. Value of this column must in: [1, 2]
+first_name: The type is VARCHAR(45), Which does not inlude Null and is Unique. Value of this column must in: ['Mike', 'Jon']
+last_name: The type is VARCHAR(45), Which does not inlude Null and is Unique. Value of this column must in: ['Hillyer', 'Stephens']
+address_id: The type is INT, Which does not inlude Null and is Unique. Value of this column must in: [3, 4]
+picture: The type is BLOB, Which inlude Null and is Non-Unique. Value of this column must in: None
+email: The type is VARCHAR(50), Which does not inlude Null and is Unique. Value of this column must in: ['Mike.Hillyer@sakilastaff.com', 'Jon.Stephens@sakilastaff.com']
+store_id: The type is INT, Which does not inlude Null and is Unique. Value of this column must in: [1, 2]
+active: The type is SMALLINT, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]
+username: The type is VARCHAR(16), Which does not inlude Null and is Unique. Value of this column must in: ['Mike', 'Jon']
+password: The type is VARCHAR(40), Which does not inlude Null and is Non-Unique. Value of this column must in: ['8cb2237d0679ca88db6464eac60da96345513964']
+last_update: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2021-03-06 15:52:00']
+
+## Table store:
+store_id: The type is INT, Which does not inlude Null and is Unique. Value of this column must in: [1, 2]
+manager_staff_id: The type is SMALLINT, Which does not inlude Null and is Unique. Value of this column must in: [1, 2]
+address_id: The type is INT, Which does not inlude Null and is Unique. Value of this column must in: [1, 2]
+last_update: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2021-03-06 15:52:00']
+
+## Table payment:
+payment_id: The type is INT, Which does not inlude Null and is Unique. Values format like: [15716, 14766, 11652]
+customer_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [138, 76, 358]
+staff_id: The type is SMALLINT, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]
+rental_id: The type is INT, Which inlude Null and is Non-Unique. Values format like: [9052, 15683, 4058]
+amount: The type is DECIMAL(5,2), Which does not inlude Null and is Non-Unique. Values format like: [8, 10, 0]
+payment_date: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Values format like: ['2005-07-31 00:55:11.000', '2005-08-23 07:34:18.000', '2005-07-28 19:32:41.000']
+last_update: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Values format like: ['2021-03-06 15:57:14', '2021-03-06 15:57:09', '2021-03-06 15:57:29']
+
+## Table rental:
+rental_id: The type is INT, Which does not inlude Null and is Unique. Values format like: [10845, 853, 14744]
+rental_date: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Values format like: ['2005-06-19 03:24:17.000', '2005-05-26 14:07:58.000', '2005-07-30 05:21:32.000']
+inventory_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [4049, 3900, 4358]
+customer_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [525, 370, 105]
+return_date: The type is TIMESTAMP, Which inlude Null and is Non-Unique. Values format like: ['2005-08-24 15:44:17.000', '2005-07-11 13:23:57.000', '2005-08-08 22:36:44.000']
+staff_id: The type is SMALLINT, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]
+last_update: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Values format like: ['2021-03-06 15:55:35', '2021-03-06 15:54:54', '2021-03-06 15:55:56']
+
+#Forigen keys:
+city.country_id = country.country_id, address.city_id = city.city_id, customer.address_id = address.address_id, film.original_language_id = language.language_id, film.language_id = language.language_id, film_actor.film_id = film.film_id, film_actor.actor_id = actor.actor_id, film_category.category_id = category.category_id, film_category.film_id = film.film_id, inventory.film_id = film.film_id, staff.address_id = address.address_id, store.address_id = address.address_id, store.manager_staff_id = staff.staff_id, payment.staff_id = staff.staff_id, payment.customer_id = customer.customer_id, rental.customer_id = customer.customer_id, rental.inventory_id = inventory.inventory_id, rental.staff_id = staff.staff_id
+
+# Database Description:
+The `sqlite-sakila` database is a sample database designed to represent a DVD rental store. It contains information about movies, actors, customers, staff, rentals, payments, and related entities. The database is structured to capture the relationships between these entities, such as which movies are rented by which customers, the staff managing the rentals, and the payments made. It also includes metadata about countries, cities, and addresses to provide geographical context.
+
+# Tables Descriptions:
+1. **actor**:  
+   Contains information about actors, including their unique IDs, first and last names, and the last time their information was updated.
+
+2. **country**:  
+   Stores information about countries, including a unique ID, the country name, and the last update timestamp.
+
+3. **city**:  
+   Contains details about cities, including a unique ID, city name, associated country ID (foreign key), and the last update timestamp.
+
+4. **address**:  
+   Stores address details, including a unique ID, address lines, district, associated city ID (foreign key), postal code, phone number, and the last update timestamp.
+
+5. **language**:  
+   Contains information about languages, including a unique ID, language name, and the last update timestamp.
+
+6. **category**:  
+   Stores movie categories, including a unique ID, category name, and the last update timestamp.
+
+7. **customer**:  
+   Contains customer information, including a unique ID, store ID, first and last names, email, associated address ID (foreign key), active status, creation date, and the last update timestamp.
+
+8. **film**:  
+   Stores information about movies, including a unique ID, title, description, release year, language ID (foreign key), original language ID (foreign key), rental duration, rental rate, length, replacement cost, rating, special features, and the last update timestamp.
+
+9. **film_actor**:  
+   Represents the many-to-many relationship between films and actors. It includes actor IDs (foreign key), film IDs (foreign key), and the last update timestamp.
+
+10. **film_category**:  
+    Represents the many-to-many relationship between films and categories. It includes film IDs (foreign key), category IDs (foreign key), and the last update timestamp.
+
+11. **inventory**:  
+    Contains information about the inventory of films, including a unique ID, associated film ID (foreign key), store ID, and the last update timestamp.
+
+12. **staff**:  
+    Stores information about staff members, including a unique ID, first and last names, associated address ID (foreign key), picture, email, store ID, active status, username, password, and the last update timestamp.
+
+13. **store**:  
+    Contains information about stores, including a unique ID, manager staff ID (foreign key), associated address ID (foreign key), and the last update timestamp.
+
+14. **payment**:  
+    Stores payment information, including a unique ID, associated customer ID (foreign key), staff ID (foreign key), rental ID (foreign key), payment amount, payment date, and the last update timestamp.
+
+15. **rental**:  
+    Contains rental information, including a unique ID, rental date, associated inventory ID (foreign key), customer ID (foreign key), return date, staff ID (foreign key), and the last update timestamp.
+
+# Foreign Keys:
+- `city.country_id` → `country.country_id`
+- `address.city_id` → `city.city_id`
+- `customer.address_id` → `address.address_id`
+- `film.original_language_id` → `language.language_id`
+- `film.language_id` → `language.language_id`
+- `film_actor.film_id` → `film.film_id`
+- `film_actor.actor_id` → `actor.actor_id`
+- `film_category.category_id` → `category.category_id
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: For each rating category of the first movie rented by customers—where the first movie is identified based on the earliest payment date per customer—please provide the average total amount spent per customer and the average number of subsequent rentals (calculated as the total number of rentals minus one) for customers whose first rented movie falls into that rating category. */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries the first movie rented by customers based on the earliest payment date per customer, and analyzes the average total amount spent and the average number of subsequent rentals for customers grouped by the rating category of the first movie. Relevant columns include payment.payment_date (to identify the first movie), customer.customer_id (to group by customer), film.rating (to group by rating category), rental.customer_id and rental.rental_id (to calculate subsequent rentals), and payment.amount (to calculate total amount spent).
+#columns: payment.payment_date, customer.customer_id, film.rating, rental.customer_id, rental.rental_id, payment.amount
+#values: None
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+For each rating category of the first movie rented by customers—where the first movie is identified based on the earliest payment date per customer—please provide the average total amount spent per customer and the average number of subsequent rentals (calculated as the total number of rentals minus one) for customers whose first rented movie falls into that rating category.
+
+############################## AI at step extract_query_noun ##############################
+
+"rating category", "movie", "customers", "payment date", "customer", "amount", "rentals", "number", "subsequent rentals", "total number of rentals", "rating category", "first movie", "earliest payment date", "average total amount spent", "average number of subsequent rentals", "first rented movie"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: For each rating category of the first movie rented by customers—where the first movie is identified based on the earliest payment date per customer—please provide the average total amount spent per customer and the average number of subsequent rentals (calculated as the total number of rentals minus one) for customers whose first rented movie falls into that rating category.
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "provide",
+      "J": null,
+      "I": ["the average total amount spent per customer", "the average number of subsequent rentals"],
+      "C": [
+        "for each rating category of the first movie rented by customers",
+        "where the first movie is identified based on the earliest payment date per customer",
+        "calculated as the total number of rentals minus one",
+        "for customers whose first rented movie falls into that rating category"
+      ]
+    }
+  }
+]
+```
+

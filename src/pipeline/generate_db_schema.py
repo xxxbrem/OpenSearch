@@ -45,7 +45,7 @@ def generate_db_schema(task: Any, execution_history: Dict[str, Any]) -> Dict[str
         data[db]=[all_info,db_col]
         with open(ext_file, 'w') as f:
             json.dump(data, f, indent=4,ensure_ascii=False)
-    
+
     response = {
         "db_list": all_info,
         "db_col_dic": db_col

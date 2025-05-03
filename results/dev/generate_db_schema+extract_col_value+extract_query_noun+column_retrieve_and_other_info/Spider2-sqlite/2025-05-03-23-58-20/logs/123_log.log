@@ -1,0 +1,351 @@
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: Which drivers have won at least 3 races in any season since 2010? */
+SELECT DISTINCT D.name , DS.year
+FROM driver_standings AS DS
+JOIN drivers AS D ON D.driver_id = DS.driver_id
+WHERE DS.year >= 2010
+  AND DS.wins >= 3;
+
+/* Answer the following: What are the top 5 teams with the lowest average pit-stop duration in the 2019 season? */
+SELECT C.name ,
+       AVG(P.duration_ms) AS avg_stop_ms
+FROM pit_stops AS P
+JOIN results      AS R ON R.race_id   = P.race_id 
+                       AND R.driver_id = P.driver_id
+JOIN constructors AS C ON C.constructor_id = R.constructor_id
+JOIN races        AS Ra ON Ra.race_id = P.race_id
+WHERE Ra.year = 2019
+GROUP BY C.name
+ORDER BY avg_stop_ms ASC
+LIMIT 5;
+
+/* Answer the following: How many races have been run on circuits whose length exceeds 5 kilometres? */
+SELECT COUNT(*)
+FROM races   AS Ra
+JOIN circuits AS C ON C.circuit_id = Ra.circuit_id
+WHERE C.length_km > 5;
+
+/* Answer the following: In which year did Lewis Hamilton lead the most total laps, and how many laps did he lead? */
+SELECT Ra.year ,
+       SUM(R.laps_led) AS total_laps_led
+FROM results  AS R
+JOIN races    AS Ra ON Ra.race_id = R.race_id
+JOIN drivers  AS D  ON D.driver_id = R.driver_id
+WHERE D.name = 'Lewis Hamilton'
+GROUP BY Ra.year
+ORDER BY total_laps_led DESC
+LIMIT 1;
+
+/* Answer the following: List the circuits where the fastest speed recorded exceeded 350 km/h. */
+SELECT DISTINCT C.name
+FROM speed_trap AS S
+JOIN races      AS Ra ON Ra.race_id = S.race_id
+JOIN circuits   AS C  ON C.circuit_id = Ra.circuit_id
+GROUP BY C.name
+HAVING MAX(S.speed_kmh) > 350;
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: log
+## Table mst_users:
+user_id: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['U004', 'U003', 'U027']
+sex: The type is varchar(255), Which does not inlude Null and is Non-Unique. Value of this column must in: ['M', 'F']
+birth_date: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['1976-05-26', '1957-05-18', '1950-01-21']
+register_date: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['2016-11-05', '2016-10-01', '2016-10-20']
+register_device: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['sp', 'pc', 'app']
+withdraw_date: The type is varchar(255), Which inlude Null and is Non-Unique. Value of this column must in: ['2016-10-10']
+
+## Table action_log:
+session: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['47db0370', '87b5725f', '989004ea']
+user_id: The type is varchar(255), Which does not inlude Null and is Non-Unique. Value of this column must in: ['U001', 'U002']
+action: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['review', 'add_cart', 'favorite']
+category: The type is varchar(255), Which inlude Null and is Non-Unique. Value of this column must in: ['drama', 'action']
+products: The type is varchar(255), Which inlude Null and is Non-Unique. Values format like: ['A005,A006', 'D001', 'A004']
+amount: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [2000, 1000]
+stamp: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['2016-11-04 15:00:00', '2016-11-03 18:10:00', '2016-11-04 12:00:00']
+
+## Table activity_log:
+stamp: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['2017-01-09 12:20:03', '2017-01-09 12:19:04', '2017-01-09 12:19:49']
+session: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['d45ec190', 'cabf98e8', '3efe001c']
+action: The type is varchar(255), Which does not inlude Null and is Non-Unique. Value of this column must in: ['view']
+option: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['search', 'page', 'detail']
+path: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['/search_input', '/detail', '/search_input/']
+search_type: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['Pref', 'Line-with-Job', '']
+
+## Table read_log:
+stamp: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['2016-12-29 21:46:08', '2016-12-29 21:46:13', '2016-12-29 21:45:59']
+session: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['afbd3d09', '08962ace', 'df6eb25d']
+action: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['read-100%', 'view', 'read-80%']
+url: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['http://www.example.com/article?id=it605', 'http://www.example.com/article?id=trend925', 'http://www.example.com/article?id=news731']
+
+## Table form_log:
+stamp: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['2016-12-30 01:00:19', '2016-12-30 00:57:56', '2016-12-30 01:00:06']
+session: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['9b5f320f', 42532886, '46b4c72c']
+action: The type is varchar(255), Which does not inlude Null and is Non-Unique. Value of this column must in: ['view']
+path: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['/contact/complete', '/regist/confirm', '/contact/input']
+status: The type is varchar(255), Which does not inlude Null and is Non-Unique. Value of this column must in: ['', 'error']
+
+## Table form_error_log:
+stamp: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['2016-12-30 00:57:21', '2016-12-30 00:56:08', '2016-12-30 00:56:09']
+session: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['02596e8a', 1061716, '004dc3ef']
+form: The type is varchar(255), Which does not inlude Null and is Non-Unique. Value of this column must in: ['regist', 'cart']
+field: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['zip', 'email', 'kana']
+error_type: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['not_kana', 'format_error', 'require']
+value: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['xxx---.co.jp', '', '101-']
+
+## Table action_log_with_ip:
+session: The type is varchar(255), Which does not inlude Null and is Unique. Values format like: ['1cf7678e', '47db0370', '989004ea']
+user_id: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['U005', 'U001', 'U003']
+action: The type is varchar(255), Which does not inlude Null and is Non-Unique. Value of this column must in: ['view']
+ip: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['127.0.0.1', '192.0.0.10', '10.0.0.3']
+stamp: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['2016-11-03 19:00:00', '2016-11-04 21:00:00', '2016-11-03 20:00:00']
+
+## Table access_log:
+session: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['2016-10-02 13:00:00', '2016-10-02 17:00:00', '2016-10-02 18:00:00']
+user_id: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['1hI43A', '3CEHe1', '6oABhM']
+action: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['KBlKgT', '6SN6DD', '1CwlSX']
+stamp: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['2016-01-02 20:00:00', '2016-01-06 02:30:00', '2016-01-05 00:30:00']
+
+## Table invalid_action_log:
+stamp: The type is varchar(255), Which inlude Null and is Non-Unique. Values format like: ['2016-11-03 18:02:00', '2016-11-03 18:01:00', '2016-11-03 18:10:00']
+session: The type is varchar(255), Which does not inlude Null and is Non-Unique. Value of this column must in: ['0CVKaz', '1QceiB']
+user_id: The type is varchar(255), Which does not inlude Null and is Non-Unique. Value of this column must in: ['U001', 'U002']
+action: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['view', 'purchase', 'add_cart']
+category: The type is varchar(255), Which inlude Null and is Non-Unique. Value of this column must in: ['drama', 'action']
+products: The type is varchar(255), Which inlude Null and is Non-Unique. Values format like: ['D002', 'D001,D002', 'D001']
+amount: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [2000, 1000]
+
+## Table mst_categories:
+id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 4, 2]
+name: The type is varchar(255), Which does not inlude Null and is Unique. Values format like: ['food', 'cooking', 'ladys_fashion']
+stamp: The type is varchar(255), Which does not inlude Null and is Non-Unique. Value of this column must in: ['2016-01-01 10:00:00', '2016-02-01 10:00:00']
+
+## Table dup_action_log:
+stamp: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['2016-11-04 19:00:00', '2016-11-03 19:00:00', '2016-11-04 22:00:00']
+session: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['111f2996', '1cf7678e', '87b5725f']
+user_id: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['U001', 'U006', 'U002']
+action: The type is varchar(255), Which does not inlude Null and is Non-Unique. Value of this column must in: ['click']
+products: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['A001', 'D002', 'D001']
+
+## Table mst_products_20161201:
+product_id: The type is varchar(255), Which does not inlude Null and is Unique. Values format like: ['B001', 'C001', 'D001']
+name: The type is varchar(255), Which does not inlude Null and is Unique. Values format like: ['BBD', 'BBB', 'CCA']
+price: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4000, 3000, 5000]
+updated_at: The type is varchar(255), Which does not inlude Null and is Unique. Values format like: ['2016-11-03 21:00:00', '2016-11-03 19:00:00', '2016-11-04 19:00:00']
+
+## Table mst_products_20170101:
+product_id: The type is varchar(255), Which does not inlude Null and is Unique. Values format like: ['A001', 'D002', 'A002']
+name: The type is varchar(255), Which does not inlude Null and is Unique. Values format like: ['DAD', 'DAA', 'BBD']
+price: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3000, 4000, 5000]
+updated_at: The type is varchar(255), Which does not inlude Null and is Unique. Values format like: ['2016-11-03 18:00:00', '2016-11-03 21:00:00', '2016-12-04 19:00:00']
+
+## Table app1_mst_users:
+user_id: The type is varchar(255), Which does not inlude Null and is Unique. Value of this column must in: ['U001', 'U002']
+name: The type is varchar(255), Which does not inlude Null and is Unique. Value of this column must in: ['Sato', 'Suzuki']
+email: The type is varchar(255), Which does not inlude Null and is Unique. Value of this column must in: ['sato@example.com', 'suzuki@example.com']
+
+## Table app2_mst_users:
+user_id: The type is varchar(255), Which does not inlude Null and is Unique. Value of this column must in: ['U001', 'U002']
+name: The type is varchar(255), Which does not inlude Null and is Unique. Value of this column must in: ['Ito', 'Tanaka']
+phone: The type is varchar(255), Which does not inlude Null and is Unique. Value of this column must in: ['080-xxxx-xxxx', '070-xxxx-xxxx']
+
+## Table mst_users_with_card_number:
+user_id: The type is varchar(255), Which does not inlude Null and is Unique. Values format like: ['U003', 'U001', 'U002']
+card_number: The type is varchar(255), Which inlude Null and is Unique. Value of this column must in: ['1234-xxxx-xxxx-xxxx', '5678-xxxx-xxxx-xxxx']
+
+## Table purchase_log:
+purchase_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [10001, 10003, 10005]
+user_id: The type is varchar(255), Which does not inlude Null and is Non-Unique. Value of this column must in: ['U001', 'U002']
+amount: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [800, 200, 400]
+stamp: The type is varchar(255), Which does not inlude Null and is Unique. Values format like: ['2017-02-12 10:00:00', '2017-01-30 10:00:00', '2017-02-10 10:00:00']
+
+## Table product_sales:
+category_name: The type is varchar(255), Which does not inlude Null and is Non-Unique. Values format like: ['cd', 'book', 'dvd']
+product_id: The type is varchar(255), Which does not inlude Null and is Unique. Values format like: ['D003', 'B004', 'B001']
+sales: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [50000, 10000, 5000]
+
+#Forigen keys:
+
+
+#Database Description:
+The database named `log` is managed using SQLite and contains detailed logs and master data related to user activities, product information, and transactional data. It is designed to track user actions, errors, purchases, and product sales, as well as maintain master data for users, categories, and products. The database supports various applications and provides insights into user behavior, product performance, and transactional history.
+
+#Tables Descriptions:
+
+1. **mst_users**:
+   - Contains user information such as user ID, sex, birth date, registration details, and withdrawal date.
+   - Tracks user demographics and registration devices.
+
+2. **action_log**:
+   - Logs user actions such as reviews, adding items to the cart, and favoriting products.
+   - Includes session details, product information, action categories, and timestamps.
+
+3. **activity_log**:
+   - Records user activity related to viewing pages, searching, and navigating paths.
+   - Includes session details, action options, paths, and search types.
+
+4. **read_log**:
+   - Tracks user reading activities, including the percentage of content read and URLs accessed.
+   - Includes session details, actions, and timestamps.
+
+5. **form_log**:
+   - Logs user interactions with forms, including views and statuses.
+   - Includes session details, paths, and timestamps.
+
+6. **form_error_log**:
+   - Tracks errors encountered in forms, including error types, fields, and values.
+   - Includes session details, form names, and timestamps.
+
+7. **action_log_with_ip**:
+   - Logs user actions along with IP addresses.
+   - Includes session details, user IDs, actions, and timestamps.
+
+8. **access_log**:
+   - Records access details, including session information, user IDs, actions, and timestamps.
+
+9. **invalid_action_log**:
+   - Logs invalid user actions, including categories, products, and amounts.
+   - Includes session details, user IDs, and timestamps.
+
+10. **mst_categories**:
+    - Contains master data for product categories.
+    - Includes category IDs, names, and timestamps.
+
+11. **dup_action_log**:
+    - Tracks duplicate user actions, including clicks and product interactions.
+    - Includes session details, user IDs, and timestamps.
+
+12. **mst_products_20161201**:
+    - Contains master data for products as of December 1, 2016.
+    - Includes product IDs, names, prices, and update timestamps.
+
+13. **mst_products_20170101**:
+    - Contains master data for products as of January 1, 2017.
+    - Includes product IDs, names, prices, and update timestamps.
+
+14. **app1_mst_users**:
+    - Contains master data for users in Application 1.
+    - Includes user IDs, names, and email addresses.
+
+15. **app2_mst_users**:
+    - Contains master data for users in Application 2.
+    - Includes user IDs, names, and phone numbers.
+
+16. **mst_users_with_card_number**:
+    - Contains user information along with card numbers.
+    - Includes user IDs and card numbers.
+
+17. **purchase_log**:
+    - Logs purchase transactions, including purchase IDs, user IDs, amounts, and timestamps.
+
+18. **product_sales**:
+    - Tracks product sales data, including category names, product IDs, and sales figures.
+
+#Foreign Keys:
+The database does not explicitly define foreign keys in the provided schema, but logical relationships can be inferred:
+- `action_log.user_id` → `mst_users.user_id`
+- `invalid_action_log.user_id` → `mst_users.user_id`
+- `dup_action_log.user_id` → `mst_users.user_id`
+- `purchase_log.user_id` → `mst_users.user_id`
+- `product_sales.product_id` → `mst_products_20161201.product_id` or `mst_products_20170101
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: Which three distinct third-page visits are most frequently observed immediately after two consecutive visits to the '/detail' page, and how many times does each third-page visit occur? */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries the third-page visits immediately after two consecutive visits to the '/detail' page. The related columns include session details, paths, and actions to track the sequence of visits. The filter values include '/detail' for the first two visits and the third-page visit for counting occurrences.
+#columns: activity_log.session, activity_log.path, activity_log.stamp
+#values: "/detail"
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+Which three distinct third-page visits are most frequently observed immediately after two consecutive visits to the '/detail' page, and how many times does each third-page visit occur?
+
+############################## AI at step extract_query_noun ##############################
+
+"three", "distinct", "third-page visits", "visits", "page", "'/detail' page", "times", "third-page visit"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: Which three distinct third-page visits are most frequently observed immediately after two consecutive visits to the '/detail' page, and how many times does each third-page visit occur?
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "Which",
+      "J": null,
+      "I": ["three distinct third-page visits", "how many times does each third-page visit occur"],
+      "C": [
+        "are most frequently observed immediately after two consecutive visits to the '/detail' page"
+      ]
+    }
+  }
+]
+```
+

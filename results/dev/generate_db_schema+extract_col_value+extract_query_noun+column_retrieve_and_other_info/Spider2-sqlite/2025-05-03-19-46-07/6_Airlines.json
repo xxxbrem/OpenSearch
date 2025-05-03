@@ -1,0 +1,404 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: Airlines\n## Table aircrafts_data:\naircraft_code: The type is character(3), Which does not inlude Null and is Unique. Values format like: ['CN1', 773, 320]\nmodel: The type is jsonb, Which does not inlude Null and is Unique. Values format like: ['{\"en\": \"Airbus A321-200\", \"ru\": \"Аэробус A321-200\"}', '{\"en\": \"Boeing 767-300\", \"ru\": \"Боинг 767-300\"}', '{\"en\": \"Sukhoi Superjet-100\", \"ru\": \"Сухой Суперджет-100\"}']\nrange: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [11100, 5600, 5700]\n\n## Table airports_data:\nairport_code: The type is character(3), Which does not inlude Null and is Unique. Values format like: ['OMS', 'TBW', 'IKT']\nairport_name: The type is jsonb, Which does not inlude Null and is Unique. Values format like: ['{\"en\": \"Petrozavodsk Airport\", \"ru\": \"Бесовец\"}', '{\"en\": \"Ignatyevo Airport\", \"ru\": \"Игнатьево\"}', '{\"en\": \"Vnukovo International Airport\", \"ru\": \"Внуково\"}']\ncity: The type is jsonb, Which does not inlude Null and is Non-Unique. Values format like: ['{\"en\": \"Vorkuta\", \"ru\": \"Воркута\"}', '{\"en\": \"Nizhniy Novgorod\", \"ru\": \"Нижний Новгород\"}', '{\"en\": \"Noyabrsk\", \"ru\": \"Ноябрьск\"}']\ncoordinates: The type is point, Which does not inlude Null and is Unique. Values format like: ['(47.9047012329101562,56.7005996704101562)', '(52.8017005920410156,54.6399993896484375)', '(72.6500015258789062,61.1082992553710938)']\ntimezone: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Asia/Anadyr', 'Europe/Volgograd', 'Asia/Sakhalin']\n\n## Table boarding_passes:\nticket_no: The type is character(13), Which does not inlude Null and is Non-Unique. Values format like: [5435299778, 5433754178, 5433785298]\nflight_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [29249, 31131, 24619]\nboarding_no: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [106, 38, 43]\nseat_no: The type is character varying(4), Which does not inlude Null and is Non-Unique. Values format like: ['3G', '32D', '37C']\n\n## Table bookings:\nbook_ref: The type is character(6), Which does not inlude Null and is Unique. Values format like: ['744DD2', '211BC7', '9F281D']\nbook_date: The type is timestamp with time zone, Which does not inlude Null and is Non-Unique. Values format like: ['2017-07-01 22:01:00+03', '2017-07-19 06:30:00+03', '2017-07-08 20:46:00+03']\ntotal_amount: The type is numeric(10,2), Which does not inlude Null and is Non-Unique. Values format like: [268600, 99600, 236800]\n\n## Table flights:\nflight_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [9693, 6901, 3993]\nflight_no: The type is character(6), Which does not inlude Null and is Non-Unique. Values format like: ['PG0685', 'PG0286', 'PG0559']\nscheduled_departure: The type is timestamp with time zone, Which does not inlude Null and is Non-Unique. Values format like: ['2017-08-25 09:55:00+03', '2017-08-17 07:45:00+03', '2017-09-12 12:35:00+03']\nscheduled_arrival: The type is timestamp with time zone, Which does not inlude Null and is Non-Unique. Values format like: ['2017-07-25 02:35:00+03', '2017-08-13 19:45:00+03', '2017-09-06 19:45:00+03']\ndeparture_airport: The type is character(3), Which does not inlude Null and is Non-Unique. Values format like: ['BTK', 'MCX', 'TJM']\narrival_airport: The type is character(3), Which does not inlude Null and is Non-Unique. Values format like: ['UCT', 'AAQ', 'RGK']\nstatus: The type is character varying(20), Which does not inlude Null and is Non-Unique. Values format like: ['Delayed', 'Scheduled', 'Arrived']\naircraft_code: The type is character(3), Which does not inlude Null and is Non-Unique. Values format like: [321, 'CR2', 733]\nactual_departure: The type is timestamp with time zone, Which does not inlude Null and is Non-Unique. Values format like: ['2017-07-18 19:13:00+03', '2017-08-12 11:27:00+03', '2017-07-18 18:05:00+03']\nactual_arrival: The type is timestamp with time zone, Which does not inlude Null and is Non-Unique. Values format like: ['2017-08-04 11:32:00+03', '2017-08-07 13:51:00+03', '2017-07-27 15:51:00+03']\n\n## Table seats:\naircraft_code: The type is character(3), Which does not inlude Null and is Non-Unique. Values format like: [763, 773, 319]\nseat_no: The type is character varying(4), Which does not inlude Null and is Non-Unique. Values format like: ['31J', '9F', '14K']\nfare_conditions: The type is character varying(10), Which does not inlude Null and is Non-Unique. Values format like: ['Comfort', 'Business', 'Economy']\n\n## Table ticket_flights:\nticket_no: The type is character(13), Which does not inlude Null and is Non-Unique. Values format like: [5433679943, 5434140394, 5434373943]\nflight_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [28173, 12199, 6729]\nfare_conditions: The type is character varying(10), Which does not inlude Null and is Non-Unique. Values format like: ['Business', 'Comfort', 'Economy']\namount: The type is numeric(10,2), Which does not inlude Null and is Non-Unique. Values format like: [39100, 99800, 51100]\n\n## Table tickets:\nticket_no: The type is character(13), Which does not inlude Null and is Unique. Values format like: [5435462214, 5434504810, 5434025255]\nbook_ref: The type is character(6), Which does not inlude Null and is Non-Unique. Values format like: ['2C4E01', 'E3FF6B', '8E947D']\npassenger_id: The type is character varying(20), Which does not inlude Null and is Unique. Values format like: ['4098 744370', '0165 915763', '9031 712502']\n\n#Forigen keys:\n\n\n# Database Description:\nThe database is designed to manage and store information related to airline operations. It includes details about aircraft, airports, flights, bookings, tickets, and passengers. The database is structured to support airline management systems, providing comprehensive data for flight scheduling, ticketing, and passenger management.\n\n# Tables Descriptions:\n\n## 1. `aircrafts_data`:\n- **Description**: Contains information about aircraft models and their specifications.\n- **Columns**:\n  - `aircraft_code`: A unique 3-character code representing the aircraft type.\n  - `model`: A JSONB field containing the aircraft model name in multiple languages.\n  - `range`: The maximum range of the aircraft in kilometers.\n\n## 2. `airports_data`:\n- **Description**: Stores details about airports, including their codes, names, and locations.\n- **Columns**:\n  - `airport_code`: A unique 3-character IATA code for the airport.\n  - `airport_name`: A JSONB field containing the airport name in multiple languages.\n  - `city`: A JSONB field containing the city name in multiple languages.\n  - `coordinates`: A point field representing the geographical coordinates of the airport.\n  - `timezone`: The timezone of the airport.\n\n## 3. `boarding_passes`:\n- **Description**: Tracks boarding pass details for passengers on specific flights.\n- **Columns**:\n  - `ticket_no`: The ticket number associated with the boarding pass.\n  - `flight_id`: The flight ID for which the boarding pass is issued.\n  - `boarding_no`: The boarding sequence number.\n  - `seat_no`: The seat number assigned to the passenger.\n\n## 4. `bookings`:\n- **Description**: Contains information about flight bookings.\n- **Columns**:\n  - `book_ref`: A unique booking reference code.\n  - `book_date`: The date and time when the booking was made.\n  - `total_amount`: The total amount paid for the booking.\n\n## 5. `flights`:\n- **Description**: Stores details about scheduled and actual flight operations.\n- **Columns**:\n  - `flight_id`: A unique identifier for the flight.\n  - `flight_no`: The flight number.\n  - `scheduled_departure`: The scheduled departure time.\n  - `scheduled_arrival`: The scheduled arrival time.\n  - `departure_airport`: The IATA code of the departure airport.\n  - `arrival_airport`: The IATA code of the arrival airport.\n  - `status`: The current status of the flight (e.g., Scheduled, Delayed, Arrived).\n  - `aircraft_code`: The aircraft code used for the flight.\n  - `actual_departure`: The actual departure time.\n  - `actual_arrival`: The actual arrival time.\n\n## 6. `seats`:\n- **Description**: Contains information about the seating arrangements on aircraft.\n- **Columns**:\n  - `aircraft_code`: The aircraft code to which the seat belongs.\n  - `seat_no`: The seat number.\n  - `fare_conditions`: The fare class of the seat (e.g., Economy, Business, Comfort).\n\n## 7. `ticket_flights`:\n- **Description**: Links tickets to flights and provides fare and payment details.\n- **Columns**:\n  - `ticket_no`: The ticket number.\n  - `flight_id`: The flight ID associated with the ticket.\n  - `fare_conditions`: The fare class of the ticket.\n  - `amount`: The amount paid for the ticket.\n\n## 8. `tickets`:\n- **Description**: Stores information about tickets issued to passengers.\n- **Columns**:\n  - `ticket_no`: A unique ticket number.\n  - `book_ref`: The booking reference associated with the ticket.\n  - `passenger_id`: A unique identifier for the\n",
+        "db_col_dic": {
+            "aircrafts_data.aircraft_code": [
+                "The type is character(3), Which does not inlude Null and is Unique. Values format like: ['CN1', 773, 320]",
+                "",
+                "",
+                "character(3)",
+                "Non-Null",
+                "Unique",
+                "['CN1', 773, 320]"
+            ],
+            "aircrafts_data.model": [
+                "The type is jsonb, Which does not inlude Null and is Unique. Values format like: ['{\"en\": \"Airbus A321-200\", \"ru\": \"Аэробус A321-200\"}', '{\"en\": \"Boeing 767-300\", \"ru\": \"Боинг 767-300\"}', '{\"en\": \"Sukhoi Superjet-100\", \"ru\": \"Сухой Суперджет-100\"}']",
+                "",
+                "",
+                "jsonb",
+                "Non-Null",
+                "Unique",
+                "['{\"en\": \"Airbus A321-200\", \"ru\": \"Аэробус A321-200\"}', '{\"en\": \"Boeing 767-300\", \"ru\": \"Боинг 767-300\"}', '{\"en\": \"Sukhoi Superjet-100\", \"ru\": \"Сухой Суперджет-100\"}']"
+            ],
+            "aircrafts_data.range": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [11100, 5600, 5700]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[11100, 5600, 5700]"
+            ],
+            "airports_data.airport_code": [
+                "The type is character(3), Which does not inlude Null and is Unique. Values format like: ['OMS', 'TBW', 'IKT']",
+                "",
+                "",
+                "character(3)",
+                "Non-Null",
+                "Unique",
+                "['OMS', 'TBW', 'IKT']"
+            ],
+            "airports_data.airport_name": [
+                "The type is jsonb, Which does not inlude Null and is Unique. Values format like: ['{\"en\": \"Petrozavodsk Airport\", \"ru\": \"Бесовец\"}', '{\"en\": \"Ignatyevo Airport\", \"ru\": \"Игнатьево\"}', '{\"en\": \"Vnukovo International Airport\", \"ru\": \"Внуково\"}']",
+                "",
+                "",
+                "jsonb",
+                "Non-Null",
+                "Unique",
+                "['{\"en\": \"Petrozavodsk Airport\", \"ru\": \"Бесовец\"}', '{\"en\": \"Ignatyevo Airport\", \"ru\": \"Игнатьево\"}', '{\"en\": \"Vnukovo International Airport\", \"ru\": \"Внуково\"}']"
+            ],
+            "airports_data.city": [
+                "The type is jsonb, Which does not inlude Null and is Non-Unique. Values format like: ['{\"en\": \"Vorkuta\", \"ru\": \"Воркута\"}', '{\"en\": \"Nizhniy Novgorod\", \"ru\": \"Нижний Новгород\"}', '{\"en\": \"Noyabrsk\", \"ru\": \"Ноябрьск\"}']",
+                "",
+                "",
+                "jsonb",
+                "Non-Null",
+                "Non-Unique",
+                "['{\"en\": \"Vorkuta\", \"ru\": \"Воркута\"}', '{\"en\": \"Nizhniy Novgorod\", \"ru\": \"Нижний Новгород\"}', '{\"en\": \"Noyabrsk\", \"ru\": \"Ноябрьск\"}']"
+            ],
+            "airports_data.coordinates": [
+                "The type is point, Which does not inlude Null and is Unique. Values format like: ['(47.9047012329101562,56.7005996704101562)', '(52.8017005920410156,54.6399993896484375)', '(72.6500015258789062,61.1082992553710938)']",
+                "",
+                "",
+                "point",
+                "Non-Null",
+                "Unique",
+                "['(47.9047012329101562,56.7005996704101562)', '(52.8017005920410156,54.6399993896484375)', '(72.6500015258789062,61.1082992553710938)']"
+            ],
+            "airports_data.timezone": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Asia/Anadyr', 'Europe/Volgograd', 'Asia/Sakhalin']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Asia/Anadyr', 'Europe/Volgograd', 'Asia/Sakhalin']"
+            ],
+            "boarding_passes.ticket_no": [
+                "The type is character(13), Which does not inlude Null and is Non-Unique. Values format like: [5435299778, 5433754178, 5433785298]",
+                "",
+                "",
+                "character(13)",
+                "Non-Null",
+                "Non-Unique",
+                "[5435299778, 5433754178, 5433785298]"
+            ],
+            "boarding_passes.flight_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [29249, 31131, 24619]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[29249, 31131, 24619]"
+            ],
+            "boarding_passes.boarding_no": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [106, 38, 43]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[106, 38, 43]"
+            ],
+            "boarding_passes.seat_no": [
+                "The type is character varying(4), Which does not inlude Null and is Non-Unique. Values format like: ['3G', '32D', '37C']",
+                "",
+                "",
+                "character varying(4)",
+                "Non-Null",
+                "Non-Unique",
+                "['3G', '32D', '37C']"
+            ],
+            "bookings.book_ref": [
+                "The type is character(6), Which does not inlude Null and is Unique. Values format like: ['744DD2', '211BC7', '9F281D']",
+                "",
+                "",
+                "character(6)",
+                "Non-Null",
+                "Unique",
+                "['744DD2', '211BC7', '9F281D']"
+            ],
+            "bookings.book_date": [
+                "The type is timestamp with time zone, Which does not inlude Null and is Non-Unique. Values format like: ['2017-07-01 22:01:00+03', '2017-07-19 06:30:00+03', '2017-07-08 20:46:00+03']",
+                "",
+                "",
+                "timestamp with time zone",
+                "Non-Null",
+                "Non-Unique",
+                "['2017-07-01 22:01:00+03', '2017-07-19 06:30:00+03', '2017-07-08 20:46:00+03']"
+            ],
+            "bookings.total_amount": [
+                "The type is numeric(10,2), Which does not inlude Null and is Non-Unique. Values format like: [268600, 99600, 236800]",
+                "",
+                "",
+                "numeric(10,2)",
+                "Non-Null",
+                "Non-Unique",
+                "[268600, 99600, 236800]"
+            ],
+            "flights.flight_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [9693, 6901, 3993]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[9693, 6901, 3993]"
+            ],
+            "flights.flight_no": [
+                "The type is character(6), Which does not inlude Null and is Non-Unique. Values format like: ['PG0685', 'PG0286', 'PG0559']",
+                "",
+                "",
+                "character(6)",
+                "Non-Null",
+                "Non-Unique",
+                "['PG0685', 'PG0286', 'PG0559']"
+            ],
+            "flights.scheduled_departure": [
+                "The type is timestamp with time zone, Which does not inlude Null and is Non-Unique. Values format like: ['2017-08-25 09:55:00+03', '2017-08-17 07:45:00+03', '2017-09-12 12:35:00+03']",
+                "",
+                "",
+                "timestamp with time zone",
+                "Non-Null",
+                "Non-Unique",
+                "['2017-08-25 09:55:00+03', '2017-08-17 07:45:00+03', '2017-09-12 12:35:00+03']"
+            ],
+            "flights.scheduled_arrival": [
+                "The type is timestamp with time zone, Which does not inlude Null and is Non-Unique. Values format like: ['2017-07-25 02:35:00+03', '2017-08-13 19:45:00+03', '2017-09-06 19:45:00+03']",
+                "",
+                "",
+                "timestamp with time zone",
+                "Non-Null",
+                "Non-Unique",
+                "['2017-07-25 02:35:00+03', '2017-08-13 19:45:00+03', '2017-09-06 19:45:00+03']"
+            ],
+            "flights.departure_airport": [
+                "The type is character(3), Which does not inlude Null and is Non-Unique. Values format like: ['BTK', 'MCX', 'TJM']",
+                "",
+                "",
+                "character(3)",
+                "Non-Null",
+                "Non-Unique",
+                "['BTK', 'MCX', 'TJM']"
+            ],
+            "flights.arrival_airport": [
+                "The type is character(3), Which does not inlude Null and is Non-Unique. Values format like: ['UCT', 'AAQ', 'RGK']",
+                "",
+                "",
+                "character(3)",
+                "Non-Null",
+                "Non-Unique",
+                "['UCT', 'AAQ', 'RGK']"
+            ],
+            "flights.status": [
+                "The type is character varying(20), Which does not inlude Null and is Non-Unique. Values format like: ['Delayed', 'Scheduled', 'Arrived']",
+                "",
+                "",
+                "character varying(20)",
+                "Non-Null",
+                "Non-Unique",
+                "['Delayed', 'Scheduled', 'Arrived']"
+            ],
+            "flights.aircraft_code": [
+                "The type is character(3), Which does not inlude Null and is Non-Unique. Values format like: [321, 'CR2', 733]",
+                "",
+                "",
+                "character(3)",
+                "Non-Null",
+                "Non-Unique",
+                "[321, 'CR2', 733]"
+            ],
+            "flights.actual_departure": [
+                "The type is timestamp with time zone, Which does not inlude Null and is Non-Unique. Values format like: ['2017-07-18 19:13:00+03', '2017-08-12 11:27:00+03', '2017-07-18 18:05:00+03']",
+                "",
+                "",
+                "timestamp with time zone",
+                "Non-Null",
+                "Non-Unique",
+                "['2017-07-18 19:13:00+03', '2017-08-12 11:27:00+03', '2017-07-18 18:05:00+03']"
+            ],
+            "flights.actual_arrival": [
+                "The type is timestamp with time zone, Which does not inlude Null and is Non-Unique. Values format like: ['2017-08-04 11:32:00+03', '2017-08-07 13:51:00+03', '2017-07-27 15:51:00+03']",
+                "",
+                "",
+                "timestamp with time zone",
+                "Non-Null",
+                "Non-Unique",
+                "['2017-08-04 11:32:00+03', '2017-08-07 13:51:00+03', '2017-07-27 15:51:00+03']"
+            ],
+            "seats.aircraft_code": [
+                "The type is character(3), Which does not inlude Null and is Non-Unique. Values format like: [763, 773, 319]",
+                "",
+                "",
+                "character(3)",
+                "Non-Null",
+                "Non-Unique",
+                "[763, 773, 319]"
+            ],
+            "seats.seat_no": [
+                "The type is character varying(4), Which does not inlude Null and is Non-Unique. Values format like: ['31J', '9F', '14K']",
+                "",
+                "",
+                "character varying(4)",
+                "Non-Null",
+                "Non-Unique",
+                "['31J', '9F', '14K']"
+            ],
+            "seats.fare_conditions": [
+                "The type is character varying(10), Which does not inlude Null and is Non-Unique. Values format like: ['Comfort', 'Business', 'Economy']",
+                "",
+                "",
+                "character varying(10)",
+                "Non-Null",
+                "Non-Unique",
+                "['Comfort', 'Business', 'Economy']"
+            ],
+            "ticket_flights.ticket_no": [
+                "The type is character(13), Which does not inlude Null and is Non-Unique. Values format like: [5433679943, 5434140394, 5434373943]",
+                "",
+                "",
+                "character(13)",
+                "Non-Null",
+                "Non-Unique",
+                "[5433679943, 5434140394, 5434373943]"
+            ],
+            "ticket_flights.flight_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [28173, 12199, 6729]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[28173, 12199, 6729]"
+            ],
+            "ticket_flights.fare_conditions": [
+                "The type is character varying(10), Which does not inlude Null and is Non-Unique. Values format like: ['Business', 'Comfort', 'Economy']",
+                "",
+                "",
+                "character varying(10)",
+                "Non-Null",
+                "Non-Unique",
+                "['Business', 'Comfort', 'Economy']"
+            ],
+            "ticket_flights.amount": [
+                "The type is numeric(10,2), Which does not inlude Null and is Non-Unique. Values format like: [39100, 99800, 51100]",
+                "",
+                "",
+                "numeric(10,2)",
+                "Non-Null",
+                "Non-Unique",
+                "[39100, 99800, 51100]"
+            ],
+            "tickets.ticket_no": [
+                "The type is character(13), Which does not inlude Null and is Unique. Values format like: [5435462214, 5434504810, 5434025255]",
+                "",
+                "",
+                "character(13)",
+                "Non-Null",
+                "Unique",
+                "[5435462214, 5434504810, 5434025255]"
+            ],
+            "tickets.book_ref": [
+                "The type is character(6), Which does not inlude Null and is Non-Unique. Values format like: ['2C4E01', 'E3FF6B', '8E947D']",
+                "",
+                "",
+                "character(6)",
+                "Non-Null",
+                "Non-Unique",
+                "['2C4E01', 'E3FF6B', '8E947D']"
+            ],
+            "tickets.passenger_id": [
+                "The type is character varying(20), Which does not inlude Null and is Unique. Values format like: ['4098 744370', '0165 915763', '9031 712502']",
+                "",
+                "",
+                "character varying(20)",
+                "Non-Null",
+                "Unique",
+                "['4098 744370', '0165 915763', '9031 712502']"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries the distribution of unique city pairs into specific distance ranges based on their average distance. It requires counting the pairs in the range with the fewest unique city pairs. Relevant columns include city names and average distance.\n#columns: routes.source_city, routes.dest_city, routes.distance_km\n#values: \"0-1000\", \"1000-2000\", \"2000-3000\", \"3000-4000\", \"4000-5000\", \"6000+\"\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "distance range",
+            "2000",
+            "routes",
+            "2000-3000",
+            "0",
+            "3000",
+            "pairs",
+            "4000-5000",
+            "4000",
+            "3000-4000",
+            "city",
+            "distance ranges",
+            "0-1000",
+            "average distance",
+            "6000+",
+            "5000",
+            "1000-2000",
+            "1000",
+            "unique city pairs"
+        ],
+        "col": "routes.source_city, routes.dest_city, routes.distance_km",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [
+            [
+                "boarding_passes.seat_no",
+                "3K"
+            ],
+            [
+                "bookings.book_ref",
+                "0EA000"
+            ],
+            [
+                "bookings.book_ref",
+                "4AF500"
+            ],
+            [
+                "bookings.book_ref",
+                "600EDD"
+            ],
+            [
+                "seats.seat_no",
+                "3K"
+            ],
+            [
+                "tickets.book_ref",
+                "0EA000"
+            ],
+            [
+                "tickets.book_ref",
+                "4AF500"
+            ],
+            [
+                "tickets.book_ref",
+                "600EDD"
+            ],
+            [
+                "tickets.passenger_id",
+                "3000 486432"
+            ]
+        ],
+        "column": "aircrafts_data.range: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [11100, 5600, 5700]\nairports_data.city: The type is jsonb, Which does not inlude Null and is Non-Unique. Values format like: ['{\"en\": \"Vorkuta\", \"ru\": \"Воркута\"}', '{\"en\": \"Nizhniy Novgorod\", \"ru\": \"Нижний Новгород\"}', '{\"en\": \"Noyabrsk\", \"ru\": \"Ноябрьск\"}']\nairports_data.coordinates: The type is point, Which does not inlude Null and is Unique. Values format like: ['(47.9047012329101562,56.7005996704101562)', '(52.8017005920410156,54.6399993896484375)', '(72.6500015258789062,61.1082992553710938)']\nboarding_passes.seat_no: The type is character varying(4), Which does not inlude Null and is Non-Unique. Values format like: ['3G', '32D', '37C']\nbookings.book_ref: The type is character(6), Which does not inlude Null and is Unique. Values format like: ['744DD2', '211BC7', '9F281D']\nseats.seat_no: The type is character varying(4), Which does not inlude Null and is Non-Unique. Values format like: ['31J', '9F', '14K']\nticket_flights.amount: The type is numeric(10,2), Which does not inlude Null and is Non-Unique. Values format like: [39100, 99800, 51100]\ntickets.book_ref: The type is character(6), Which does not inlude Null and is Non-Unique. Values format like: ['2C4E01', 'E3FF6B', '8E947D']\ntickets.passenger_id: The type is character varying(20), Which does not inlude Null and is Unique. Values format like: ['4098 744370', '0165 915763', '9031 712502']",
+        "foreign_keys": "",
+        "foreign_set": [],
+        "q_order": [
+            "all the unique city pairs",
+            "how many pairs"
+        ],
+        "status": "success"
+    }
+]

@@ -1,0 +1,1000 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: bank_sales_trading\n## Table weekly_sales:\nweek_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['30/3/20', '8/4/19', '20/7/20']\nregion: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['SOUTH AMERICA', 'EUROPE', 'CANADA']\nplatform: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Retail', 'Shopify']\nsegment: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['C2', 'C4', 'C1']\ncustomer_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['New', 'Existing', 'Guest']\ntransactions: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1189, 188391, 361447]\nsales: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8655, 614, 7326993]\n\n## Table shopping_cart_users:\nuser_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [378, 52, 342]\ncookie_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['b0b666', '0d4a40', '007c20']\nstart_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-01-07', '2020-05-04', '2020-02-12']\n\n## Table bitcoin_members:\nmember_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['eccbc8', 'c20ad4', 'e4da3b']\nfirst_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Rowan', 'Enoch', 'Abe']\nregion: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Asia', 'India', 'Australia']\n\n## Table interest_metrics:\n_month: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [2, 7, 6]\n_year: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [2018, 2019]\nmonth_year: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['11-2018', '07-2018', '06-2019']\ninterest_id: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [166, 5925, 40436]\ncomposition: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [1, 4, 9]\nindex_value: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [1, 0, 1]\nranking: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [634, 856, 726]\npercentile_ranking: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [94, 27, 39]\n\n## Table customer_regions:\nregion_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2, 4, 1]\nregion_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Africa', 'Asia', 'Australia']\n\n## Table customer_transactions:\ncustomer_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [53, 396, 265]\ntxn_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-04-05', '2020-02-23', '2020-01-01']\ntxn_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['withdrawal', 'deposit', 'purchase']\ntxn_amount: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [389, 364, 139]\n\n## Table bitcoin_transactions:\ntxn_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [20297, 8682, 4723]\nmember_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['c20ad4', 'c9f0f8', '6512bd']\nticker: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['BTC', 'ETH']\ntxn_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['17-12-2017', '23-02-2018', '23-10-2018']\ntxn_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['BUY', 'SELL']\nquantity: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [8, 2, 9]\npercentage_fee: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]\ntxn_time: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-10-31T09:42:54.060Z', '2017-06-29T15:31:14.616Z', '2020-02-13T03:55:05.159Z']\n\n## Table customer_nodes:\ncustomer_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [61, 252, 329]\nregion_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 3, 1]\nnode_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 4, 1]\nstart_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-02-09', '2020-01-08', '2020-02-22']\nend_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-04-06', '2020-02-25', '2020-03-19']\n\n## Table cleaned_weekly_sales:\nweek_date_formatted: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-4-8', '2019-4-22', '2018-7-2']\nweek_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-03-25', '2019-04-01', '2018-05-28']\nregion: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ASIA', 'SOUTH AMERICA', 'AFRICA']\nplatform: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Retail', 'Shopify']\nsegment: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['C2', 'unknown', 'C3']\ncustomer_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Guest', 'Existing', 'New']\ntransactions: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [39035, 6628, 17603]\nsales: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [787254, 21732, 5783]\nweek_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [36, 24, 25]\nmonth_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 5, 8]\ncalendar_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2018, 2019, 2020]\nage_band: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Young Adults', 'Retirees', 'unknown']\ndemographic: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Families', 'unknown', 'Couples']\navg_transaction: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [130, 31, 56]\n\n## Table veg_txn_df:\nindex: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [678473, 116721, 728409]\ntxn_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-10-27 00:00:00', '2022-09-21 00:00:00', '2023-03-01 00:00:00']\ntxn_time: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['13:15:10', '14:35:00', '20:10:15']\nitem_code: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [102900011011058, 106949711300068, 102900011008492]\n`qty_sold(kg)`: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [0, 1, 3]\n`unit_selling_px_rmb/kg`: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [2, 16, 10]\n`sale/return`: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['sale', 'return']\n`discount(%)`: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]\nday_of_week: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Sunday', 'Thursday', 'Tuesday']\n\n## Table shopping_cart_events:\nvisit_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1c0a41', '735e4b', '89165e']\ncookie_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['4351a6', '48c3fb', '6d5f7c']\npage_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8, 9, 11]\nevent_type: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 3, 5]\nsequence_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 19, 4]\nevent_time: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2020-03-22 14:27:43.940716', '2020-03-07 04:35:34.153491', '2020-03-02 09:02:27.695243']\n\n## Table shopping_cart_page_hierarchy:\npage_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [9, 3, 11]\npage_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Abalone', 'Oyster', 'Lobster']\nproduct_category: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Fish', 'Shellfish', 'Luxury']\nproduct_id: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [7, 2, 5]\n\n## Table bitcoin_prices:\nticker: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['ETH', 'BTC']\nmarket_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['29-09-2017', '23-12-2018', '03-10-2017']\nprice: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [1091, 1024, 218]\nopen: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [8737, 244, 1099]\nhigh: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [472, 7400, 2043]\nlow: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [14, 135, 326]\nvolume: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1.86M', '886.88K', '814.33K']\nchange: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['-1.71%', '-3.49%', '-0.60%']\n\n## Table interest_map:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [21237, 44582, 6169]\ninterest_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Call of Duty Enthusiasts', 'Investment Banking Professionals', 'Moving Services Shoppers']\ninterest_summary: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Professionals reading industry news and medical information on psychiatry.', 'People researching attractions and accommodations in Atlanta. These consumers are more likely to spend money on flights, hotels, and local attractions.', 'Consumers in-market for Seattle trips and vacations.']\ncreated_at: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-12-20 12:00:04', '2017-01-27 17:46:24', '2017-09-20 11:40:01']\nlast_modified: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-04-24 18:30:04', '2018-11-02 17:10:04', '2019-04-17 08:49:16']\n\n## Table veg_loss_rate_df:\nindex: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [241, 57, 191]\nitem_code: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [102900011008485, 102900011030622, 102900051009336]\nitem_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Water Chestnut (Bag)', 'Sophora Japonica', 'Niushou Shengcai']\n`loss_rate_%`: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [15, 7, 0]\n\n## Table shopping_cart_campaign_identifier:\ncampaign_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 3, 2]\nproducts: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['6-8', '1-3', '4-5']\ncampaign_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['25% Off - Living The Lux Life', 'Half Off - Treat Your Shellf(ish)', 'BOGOF - Fishing For Compliments']\nstart_date: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2020-02-01', '2020-01-01', '2020-01-15']\nend_date: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2020-01-14', '2020-03-31', '2020-01-28']\n\n## Table veg_cat:\nindex: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [154, 155, 195]\nitem_code: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [102900011032350, 102900011032206, 102900011032244]\nitem_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['White Caitai', 'Muercai (Bag)', 'Haixian Mushroom (Bag) (3)']\ncategory_code: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1011010201, 1011010402, 1011010501]\ncategory_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Capsicum', 'Flower/Leaf\\xa0Vegetables', 'Edible Mushroom']\n\n## Table veg_whsle_df:\nindex: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [38931, 9004, 52204]\nwhsle_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-05-21 00:00:00', '2022-08-18 00:00:00', '2022-07-13 00:00:00']\nitem_code: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [102900011034323, 102900005116790, 102900005119104]\n`whsle_px_rmb-kg`: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [7, 1, 20]\n\n## Table shopping_cart_event_identifier:\nevent_type: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [5, 2, 1]\nevent_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Page View', 'Ad Click', 'Ad Impression']\n\n#Forigen keys:\n\n\n#Database Description:\nThe `bank_sales_trading` database is designed to manage and analyze data related to sales, trading, customer behavior, and product information across various platforms and regions. It includes detailed information about weekly sales, shopping cart activities, bitcoin transactions, customer demographics, vegetable sales, and interest metrics. The database is structured to support business intelligence, marketing campaigns, and operational insights.\n\n#Tables Descriptions:\n\n1. **weekly_sales**: Contains weekly sales data, including the date, region, platform, customer type, transaction count, and sales amount.\n\n2. **shopping_cart_users**: Tracks shopping cart users with unique cookie IDs, user IDs, and their start dates.\n\n3. **bitcoin_members**: Stores information about Bitcoin members, including their unique member IDs, first names, and regions.\n\n4. **interest_metrics**: Provides metrics related to interest composition, rankings, and percentile rankings for specific months and years.\n\n5. **customer_regions**: Defines customer regions with unique region IDs and names.\n\n6. **customer_transactions**: Contains customer transaction data, including transaction type, date, and amount.\n\n7. **bitcoin_transactions**: Tracks Bitcoin transactions, including transaction IDs, member IDs, ticker types, transaction dates, types, quantities, fees, and times.\n\n8. **customer_nodes**: Maps customers to regions and nodes, with start and end dates for their association.\n\n9. **cleaned_weekly_sales**: A cleaned version of weekly sales data, including formatted dates, demographic information, and calculated metrics like average transaction value.\n\n10. **veg_txn_df**: Contains vegetable transaction data, including transaction dates, times, item codes, quantities sold, unit selling prices, discounts, and day of the week.\n\n11. **shopping_cart_events**: Tracks shopping cart events, including visit IDs, cookie IDs, page IDs, event types, sequence numbers, and event times.\n\n12. **shopping_cart_page_hierarchy**: Defines the hierarchy of shopping cart pages, including page IDs, names, product categories, and product IDs.\n\n13. **bitcoin_prices**: Provides Bitcoin price data, including ticker types, market dates, prices, open, high, low values, volume, and percentage changes.\n\n14. **interest_map**: Maps interests to unique IDs, names, summaries, and timestamps for creation and modification.\n\n15. **veg_loss_rate_df**: Contains vegetable loss rate data, including item codes, names, and loss rates.\n\n16. **shopping_cart_campaign_identifier**: Identifies shopping cart campaigns with unique campaign IDs, names, products, and start/end dates.\n\n17. **veg_cat**: Categorizes vegetables with unique item codes, names, category codes, and category names.\n\n18. **veg_whsle_df**: Tracks wholesale vegetable data, including wholesale dates, item codes, and wholesale prices.\n\n19. **shopping_cart_event_identifier**: Maps event types to unique IDs and names for shopping cart events.\n",
+        "db_col_dic": {
+            "weekly_sales.week_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['30/3/20', '8/4/19', '20/7/20']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['30/3/20', '8/4/19', '20/7/20']"
+            ],
+            "weekly_sales.region": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['SOUTH AMERICA', 'EUROPE', 'CANADA']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['SOUTH AMERICA', 'EUROPE', 'CANADA']"
+            ],
+            "weekly_sales.platform": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Retail', 'Shopify']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Retail', 'Shopify']"
+            ],
+            "weekly_sales.segment": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['C2', 'C4', 'C1']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['C2', 'C4', 'C1']"
+            ],
+            "weekly_sales.customer_type": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['New', 'Existing', 'Guest']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['New', 'Existing', 'Guest']"
+            ],
+            "weekly_sales.transactions": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1189, 188391, 361447]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1189, 188391, 361447]"
+            ],
+            "weekly_sales.sales": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8655, 614, 7326993]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[8655, 614, 7326993]"
+            ],
+            "shopping_cart_users.user_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [378, 52, 342]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[378, 52, 342]"
+            ],
+            "shopping_cart_users.cookie_id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['b0b666', '0d4a40', '007c20']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['b0b666', '0d4a40', '007c20']"
+            ],
+            "shopping_cart_users.start_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-01-07', '2020-05-04', '2020-02-12']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2020-01-07', '2020-05-04', '2020-02-12']"
+            ],
+            "bitcoin_members.member_id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['eccbc8', 'c20ad4', 'e4da3b']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['eccbc8', 'c20ad4', 'e4da3b']"
+            ],
+            "bitcoin_members.first_name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Rowan', 'Enoch', 'Abe']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Rowan', 'Enoch', 'Abe']"
+            ],
+            "bitcoin_members.region": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Asia', 'India', 'Australia']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Asia', 'India', 'Australia']"
+            ],
+            "interest_metrics._month": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [2, 7, 6]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[2, 7, 6]"
+            ],
+            "interest_metrics._year": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [2018, 2019]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[2018, 2019]"
+            ],
+            "interest_metrics.month_year": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['11-2018', '07-2018', '06-2019']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['11-2018', '07-2018', '06-2019']"
+            ],
+            "interest_metrics.interest_id": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [166, 5925, 40436]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[166, 5925, 40436]"
+            ],
+            "interest_metrics.composition": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [1, 4, 9]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 4, 9]"
+            ],
+            "interest_metrics.index_value": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [1, 0, 1]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0, 1]"
+            ],
+            "interest_metrics.ranking": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [634, 856, 726]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[634, 856, 726]"
+            ],
+            "interest_metrics.percentile_ranking": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [94, 27, 39]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[94, 27, 39]"
+            ],
+            "customer_regions.region_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2, 4, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[2, 4, 1]"
+            ],
+            "customer_regions.region_name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Africa', 'Asia', 'Australia']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Africa', 'Asia', 'Australia']"
+            ],
+            "customer_transactions.customer_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [53, 396, 265]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[53, 396, 265]"
+            ],
+            "customer_transactions.txn_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-04-05', '2020-02-23', '2020-01-01']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2020-04-05', '2020-02-23', '2020-01-01']"
+            ],
+            "customer_transactions.txn_type": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['withdrawal', 'deposit', 'purchase']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['withdrawal', 'deposit', 'purchase']"
+            ],
+            "customer_transactions.txn_amount": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [389, 364, 139]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[389, 364, 139]"
+            ],
+            "bitcoin_transactions.txn_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [20297, 8682, 4723]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[20297, 8682, 4723]"
+            ],
+            "bitcoin_transactions.member_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['c20ad4', 'c9f0f8', '6512bd']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['c20ad4', 'c9f0f8', '6512bd']"
+            ],
+            "bitcoin_transactions.ticker": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['BTC', 'ETH']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['BTC', 'ETH']"
+            ],
+            "bitcoin_transactions.txn_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['17-12-2017', '23-02-2018', '23-10-2018']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['17-12-2017', '23-02-2018', '23-10-2018']"
+            ],
+            "bitcoin_transactions.txn_type": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['BUY', 'SELL']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['BUY', 'SELL']"
+            ],
+            "bitcoin_transactions.quantity": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [8, 2, 9]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[8, 2, 9]"
+            ],
+            "bitcoin_transactions.percentage_fee": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 0, 0]"
+            ],
+            "bitcoin_transactions.txn_time": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-10-31T09:42:54.060Z', '2017-06-29T15:31:14.616Z', '2020-02-13T03:55:05.159Z']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2018-10-31T09:42:54.060Z', '2017-06-29T15:31:14.616Z', '2020-02-13T03:55:05.159Z']"
+            ],
+            "customer_nodes.customer_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [61, 252, 329]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[61, 252, 329]"
+            ],
+            "customer_nodes.region_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 3, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[5, 3, 1]"
+            ],
+            "customer_nodes.node_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 4, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 4, 1]"
+            ],
+            "customer_nodes.start_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-02-09', '2020-01-08', '2020-02-22']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2020-02-09', '2020-01-08', '2020-02-22']"
+            ],
+            "customer_nodes.end_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-04-06', '2020-02-25', '2020-03-19']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2020-04-06', '2020-02-25', '2020-03-19']"
+            ],
+            "cleaned_weekly_sales.week_date_formatted": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-4-8', '2019-4-22', '2018-7-2']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2019-4-8', '2019-4-22', '2018-7-2']"
+            ],
+            "cleaned_weekly_sales.week_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-03-25', '2019-04-01', '2018-05-28']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2019-03-25', '2019-04-01', '2018-05-28']"
+            ],
+            "cleaned_weekly_sales.region": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ASIA', 'SOUTH AMERICA', 'AFRICA']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['ASIA', 'SOUTH AMERICA', 'AFRICA']"
+            ],
+            "cleaned_weekly_sales.platform": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Retail', 'Shopify']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Retail', 'Shopify']"
+            ],
+            "cleaned_weekly_sales.segment": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['C2', 'unknown', 'C3']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['C2', 'unknown', 'C3']"
+            ],
+            "cleaned_weekly_sales.customer_type": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Guest', 'Existing', 'New']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Guest', 'Existing', 'New']"
+            ],
+            "cleaned_weekly_sales.transactions": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [39035, 6628, 17603]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[39035, 6628, 17603]"
+            ],
+            "cleaned_weekly_sales.sales": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [787254, 21732, 5783]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[787254, 21732, 5783]"
+            ],
+            "cleaned_weekly_sales.week_number": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [36, 24, 25]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[36, 24, 25]"
+            ],
+            "cleaned_weekly_sales.month_number": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 5, 8]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 5, 8]"
+            ],
+            "cleaned_weekly_sales.calendar_year": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2018, 2019, 2020]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2018, 2019, 2020]"
+            ],
+            "cleaned_weekly_sales.age_band": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Young Adults', 'Retirees', 'unknown']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Young Adults', 'Retirees', 'unknown']"
+            ],
+            "cleaned_weekly_sales.demographic": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Families', 'unknown', 'Couples']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Families', 'unknown', 'Couples']"
+            ],
+            "cleaned_weekly_sales.avg_transaction": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [130, 31, 56]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[130, 31, 56]"
+            ],
+            "veg_txn_df.index": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [678473, 116721, 728409]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[678473, 116721, 728409]"
+            ],
+            "veg_txn_df.txn_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-10-27 00:00:00', '2022-09-21 00:00:00', '2023-03-01 00:00:00']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2020-10-27 00:00:00', '2022-09-21 00:00:00', '2023-03-01 00:00:00']"
+            ],
+            "veg_txn_df.txn_time": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['13:15:10', '14:35:00', '20:10:15']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['13:15:10', '14:35:00', '20:10:15']"
+            ],
+            "veg_txn_df.item_code": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [102900011011058, 106949711300068, 102900011008492]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[102900011011058, 106949711300068, 102900011008492]"
+            ],
+            "veg_txn_df.`qty_sold(kg)`": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [0, 1, 3]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1, 3]"
+            ],
+            "veg_txn_df.`unit_selling_px_rmb/kg`": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [2, 16, 10]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 16, 10]"
+            ],
+            "veg_txn_df.`sale/return`": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['sale', 'return']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['sale', 'return']"
+            ],
+            "veg_txn_df.`discount(%)`": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1]"
+            ],
+            "veg_txn_df.day_of_week": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Sunday', 'Thursday', 'Tuesday']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Sunday', 'Thursday', 'Tuesday']"
+            ],
+            "shopping_cart_events.visit_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1c0a41', '735e4b', '89165e']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['1c0a41', '735e4b', '89165e']"
+            ],
+            "shopping_cart_events.cookie_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['4351a6', '48c3fb', '6d5f7c']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['4351a6', '48c3fb', '6d5f7c']"
+            ],
+            "shopping_cart_events.page_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8, 9, 11]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[8, 9, 11]"
+            ],
+            "shopping_cart_events.event_type": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 3, 5]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 3, 5]"
+            ],
+            "shopping_cart_events.sequence_number": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 19, 4]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[5, 19, 4]"
+            ],
+            "shopping_cart_events.event_time": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2020-03-22 14:27:43.940716', '2020-03-07 04:35:34.153491', '2020-03-02 09:02:27.695243']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['2020-03-22 14:27:43.940716', '2020-03-07 04:35:34.153491', '2020-03-02 09:02:27.695243']"
+            ],
+            "shopping_cart_page_hierarchy.page_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [9, 3, 11]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[9, 3, 11]"
+            ],
+            "shopping_cart_page_hierarchy.page_name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Abalone', 'Oyster', 'Lobster']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Abalone', 'Oyster', 'Lobster']"
+            ],
+            "shopping_cart_page_hierarchy.product_category": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Fish', 'Shellfish', 'Luxury']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Fish', 'Shellfish', 'Luxury']"
+            ],
+            "shopping_cart_page_hierarchy.product_id": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [7, 2, 5]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[7, 2, 5]"
+            ],
+            "bitcoin_prices.ticker": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['ETH', 'BTC']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['ETH', 'BTC']"
+            ],
+            "bitcoin_prices.market_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['29-09-2017', '23-12-2018', '03-10-2017']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['29-09-2017', '23-12-2018', '03-10-2017']"
+            ],
+            "bitcoin_prices.price": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [1091, 1024, 218]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[1091, 1024, 218]"
+            ],
+            "bitcoin_prices.open": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [8737, 244, 1099]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[8737, 244, 1099]"
+            ],
+            "bitcoin_prices.high": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [472, 7400, 2043]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[472, 7400, 2043]"
+            ],
+            "bitcoin_prices.low": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [14, 135, 326]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[14, 135, 326]"
+            ],
+            "bitcoin_prices.volume": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1.86M', '886.88K', '814.33K']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['1.86M', '886.88K', '814.33K']"
+            ],
+            "bitcoin_prices.change": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['-1.71%', '-3.49%', '-0.60%']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['-1.71%', '-3.49%', '-0.60%']"
+            ],
+            "interest_map.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [21237, 44582, 6169]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[21237, 44582, 6169]"
+            ],
+            "interest_map.interest_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Call of Duty Enthusiasts', 'Investment Banking Professionals', 'Moving Services Shoppers']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Call of Duty Enthusiasts', 'Investment Banking Professionals', 'Moving Services Shoppers']"
+            ],
+            "interest_map.interest_summary": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Professionals reading industry news and medical information on psychiatry.', 'People researching attractions and accommodations in Atlanta. These consumers are more likely to spend money on flights, hotels, and local attractions.', 'Consumers in-market for Seattle trips and vacations.']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Professionals reading industry news and medical information on psychiatry.', 'People researching attractions and accommodations in Atlanta. These consumers are more likely to spend money on flights, hotels, and local attractions.', 'Consumers in-market for Seattle trips and vacations.']"
+            ],
+            "interest_map.created_at": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-12-20 12:00:04', '2017-01-27 17:46:24', '2017-09-20 11:40:01']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2018-12-20 12:00:04', '2017-01-27 17:46:24', '2017-09-20 11:40:01']"
+            ],
+            "interest_map.last_modified": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-04-24 18:30:04', '2018-11-02 17:10:04', '2019-04-17 08:49:16']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2019-04-24 18:30:04', '2018-11-02 17:10:04', '2019-04-17 08:49:16']"
+            ],
+            "veg_loss_rate_df.index": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [241, 57, 191]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[241, 57, 191]"
+            ],
+            "veg_loss_rate_df.item_code": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [102900011008485, 102900011030622, 102900051009336]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[102900011008485, 102900011030622, 102900051009336]"
+            ],
+            "veg_loss_rate_df.item_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Water Chestnut (Bag)', 'Sophora Japonica', 'Niushou Shengcai']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Water Chestnut (Bag)', 'Sophora Japonica', 'Niushou Shengcai']"
+            ],
+            "veg_loss_rate_df.`loss_rate_%`": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [15, 7, 0]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[15, 7, 0]"
+            ],
+            "shopping_cart_campaign_identifier.campaign_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 3, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1, 3, 2]"
+            ],
+            "shopping_cart_campaign_identifier.products": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['6-8', '1-3', '4-5']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['6-8', '1-3', '4-5']"
+            ],
+            "shopping_cart_campaign_identifier.campaign_name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['25% Off - Living The Lux Life', 'Half Off - Treat Your Shellf(ish)', 'BOGOF - Fishing For Compliments']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['25% Off - Living The Lux Life', 'Half Off - Treat Your Shellf(ish)', 'BOGOF - Fishing For Compliments']"
+            ],
+            "shopping_cart_campaign_identifier.start_date": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2020-02-01', '2020-01-01', '2020-01-15']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['2020-02-01', '2020-01-01', '2020-01-15']"
+            ],
+            "shopping_cart_campaign_identifier.end_date": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2020-01-14', '2020-03-31', '2020-01-28']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['2020-01-14', '2020-03-31', '2020-01-28']"
+            ],
+            "veg_cat.index": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [154, 155, 195]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[154, 155, 195]"
+            ],
+            "veg_cat.item_code": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [102900011032350, 102900011032206, 102900011032244]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[102900011032350, 102900011032206, 102900011032244]"
+            ],
+            "veg_cat.item_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['White Caitai', 'Muercai (Bag)', 'Haixian Mushroom (Bag) (3)']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['White Caitai', 'Muercai (Bag)', 'Haixian Mushroom (Bag) (3)']"
+            ],
+            "veg_cat.category_code": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1011010201, 1011010402, 1011010501]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1011010201, 1011010402, 1011010501]"
+            ],
+            "veg_cat.category_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Capsicum', 'Flower/Leaf\\xa0Vegetables', 'Edible Mushroom']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Capsicum', 'Flower/Leaf\\xa0Vegetables', 'Edible Mushroom']"
+            ],
+            "veg_whsle_df.index": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [38931, 9004, 52204]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[38931, 9004, 52204]"
+            ],
+            "veg_whsle_df.whsle_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-05-21 00:00:00', '2022-08-18 00:00:00', '2022-07-13 00:00:00']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2021-05-21 00:00:00', '2022-08-18 00:00:00', '2022-07-13 00:00:00']"
+            ],
+            "veg_whsle_df.item_code": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [102900011034323, 102900005116790, 102900005119104]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[102900011034323, 102900005116790, 102900005119104]"
+            ],
+            "veg_whsle_df.`whsle_px_rmb-kg`": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [7, 1, 20]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[7, 1, 20]"
+            ],
+            "shopping_cart_event_identifier.event_type": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [5, 2, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[5, 2, 1]"
+            ],
+            "shopping_cart_event_identifier.event_name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Page View', 'Ad Click', 'Ad Impression']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Page View', 'Ad Click', 'Ad Impression']"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries the closing balances at the end of each month for customer transactions, including monthly changes and cumulative balances. It also requires including months with no activity. The related columns include customer information, transaction amounts, and dates to calculate balances and changes.\n#columns: customers.customer_id, accounts.account_id, transactions.trans_date, transactions.amount, generate_series.month_end\n#values: \"monthly changes\", \"monthly cumulative balances\"\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "end",
+            "month",
+            "account activity",
+            "closing balances",
+            "monthly changes",
+            "balance",
+            "customer transactions",
+            "monthly cumulative bank account balances",
+            "monthly cumulative balances",
+            "customer",
+            "output",
+            "summary"
+        ],
+        "col": "customers.customer_id, accounts.account_id, transactions.trans_date, transactions.amount, generate_series.month_end",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [],
+        "column": "bitcoin_members.region: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Asia', 'India', 'Australia']\nbitcoin_prices.change: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['-1.71%', '-3.49%', '-0.60%']\nbitcoin_prices.open: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [8737, 244, 1099]\nbitcoin_transactions.quantity: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [8, 2, 9]\ncleaned_weekly_sales.avg_transaction: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [130, 31, 56]\ncleaned_weekly_sales.customer_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Guest', 'Existing', 'New']\ncleaned_weekly_sales.month_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 5, 8]\ncleaned_weekly_sales.region: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ASIA', 'SOUTH AMERICA', 'AFRICA']\ncleaned_weekly_sales.sales: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [787254, 21732, 5783]\ncleaned_weekly_sales.transactions: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [39035, 6628, 17603]\ncustomer_nodes.customer_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [61, 252, 329]\ncustomer_nodes.end_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2020-04-06', '2020-02-25', '2020-03-19']\ncustomer_transactions.customer_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [53, 396, 265]\ninterest_map.created_at: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-12-20 12:00:04', '2017-01-27 17:46:24', '2017-09-20 11:40:01']\ninterest_map.interest_summary: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Professionals reading industry news and medical information on psychiatry.', 'People researching attractions and accommodations in Atlanta. These consumers are more likely to spend money on flights, hotels, and local attractions.', 'Consumers in-market for Seattle trips and vacations.']\ninterest_metrics._month: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [2, 7, 6]\ninterest_metrics.month_year: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['11-2018', '07-2018', '06-2019']\nshopping_cart_campaign_identifier.end_date: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2020-01-14', '2020-03-31', '2020-01-28']\nweekly_sales.customer_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['New', 'Existing', 'Guest']\nweekly_sales.region: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['SOUTH AMERICA', 'EUROPE', 'CANADA']\nweekly_sales.sales: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8655, 614, 7326993]\nweekly_sales.transactions: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1189, 188391, 361447]",
+        "foreign_keys": "",
+        "foreign_set": [],
+        "q_order": [
+            "summary of the closing balances",
+            "monthly changes",
+            "monthly cumulative bank account balances"
+        ],
+        "status": "success"
+    }
+]

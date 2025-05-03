@@ -1,0 +1,416 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: stacking\n## Table problem:\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['PSS3E5', 'Tunnel diode', 'water quality 2']\npath: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['https://www.kaggle.com/datasets/muratkokludataset/pumpkin-seeds-dataset', 'https://www.kaggle.com/datasets/mssmartypants/water-quality', 'https://www.kaggle.com/datasets/prasoonkottarathil/polycystic-ovary-syndrome-pcos']\ntype: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['classification', 'regression']\ntarget: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Outcome', 'outcome', 'Power Generated']\n\n## Table eda:\nname: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['kindey stone urine analysis', 'Tunnel diode', 'iris']\nversion: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 1, 7]\nfeature: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['AromaticProportion', 'density', 'f_13']\ntype: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['num', 'cat']\nrange: The type is BLOB, Which inlude Null and is Non-Unique. Values format like: ['[0, 122]', '[0.0, 19.83]', '[80.26666667, 122.5263158]']\ndrop_user: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\ndrop_correlation: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\ntarget: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\n\n## Table feature_importance:\nname: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PCOS', 'iris', 'smoke detection iot']\nversion: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7, 3, 6]\nstep: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 3, 2]\nfeature: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Average Wind Direction (Day)', 'f_37', 'coarseaggregate']\nimportance: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]\n\n## Table solution:\nname: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['oil spill', 'Solar Power Generation', 'water quality']\nversion: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 1, 6]\ncorrelation: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Value of this column must in: [0]\nnb_model: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7, 6, 5]\nnb_feature: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 6, 4]\nscore: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]\ntest_size: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]\nresampling: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\n\n## Table model_score:\nname: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Critical Heat Flux', 'lithium ion batteries', 'Solar Power Generation']\nversion: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8, 3, 7]\nstep: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 3]\nmodel: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['SVCS', 'MLPR2', 'RFCG']\ntrain_score: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]\ntest_score: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]\n\n## Table model_importance:\nname: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Critical Heat Flux', 'kindey stone urine analysis', 'PSS3E5']\nversion: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 4, 5]\nstep: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 3, 2]\nmodel: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['GPCR', 'RFRS', 'ABR']\nimportance: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]\n\n## Table model:\nname: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['diabetes', 'iris', 'PCOS']\nversion: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 6, 5]\nstep: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 3]\nL1_model: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['regression', 'tree']\n\n#Forigen keys:\n\n\n# Database Description:\nThe database named \"stacking\" is designed to manage and analyze datasets, models, and solutions related to machine learning and data science workflows. It includes information about datasets, exploratory data analysis (EDA), feature importance, solutions, model scores, model importance, and models. The database is implemented using SQLite and contains multiple tables with specific attributes and constraints.\n\n# Tables Descriptions:\n\n## Table: problem\n- **Description**: Contains information about datasets used for machine learning tasks.\n- **Columns**:\n  - `name`: TEXT, Not NULL, Unique. Example values: ['PSS3E5', 'Tunnel diode', 'water quality 2'].\n  - `path`: TEXT, Not NULL, Unique. Example values: ['https://www.kaggle.com/datasets/muratkokludataset/pumpkin-seeds-dataset', 'https://www.kaggle.com/datasets/mssmartypants/water-quality'].\n  - `type`: TEXT, Not NULL, Non-Unique. Must be one of ['classification', 'regression'].\n  - `target`: TEXT, Not NULL, Non-Unique. Example values: ['Outcome', 'outcome', 'Power Generated'].\n\n## Table: eda\n- **Description**: Contains information about exploratory data analysis (EDA) performed on datasets.\n- **Columns**:\n  - `name`: TEXT, Not NULL, Non-Unique. Example values: ['kindey stone urine analysis', 'Tunnel diode', 'iris'].\n  - `version`: INTEGER, Not NULL, Non-Unique. Example values: [5, 1, 7].\n  - `feature`: TEXT, Not NULL, Non-Unique. Example values: ['AromaticProportion', 'density', 'f_13'].\n  - `type`: TEXT, Nullable, Non-Unique. Must be one of ['num', 'cat'].\n  - `range`: BLOB, Nullable, Non-Unique. Example values: ['[0, 122]', '[0.0, 19.83]', '[80.26666667, 122.5263158]'].\n  - `drop_user`: INTEGER, Not NULL, Non-Unique. Must be one of [0, 1].\n  - `drop_correlation`: INTEGER, Not NULL, Non-Unique. Must be one of [0, 1].\n  - `target`: INTEGER, Not NULL, Non-Unique. Must be one of [0, 1].\n\n## Table: feature_importance\n- **Description**: Contains information about the importance of features in datasets.\n- **Columns**:\n  - `name`: TEXT, Not NULL, Non-Unique. Example values: ['PCOS', 'iris', 'smoke detection iot'].\n  - `version`: INTEGER, Not NULL, Non-Unique. Example values: [7, 3, 6].\n  - `step`: INTEGER, Not NULL, Non-Unique. Example values: [1, 3, 2].\n  - `feature`: TEXT, Not NULL, Non-Unique. Example values: ['Average Wind Direction (Day)', 'f_37', 'coarseaggregate'].\n  - `importance`: NUMERIC, Not NULL, Non-Unique. Example values: [0, 0, 0].\n\n## Table: solution\n- **Description**: Contains information about solutions applied to datasets.\n- **Columns**:\n  - `name`: TEXT, Not NULL, Non-Unique. Example values: ['oil spill', 'Solar Power Generation', 'water quality'].\n  - `version`: INTEGER, Not NULL, Non-Unique. Example values: [5, 1, 6].\n  - `correlation`: NUMERIC, Not NULL, Non-Unique. Must be [0].\n  - `nb_model`: INTEGER\n",
+        "db_col_dic": {
+            "problem.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['PSS3E5', 'Tunnel diode', 'water quality 2']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['PSS3E5', 'Tunnel diode', 'water quality 2']"
+            ],
+            "problem.path": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['https://www.kaggle.com/datasets/muratkokludataset/pumpkin-seeds-dataset', 'https://www.kaggle.com/datasets/mssmartypants/water-quality', 'https://www.kaggle.com/datasets/prasoonkottarathil/polycystic-ovary-syndrome-pcos']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['https://www.kaggle.com/datasets/muratkokludataset/pumpkin-seeds-dataset', 'https://www.kaggle.com/datasets/mssmartypants/water-quality', 'https://www.kaggle.com/datasets/prasoonkottarathil/polycystic-ovary-syndrome-pcos']"
+            ],
+            "problem.type": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['classification', 'regression']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['classification', 'regression']"
+            ],
+            "problem.target": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Outcome', 'outcome', 'Power Generated']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Outcome', 'outcome', 'Power Generated']"
+            ],
+            "eda.name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['kindey stone urine analysis', 'Tunnel diode', 'iris']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['kindey stone urine analysis', 'Tunnel diode', 'iris']"
+            ],
+            "eda.version": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 1, 7]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[5, 1, 7]"
+            ],
+            "eda.feature": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['AromaticProportion', 'density', 'f_13']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['AromaticProportion', 'density', 'f_13']"
+            ],
+            "eda.type": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['num', 'cat']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['num', 'cat']"
+            ],
+            "eda.range": [
+                "The type is BLOB, Which inlude Null and is Non-Unique. Values format like: ['[0, 122]', '[0.0, 19.83]', '[80.26666667, 122.5263158]']",
+                "",
+                "",
+                "BLOB",
+                "Include Null",
+                "Non-Unique",
+                "['[0, 122]', '[0.0, 19.83]', '[80.26666667, 122.5263158]']"
+            ],
+            "eda.drop_user": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "eda.drop_correlation": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "eda.target": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "feature_importance.name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PCOS', 'iris', 'smoke detection iot']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['PCOS', 'iris', 'smoke detection iot']"
+            ],
+            "feature_importance.version": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7, 3, 6]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[7, 3, 6]"
+            ],
+            "feature_importance.step": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 3, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 3, 2]"
+            ],
+            "feature_importance.feature": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Average Wind Direction (Day)', 'f_37', 'coarseaggregate']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Average Wind Direction (Day)', 'f_37', 'coarseaggregate']"
+            ],
+            "feature_importance.importance": [
+                "The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]",
+                "",
+                "",
+                "NUMERIC",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 0, 0]"
+            ],
+            "solution.name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['oil spill', 'Solar Power Generation', 'water quality']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['oil spill', 'Solar Power Generation', 'water quality']"
+            ],
+            "solution.version": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 1, 6]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[5, 1, 6]"
+            ],
+            "solution.correlation": [
+                "The type is NUMERIC, Which does not inlude Null and is Non-Unique. Value of this column must in: [0]",
+                "",
+                "",
+                "NUMERIC",
+                "Non-Null",
+                "Non-Unique",
+                "[0]"
+            ],
+            "solution.nb_model": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7, 6, 5]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[7, 6, 5]"
+            ],
+            "solution.nb_feature": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 6, 4]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[5, 6, 4]"
+            ],
+            "solution.score": [
+                "The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]",
+                "",
+                "",
+                "NUMERIC",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 0, 0]"
+            ],
+            "solution.test_size": [
+                "The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]",
+                "",
+                "",
+                "NUMERIC",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 0, 0]"
+            ],
+            "solution.resampling": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "model_score.name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Critical Heat Flux', 'lithium ion batteries', 'Solar Power Generation']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Critical Heat Flux', 'lithium ion batteries', 'Solar Power Generation']"
+            ],
+            "model_score.version": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8, 3, 7]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[8, 3, 7]"
+            ],
+            "model_score.step": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 3]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 1, 3]"
+            ],
+            "model_score.model": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['SVCS', 'MLPR2', 'RFCG']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['SVCS', 'MLPR2', 'RFCG']"
+            ],
+            "model_score.train_score": [
+                "The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]",
+                "",
+                "",
+                "NUMERIC",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 0, 0]"
+            ],
+            "model_score.test_score": [
+                "The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]",
+                "",
+                "",
+                "NUMERIC",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 0, 0]"
+            ],
+            "model_importance.name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Critical Heat Flux', 'kindey stone urine analysis', 'PSS3E5']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Critical Heat Flux', 'kindey stone urine analysis', 'PSS3E5']"
+            ],
+            "model_importance.version": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 4, 5]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 4, 5]"
+            ],
+            "model_importance.step": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 3, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 3, 2]"
+            ],
+            "model_importance.model": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['GPCR', 'RFRS', 'ABR']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['GPCR', 'RFRS', 'ABR']"
+            ],
+            "model_importance.importance": [
+                "The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]",
+                "",
+                "",
+                "NUMERIC",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 0, 0]"
+            ],
+            "model.name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['diabetes', 'iris', 'PCOS']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['diabetes', 'iris', 'PCOS']"
+            ],
+            "model.version": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 6, 5]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4, 6, 5]"
+            ],
+            "model.step": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 3]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 1, 3]"
+            ],
+            "model.L1_model": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['regression', 'tree']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['regression', 'tree']"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries problems exceeding their occurrences in the solution table across steps 1, 2, and 3, where the maximum test score of any non-\"Stack\" model is lower than the \"Stack\" model's test score for the same step and version. The related columns include problem.name for identifying problems, solution.name for occurrences, model_score.step and model_score.version for filtering steps and versions, and model_score.test_score for comparing scores.\n#columns: problem.name, solution.name, model_score.step, model_score.version, model_score.model, model_score.test_score\n#values: \"Stack\", \"1\", \"2\", \"3\"\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "test score",
+            "steps",
+            "times",
+            "problems",
+            "version",
+            "2",
+            "same step",
+            "occurrences",
+            "non-'Stack' model",
+            "3",
+            "total number",
+            "step 1",
+            "solution table",
+            "step 2",
+            "step 3",
+            "1",
+            "maximum test score",
+            "'Stack' model",
+            "Stack"
+        ],
+        "col": "problem.name, solution.name, model_score.step, model_score.version, model_score.model, model_score.test_score",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [
+            [
+                "model_score.model",
+                "Stack"
+            ]
+        ],
+        "column": "eda.name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['kindey stone urine analysis', 'Tunnel diode', 'iris']\neda.type: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['num', 'cat']\neda.version: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 1, 7]\nfeature_importance.name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PCOS', 'iris', 'smoke detection iot']\nfeature_importance.step: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 3, 2]\nfeature_importance.version: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7, 3, 6]\nmodel.L1_model: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['regression', 'tree']\nmodel.name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['diabetes', 'iris', 'PCOS']\nmodel.step: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 3]\nmodel.version: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 6, 5]\nmodel_importance.model: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['GPCR', 'RFRS', 'ABR']\nmodel_importance.name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Critical Heat Flux', 'kindey stone urine analysis', 'PSS3E5']\nmodel_importance.step: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 3, 2]\nmodel_importance.version: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 4, 5]\nmodel_score.model: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['SVCS', 'MLPR2', 'RFCG']\nmodel_score.name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Critical Heat Flux', 'lithium ion batteries', 'Solar Power Generation']\nmodel_score.step: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 3]\nmodel_score.test_score: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]\nmodel_score.train_score: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]\nmodel_score.version: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8, 3, 7]\nproblem.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['PSS3E5', 'Tunnel diode', 'water quality 2']\nproblem.path: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['https://www.kaggle.com/datasets/muratkokludataset/pumpkin-seeds-dataset', 'https://www.kaggle.com/datasets/mssmartypants/water-quality', 'https://www.kaggle.com/datasets/prasoonkottarathil/polycystic-ovary-syndrome-pcos']\nproblem.type: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['classification', 'regression']\nsolution.name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['oil spill', 'Solar Power Generation', 'water quality']\nsolution.nb_model: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7, 6, 5]\nsolution.score: The type is NUMERIC, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]\nsolution.version: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 1, 6]",
+        "foreign_keys": "",
+        "foreign_set": [],
+        "q_order": [
+            "Which problems"
+        ],
+        "status": "success"
+    }
+]

@@ -1,0 +1,932 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: education_business\n## Table hardware_dim_customer:\ncustomer_code: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [70003182, 90018105, 90013117]\ncustomer: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['walmart', 'Currys (Dixons Carphone)', 'Electricalsbea Stores']\nplatform: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Brick & Mortar', 'E-Commerce']\nchannel: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Retailer', 'Direct', 'Distributor']\nmarket: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['France', 'Spain', 'USA']\nsub_zone: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['NE', 'LATAM', 'SE']\nregion: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['LATAM', 'EU', 'APAC']\n\n## Table hardware_fact_pre_invoice_deductions:\ncustomer_code: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [90021094, 90021095, 90011189]\nfiscal_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2020, 2021]\npre_invoice_discount_pct: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]\n\n## Table web_sales_reps:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [321530, 321880, 321940]\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Tia Amato', 'Elwood Shutt', 'Maren Musto']\nregion_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 2, 3]\n\n## Table hardware_dim_product:\nproduct_code: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['A2821150801', 'A3421150603', 'A5520110307']\ndivision: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PC', 'P & A', 'N & S']\nsegment: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Networking', 'Notebook', 'Peripherals']\ncategory: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Graphic Card', 'Keyboard', 'USB Flash Drives']\nproduct: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['AQ Master wired x1', 'AQ MB Lito 2', 'AQ Lumina']\nvariant: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Plus 1', 'Plus 1 ', 'Standard 3']\n\n## Table web_orders:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [6163, 726, 612]\naccount_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3911, 2001, 3961]\noccurred_at: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2014-12-11T02:42:26.000Z', '2016-06-23T08:18:36.000Z', '2016-11-13T03:16:03.000Z']\nstandard_qty: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [259, 1448, 355]\ngloss_qty: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [504, 123, 719]\nposter_qty: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [488, 209, 250]\ntotal: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [164, 236, 184]\nstandard_amt_usd: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [3612, 2639, 2075]\ngloss_amt_usd: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [232, 3145, 4209]\nposter_amt_usd: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [3191, 4401, 2736]\ntotal_amt_usd: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [1062, 2762, 2544]\n\n## Table StaffHours:\nStaffMember: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['D', 'E', 'L']\nEventDate: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2013-01-28', '2013-01-07', '2013-03-07']\nEventTime: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['15:30', '14:30', '08:10']\nEventType: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Enter', 'Exit']\n\n## Table university_enrollment:\nOfferNo: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9876, 5555, 6666]\nStdNo: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [345678901, 234567890, 456789012]\nEnrGrade: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 2]\n\n## Table university_faculty:\nFacNo: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [123456789, 654321098, 765432109]\nFacFirstName: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['JOHN', 'CRISTOPHER', 'NICKI']\nFacLastName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['MACON', 'SMITH', 'COLAN']\nFacCity: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['BELLEVUE', 'REDMOND', 'BOTHELL']\nFacState: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']\nFacDept: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['FIN', 'CS', 'MS']\nFacRank: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PROF', 'ASST', 'ASSC']\nFacSalary: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [35000, 55000, 40000]\nFacSupervisor: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [543210987, 765432109, 654321098]\nFacHireDate: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2002-03-15', '1996-05-01', '2005-06-15']\nFacZipCode: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['98011-2242', '98052-1234', '98114-9954']\n\n## Table university_student:\nStdNo: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [234567890, 890123456, 678901234]\nStdFirstName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['WILLIAM', 'HOMER', 'WALLY']\nStdLastName: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['COLAN', 'NORBERT', 'PILGRIM']\nStdCity: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['TACOMA', 'SEATTLE', 'REDMOND']\nStdState: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']\nStdZip: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['98114-1332', '98116-0021', '98114-0021']\nStdMajor: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ACCT', 'IS', 'FIN']\nStdClass: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['JR', 'FR', 'SR']\nStdGPA: The type is REAL, Which does not inlude Null and is Unique. Values format like: [3, 3, 2]\n\n## Table university_offering:\nOfferNo: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3333, 2222, 5678]\nCourseNo: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['IS460', 'FIN480', 'FIN450']\nOffTerm: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['SUMMER', 'FALL', 'SPRING']\nOffYear: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2010, 2009]\nOffLocation: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['BLM212', 'BLM305', 'BLM307']\nOffTime: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['3:30 PM', '10:30 AM', '8:30 AM']\nFacNo: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [654321098, 876543210, 98765432]\nOffDays: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['MW', 'TTH']\n\n## Table web_accounts:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1921, 2081, 4411]\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Autoliv', 'Biogen', 'MasterCard']\nwebsite: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['www.westrock.com', 'www.att.com', 'www.ingrammicro.com']\nlat: The type is REAL, Which does not inlude Null and is Unique. Values format like: [30, 36, 36]\nlong: The type is REAL, Which does not inlude Null and is Unique. Values format like: [-84, -87, -121]\nprimary_poc: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Horacio Weidman', 'Agnus Jenkin', 'Chin Coppola']\nsales_rep_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [321720, 321960, 321650]\n\n## Table web_events:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1986, 5607, 6456]\naccount_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3381, 1741, 3171]\noccurred_at: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2015-08-05T14:17:14.000Z', '2016-04-26T02:23:47.000Z', '2016-04-28T03:35:32.000Z']\nchannel: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['twitter', 'organic', 'direct']\n\n## Table SalaryDataset:\nindex: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1889, 2516, 1013]\nCompanyName: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['KPMG', 'IDeaS - A SAS Company', 'Zoomcar']\nJobTitle: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Machine Learning Software Engineer', 'Machine Learning Consultant', 'Data Engineer']\nSalariesReported: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [36, 44, 33]\nLocation: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Bangalore', 'New Delhi', 'Mumbai']\nSalary: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['₹4,87,335/yr', '₹9,59,911/yr', '₹8,56,429/yr']\n\n## Table web_region:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3, 2, 4]\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['West', 'Southeast', 'Midwest']\n\n## Table hardware_fact_gross_price:\nproduct_code: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['A5419110201', 'A1320150402', 'A0519150201']\nfiscal_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2020, 2021]\ngross_price: The type is REAL, Which does not inlude Null and is Unique. Values format like: [14, 16, 602]\n\n## Table hardware_fact_manufacturing_cost:\nproduct_code: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['A2419150405', 'A5621110405', 'A5219110404']\ncost_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2020, 2021]\nmanufacturing_cost: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [37, 5, 8]\n\n## Table university_course:\nCourseNo: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['IS480', 'FIN480', 'FIN300']\nCrsDesc: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['FUNDAMENTALS OF DATABASE MANAGEMENT', 'FUNDAMENTALS OF BUSINESS PROGRAMMING', 'FUNDAMENTALS OF FINANCE']\nCrsUnits: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [4]\n\n## Table hardware_fact_sales_monthly:\ndate: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-02-01', '2020-09-01', '2020-02-01']\nproduct_code: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['A5520110307', 'A0418150102', 'A2218150202']\ncustomer_code: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [90017055, 90002015, 70010047]\nsold_quantity: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1943, 2087, 1179]\nfiscal_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2020, 2021]\n\n#Forigen keys:\n\n\n#Database Description:\nThe `education_business` database is designed to manage and analyze data related to education, business operations, hardware sales, manufacturing, and web-based activities. It includes information about customers, products, sales, manufacturing costs, university courses, faculty, students, and web-related events/accounts. The database is structured to support various analytical and operational needs, with relationships between tables established through foreign keys.\n\n#Tables Descriptions:\n\n1. **hardware_dim_customer**:  \n   Contains information about customers, including their unique codes, names, platforms, channels, markets, sub-zones, and regions.\n\n2. **hardware_fact_pre_invoice_deductions**:  \n   Stores pre-invoice deduction details, including customer codes, fiscal years, and discount percentages.\n\n3. **web_sales_reps**:  \n   Contains information about web sales representatives, including their unique IDs, names, and associated region IDs.\n\n4. **hardware_dim_product**:  \n   Provides details about hardware products, including product codes, divisions, segments, categories, product names, and variants.\n\n5. **web_orders**:  \n   Stores information about web orders, including order IDs, account IDs, timestamps, quantities, and amounts in USD for different product types.\n\n6. **StaffHours**:  \n   Tracks staff member activities, including event dates, times, and types (e.g., \"Enter\" or \"Exit\").\n\n7. **university_enrollment**:  \n   Contains enrollment data, including offer numbers, student numbers, and enrollment grades.\n\n8. **university_faculty**:  \n   Stores faculty information, including faculty numbers, names, cities, states, departments, ranks, salaries, supervisors, hire dates, and zip codes.\n\n9. **university_student**:  \n   Contains student information, including student numbers, names, cities, states, zip codes, majors, classes, and GPAs.\n\n10. **university_offering**:  \n    Provides details about course offerings, including offer numbers, course numbers, terms, years, locations, times, faculty numbers, and days.\n\n11. **web_accounts**:  \n    Contains information about web accounts, including account IDs, names, websites, geographical coordinates (latitude and longitude), primary points of contact, and associated sales representative IDs.\n\n12. **web_events**:  \n    Tracks web events, including event IDs, account IDs, timestamps, and channels.\n\n13. **SalaryDataset**:  \n    Stores salary-related data, including company names, job titles, salaries reported, locations, and salary amounts.\n\n14. **web_region**:  \n    Contains information about web regions, including region IDs and names.\n\n15. **hardware_fact_gross_price**:  \n    Stores gross price details for hardware products, including product codes, fiscal years, and gross prices.\n\n16. **hardware_fact_manufacturing_cost**:  \n    Contains manufacturing cost details for hardware products, including product codes, cost years, and manufacturing costs.\n\n17. **university_course**:  \n    Provides details about university courses, including course numbers, descriptions, and units.\n\n18. **hardware_fact_sales_monthly**:  \n    Tracks monthly sales data for hardware products, including dates, product codes, customer codes, sold quantities, and fiscal years.\n\n#Foreign Keys:\n1. `hardware_dim_customer.customer_code` = `hardware_fact_pre_invoice_deductions.customer_code`  \n2. `hardware_dim_customer.customer_code` = `hardware_fact_sales_monthly.customer_code`  \n3. `hardware_dim_product.product_code` = `hardware_fact_gross_price.product_code`  \n4. `hardware_dim_product.product_code` = `hardware_fact_manufacturing_cost.product_code`  \n5. `hardware_dim_product.product_code` = `hardware_fact_sales_monthly.product_code`  \n6. `web_sales_reps.region_id` = `web_region.id`  \n7. `web_accounts.sales_rep_id` = `web_sales\n",
+        "db_col_dic": {
+            "hardware_dim_customer.customer_code": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [70003182, 90018105, 90013117]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[70003182, 90018105, 90013117]"
+            ],
+            "hardware_dim_customer.customer": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['walmart', 'Currys (Dixons Carphone)', 'Electricalsbea Stores']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['walmart', 'Currys (Dixons Carphone)', 'Electricalsbea Stores']"
+            ],
+            "hardware_dim_customer.platform": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Brick & Mortar', 'E-Commerce']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Brick & Mortar', 'E-Commerce']"
+            ],
+            "hardware_dim_customer.channel": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Retailer', 'Direct', 'Distributor']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Retailer', 'Direct', 'Distributor']"
+            ],
+            "hardware_dim_customer.market": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['France', 'Spain', 'USA']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['France', 'Spain', 'USA']"
+            ],
+            "hardware_dim_customer.sub_zone": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['NE', 'LATAM', 'SE']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['NE', 'LATAM', 'SE']"
+            ],
+            "hardware_dim_customer.region": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['LATAM', 'EU', 'APAC']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['LATAM', 'EU', 'APAC']"
+            ],
+            "hardware_fact_pre_invoice_deductions.customer_code": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [90021094, 90021095, 90011189]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[90021094, 90021095, 90011189]"
+            ],
+            "hardware_fact_pre_invoice_deductions.fiscal_year": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2020, 2021]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2020, 2021]"
+            ],
+            "hardware_fact_pre_invoice_deductions.pre_invoice_discount_pct": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 0, 0]"
+            ],
+            "web_sales_reps.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [321530, 321880, 321940]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[321530, 321880, 321940]"
+            ],
+            "web_sales_reps.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Tia Amato', 'Elwood Shutt', 'Maren Musto']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Tia Amato', 'Elwood Shutt', 'Maren Musto']"
+            ],
+            "web_sales_reps.region_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 2, 3]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 2, 3]"
+            ],
+            "hardware_dim_product.product_code": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['A2821150801', 'A3421150603', 'A5520110307']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['A2821150801', 'A3421150603', 'A5520110307']"
+            ],
+            "hardware_dim_product.division": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PC', 'P & A', 'N & S']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['PC', 'P & A', 'N & S']"
+            ],
+            "hardware_dim_product.segment": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Networking', 'Notebook', 'Peripherals']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Networking', 'Notebook', 'Peripherals']"
+            ],
+            "hardware_dim_product.category": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Graphic Card', 'Keyboard', 'USB Flash Drives']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Graphic Card', 'Keyboard', 'USB Flash Drives']"
+            ],
+            "hardware_dim_product.product": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['AQ Master wired x1', 'AQ MB Lito 2', 'AQ Lumina']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['AQ Master wired x1', 'AQ MB Lito 2', 'AQ Lumina']"
+            ],
+            "hardware_dim_product.variant": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Plus 1', 'Plus 1 ', 'Standard 3']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Plus 1', 'Plus 1 ', 'Standard 3']"
+            ],
+            "web_orders.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [6163, 726, 612]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[6163, 726, 612]"
+            ],
+            "web_orders.account_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3911, 2001, 3961]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[3911, 2001, 3961]"
+            ],
+            "web_orders.occurred_at": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2014-12-11T02:42:26.000Z', '2016-06-23T08:18:36.000Z', '2016-11-13T03:16:03.000Z']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2014-12-11T02:42:26.000Z', '2016-06-23T08:18:36.000Z', '2016-11-13T03:16:03.000Z']"
+            ],
+            "web_orders.standard_qty": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [259, 1448, 355]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[259, 1448, 355]"
+            ],
+            "web_orders.gloss_qty": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [504, 123, 719]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[504, 123, 719]"
+            ],
+            "web_orders.poster_qty": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [488, 209, 250]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[488, 209, 250]"
+            ],
+            "web_orders.total": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [164, 236, 184]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[164, 236, 184]"
+            ],
+            "web_orders.standard_amt_usd": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [3612, 2639, 2075]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[3612, 2639, 2075]"
+            ],
+            "web_orders.gloss_amt_usd": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [232, 3145, 4209]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[232, 3145, 4209]"
+            ],
+            "web_orders.poster_amt_usd": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [3191, 4401, 2736]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[3191, 4401, 2736]"
+            ],
+            "web_orders.total_amt_usd": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [1062, 2762, 2544]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[1062, 2762, 2544]"
+            ],
+            "StaffHours.StaffMember": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['D', 'E', 'L']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['D', 'E', 'L']"
+            ],
+            "StaffHours.EventDate": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2013-01-28', '2013-01-07', '2013-03-07']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2013-01-28', '2013-01-07', '2013-03-07']"
+            ],
+            "StaffHours.EventTime": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['15:30', '14:30', '08:10']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['15:30', '14:30', '08:10']"
+            ],
+            "StaffHours.EventType": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Enter', 'Exit']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Enter', 'Exit']"
+            ],
+            "university_enrollment.OfferNo": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9876, 5555, 6666]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[9876, 5555, 6666]"
+            ],
+            "university_enrollment.StdNo": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [345678901, 234567890, 456789012]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[345678901, 234567890, 456789012]"
+            ],
+            "university_enrollment.EnrGrade": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 2]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 2, 2]"
+            ],
+            "university_faculty.FacNo": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [123456789, 654321098, 765432109]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[123456789, 654321098, 765432109]"
+            ],
+            "university_faculty.FacFirstName": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['JOHN', 'CRISTOPHER', 'NICKI']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['JOHN', 'CRISTOPHER', 'NICKI']"
+            ],
+            "university_faculty.FacLastName": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['MACON', 'SMITH', 'COLAN']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['MACON', 'SMITH', 'COLAN']"
+            ],
+            "university_faculty.FacCity": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['BELLEVUE', 'REDMOND', 'BOTHELL']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['BELLEVUE', 'REDMOND', 'BOTHELL']"
+            ],
+            "university_faculty.FacState": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['WA']"
+            ],
+            "university_faculty.FacDept": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['FIN', 'CS', 'MS']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['FIN', 'CS', 'MS']"
+            ],
+            "university_faculty.FacRank": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PROF', 'ASST', 'ASSC']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['PROF', 'ASST', 'ASSC']"
+            ],
+            "university_faculty.FacSalary": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [35000, 55000, 40000]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[35000, 55000, 40000]"
+            ],
+            "university_faculty.FacSupervisor": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [543210987, 765432109, 654321098]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[543210987, 765432109, 654321098]"
+            ],
+            "university_faculty.FacHireDate": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2002-03-15', '1996-05-01', '2005-06-15']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['2002-03-15', '1996-05-01', '2005-06-15']"
+            ],
+            "university_faculty.FacZipCode": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['98011-2242', '98052-1234', '98114-9954']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['98011-2242', '98052-1234', '98114-9954']"
+            ],
+            "university_student.StdNo": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [234567890, 890123456, 678901234]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[234567890, 890123456, 678901234]"
+            ],
+            "university_student.StdFirstName": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['WILLIAM', 'HOMER', 'WALLY']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['WILLIAM', 'HOMER', 'WALLY']"
+            ],
+            "university_student.StdLastName": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['COLAN', 'NORBERT', 'PILGRIM']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['COLAN', 'NORBERT', 'PILGRIM']"
+            ],
+            "university_student.StdCity": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['TACOMA', 'SEATTLE', 'REDMOND']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['TACOMA', 'SEATTLE', 'REDMOND']"
+            ],
+            "university_student.StdState": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['WA']"
+            ],
+            "university_student.StdZip": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['98114-1332', '98116-0021', '98114-0021']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['98114-1332', '98116-0021', '98114-0021']"
+            ],
+            "university_student.StdMajor": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ACCT', 'IS', 'FIN']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['ACCT', 'IS', 'FIN']"
+            ],
+            "university_student.StdClass": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['JR', 'FR', 'SR']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['JR', 'FR', 'SR']"
+            ],
+            "university_student.StdGPA": [
+                "The type is REAL, Which does not inlude Null and is Unique. Values format like: [3, 3, 2]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Unique",
+                "[3, 3, 2]"
+            ],
+            "university_offering.OfferNo": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3333, 2222, 5678]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[3333, 2222, 5678]"
+            ],
+            "university_offering.CourseNo": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['IS460', 'FIN480', 'FIN450']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['IS460', 'FIN480', 'FIN450']"
+            ],
+            "university_offering.OffTerm": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['SUMMER', 'FALL', 'SPRING']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['SUMMER', 'FALL', 'SPRING']"
+            ],
+            "university_offering.OffYear": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2010, 2009]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2010, 2009]"
+            ],
+            "university_offering.OffLocation": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['BLM212', 'BLM305', 'BLM307']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['BLM212', 'BLM305', 'BLM307']"
+            ],
+            "university_offering.OffTime": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['3:30 PM', '10:30 AM', '8:30 AM']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['3:30 PM', '10:30 AM', '8:30 AM']"
+            ],
+            "university_offering.FacNo": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [654321098, 876543210, 98765432]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[654321098, 876543210, 98765432]"
+            ],
+            "university_offering.OffDays": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['MW', 'TTH']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['MW', 'TTH']"
+            ],
+            "web_accounts.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1921, 2081, 4411]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1921, 2081, 4411]"
+            ],
+            "web_accounts.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Autoliv', 'Biogen', 'MasterCard']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Autoliv', 'Biogen', 'MasterCard']"
+            ],
+            "web_accounts.website": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['www.westrock.com', 'www.att.com', 'www.ingrammicro.com']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['www.westrock.com', 'www.att.com', 'www.ingrammicro.com']"
+            ],
+            "web_accounts.lat": [
+                "The type is REAL, Which does not inlude Null and is Unique. Values format like: [30, 36, 36]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Unique",
+                "[30, 36, 36]"
+            ],
+            "web_accounts.long": [
+                "The type is REAL, Which does not inlude Null and is Unique. Values format like: [-84, -87, -121]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Unique",
+                "[-84, -87, -121]"
+            ],
+            "web_accounts.primary_poc": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Horacio Weidman', 'Agnus Jenkin', 'Chin Coppola']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Horacio Weidman', 'Agnus Jenkin', 'Chin Coppola']"
+            ],
+            "web_accounts.sales_rep_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [321720, 321960, 321650]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[321720, 321960, 321650]"
+            ],
+            "web_events.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1986, 5607, 6456]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1986, 5607, 6456]"
+            ],
+            "web_events.account_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3381, 1741, 3171]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[3381, 1741, 3171]"
+            ],
+            "web_events.occurred_at": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2015-08-05T14:17:14.000Z', '2016-04-26T02:23:47.000Z', '2016-04-28T03:35:32.000Z']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['2015-08-05T14:17:14.000Z', '2016-04-26T02:23:47.000Z', '2016-04-28T03:35:32.000Z']"
+            ],
+            "web_events.channel": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['twitter', 'organic', 'direct']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['twitter', 'organic', 'direct']"
+            ],
+            "SalaryDataset.index": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1889, 2516, 1013]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1889, 2516, 1013]"
+            ],
+            "SalaryDataset.CompanyName": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['KPMG', 'IDeaS - A SAS Company', 'Zoomcar']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['KPMG', 'IDeaS - A SAS Company', 'Zoomcar']"
+            ],
+            "SalaryDataset.JobTitle": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Machine Learning Software Engineer', 'Machine Learning Consultant', 'Data Engineer']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Machine Learning Software Engineer', 'Machine Learning Consultant', 'Data Engineer']"
+            ],
+            "SalaryDataset.SalariesReported": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [36, 44, 33]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[36, 44, 33]"
+            ],
+            "SalaryDataset.Location": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Bangalore', 'New Delhi', 'Mumbai']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Bangalore', 'New Delhi', 'Mumbai']"
+            ],
+            "SalaryDataset.Salary": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['₹4,87,335/yr', '₹9,59,911/yr', '₹8,56,429/yr']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['₹4,87,335/yr', '₹9,59,911/yr', '₹8,56,429/yr']"
+            ],
+            "web_region.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3, 2, 4]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[3, 2, 4]"
+            ],
+            "web_region.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['West', 'Southeast', 'Midwest']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['West', 'Southeast', 'Midwest']"
+            ],
+            "hardware_fact_gross_price.product_code": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['A5419110201', 'A1320150402', 'A0519150201']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['A5419110201', 'A1320150402', 'A0519150201']"
+            ],
+            "hardware_fact_gross_price.fiscal_year": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2020, 2021]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2020, 2021]"
+            ],
+            "hardware_fact_gross_price.gross_price": [
+                "The type is REAL, Which does not inlude Null and is Unique. Values format like: [14, 16, 602]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Unique",
+                "[14, 16, 602]"
+            ],
+            "hardware_fact_manufacturing_cost.product_code": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['A2419150405', 'A5621110405', 'A5219110404']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['A2419150405', 'A5621110405', 'A5219110404']"
+            ],
+            "hardware_fact_manufacturing_cost.cost_year": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2020, 2021]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2020, 2021]"
+            ],
+            "hardware_fact_manufacturing_cost.manufacturing_cost": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [37, 5, 8]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[37, 5, 8]"
+            ],
+            "university_course.CourseNo": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['IS480', 'FIN480', 'FIN300']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['IS480', 'FIN480', 'FIN300']"
+            ],
+            "university_course.CrsDesc": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['FUNDAMENTALS OF DATABASE MANAGEMENT', 'FUNDAMENTALS OF BUSINESS PROGRAMMING', 'FUNDAMENTALS OF FINANCE']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['FUNDAMENTALS OF DATABASE MANAGEMENT', 'FUNDAMENTALS OF BUSINESS PROGRAMMING', 'FUNDAMENTALS OF FINANCE']"
+            ],
+            "university_course.CrsUnits": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [4]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4]"
+            ],
+            "hardware_fact_sales_monthly.date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-02-01', '2020-09-01', '2020-02-01']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2021-02-01', '2020-09-01', '2020-02-01']"
+            ],
+            "hardware_fact_sales_monthly.product_code": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['A5520110307', 'A0418150102', 'A2218150202']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['A5520110307', 'A0418150102', 'A2218150202']"
+            ],
+            "hardware_fact_sales_monthly.customer_code": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [90017055, 90002015, 70010047]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[90017055, 90002015, 70010047]"
+            ],
+            "hardware_fact_sales_monthly.sold_quantity": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1943, 2087, 1179]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1943, 2087, 1179]"
+            ],
+            "hardware_fact_sales_monthly.fiscal_year": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2020, 2021]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2020, 2021]"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries a detailed web sales report for each region, including the number of orders, total sales amount, and the name and sales amount of top-performing sales representatives in each region. Relevant columns include those related to regions, orders, sales amounts, and sales representatives.\n#columns: web_region.id, web_region.name, web_orders.id, web_orders.total_amt_usd, web_sales_reps.id, web_sales_reps.name, web_accounts.sales_rep_id, web_accounts.id\n#values: None\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "representatives",
+            "region",
+            "sales representatives",
+            "name",
+            "number of orders",
+            "web sales report",
+            "total sales amount",
+            "sales amount",
+            "tie",
+            "highest total sales amount"
+        ],
+        "col": "web_region.id, web_region.name, web_orders.id, web_orders.total_amt_usd, web_sales_reps.id, web_sales_reps.name, web_accounts.sales_rep_id, web_accounts.id",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [
+            [
+                "SalaryDataset.CompanyName",
+                "TietoEVRY"
+            ]
+        ],
+        "column": "SalaryDataset.CompanyName: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['KPMG', 'IDeaS - A SAS Company', 'Zoomcar']\nSalaryDataset.SalariesReported: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [36, 44, 33]\nhardware_dim_customer.customer: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['walmart', 'Currys (Dixons Carphone)', 'Electricalsbea Stores']\nhardware_dim_customer.market: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['France', 'Spain', 'USA']\nhardware_dim_customer.region: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['LATAM', 'EU', 'APAC']\nhardware_dim_product.division: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PC', 'P & A', 'N & S']\nhardware_dim_product.product: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['AQ Master wired x1', 'AQ MB Lito 2', 'AQ Lumina']\nhardware_dim_product.segment: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Networking', 'Notebook', 'Peripherals']\nhardware_fact_sales_monthly.sold_quantity: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1943, 2087, 1179]\nweb_accounts.id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1921, 2081, 4411]\nweb_accounts.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Autoliv', 'Biogen', 'MasterCard']\nweb_accounts.sales_rep_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [321720, 321960, 321650]\nweb_accounts.website: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['www.westrock.com', 'www.att.com', 'www.ingrammicro.com']\nweb_events.id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1986, 5607, 6456]\nweb_orders.id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [6163, 726, 612]\nweb_orders.total: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [164, 236, 184]\nweb_orders.total_amt_usd: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [1062, 2762, 2544]\nweb_region.id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3, 2, 4]\nweb_region.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['West', 'Southeast', 'Midwest']\nweb_sales_reps.id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [321530, 321880, 321940]\nweb_sales_reps.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Tia Amato', 'Elwood Shutt', 'Maren Musto']\nweb_sales_reps.region_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 2, 3]",
+        "foreign_keys": "",
+        "foreign_set": [],
+        "q_order": [
+            "a detailed web sales report for each region",
+            "the number of orders",
+            "total sales amount",
+            "the name and sales amount of all sales representatives who achieved the highest total sales amount in that region"
+        ],
+        "status": "success"
+    }
+]

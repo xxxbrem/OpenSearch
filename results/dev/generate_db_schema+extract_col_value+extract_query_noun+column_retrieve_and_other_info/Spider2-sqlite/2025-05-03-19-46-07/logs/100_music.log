@@ -1,0 +1,422 @@
+############################## Human at step generate_db_schema ##############################
+
+/* Here is a examples about describe database */
+    #Forigen keys: 
+    Airlines.ORIGIN = Airports.Code, Airlines.DEST = Airports.Code, Airlines.OP_CARRIER_AIRLINE_ID = Air Carriers.Code
+    #Database Description: The database encompasses information related to flights, including airlines, airports, and flight operations.
+    #Tables Descriptions:
+    Air Carriers: Codes and descriptive information about airlines
+    Airports: IATA codes and descriptions of airports
+    Airlines: Detailed information about flights 
+
+    /* Here is a examples about describe database */
+    #Forigen keys:
+    data.ID = price.ID, production.ID = price.ID, production.ID = data.ID, production.country = country.origin
+    #Database Description: The database contains information related to cars, including country, price, specifications, Production
+    #Tables Descriptions:
+    Country: Names of the countries where the cars originate from.
+    Price: Price of the car in USD.
+    Data: Information about the car's specifications
+    Production: Information about car's production.
+
+    /* Describe the following database */
+    Database Management System: SQLite
+#Database name: music
+## Table Album:
+AlbumId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [186, 92, 107]
+Title: The type is NVARCHAR(160), Which does not inlude Null and is Unique. Values format like: ['Live At Donington 1992 (Disc 2)', 'By The Way', 'Angel Dust']
+ArtistId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [53, 254, 83]
+
+## Table Artist:
+ArtistId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [261, 245, 189]
+Name: The type is NVARCHAR(120), Which does not inlude Null and is Unique. Values format like: ['Marcos Valle', 'Os Cariocas', 'Aisha Duo']
+
+## Table Customer:
+CustomerId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [8, 9, 12]
+FirstName: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Luis', 'Victor', 'Kathy']
+LastName: The type is NVARCHAR(20), Which does not inlude Null and is Unique. Values format like: ['Lefebvre', 'Sampaio', 'Muñoz']
+Company: The type is NVARCHAR(80), Which inlude Null and is Non-Unique. Values format like: ['Embraer - Empresa Brasileira de Aeronáutica S.A.', 'Microsoft Corporation', 'JetBrains s.r.o.']
+Address: The type is NVARCHAR(70), Which does not inlude Null and is Unique. Values format like: ['627 Broadway', 'Celsiusg. 9', '3,Raj Bhavan Road']
+City: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Boston', 'Rio de Janeiro', 'Brasília']
+State: The type is NVARCHAR(40), Which inlude Null and is Non-Unique. Values format like: ['MB', 'FL', 'MA']
+Country: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Denmark', 'Canada', 'Italy']
+PostalCode: The type is NVARCHAR(10), Which inlude Null and is Non-Unique. Values format like: [32801, 76110, 95014]
+Phone: The type is NVARCHAR(24), Which inlude Null and is Unique. Values format like: ['+420 2 4172 5555', '+55 (11) 3033-5446', '+1 (817) 924-7272']
+Fax: The type is NVARCHAR(24), Which inlude Null and is Non-Unique. Values format like: ['+55 (21) 2271-7070', '+55 (11) 3055-8131', '+1 (650) 253-0000']
+Email: The type is NVARCHAR(60), Which does not inlude Null and is Unique. Values format like: ['isabelle_mercier@apple.fr', 'stanisław.wójcik@wp.pl', 'roberto.almeida@riotur.gov.br']
+SupportRepId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 5, 4]
+
+## Table Employee:
+EmployeeId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7, 4, 3]
+LastName: The type is NVARCHAR(20), Which does not inlude Null and is Unique. Values format like: ['Johnson', 'Mitchell', 'Peacock']
+FirstName: The type is NVARCHAR(20), Which does not inlude Null and is Unique. Values format like: ['Robert', 'Michael', 'Jane']
+Title: The type is NVARCHAR(30), Which does not inlude Null and is Non-Unique. Values format like: ['Sales Manager', 'Sales Support Agent', 'IT Manager']
+ReportsTo: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [1, 2, 6]
+BirthDate: The type is DATETIME, Which does not inlude Null and is Unique. Values format like: ['1958-12-08 00:00:00', '1973-07-01 00:00:00', '1947-09-19 00:00:00']
+HireDate: The type is DATETIME, Which does not inlude Null and is Non-Unique. Values format like: ['2002-04-01 00:00:00', '2002-08-14 00:00:00', '2004-01-02 00:00:00']
+Address: The type is NVARCHAR(70), Which does not inlude Null and is Unique. Values format like: ['825 8 Ave SW', '1111 6 Ave SW', '11120 Jasper Ave NW']
+City: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Edmonton', 'Lethbridge', 'Calgary']
+State: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Value of this column must in: ['AB']
+Country: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Value of this column must in: ['Canada']
+PostalCode: The type is NVARCHAR(10), Which does not inlude Null and is Unique. Values format like: ['T3B 1Y7', 'T5K 2N1', 'T2P 5M5']
+Phone: The type is NVARCHAR(24), Which does not inlude Null and is Non-Unique. Values format like: ['+1 (403) 246-9887', '+1 (780) 428-9482', '+1 (403) 456-9986']
+Fax: The type is NVARCHAR(24), Which does not inlude Null and is Unique. Values format like: ['+1 (403) 246-9899', '+1 (403) 262-6712', '+1 (780) 428-3457']
+Email: The type is NVARCHAR(60), Which does not inlude Null and is Unique. Values format like: ['andrew@chinookcorp.com', 'jane@chinookcorp.com', 'michael@chinookcorp.com']
+
+## Table Genre:
+GenreId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3, 19, 20]
+Name: The type is NVARCHAR(120), Which does not inlude Null and is Unique. Values format like: ['Drama', 'Latin', 'Alternative & Punk']
+
+## Table Invoice:
+InvoiceId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [120, 264, 185]
+CustomerId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [22, 55, 37]
+InvoiceDate: The type is DATETIME, Which does not inlude Null and is Non-Unique. Values format like: ['2013-10-05 00:00:00', '2009-12-09 00:00:00', '2011-07-07 00:00:00']
+BillingAddress: The type is NVARCHAR(70), Which does not inlude Null and is Non-Unique. Values format like: ['801 W 4th Street', '194A Chain Lake Drive', '627 Broadway']
+BillingCity: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Lyon', 'Mountain View', 'Cupertino']
+BillingState: The type is NVARCHAR(40), Which inlude Null and is Non-Unique. Values format like: ['RM', 'VV', 'Dublin']
+BillingCountry: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Denmark', 'France', 'Ireland']
+BillingPostalCode: The type is NVARCHAR(10), Which inlude Null and is Non-Unique. Values format like: ['V6C 1G8', 28015, 1000]
+Total: The type is NUMERIC(10,2), Which does not inlude Null and is Non-Unique. Values format like: [8, 1, 16]
+
+## Table InvoiceLine:
+InvoiceLineId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [212, 86, 1095]
+InvoiceId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [231, 300, 124]
+TrackId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2223, 460, 1763]
+UnitPrice: The type is NUMERIC(10,2), Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+Quantity: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]
+
+## Table MediaType:
+MediaTypeId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3, 5, 4]
+Name: The type is NVARCHAR(120), Which does not inlude Null and is Unique. Values format like: ['Protected MPEG-4 video file', 'AAC audio file', 'Purchased AAC audio file']
+
+## Table Playlist:
+PlaylistId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [8, 5, 3]
+Name: The type is NVARCHAR(120), Which does not inlude Null and is Non-Unique. Values format like: ['Music', 'Movies', 'Classical 101 - Deep Cuts']
+
+## Table PlaylistTrack:
+PlaylistId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8, 3, 17]
+TrackId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3025, 1475, 1986]
+
+## Table Track:
+TrackId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1077, 96, 1796]
+Name: The type is NVARCHAR(200), Which does not inlude Null and is Non-Unique. Values format like: ['Soon Forgotten', 'Lindo Lago Do Amor', "It's Electric"]
+AlbumId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [273, 280, 314]
+MediaTypeId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 1, 4]
+GenreId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [13, 3, 24]
+Composer: The type is NVARCHAR(220), Which inlude Null and is Non-Unique. Values format like: ['Murray  Dave', 'J.J. Johnson', 'L. Kilmister, O. Osbourne & Z. Wylde']
+Milliseconds: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [424829, 389642, 173583]
+Bytes: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8538199, 9567075, 8491818]
+UnitPrice: The type is NUMERIC(10,2), Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+
+#Forigen keys:
+Employee.ReportsTo = Employee.EmployeeId, Invoice.CustomerId = Customer.CustomerId, InvoiceLine.InvoiceId = Invoice.InvoiceId, PlaylistTrack.PlaylistId = Playlist.PlaylistId, Track.MediaTypeId = MediaType.MediaTypeId, Track.GenreId = Genre.GenreId, Track.AlbumId = Album.AlbumId
+
+    Please conclude the database in the following format:
+    #Database Description:
+    #Tables Descriptions:
+    
+
+############################## AI at step generate_db_schema ##############################
+
+#Database Description:
+The `music` database is designed to manage and store information related to music collections, including albums, artists, customers, employees, genres, invoices, invoice lines, media types, playlists, playlist tracks, and tracks. It provides a comprehensive structure for organizing and tracking music-related data, including customer purchases, employee details, and track metadata.
+
+#Tables Descriptions:
+1. **Album**: Contains information about music albums, including their unique IDs, titles, and associated artist IDs.
+
+2. **Artist**: Stores details about artists, including their unique IDs and names.
+
+3. **Customer**: Maintains customer information, including unique IDs, names, contact details, addresses, and support representative IDs.
+
+4. **Employee**: Contains employee details, including unique IDs, names, titles, reporting hierarchy, birth dates, hire dates, and contact information.
+
+5. **Genre**: Stores information about music genres, including unique IDs and names.
+
+6. **Invoice**: Tracks customer invoices, including unique IDs, customer IDs, invoice dates, billing details, and total amounts.
+
+7. **InvoiceLine**: Represents individual items in invoices, including unique IDs, invoice IDs, track IDs, unit prices, and quantities.
+
+8. **MediaType**: Contains information about media types, including unique IDs and names.
+
+9. **Playlist**: Stores playlists, including unique IDs and names.
+
+10. **PlaylistTrack**: Represents the association between playlists and tracks, including playlist IDs and track IDs.
+
+11. **Track**: Contains detailed information about music tracks, including unique IDs, names, album IDs, media type IDs, genre IDs, composers, duration (in milliseconds), file size (in bytes), and unit prices.
+
+#Foreign Keys:
+- **Employee.ReportsTo** → **Employee.EmployeeId**
+- **Invoice.CustomerId** → **Customer.CustomerId**
+- **InvoiceLine.InvoiceId** → **Invoice.InvoiceId**
+- **PlaylistTrack.PlaylistId** → **Playlist.PlaylistId**
+- **Track.MediaTypeId** → **MediaType.MediaTypeId**
+- **Track.GenreId** → **Genre.GenreId**
+- **Track.AlbumId** → **Album.AlbumId**
+
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: In step 1, which versions have a greater number of problems solved by the ‘Stack’ model (test_score = 1) than by all non-‘Stack’ models combined? solved refers to test_score = 1; step 1 refers to step = 1 */
+SELECT R1.version
+FROM results AS R1
+WHERE R1.model = 'Stack'
+  AND R1.step = 1
+  AND R1.test_score = 1
+GROUP BY R1.version
+HAVING COUNT(*) >
+       (
+         SELECT COUNT(*)
+         FROM results AS R2
+         WHERE R2.version = R1.version
+           AND R2.step = 1
+           AND R2.model <> 'Stack'
+           AND R2.test_score = 1
+       );
+
+/* Answer the following: For every problem, what is the highest test score achieved in version ‘v3’ across all models and steps? version ‘v3’ refers to version = 'v3' */
+SELECT problem_id, MAX(test_score) AS max_test_score
+FROM results
+WHERE version = 'v3'
+GROUP BY problem_id;
+
+/* Answer the following: List the problems where any model achieved a perfect validation score (validation_score = 1) but failed the test (test_score < 1) in step 2. step 2 refers to step = 2 */
+SELECT DISTINCT problem_id
+FROM results
+WHERE step = 2
+  AND validation_score = 1
+  AND test_score < 1;
+
+/* Answer the following: Which models have an average validation score higher than their average test score across all problems, versions, and steps? */
+SELECT model
+FROM results
+GROUP BY model
+HAVING AVG(validation_score) > AVG(test_score);
+
+/* Answer the following: Give the total number of result rows whose test score is NULL. test score is NULL refers to test_score IS NULL */
+SELECT COUNT(*)
+FROM results
+WHERE test_score IS NULL;
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: music
+## Table Album:
+AlbumId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [186, 92, 107]
+Title: The type is NVARCHAR(160), Which does not inlude Null and is Unique. Values format like: ['Live At Donington 1992 (Disc 2)', 'By The Way', 'Angel Dust']
+ArtistId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [53, 254, 83]
+
+## Table Artist:
+ArtistId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [261, 245, 189]
+Name: The type is NVARCHAR(120), Which does not inlude Null and is Unique. Values format like: ['Marcos Valle', 'Os Cariocas', 'Aisha Duo']
+
+## Table Customer:
+CustomerId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [8, 9, 12]
+FirstName: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Luis', 'Victor', 'Kathy']
+LastName: The type is NVARCHAR(20), Which does not inlude Null and is Unique. Values format like: ['Lefebvre', 'Sampaio', 'Muñoz']
+Company: The type is NVARCHAR(80), Which inlude Null and is Non-Unique. Values format like: ['Embraer - Empresa Brasileira de Aeronáutica S.A.', 'Microsoft Corporation', 'JetBrains s.r.o.']
+Address: The type is NVARCHAR(70), Which does not inlude Null and is Unique. Values format like: ['627 Broadway', 'Celsiusg. 9', '3,Raj Bhavan Road']
+City: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Boston', 'Rio de Janeiro', 'Brasília']
+State: The type is NVARCHAR(40), Which inlude Null and is Non-Unique. Values format like: ['MB', 'FL', 'MA']
+Country: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Denmark', 'Canada', 'Italy']
+PostalCode: The type is NVARCHAR(10), Which inlude Null and is Non-Unique. Values format like: [32801, 76110, 95014]
+Phone: The type is NVARCHAR(24), Which inlude Null and is Unique. Values format like: ['+420 2 4172 5555', '+55 (11) 3033-5446', '+1 (817) 924-7272']
+Fax: The type is NVARCHAR(24), Which inlude Null and is Non-Unique. Values format like: ['+55 (21) 2271-7070', '+55 (11) 3055-8131', '+1 (650) 253-0000']
+Email: The type is NVARCHAR(60), Which does not inlude Null and is Unique. Values format like: ['isabelle_mercier@apple.fr', 'stanisław.wójcik@wp.pl', 'roberto.almeida@riotur.gov.br']
+SupportRepId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 5, 4]
+
+## Table Employee:
+EmployeeId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7, 4, 3]
+LastName: The type is NVARCHAR(20), Which does not inlude Null and is Unique. Values format like: ['Johnson', 'Mitchell', 'Peacock']
+FirstName: The type is NVARCHAR(20), Which does not inlude Null and is Unique. Values format like: ['Robert', 'Michael', 'Jane']
+Title: The type is NVARCHAR(30), Which does not inlude Null and is Non-Unique. Values format like: ['Sales Manager', 'Sales Support Agent', 'IT Manager']
+ReportsTo: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [1, 2, 6]
+BirthDate: The type is DATETIME, Which does not inlude Null and is Unique. Values format like: ['1958-12-08 00:00:00', '1973-07-01 00:00:00', '1947-09-19 00:00:00']
+HireDate: The type is DATETIME, Which does not inlude Null and is Non-Unique. Values format like: ['2002-04-01 00:00:00', '2002-08-14 00:00:00', '2004-01-02 00:00:00']
+Address: The type is NVARCHAR(70), Which does not inlude Null and is Unique. Values format like: ['825 8 Ave SW', '1111 6 Ave SW', '11120 Jasper Ave NW']
+City: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Edmonton', 'Lethbridge', 'Calgary']
+State: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Value of this column must in: ['AB']
+Country: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Value of this column must in: ['Canada']
+PostalCode: The type is NVARCHAR(10), Which does not inlude Null and is Unique. Values format like: ['T3B 1Y7', 'T5K 2N1', 'T2P 5M5']
+Phone: The type is NVARCHAR(24), Which does not inlude Null and is Non-Unique. Values format like: ['+1 (403) 246-9887', '+1 (780) 428-9482', '+1 (403) 456-9986']
+Fax: The type is NVARCHAR(24), Which does not inlude Null and is Unique. Values format like: ['+1 (403) 246-9899', '+1 (403) 262-6712', '+1 (780) 428-3457']
+Email: The type is NVARCHAR(60), Which does not inlude Null and is Unique. Values format like: ['andrew@chinookcorp.com', 'jane@chinookcorp.com', 'michael@chinookcorp.com']
+
+## Table Genre:
+GenreId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3, 19, 20]
+Name: The type is NVARCHAR(120), Which does not inlude Null and is Unique. Values format like: ['Drama', 'Latin', 'Alternative & Punk']
+
+## Table Invoice:
+InvoiceId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [120, 264, 185]
+CustomerId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [22, 55, 37]
+InvoiceDate: The type is DATETIME, Which does not inlude Null and is Non-Unique. Values format like: ['2013-10-05 00:00:00', '2009-12-09 00:00:00', '2011-07-07 00:00:00']
+BillingAddress: The type is NVARCHAR(70), Which does not inlude Null and is Non-Unique. Values format like: ['801 W 4th Street', '194A Chain Lake Drive', '627 Broadway']
+BillingCity: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Lyon', 'Mountain View', 'Cupertino']
+BillingState: The type is NVARCHAR(40), Which inlude Null and is Non-Unique. Values format like: ['RM', 'VV', 'Dublin']
+BillingCountry: The type is NVARCHAR(40), Which does not inlude Null and is Non-Unique. Values format like: ['Denmark', 'France', 'Ireland']
+BillingPostalCode: The type is NVARCHAR(10), Which inlude Null and is Non-Unique. Values format like: ['V6C 1G8', 28015, 1000]
+Total: The type is NUMERIC(10,2), Which does not inlude Null and is Non-Unique. Values format like: [8, 1, 16]
+
+## Table InvoiceLine:
+InvoiceLineId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [212, 86, 1095]
+InvoiceId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [231, 300, 124]
+TrackId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2223, 460, 1763]
+UnitPrice: The type is NUMERIC(10,2), Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+Quantity: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]
+
+## Table MediaType:
+MediaTypeId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3, 5, 4]
+Name: The type is NVARCHAR(120), Which does not inlude Null and is Unique. Values format like: ['Protected MPEG-4 video file', 'AAC audio file', 'Purchased AAC audio file']
+
+## Table Playlist:
+PlaylistId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [8, 5, 3]
+Name: The type is NVARCHAR(120), Which does not inlude Null and is Non-Unique. Values format like: ['Music', 'Movies', 'Classical 101 - Deep Cuts']
+
+## Table PlaylistTrack:
+PlaylistId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8, 3, 17]
+TrackId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3025, 1475, 1986]
+
+## Table Track:
+TrackId: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1077, 96, 1796]
+Name: The type is NVARCHAR(200), Which does not inlude Null and is Non-Unique. Values format like: ['Soon Forgotten', 'Lindo Lago Do Amor', "It's Electric"]
+AlbumId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [273, 280, 314]
+MediaTypeId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5, 1, 4]
+GenreId: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [13, 3, 24]
+Composer: The type is NVARCHAR(220), Which inlude Null and is Non-Unique. Values format like: ['Murray  Dave', 'J.J. Johnson', 'L. Kilmister, O. Osbourne & Z. Wylde']
+Milliseconds: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [424829, 389642, 173583]
+Bytes: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8538199, 9567075, 8491818]
+UnitPrice: The type is NUMERIC(10,2), Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+
+#Forigen keys:
+Employee.ReportsTo = Employee.EmployeeId, Invoice.CustomerId = Customer.CustomerId, InvoiceLine.InvoiceId = Invoice.InvoiceId, PlaylistTrack.PlaylistId = Playlist.PlaylistId, Track.MediaTypeId = MediaType.MediaTypeId, Track.GenreId = Genre.GenreId, Track.AlbumId = Album.AlbumId
+
+#Database Description:
+The `music` database is designed to manage and store information related to music collections, including albums, artists, customers, employees, genres, invoices, invoice lines, media types, playlists, playlist tracks, and tracks. It provides a comprehensive structure for organizing and tracking music-related data, including customer purchases, employee details, and track metadata.
+
+#Tables Descriptions:
+1. **Album**: Contains information about music albums, including their unique IDs, titles, and associated artist IDs.
+
+2. **Artist**: Stores details about artists, including their unique IDs and names.
+
+3. **Customer**: Maintains customer information, including unique IDs, names, contact details, addresses, and support representative IDs.
+
+4. **Employee**: Contains employee details, including unique IDs, names, titles, reporting hierarchy, birth dates, hire dates, and contact information.
+
+5. **Genre**: Stores information about music genres, including unique IDs and names.
+
+6. **Invoice**: Tracks customer invoices, including unique IDs, customer IDs, invoice dates, billing details, and total amounts.
+
+7. **InvoiceLine**: Represents individual items in invoices, including unique IDs, invoice IDs, track IDs, unit prices, and quantities.
+
+8. **MediaType**: Contains information about media types, including unique IDs and names.
+
+9. **Playlist**: Stores playlists, including unique IDs and names.
+
+10. **PlaylistTrack**: Represents the association between playlists and tracks, including playlist IDs and track IDs.
+
+11. **Track**: Contains detailed information about music tracks, including unique IDs, names, album IDs, media type IDs, genre IDs, composers, duration (in milliseconds), file size (in bytes), and unit prices.
+
+#Foreign Keys:
+- **Employee.ReportsTo** → **Employee.EmployeeId**
+- **Invoice.CustomerId** → **Customer.CustomerId**
+- **InvoiceLine.InvoiceId** → **Invoice.InvoiceId**
+- **PlaylistTrack.PlaylistId** → **Playlist.PlaylistId**
+- **Track.MediaTypeId** → **MediaType.MediaTypeId**
+- **Track.GenreId** → **Genre.GenreId**
+- **Track.AlbumId** → **Album.AlbumId**
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: Calculate the duration of each track, classify them as short, medium, or long, output the minimum and maximum time for each kind (in minutes) and the total revenue for each category, group by the category. */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries the duration of tracks, classifies them into categories (short, medium, long), and calculates the minimum and maximum time for each category in minutes, along with the total revenue. Relevant columns include track duration, unit price, and quantity for revenue calculation, and grouping by category.
+#columns: Track.Milliseconds, Track.UnitPrice, InvoiceLine.Quantity
+#values: "short", "medium", "long"
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+Calculate the duration of each track, classify them as short, medium, or long, output the minimum and maximum time for each kind (in minutes) and the total revenue for each category, group by the category.
+
+############################## AI at step extract_query_noun ##############################
+
+"duration", "track", "short", "medium", "long", "minimum time", "maximum time", "kind", "minutes", "total revenue", "category", "group"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: Calculate the duration of each track, classify them as short, medium, or long, output the minimum and maximum time for each kind (in minutes) and the total revenue for each category, group by the category.
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "Calculate",
+      "J": null,
+      "I": ["the duration of each track", "the minimum and maximum time for each kind (in minutes)", "the total revenue for each category"],
+      "C": ["classify them as short, medium, or long", "group by the category"]
+    }
+  }
+]
+```
+

@@ -1,0 +1,287 @@
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: What was the total number of traffic accidents recorded in 2021? */
+SELECT total_incidents
+FROM yearly_accident_totals
+WHERE year = 2021;
+
+/* Answer the following: Which primary collision factor accounted for the greatest share of accidents in 2019? greatest share refers to MAX(share_percent) */
+SELECT factor
+FROM annual_factor_share
+WHERE year = 2019
+ORDER BY share_percent DESC
+LIMIT 1;
+
+/* Answer the following: What percent of all 2020 accidents were attributed to the speeding violation category? */
+SELECT share_percent
+FROM annual_factor_share
+WHERE year = 2020
+  AND factor = 'Speeding';
+
+/* Answer the following: List the three violation categories that showed the largest increase in share between 2011 and 2021.  largest increase refers to (share_2021 – share_2011) ordered DESC */
+SELECT a.factor
+FROM annual_factor_share AS a
+JOIN annual_factor_share AS b
+     ON a.factor = b.factor
+WHERE a.year = 2021
+  AND b.year = 2011
+ORDER BY (a.share_percent - b.share_percent) DESC
+LIMIT 3;
+
+/* Answer the following: What was the average annual share (in percent) of the DUI category from 2010 through 2021 inclusive? */
+SELECT AVG(share_percent)
+FROM annual_factor_share
+WHERE factor = 'DUI'
+  AND year BETWEEN 2010 AND 2021;
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: California_Traffic_Collision
+## Table victims:
+id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [64982, 1935664, 2112442]
+case_id: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [7016482, 5158342, 6578553]
+party_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 12, 8]
+victim_role: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other', 'pedestrian', 'passenger']
+victim_sex: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: [2, 'male', 4]
+victim_age: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [88, 41, 42]
+victim_degree_of_injury: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['killed', 'suspected minor injury', 'complaint of pain']
+victim_seating_position: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['position unknown', 'passenger seat 3', 'passenger seat 6']
+victim_safety_equipment_1: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['child restraint in vehicle not used', 'child restraint in vehicle used', 'shoulder harness used']
+victim_safety_equipment_2: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other', 'air bag deployed', 'lap belt used']
+victim_ejected: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['partially ejected', 'fully ejected', 'unknown']
+
+## Table collisions:
+case_id: The type is REAL, Which does not inlude Null and is Unique. Values format like: [8877599, 598341, 6582001]
+jurisdiction: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [4111, 3325, 9150]
+officer_id: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['F5137', 39308, 20258]
+reporting_district: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['11AC', '30E1', 20208]
+chp_shift: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['not chp', '1400 thru 2159', 'chp not stated']
+population: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['100000 to 250000', '25000 to 50000', '>250000']
+county_city_location: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2404, 1973, 4000]
+county_location: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['mariposa', 'riverside', 'placer']
+special_condition: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+beat_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['schoolbus on city roadway', 'chp county roadarea', 'not chp']
+chp_beat_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['not chp', 'safety services program', 'us highway']
+city_division_lapd: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['M', 'L', 'K']
+chp_beat_class: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['chp primary', 'chp other', 'not chp']
+beat_number: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['19A97', 'S-1', 859]
+primary_road: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['EL NORTE PY', 'CHRISMAN ROAD', 'GATEWAY']
+secondary_road: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['MINERAL KING RD', 'DOROTHY LN', 'BALFOUR']
+distance: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [740, 26928, 1023]
+direction: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['west', 'north', 'east']
+intersection: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+weather_1: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['snowing', 'other', 'clear']
+weather_2: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other', 'raining', 'cloudy']
+state_highway_indicator: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [1, 0]
+caltrans_county: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['sutter', 'san francisco', 'san benito']
+caltrans_district: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [6, 2, 5]
+state_route: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [262, 395, 46]
+route_suffix: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['B', 'S', 'U']
+postmile_prefix: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['C', 'S', 'D']
+postmile: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [76, 25, 18]
+location_type: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['intersection', 'ramp', 'highway']
+ramp_intersection: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['mid-ramp', 'intersection', 'not state highway, intersection-related, within 250 feet']
+side_of_highway: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['northbound', 'westbound', 'eastbound']
+tow_away: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [1, 0]
+collision_severity: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['property damage only', 'severe injury', 'fatal']
+killed_victims: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [0, 4, 13]
+injured_victims: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [7, 9, 31]
+party_count: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [5, 4, 7]
+primary_collision_factor: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['unknown', 'vehicle code violation', 'fell asleep']
+pcf_violation_code: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['D', 'vehicle', 'A']
+pcf_violation_category: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['wrong side of road', 'improper turning', 'following too closely']
+pcf_violation: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [22210, 22521, 22510]
+pcf_violation_subsection: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['G', 'A', 'E']
+hit_and_run: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['felony', 'not hit and run', 'misdemeanor']
+type_of_collision: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['sideswipe', 'pedestrian', 'broadside']
+motor_vehicle_involved_with: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['train', 'non-collision', 'parked motor vehicle']
+pedestrian_action: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['no pedestrian involved', 'crossing in intersection crosswalk', 'using school bus']
+road_surface: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['dry', 'snowy', 'slippery']
+road_condition_1: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['normal', 'holes', 'loose material']
+road_condition_2: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other', 'holes', 'loose material']
+lighting: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['dark with street lights not functioning', 'dark with no street lights', 'dark with street lights']
+control_device: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['obscured', 'functioning', 'none']
+chp_road_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [2, 0, 4]
+pedestrian_collision: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+bicycle_collision: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+motorcycle_collision: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+truck_collision: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+not_private_property: The type is REAL, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]
+alcohol_involved: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [1]
+statewide_vehicle_type_at_fault: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other vehicle', 'moped', 'pickup or panel truck']
+chp_vehicle_type_at_fault: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['school bus private type ii', 'school pupil activity bus type i', 'pickup and camper: hazardous material']
+severe_injury_count: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 5, 10]
+other_visible_injury_count: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [13, 3, 4]
+complaint_of_pain_injury_count: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [20, 3, 4]
+pedestrian_killed_count: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 2, 1]
+pedestrian_injured_count: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 4, 8]
+bicyclist_killed_count: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+bicyclist_injured_count: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 0, 1]
+motorcyclist_killed_count: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 0, 2]
+motorcyclist_injured_count: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [3, 0, 1]
+primary_ramp: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['FR', 'westbound off-ramp', 'TR']
+secondary_ramp: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['CO', 'northbound off-ramp', 'northbound on-ramp']
+latitude: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [34, 35, 34]
+longitude: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [-117, -121, -117]
+collision_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-14', '2008-12-30', '2008-03-04']
+collision_time: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['13:34:00', '19:59:00', '01:23:00']
+process_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2002-06-19', '2020-09-28', '2020-11-12']
+
+## Table case_ids:
+case_id: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [1846548, 3979849, 8020258]
+db_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2018, 2020, 2021]
+
+## Table parties:
+id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4803319, 1454033, 1990549]
+case_id: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [7168462, 90110125, 6858155]
+party_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [18, 15, 5]
+party_type: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['pedestrian', 'other', 'parked vehicle']
+at_fault: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]
+party_sex: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['female', 'male', 'X']
+party_age: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [87, 79, 51]
+party_sobriety: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['had been drinking, not under influence', 'had been drinking, under influence', 'had not been drinking']
+party_drug_physical: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['under drug influence', 'not applicable', 'G']
+direction_of_travel: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['west', 'south', 'north']
+party_safety_equipment_1: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['passive restraint used', 'child restraint in vehicle not used', 'lap belt not used']
+party_safety_equipment_2: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['unknown', 'lap belt not used', 'lap/shoulder harness not used']
+financial_responsibility: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['no proof of insurance obtained', 'proof of insurance obtained', 'officer called away before obtained']
+hazardous_materials: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [1]
+cellphone_in_use: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+cellphone_use_type: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['cellphone not in use', 'cellphone in use', 'no cellphone/unknown']
+school_bus_related: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [1]
+oaf_violation_code: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['vehicle', 'city health and safety', 'business and professions']
+oaf_violation_category: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['off-highway vehicle violation', 'seat belt', 'child restraint']
+oaf_violation_section: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [2818, 0, 21950]
+oaf_violation_suffix: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['D', 'F', 'A']
+other_associate_factor_1: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['inattention, other', 'vision obscurements', 'violation']
+other_associate_factor_2: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['unfamiliar with road', 'inattention, radio/cd', 'uninvolved vehicle']
+party_number_killed: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 6]
+party_number_injured: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [8, 6, 11]
+movement_preceding_collision: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['making right turn', 'slowing/stopping', 'entering traffic']
+vehicle_year: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [2010, 1973, 2003]
+vehicle_make: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['mini', 'KUBOTA', 'ferrari']
+statewide_vehicle_type: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other vehicle', 'highway construction equipment', 'bicycle']
+chp_vehicle_type_towing: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['farm labor transporter', 'utility', 'passenger car, station wagon, jeep: hazardous material']
+chp_vehicle_type_towed: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['container chassis', 'semi', 'emergency vehicle (on emergency run)']
+party_race: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['black', 'white', 'hispanic']
+
+#Forigen keys:
+
+
+#Database Description:
+The `California_Traffic_Collision` database is designed to store detailed information about traffic collisions in California. It includes data about victims, collisions, case IDs, and parties involved in the incidents. The database provides insights into various aspects of traffic collisions, such as severity, location, contributing factors, and demographics of the parties involved. This data can be used for analysis, reporting, and improving traffic safety measures.
+
+#Tables Descriptions:
+1. **Victims**: Contains information about individuals involved in traffic collisions, including their role, sex, age, degree of injury, seating position, safety equipment used, and whether they were ejected from the vehicle.
+
+2. **Collisions**: Stores detailed information about traffic collisions, including jurisdiction, officer ID, location, weather conditions, road conditions, collision severity, and contributing factors. It also includes data about the number of victims killed or injured, type of collision, and other related attributes.
+
+3. **Case IDs**: Provides a mapping of case IDs to the year of the database entry. This table helps track the year in which the collision data was recorded.
+
+4. **Parties**: Contains information about the parties involved in traffic collisions, including their type (e.g., pedestrian, vehicle), sex, age, sobriety, safety equipment used, and whether they were at fault. It also includes data about violations, injuries, and vehicle details.
+
+#Foreign Keys:
+- `victims.case_id` → `collisions.case_id`
+- `parties.case_id` → `collisions.case_id`
+- `parties.party_number` → `victims.party_number`
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: For the primary collision factor violation category that was the most common cause of traffic accidents in 2021, how many percentage points did its share of annual road incidents in 2021 decrease compared to its share in 2011? */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries the most common primary collision factor violation category in 2021 and compares its share in 2021 to 2011. Relevant columns include those related to the primary collision factor, year, and share percentage.
+#columns: collisions.primary_collision_factor, annual_factor_share.year, annual_factor_share.share_percent
+#values: "2021", "2011"
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+For the primary collision factor violation category that was the most common cause of traffic accidents in 2021, how many percentage points did its share of annual road incidents in 2021 decrease compared to its share in 2011?
+
+############################## AI at step extract_query_noun ##############################
+
+"primary collision factor", "violation category", "common cause", "traffic accidents", "2021", "percentage points", "share", "annual road incidents", "2021", "share", "2011"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: For the primary collision factor violation category that was the most common cause of traffic accidents in 2021, how many percentage points did its share of annual road incidents in 2021 decrease compared to its share in 2011?
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "how many",
+      "J": null,
+      "I": ["percentage points"],
+      "C": [
+        "For the primary collision factor violation category that was the most common cause of traffic accidents in 2021",
+        "its share of annual road incidents in 2021 decrease compared to its share in 2011"
+      ]
+    }
+  }
+]
+```
+

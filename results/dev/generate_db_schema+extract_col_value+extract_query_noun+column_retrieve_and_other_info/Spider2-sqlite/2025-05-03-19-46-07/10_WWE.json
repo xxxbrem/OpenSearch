@@ -1,0 +1,355 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: WWE\n## Table Promotions:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3211, 9876, 10963]\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['WCW', 'WWE', 'WWWF']\n\n## Table Tables:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [9481, 7201, 8841]\nhtml: The type is TEXT, Which does not inlude Null and is Unique. Values format: <Long text>\nurl: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['http://www.profightdb.com/cards/wwe-cards-pg579-no-2.html?order=&type=', 'http://www.profightdb.com/cards/wwe-cards-pg32-no-2.html?order=&type=', 'http://www.profightdb.com/cards/nxt-cards-pg116-no-103.html?order=&type=']\n\n## Table Cards:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2543, 4941, 1782]\ntable_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5881, 1520, 2950]\nlocation_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4286, 548, 11781]\npromotion_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 3211, 9876]\nevent_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-10-30', '2006-04-22', '2014-07-21']\nevent_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2138, 1862, 3165]\nurl: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['http://www.profightdb.com/cards/wwe/main-event-taping-30288.html', 'http://www.profightdb.com/cards/wwe/205-live-32-26190.html', 'http://www.profightdb.com/cards/wwe/wwe-live-22857.html']\ninfo_html: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format: <Long text>\nmatch_html: The type is TEXT, Which does not inlude Null and is Unique. Values format: <Long text>\n\n## Table Locations:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [438, 10922, 36]\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['State College, Pennsylvania', 'Turin, Piedmont', 'Antwerp, Antwerp']\n\n## Table Events:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7202, 12568, 2832]\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: [\"Stomping Grounds '19\", 'TV Taping #49', 'Velocity #54 Taping']\n\n## Table Matches:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [145399, 108289, 285329]\ncard_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4542, 526, 10396]\nwinner_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [4370, 31012, 53361]\nwin_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['def.', '(sub)', 'draw (time)']\nloser_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [108848, 25944, 7871]\nmatch_type_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [49361, 1671, 62705]\nduration: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['03:55', '16:53', '13:50']\ntitle_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [21186, 57883, 1633]\ntitle_change: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\n\n## Table Belts:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [47991, 11029, 51484]\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['WWE United States Championship WWE World Heavyweight Championship', 'WWE European Championship WWE Intercontinental Championship', 'WWF King of the Ring']\n\n## Table Wrestlers:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [118650, 104734, 77548]\nname: The type is , Which does not inlude Null and is Unique. Values format like: ['R-Truth & Rey Mysterio', 'Bayley & Tamina', 'Bobo Brazil & Ernie Ladd']\n\n## Table Match_Types:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [57570, 14896, 9292]\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['dark no holds barred', 'no disqualification bullrope', '\"Lights Out\"']\n\n#Forigen keys:\n\n\n# Database Description:\nThe WWE database is designed to store and manage information related to professional wrestling events, promotions, matches, wrestlers, and associated metadata. It includes details about promotions, event locations, match types, belts, and more. The database is structured to provide a comprehensive view of wrestling history, including event details, match outcomes, and wrestler statistics.\n\n# Tables Descriptions:\n\n## Promotions:\n- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique identifier for each promotion (e.g., WWE, WCW).\n- **name**: TEXT, NOT NULL, UNIQUE. The name of the wrestling promotion.\n\n## Tables:\n- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique identifier for each table.\n- **html**: TEXT, NOT NULL, UNIQUE. Contains long HTML content related to the table.\n- **url**: TEXT, NOT NULL, UNIQUE. The URL associated with the table.\n\n## Cards:\n- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique identifier for each card.\n- **table_id**: INTEGER, NOT NULL, NON-UNIQUE. Foreign key referencing the `Tables.id` column.\n- **location_id**: INTEGER, NOT NULL, NON-UNIQUE. Foreign key referencing the `Locations.id` column.\n- **promotion_id**: INTEGER, NOT NULL, NON-UNIQUE. Foreign key referencing the `Promotions.id` column.\n- **event_date**: TEXT, NOT NULL, NON-UNIQUE. The date of the event in the format 'YYYY-MM-DD'.\n- **event_id**: INTEGER, NOT NULL, NON-UNIQUE. Foreign key referencing the `Events.id` column.\n- **url**: TEXT, NOT NULL, UNIQUE. The URL associated with the card.\n- **info_html**: TEXT, NOT NULL, NON-UNIQUE. Contains long HTML content with additional information about the card.\n- **match_html**: TEXT, NOT NULL, UNIQUE. Contains long HTML content with match details.\n\n## Locations:\n- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique identifier for each location.\n- **name**: TEXT, NOT NULL, UNIQUE. The name of the location (e.g., city and state).\n\n## Events:\n- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique identifier for each event.\n- **name**: TEXT, NOT NULL, UNIQUE. The name of the event (e.g., \"Stomping Grounds '19\").\n\n## Matches:\n- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique identifier for each match.\n- **card_id**: INTEGER, NOT NULL, NON-UNIQUE. Foreign key referencing the `Cards.id` column.\n- **winner_id**: TEXT, NOT NULL, NON-UNIQUE. Foreign key referencing the `Wrestlers.id` column for the winner.\n- **win_type**: TEXT, NOT NULL, NON-UNIQUE. The type of win (e.g., 'def.', '(sub)', 'draw (time)').\n- **loser_id**: TEXT, NOT NULL, NON-UNIQUE. Foreign key referencing the `Wrestlers.id` column for the loser.\n- **match_type_id**: TEXT, NOT NULL, NON-UNIQUE. Foreign key referencing the `Match_Types.id` column.\n- **duration**: TEXT, NOT NULL, NON-UNIQUE. The duration of the match in the format 'MM:SS'.\n- **title_id**: TEXT, NOT NULL, NON-UNIQUE. Foreign key referencing the `Belts.id` column.\n- **title_change**: INTEGER, NOT NULL, NON-UNIQUE. Indicates whether a title changed hands during the match (0 = No, 1 = Yes).\n\n## Belts:\n- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique\n",
+        "db_col_dic": {
+            "Promotions.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3211, 9876, 10963]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[3211, 9876, 10963]"
+            ],
+            "Promotions.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['WCW', 'WWE', 'WWWF']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['WCW', 'WWE', 'WWWF']"
+            ],
+            "Tables.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [9481, 7201, 8841]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[9481, 7201, 8841]"
+            ],
+            "Tables.html": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format: <Long text>",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "<Long text>"
+            ],
+            "Tables.url": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['http://www.profightdb.com/cards/wwe-cards-pg579-no-2.html?order=&type=', 'http://www.profightdb.com/cards/wwe-cards-pg32-no-2.html?order=&type=', 'http://www.profightdb.com/cards/nxt-cards-pg116-no-103.html?order=&type=']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['http://www.profightdb.com/cards/wwe-cards-pg579-no-2.html?order=&type=', 'http://www.profightdb.com/cards/wwe-cards-pg32-no-2.html?order=&type=', 'http://www.profightdb.com/cards/nxt-cards-pg116-no-103.html?order=&type=']"
+            ],
+            "Cards.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2543, 4941, 1782]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[2543, 4941, 1782]"
+            ],
+            "Cards.table_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5881, 1520, 2950]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[5881, 1520, 2950]"
+            ],
+            "Cards.location_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4286, 548, 11781]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4286, 548, 11781]"
+            ],
+            "Cards.promotion_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 3211, 9876]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 3211, 9876]"
+            ],
+            "Cards.event_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-10-30', '2006-04-22', '2014-07-21']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2018-10-30', '2006-04-22', '2014-07-21']"
+            ],
+            "Cards.event_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2138, 1862, 3165]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2138, 1862, 3165]"
+            ],
+            "Cards.url": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['http://www.profightdb.com/cards/wwe/main-event-taping-30288.html', 'http://www.profightdb.com/cards/wwe/205-live-32-26190.html', 'http://www.profightdb.com/cards/wwe/wwe-live-22857.html']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['http://www.profightdb.com/cards/wwe/main-event-taping-30288.html', 'http://www.profightdb.com/cards/wwe/205-live-32-26190.html', 'http://www.profightdb.com/cards/wwe/wwe-live-22857.html']"
+            ],
+            "Cards.info_html": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format: <Long text>",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "<Long text>"
+            ],
+            "Cards.match_html": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format: <Long text>",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "<Long text>"
+            ],
+            "Locations.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [438, 10922, 36]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[438, 10922, 36]"
+            ],
+            "Locations.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['State College, Pennsylvania', 'Turin, Piedmont', 'Antwerp, Antwerp']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['State College, Pennsylvania', 'Turin, Piedmont', 'Antwerp, Antwerp']"
+            ],
+            "Events.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7202, 12568, 2832]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[7202, 12568, 2832]"
+            ],
+            "Events.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: [\"Stomping Grounds '19\", 'TV Taping #49', 'Velocity #54 Taping']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "[\"Stomping Grounds '19\", 'TV Taping #49', 'Velocity #54 Taping']"
+            ],
+            "Matches.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [145399, 108289, 285329]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[145399, 108289, 285329]"
+            ],
+            "Matches.card_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4542, 526, 10396]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4542, 526, 10396]"
+            ],
+            "Matches.winner_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [4370, 31012, 53361]",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "[4370, 31012, 53361]"
+            ],
+            "Matches.win_type": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['def.', '(sub)', 'draw (time)']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['def.', '(sub)', 'draw (time)']"
+            ],
+            "Matches.loser_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [108848, 25944, 7871]",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "[108848, 25944, 7871]"
+            ],
+            "Matches.match_type_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [49361, 1671, 62705]",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "[49361, 1671, 62705]"
+            ],
+            "Matches.duration": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['03:55', '16:53', '13:50']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['03:55', '16:53', '13:50']"
+            ],
+            "Matches.title_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [21186, 57883, 1633]",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "[21186, 57883, 1633]"
+            ],
+            "Matches.title_change": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "Belts.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [47991, 11029, 51484]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[47991, 11029, 51484]"
+            ],
+            "Belts.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['WWE United States Championship WWE World Heavyweight Championship', 'WWE European Championship WWE Intercontinental Championship', 'WWF King of the Ring']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['WWE United States Championship WWE World Heavyweight Championship', 'WWE European Championship WWE Intercontinental Championship', 'WWF King of the Ring']"
+            ],
+            "Wrestlers.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [118650, 104734, 77548]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[118650, 104734, 77548]"
+            ],
+            "Wrestlers.name": [
+                "The type is , Which does not inlude Null and is Unique. Values format like: ['R-Truth & Rey Mysterio', 'Bayley & Tamina', 'Bobo Brazil & Ernie Ladd']",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Unique",
+                "['R-Truth & Rey Mysterio', 'Bayley & Tamina', 'Bobo Brazil & Ernie Ladd']"
+            ],
+            "Match_Types.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [57570, 14896, 9292]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[57570, 14896, 9292]"
+            ],
+            "Match_Types.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['dark no holds barred', 'no disqualification bullrope', '\"Lights Out\"']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['dark no holds barred', 'no disqualification bullrope', '\"Lights Out\"']"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries the shortest match for an NXT title excluding \"title change\" and requires the names of the two wrestlers involved. The related columns include match duration, title change status, title name, and wrestler names.\n#columns: matches.duration, matches.title_change, belts.name, wrestlers.name, matches.winner_id, matches.loser_id\n#values: \"0\"\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "titles",
+            "0",
+            "names",
+            "title change",
+            "shortest match",
+            "two wrestlers",
+            "NXT title",
+            "match",
+            "wrestlers"
+        ],
+        "col": "matches.duration, matches.title_change, belts.name, wrestlers.name, matches.winner_id, matches.loser_id",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [
+            [
+                "Belts.name",
+                "NXT Championship"
+            ],
+            [
+                "Belts.name",
+                "PROGRESS Title"
+            ],
+            [
+                "Match_Types.name",
+                "knockout match"
+            ],
+            [
+                "Promotions.name",
+                "NXT"
+            ]
+        ],
+        "column": "Belts.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['WWE United States Championship WWE World Heavyweight Championship', 'WWE European Championship WWE Intercontinental Championship', 'WWF King of the Ring']\nCards.match_html: The type is TEXT, Which does not inlude Null and is Unique. Values format: <Long text>\nEvents.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: [\"Stomping Grounds '19\", 'TV Taping #49', 'Velocity #54 Taping']\nLocations.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['State College, Pennsylvania', 'Turin, Piedmont', 'Antwerp, Antwerp']\nMatch_Types.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['dark no holds barred', 'no disqualification bullrope', '\"Lights Out\"']\nMatches.duration: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['03:55', '16:53', '13:50']\nMatches.loser_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [108848, 25944, 7871]\nMatches.match_type_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [49361, 1671, 62705]\nMatches.title_change: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nMatches.title_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [21186, 57883, 1633]\nMatches.winner_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [4370, 31012, 53361]\nPromotions.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['WCW', 'WWE', 'WWWF']\nWrestlers.name: The type is , Which does not inlude Null and is Unique. Values format like: ['R-Truth & Rey Mysterio', 'Bayley & Tamina', 'Bobo Brazil & Ernie Ladd']",
+        "foreign_keys": "",
+        "foreign_set": [],
+        "q_order": [
+            "the names of the two wrestlers involved"
+        ],
+        "status": "success"
+    }
+]

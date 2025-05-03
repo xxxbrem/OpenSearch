@@ -1,0 +1,1272 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: city_legislation\n## Table aliens_details:\ndetail_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [10314, 1512, 37127]\nfavorite_food: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Hummingbird (unidentified)', 'Crested barbet', 'Lion, asian']\nfeeding_frequency: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Monthly', 'Seldom', 'Never']\naggressive: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\n\n## Table skills_dim:\nskill_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [84, 12, 30]\nskills: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['lua', 'qlik', 'perl']\ntype: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['programming', 'analyst_tools', 'cloud']\n\n## Table legislators_terms:\nid_bioguide: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['A000177', 'B000346', 'M000149']\nterm_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 9, 14]\nterm_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['M000479-0', 'L000180-2', 'L000174-7']\nterm_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['rep', 'sen']\nterm_start: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1986-11-04', '1978-12-30', '1806-02-24']\nterm_end: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1828-11-14', '1906-01-30', '2019-02-10']\nstate: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PR', 'OH', 'ND']\ndistrict: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [46, 39, 45]\nclass: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [3, 1, 2]\nparty: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Union', 'Anti Jackson', 'Law and Order']\nhow: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['appointment']\nurl: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['http://kevinmccarthy.house.gov', 'https://mckinley.house.gov', 'https://fortenberry.house.gov']\naddress: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['1529 Longworth House Office Building; Washington DC 20515-3211', '125 Cannon HOB; Washington DC 20515-2802', '1404 Longworth HOB; Washington DC 20515-4004']\nphone: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['202-225-4261', '202-224-6542', '202-225-4965']\nfax: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['202-225-7856', '202-228-2862', '202-228-1371']\ncontact_form: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['https://kinzinger.house.gov/email-adam', 'https://lance.house.gov/contact-me1', 'https://forms.house.gov/carney/webforms/email-me.shtml']\noffice: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2232 Rayburn House Office Building', '2078 Rayburn House Office Building', '341 Cannon House Office Building']\nstate_rank: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['senior', 'junior']\nrss_url: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['http://daines.house.gov/rss/press-releases.xml', 'http://capito.house.gov/common/rss//index.cfm?rss=85', 'http://clyburn.house.gov/rss.xml']\ncaucus: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['Democrat']\n\n## Table cities_currencies:\ncurrency_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [127, 119, 125]\ncountry_code_2: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['gi', 'tr', 'lb']\ncurrency_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['unidad de fomento', 'lebanese pound', 'bahamian dollar']\ncurrency_code: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['vuv', 'kes', 'usd']\n\n## Table legislators:\nfull_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['James McLachlan', 'John Worth Kern', 'Gilbert Motier Woodward']\nfirst_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Paula', 'Luke', 'Emilio']\nlast_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Andrew', 'Radford', 'Kern']\nmiddle_name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Duhurst', 'Amos Rogers', 'Virgil Milton']\nnickname: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Joe', 'Lex', 'Maggie']\nsuffix: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Jr.', 'IV', 'Sr.']\nother_names_end: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['1995-09-03', '1995-01-03', '1846-01-12']\nother_names_middle: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None\nother_names_last: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Levy', 'Bono', 'Lambert']\nbirthday: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['1756-02-12', '1943-06-29', '1952-07-24']\ngender: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['M', 'F']\nid_bioguide: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['C000169', 'D000057', 'B001077']\nid_bioguide_previous_0: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['F000246', 'W000790', 'L000266']\nid_govtrack: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [407512, 409619, 401801]\nid_icpsr: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [7966, 29719, 9288]\nid_wikipedia: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['George W. Gillie', 'Thomas Vernor Smith', 'Amos Gustine']\nid_wikidata: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Q1701946', 'Q1118694', 'Q13219163']\nid_google_entity_id: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['kg:/m/03wc2px', 'kg:/m/0dvl98', 'kg:/m/03lkwh']\nid_house_history: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [18242, 15035, 21440]\nid_house_history_alternate: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [13283]\nid_thomas: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [1982, 1713, 194]\nid_cspan: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [61856, 89806, 26480]\nid_votesmart: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [27522, 26917, 172678]\nid_lis: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['S360', 'S358', 'S209']\nid_ballotpedia: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Henry C. Johnson, Jr.', 'Doug Lamborn', 'Jan Schakowsky']\nid_opensecrets: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['N00004128', 'N00030957', 'N00000245']\nid_fec_0: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['S2ME00158', 'H2FL00250', 'H6IL18088']\nid_fec_1: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['S4AR00103', 'H6SD00044', 'S2IN00091']\nid_fec_2: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['S8ND00120', 'S0NV00237', 'H0GA03017']\n\n## Table skills_job_dim:\njob_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1270464, 1367071, 66401]\nskill_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [239, 195, 6]\n\n## Table job_postings_fact:\njob_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [558676, 1199107, 175303]\ncompany_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [157176, 9051, 531610]\njob_title_short: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Senior Data Analyst', 'Cloud Engineer', 'Software Engineer']\njob_title: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['DATA SCIENTIST / ANALITYK DANYCH DS. PRICINGU', 'Jr Data Consultant', 'Experienced System Validation Development Engineer']\njob_location: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Manila, Metro Manila, Philippines', 'Vallejo, CA', 'Santa Cruz, CA']\njob_via: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['via Vodafone Careers', 'via IHireTechnology', 'via Kimley-Horn - ICIMS']\njob_schedule_type: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Full-time', 'Part-time and Full-time', 'Pekerjaan tetap']\njob_work_from_home: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nsearch_location: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Austria', 'Ireland', 'New York, United States']\njob_posted_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2023-06-14 16:16:21', '2023-05-15 13:00:17', '2023-04-07 22:33:26']\njob_no_degree_mention: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\njob_health_insurance: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\njob_country: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['China', 'Nicaragua', 'Bahrain']\nsalary_rate: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['day', 'year', 'hour']\nsalary_year_avg: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [197500, 111116, 206500]\nsalary_hour_avg: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [77, 50, 73]\n\n## Table alien_data:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [44421, 30666, 7180]\nfirst_name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['elihu', 'kirbie', 'barrett']\nlast_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['mcdarmid', 'pattison', 'twigge']\nemail: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['dchilleyqbp@diigo.com', 'ldepke5ea@dell.com', 'abuchettune@wikispaces.com']\ngender: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['non-binary', 'male', 'female']\ntype: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['flatwoods', 'reptile', 'green']\nbirth_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1707, 1766, 1806]\nage: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [218, 275, 98]\nfavorite_food: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [\"gonolek, burchell's\", 'sage grouse', 'red-tailed hawk']\nfeeding_frequency: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['monthly', 'once', 'yearly']\naggressive: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\noccupation: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['human resources assistant i', 'senior financial analyst', 'compensation analyst']\ncurrent_location: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ocala', 'north hollywood', 'las cruces']\nstate: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['pennsylvania', 'idaho', 'tennessee']\nus_region: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['rocky mountain', 'great lakes', 'plains']\ncountry: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['united states']\n\n## Table cities_countries:\ncountry_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [181, 155, 218]\ncountry_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['brazil', 'ivory coast', 'monaco']\ncountry_code_2: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['pr', 'rw', 'sa']\ncountry_code_3: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['cmr', 'cub', 'mdg']\nregion: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['asia', 'americas', 'europe']\nsub_region: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['eastern europe', 'northern africa', 'subsaharan africa']\nintermediate_region: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['eastern africa', 'southern africa', 'channel islands']\ncreated_on: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2024-07-18']\n\n## Table legislation_date_dim:\ndate: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['1923-05-17', '1967-06-28', '1993-05-16']\nmonth_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['June', 'April', 'January']\nday_of_month: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [19, 21, 22]\n\n## Table cities:\ncity_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [34817, 30001, 34944]\ncity_name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['cayirova', 'maracanau', 'auterive']\nlatitude: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [-52, 87, -84]\nlongitude: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [22, -1, 48]\ncountry_code_2: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['sb', 'fi', 'qa']\ncapital: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\npopulation: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [52394, 15744, 15361]\ninsert_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2022-10-03', '2023-06-17', '2022-06-25']\n\n## Table aliens_location:\nloc_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [41303, 37975, 9276]\ncurrent_location: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Gary', 'Akron', 'Gilbert']\nstate: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Kentucky', 'Nebraska', 'Maine']\ncountry: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['United States']\noccupation: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Structural Analysis Engineer', 'Geological Engineer', 'Clinical Specialist']\n\n## Table aliens:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [21799, 22299, 8901]\nfirst_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Pavia', 'Rosalind', 'Mitzi']\nlast_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Catlow', 'Larderot', 'Grouen']\nemail: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['hbowlesworth10z4@ibm.com', 'vneadsjny@linkedin.com', 'alathleiffurefrs@dell.com']\ngender: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Male', 'Genderfluid', 'Agender']\ntype: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Green', 'Grey', 'Flatwoods']\nbirth_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1932, 1871, 1809]\n\n## Table cities_languages:\nlanguage_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [350, 402, 489]\nlanguage: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['venda', 'icelandic', 'cantonese']\ncountry_code_2: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['mo', 're', 'zm']\n\n## Table job_company:\ncompany_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [249801, 582649, 135004]\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Odit-e', 'Darwin', 'Скайтек']\nlink: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['http://www.flsmidth.com/', 'http://alithya.com/', 'http://www.adeccogroup.com/']\nlink_google: The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>\nthumbnail: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQklUfJmUa67LDK0Wwxx3nAdtqC1p7HtXAi-SW&s=0', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIokzJS3FAe7vdyGXnVsTuJjgl_FuJMkQSCcCU4eY&s', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX0HrSlLn64gMODgl-uEtS3OzxeyN1RENmeUcGS9I&s']\n\n#Forigen keys:\n\n\n#Database Description:\nThe `city_legislation` database is designed to store and manage information related to cities, legislation, aliens, job postings, and associated entities. It includes details about cities, countries, languages, currencies, legislators, aliens, job postings, companies, and skills. The database is structured to support analysis and reporting on various aspects such as alien demographics, job postings, city information, and legislative data.\n\n#Tables Descriptions:\n\n1. **aliens_details**:  \n   Contains detailed information about aliens, including their favorite food, feeding frequency, and aggression level.\n\n2. **skills_dim**:  \n   Stores information about various skills, including skill types and unique identifiers.\n\n3. **legislators_terms**:  \n   Contains information about legislators' terms, including their bioguide ID, term type, start and end dates, state, district, party affiliation, and contact details.\n\n4. **cities_currencies**:  \n   Stores information about currencies used in different countries, including currency names, codes, and associated country codes.\n\n5. **legislators**:  \n   Contains detailed information about legislators, including their names, gender, bioguide ID, and various other identifiers.\n\n6. **skills_job_dim**:  \n   Maps job IDs to skill IDs, linking jobs to required skills.\n\n7. **job_postings_fact**:  \n   Contains detailed information about job postings, including job titles, locations, schedules, salaries, and company associations.\n\n8. **alien_data**:  \n   Stores demographic and personal information about aliens, including their names, email, gender, type, birth year, age, favorite food, feeding frequency, and occupation.\n\n9. **cities_countries**:  \n   Contains information about countries, including their names, codes, regions, sub-regions, and creation dates.\n\n10. **legislation_date_dim**:  \n    Stores date-related information for legislation, including the date, month name, and day of the month.\n\n11. **cities**:  \n    Contains information about cities, including their names, coordinates, population, and associated country codes.\n\n12. **aliens_location**:  \n    Stores location information for aliens, including their current location, state, country, and occupation.\n\n13. **aliens**:  \n    Contains basic information about aliens, including their names, email, gender, type, and birth year.\n\n14. **cities_languages**:  \n    Stores information about languages spoken in different countries, including language names and associated country codes.\n\n15. **job_company**:  \n    Contains information about companies, including their names, IDs, links, and thumbnails.\n\n#Foreign Keys:\n- `aliens_details.favorite_food` = `alien_data.favorite_food`\n- `aliens_details.feeding_frequency` = `alien_data.feeding_frequency`\n- `aliens_details.aggressive` = `alien_data.aggressive`\n- `skills_job_dim.skill_id` = `skills_dim.skill_id`\n- `skills_job_dim.job_id` = `job_postings_fact.job_id`\n- `job_postings_fact.company_id` = `job_company.company_id`\n- `cities_currencies.country_code_2` = `cities.country_code_2`\n- `cities_languages.country_code_2` = `cities.country_code_2`\n- `aliens_location.current_location` = `alien_data.current_location`\n- `aliens_location.state` = `alien_data.state`\n- `aliens_location.country` = `alien_data.country`\n- `legislators_terms.id_bioguide` = `legislators.id_bioguide`\n",
+        "db_col_dic": {
+            "aliens_details.detail_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [10314, 1512, 37127]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[10314, 1512, 37127]"
+            ],
+            "aliens_details.favorite_food": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Hummingbird (unidentified)', 'Crested barbet', 'Lion, asian']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Hummingbird (unidentified)', 'Crested barbet', 'Lion, asian']"
+            ],
+            "aliens_details.feeding_frequency": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Monthly', 'Seldom', 'Never']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Monthly', 'Seldom', 'Never']"
+            ],
+            "aliens_details.aggressive": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "skills_dim.skill_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [84, 12, 30]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[84, 12, 30]"
+            ],
+            "skills_dim.skills": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['lua', 'qlik', 'perl']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['lua', 'qlik', 'perl']"
+            ],
+            "skills_dim.type": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['programming', 'analyst_tools', 'cloud']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['programming', 'analyst_tools', 'cloud']"
+            ],
+            "legislators_terms.id_bioguide": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['A000177', 'B000346', 'M000149']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['A000177', 'B000346', 'M000149']"
+            ],
+            "legislators_terms.term_number": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 9, 14]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4, 9, 14]"
+            ],
+            "legislators_terms.term_id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['M000479-0', 'L000180-2', 'L000174-7']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['M000479-0', 'L000180-2', 'L000174-7']"
+            ],
+            "legislators_terms.term_type": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['rep', 'sen']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['rep', 'sen']"
+            ],
+            "legislators_terms.term_start": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1986-11-04', '1978-12-30', '1806-02-24']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['1986-11-04', '1978-12-30', '1806-02-24']"
+            ],
+            "legislators_terms.term_end": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1828-11-14', '1906-01-30', '2019-02-10']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['1828-11-14', '1906-01-30', '2019-02-10']"
+            ],
+            "legislators_terms.state": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PR', 'OH', 'ND']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['PR', 'OH', 'ND']"
+            ],
+            "legislators_terms.district": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [46, 39, 45]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[46, 39, 45]"
+            ],
+            "legislators_terms.class": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [3, 1, 2]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[3, 1, 2]"
+            ],
+            "legislators_terms.party": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Union', 'Anti Jackson', 'Law and Order']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Union', 'Anti Jackson', 'Law and Order']"
+            ],
+            "legislators_terms.how": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['appointment']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['appointment']"
+            ],
+            "legislators_terms.url": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['http://kevinmccarthy.house.gov', 'https://mckinley.house.gov', 'https://fortenberry.house.gov']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['http://kevinmccarthy.house.gov', 'https://mckinley.house.gov', 'https://fortenberry.house.gov']"
+            ],
+            "legislators_terms.address": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['1529 Longworth House Office Building; Washington DC 20515-3211', '125 Cannon HOB; Washington DC 20515-2802', '1404 Longworth HOB; Washington DC 20515-4004']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['1529 Longworth House Office Building; Washington DC 20515-3211', '125 Cannon HOB; Washington DC 20515-2802', '1404 Longworth HOB; Washington DC 20515-4004']"
+            ],
+            "legislators_terms.phone": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['202-225-4261', '202-224-6542', '202-225-4965']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['202-225-4261', '202-224-6542', '202-225-4965']"
+            ],
+            "legislators_terms.fax": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['202-225-7856', '202-228-2862', '202-228-1371']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['202-225-7856', '202-228-2862', '202-228-1371']"
+            ],
+            "legislators_terms.contact_form": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['https://kinzinger.house.gov/email-adam', 'https://lance.house.gov/contact-me1', 'https://forms.house.gov/carney/webforms/email-me.shtml']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['https://kinzinger.house.gov/email-adam', 'https://lance.house.gov/contact-me1', 'https://forms.house.gov/carney/webforms/email-me.shtml']"
+            ],
+            "legislators_terms.office": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2232 Rayburn House Office Building', '2078 Rayburn House Office Building', '341 Cannon House Office Building']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['2232 Rayburn House Office Building', '2078 Rayburn House Office Building', '341 Cannon House Office Building']"
+            ],
+            "legislators_terms.state_rank": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['senior', 'junior']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['senior', 'junior']"
+            ],
+            "legislators_terms.rss_url": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['http://daines.house.gov/rss/press-releases.xml', 'http://capito.house.gov/common/rss//index.cfm?rss=85', 'http://clyburn.house.gov/rss.xml']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['http://daines.house.gov/rss/press-releases.xml', 'http://capito.house.gov/common/rss//index.cfm?rss=85', 'http://clyburn.house.gov/rss.xml']"
+            ],
+            "legislators_terms.caucus": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['Democrat']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Democrat']"
+            ],
+            "cities_currencies.currency_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [127, 119, 125]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[127, 119, 125]"
+            ],
+            "cities_currencies.country_code_2": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['gi', 'tr', 'lb']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['gi', 'tr', 'lb']"
+            ],
+            "cities_currencies.currency_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['unidad de fomento', 'lebanese pound', 'bahamian dollar']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['unidad de fomento', 'lebanese pound', 'bahamian dollar']"
+            ],
+            "cities_currencies.currency_code": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['vuv', 'kes', 'usd']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['vuv', 'kes', 'usd']"
+            ],
+            "legislators.full_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['James McLachlan', 'John Worth Kern', 'Gilbert Motier Woodward']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['James McLachlan', 'John Worth Kern', 'Gilbert Motier Woodward']"
+            ],
+            "legislators.first_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Paula', 'Luke', 'Emilio']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Paula', 'Luke', 'Emilio']"
+            ],
+            "legislators.last_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Andrew', 'Radford', 'Kern']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Andrew', 'Radford', 'Kern']"
+            ],
+            "legislators.middle_name": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Duhurst', 'Amos Rogers', 'Virgil Milton']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Duhurst', 'Amos Rogers', 'Virgil Milton']"
+            ],
+            "legislators.nickname": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Joe', 'Lex', 'Maggie']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Joe', 'Lex', 'Maggie']"
+            ],
+            "legislators.suffix": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Jr.', 'IV', 'Sr.']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Jr.', 'IV', 'Sr.']"
+            ],
+            "legislators.other_names_end": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['1995-09-03', '1995-01-03', '1846-01-12']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['1995-09-03', '1995-01-03', '1846-01-12']"
+            ],
+            "legislators.other_names_middle": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "None"
+            ],
+            "legislators.other_names_last": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Levy', 'Bono', 'Lambert']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Levy', 'Bono', 'Lambert']"
+            ],
+            "legislators.birthday": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['1756-02-12', '1943-06-29', '1952-07-24']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['1756-02-12', '1943-06-29', '1952-07-24']"
+            ],
+            "legislators.gender": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['M', 'F']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['M', 'F']"
+            ],
+            "legislators.id_bioguide": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['C000169', 'D000057', 'B001077']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['C000169', 'D000057', 'B001077']"
+            ],
+            "legislators.id_bioguide_previous_0": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['F000246', 'W000790', 'L000266']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['F000246', 'W000790', 'L000266']"
+            ],
+            "legislators.id_govtrack": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [407512, 409619, 401801]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[407512, 409619, 401801]"
+            ],
+            "legislators.id_icpsr": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [7966, 29719, 9288]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[7966, 29719, 9288]"
+            ],
+            "legislators.id_wikipedia": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['George W. Gillie', 'Thomas Vernor Smith', 'Amos Gustine']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['George W. Gillie', 'Thomas Vernor Smith', 'Amos Gustine']"
+            ],
+            "legislators.id_wikidata": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Q1701946', 'Q1118694', 'Q13219163']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Q1701946', 'Q1118694', 'Q13219163']"
+            ],
+            "legislators.id_google_entity_id": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['kg:/m/03wc2px', 'kg:/m/0dvl98', 'kg:/m/03lkwh']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['kg:/m/03wc2px', 'kg:/m/0dvl98', 'kg:/m/03lkwh']"
+            ],
+            "legislators.id_house_history": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [18242, 15035, 21440]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[18242, 15035, 21440]"
+            ],
+            "legislators.id_house_history_alternate": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: [13283]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[13283]"
+            ],
+            "legislators.id_thomas": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [1982, 1713, 194]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[1982, 1713, 194]"
+            ],
+            "legislators.id_cspan": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [61856, 89806, 26480]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[61856, 89806, 26480]"
+            ],
+            "legislators.id_votesmart": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [27522, 26917, 172678]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[27522, 26917, 172678]"
+            ],
+            "legislators.id_lis": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['S360', 'S358', 'S209']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['S360', 'S358', 'S209']"
+            ],
+            "legislators.id_ballotpedia": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Henry C. Johnson, Jr.', 'Doug Lamborn', 'Jan Schakowsky']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Henry C. Johnson, Jr.', 'Doug Lamborn', 'Jan Schakowsky']"
+            ],
+            "legislators.id_opensecrets": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['N00004128', 'N00030957', 'N00000245']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['N00004128', 'N00030957', 'N00000245']"
+            ],
+            "legislators.id_fec_0": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['S2ME00158', 'H2FL00250', 'H6IL18088']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['S2ME00158', 'H2FL00250', 'H6IL18088']"
+            ],
+            "legislators.id_fec_1": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['S4AR00103', 'H6SD00044', 'S2IN00091']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['S4AR00103', 'H6SD00044', 'S2IN00091']"
+            ],
+            "legislators.id_fec_2": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['S8ND00120', 'S0NV00237', 'H0GA03017']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['S8ND00120', 'S0NV00237', 'H0GA03017']"
+            ],
+            "skills_job_dim.job_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1270464, 1367071, 66401]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1270464, 1367071, 66401]"
+            ],
+            "skills_job_dim.skill_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [239, 195, 6]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[239, 195, 6]"
+            ],
+            "job_postings_fact.job_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [558676, 1199107, 175303]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[558676, 1199107, 175303]"
+            ],
+            "job_postings_fact.company_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [157176, 9051, 531610]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[157176, 9051, 531610]"
+            ],
+            "job_postings_fact.job_title_short": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Senior Data Analyst', 'Cloud Engineer', 'Software Engineer']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Senior Data Analyst', 'Cloud Engineer', 'Software Engineer']"
+            ],
+            "job_postings_fact.job_title": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['DATA SCIENTIST / ANALITYK DANYCH DS. PRICINGU', 'Jr Data Consultant', 'Experienced System Validation Development Engineer']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['DATA SCIENTIST / ANALITYK DANYCH DS. PRICINGU', 'Jr Data Consultant', 'Experienced System Validation Development Engineer']"
+            ],
+            "job_postings_fact.job_location": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Manila, Metro Manila, Philippines', 'Vallejo, CA', 'Santa Cruz, CA']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Manila, Metro Manila, Philippines', 'Vallejo, CA', 'Santa Cruz, CA']"
+            ],
+            "job_postings_fact.job_via": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['via Vodafone Careers', 'via IHireTechnology', 'via Kimley-Horn - ICIMS']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['via Vodafone Careers', 'via IHireTechnology', 'via Kimley-Horn - ICIMS']"
+            ],
+            "job_postings_fact.job_schedule_type": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Full-time', 'Part-time and Full-time', 'Pekerjaan tetap']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Full-time', 'Part-time and Full-time', 'Pekerjaan tetap']"
+            ],
+            "job_postings_fact.job_work_from_home": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "job_postings_fact.search_location": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Austria', 'Ireland', 'New York, United States']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Austria', 'Ireland', 'New York, United States']"
+            ],
+            "job_postings_fact.job_posted_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2023-06-14 16:16:21', '2023-05-15 13:00:17', '2023-04-07 22:33:26']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2023-06-14 16:16:21', '2023-05-15 13:00:17', '2023-04-07 22:33:26']"
+            ],
+            "job_postings_fact.job_no_degree_mention": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "job_postings_fact.job_health_insurance": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "job_postings_fact.job_country": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['China', 'Nicaragua', 'Bahrain']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['China', 'Nicaragua', 'Bahrain']"
+            ],
+            "job_postings_fact.salary_rate": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['day', 'year', 'hour']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['day', 'year', 'hour']"
+            ],
+            "job_postings_fact.salary_year_avg": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [197500, 111116, 206500]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[197500, 111116, 206500]"
+            ],
+            "job_postings_fact.salary_hour_avg": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [77, 50, 73]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[77, 50, 73]"
+            ],
+            "alien_data.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [44421, 30666, 7180]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[44421, 30666, 7180]"
+            ],
+            "alien_data.first_name": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['elihu', 'kirbie', 'barrett']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['elihu', 'kirbie', 'barrett']"
+            ],
+            "alien_data.last_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['mcdarmid', 'pattison', 'twigge']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['mcdarmid', 'pattison', 'twigge']"
+            ],
+            "alien_data.email": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['dchilleyqbp@diigo.com', 'ldepke5ea@dell.com', 'abuchettune@wikispaces.com']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['dchilleyqbp@diigo.com', 'ldepke5ea@dell.com', 'abuchettune@wikispaces.com']"
+            ],
+            "alien_data.gender": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['non-binary', 'male', 'female']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['non-binary', 'male', 'female']"
+            ],
+            "alien_data.type": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['flatwoods', 'reptile', 'green']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['flatwoods', 'reptile', 'green']"
+            ],
+            "alien_data.birth_year": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1707, 1766, 1806]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1707, 1766, 1806]"
+            ],
+            "alien_data.age": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [218, 275, 98]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[218, 275, 98]"
+            ],
+            "alien_data.favorite_food": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [\"gonolek, burchell's\", 'sage grouse', 'red-tailed hawk']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "[\"gonolek, burchell's\", 'sage grouse', 'red-tailed hawk']"
+            ],
+            "alien_data.feeding_frequency": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['monthly', 'once', 'yearly']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['monthly', 'once', 'yearly']"
+            ],
+            "alien_data.aggressive": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "alien_data.occupation": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['human resources assistant i', 'senior financial analyst', 'compensation analyst']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['human resources assistant i', 'senior financial analyst', 'compensation analyst']"
+            ],
+            "alien_data.current_location": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ocala', 'north hollywood', 'las cruces']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['ocala', 'north hollywood', 'las cruces']"
+            ],
+            "alien_data.state": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['pennsylvania', 'idaho', 'tennessee']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['pennsylvania', 'idaho', 'tennessee']"
+            ],
+            "alien_data.us_region": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['rocky mountain', 'great lakes', 'plains']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['rocky mountain', 'great lakes', 'plains']"
+            ],
+            "alien_data.country": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['united states']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['united states']"
+            ],
+            "cities_countries.country_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [181, 155, 218]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[181, 155, 218]"
+            ],
+            "cities_countries.country_name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['brazil', 'ivory coast', 'monaco']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['brazil', 'ivory coast', 'monaco']"
+            ],
+            "cities_countries.country_code_2": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['pr', 'rw', 'sa']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['pr', 'rw', 'sa']"
+            ],
+            "cities_countries.country_code_3": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['cmr', 'cub', 'mdg']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['cmr', 'cub', 'mdg']"
+            ],
+            "cities_countries.region": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['asia', 'americas', 'europe']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['asia', 'americas', 'europe']"
+            ],
+            "cities_countries.sub_region": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['eastern europe', 'northern africa', 'subsaharan africa']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['eastern europe', 'northern africa', 'subsaharan africa']"
+            ],
+            "cities_countries.intermediate_region": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['eastern africa', 'southern africa', 'channel islands']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['eastern africa', 'southern africa', 'channel islands']"
+            ],
+            "cities_countries.created_on": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2024-07-18']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2024-07-18']"
+            ],
+            "legislation_date_dim.date": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['1923-05-17', '1967-06-28', '1993-05-16']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['1923-05-17', '1967-06-28', '1993-05-16']"
+            ],
+            "legislation_date_dim.month_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['June', 'April', 'January']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['June', 'April', 'January']"
+            ],
+            "legislation_date_dim.day_of_month": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [19, 21, 22]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[19, 21, 22]"
+            ],
+            "cities.city_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [34817, 30001, 34944]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[34817, 30001, 34944]"
+            ],
+            "cities.city_name": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['cayirova', 'maracanau', 'auterive']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['cayirova', 'maracanau', 'auterive']"
+            ],
+            "cities.latitude": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [-52, 87, -84]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[-52, 87, -84]"
+            ],
+            "cities.longitude": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [22, -1, 48]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[22, -1, 48]"
+            ],
+            "cities.country_code_2": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['sb', 'fi', 'qa']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['sb', 'fi', 'qa']"
+            ],
+            "cities.capital": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "cities.population": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [52394, 15744, 15361]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[52394, 15744, 15361]"
+            ],
+            "cities.insert_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2022-10-03', '2023-06-17', '2022-06-25']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2022-10-03', '2023-06-17', '2022-06-25']"
+            ],
+            "aliens_location.loc_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [41303, 37975, 9276]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[41303, 37975, 9276]"
+            ],
+            "aliens_location.current_location": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Gary', 'Akron', 'Gilbert']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Gary', 'Akron', 'Gilbert']"
+            ],
+            "aliens_location.state": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Kentucky', 'Nebraska', 'Maine']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Kentucky', 'Nebraska', 'Maine']"
+            ],
+            "aliens_location.country": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['United States']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['United States']"
+            ],
+            "aliens_location.occupation": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Structural Analysis Engineer', 'Geological Engineer', 'Clinical Specialist']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Structural Analysis Engineer', 'Geological Engineer', 'Clinical Specialist']"
+            ],
+            "aliens.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [21799, 22299, 8901]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[21799, 22299, 8901]"
+            ],
+            "aliens.first_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Pavia', 'Rosalind', 'Mitzi']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Pavia', 'Rosalind', 'Mitzi']"
+            ],
+            "aliens.last_name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Catlow', 'Larderot', 'Grouen']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Catlow', 'Larderot', 'Grouen']"
+            ],
+            "aliens.email": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['hbowlesworth10z4@ibm.com', 'vneadsjny@linkedin.com', 'alathleiffurefrs@dell.com']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['hbowlesworth10z4@ibm.com', 'vneadsjny@linkedin.com', 'alathleiffurefrs@dell.com']"
+            ],
+            "aliens.gender": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Male', 'Genderfluid', 'Agender']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Male', 'Genderfluid', 'Agender']"
+            ],
+            "aliens.type": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Green', 'Grey', 'Flatwoods']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Green', 'Grey', 'Flatwoods']"
+            ],
+            "aliens.birth_year": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1932, 1871, 1809]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1932, 1871, 1809]"
+            ],
+            "cities_languages.language_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [350, 402, 489]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[350, 402, 489]"
+            ],
+            "cities_languages.language": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['venda', 'icelandic', 'cantonese']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['venda', 'icelandic', 'cantonese']"
+            ],
+            "cities_languages.country_code_2": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['mo', 're', 'zm']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['mo', 're', 'zm']"
+            ],
+            "job_company.company_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [249801, 582649, 135004]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[249801, 582649, 135004]"
+            ],
+            "job_company.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Odit-e', 'Darwin', 'Скайтек']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Odit-e', 'Darwin', 'Скайтек']"
+            ],
+            "job_company.link": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['http://www.flsmidth.com/', 'http://alithya.com/', 'http://www.adeccogroup.com/']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['http://www.flsmidth.com/', 'http://alithya.com/', 'http://www.adeccogroup.com/']"
+            ],
+            "job_company.link_google": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format: <Long text>",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "<Long text>"
+            ],
+            "job_company.thumbnail": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQklUfJmUa67LDK0Wwxx3nAdtqC1p7HtXAi-SW&s=0', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIokzJS3FAe7vdyGXnVsTuJjgl_FuJMkQSCcCU4eY&s', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX0HrSlLn64gMODgl-uEtS3OzxeyN1RENmeUcGS9I&s']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQklUfJmUa67LDK0Wwxx3nAdtqC1p7HtXAi-SW&s=0', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIokzJS3FAe7vdyGXnVsTuJjgl_FuJMkQSCcCU4eY&s', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX0HrSlLn64gMODgl-uEtS3OzxeyN1RENmeUcGS9I&s']"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries the proportion of legislators who started their first term between 1917 and 1999 and remained in office annually for up to 20 years. The related columns include term start date, term end date, and term number to identify the first term. The filter values include the date range \"1917-01-01\" to \"1999-12-31\" and the annual tracking dates.\n#columns: legislators_terms.term_start, legislators_terms.term_end, legislators_terms.term_number\n#values: \"1917-01-01\", \"1999-12-31\", \"December 31\"\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "December 31",
+            "1999-12-31",
+            "tracked annually",
+            "December 31st",
+            "legislators",
+            "December 31st of each year",
+            "proportion of legislators",
+            "year",
+            "1917",
+            "term",
+            "1999",
+            "20 years",
+            "first term",
+            "office",
+            "proportion",
+            "20 years following their initial term start",
+            "initial term start",
+            "1917-01-01"
+        ],
+        "col": "legislators_terms.term_start, legislators_terms.term_end, legislators_terms.term_number",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [
+            [
+                "alien_data.feeding_frequency",
+                "yearly"
+            ],
+            [
+                "aliens_details.feeding_frequency",
+                "Yearly"
+            ],
+            [
+                "cities.insert_date",
+                "2022-12-31"
+            ],
+            [
+                "job_postings_fact.salary_rate",
+                "year"
+            ],
+            [
+                "legislation_date_dim.date",
+                "1917-01-01"
+            ],
+            [
+                "legislation_date_dim.date",
+                "1999-12-31"
+            ]
+        ],
+        "column": "alien_data.age: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [218, 275, 98]\nalien_data.country: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['united states']\nalien_data.feeding_frequency: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['monthly', 'once', 'yearly']\nalien_data.first_name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['elihu', 'kirbie', 'barrett']\nalien_data.id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [44421, 30666, 7180]\nalien_data.last_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['mcdarmid', 'pattison', 'twigge']\naliens.first_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Pavia', 'Rosalind', 'Mitzi']\naliens.id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [21799, 22299, 8901]\naliens.last_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Catlow', 'Larderot', 'Grouen']\naliens_details.feeding_frequency: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Monthly', 'Seldom', 'Never']\naliens_location.country: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['United States']\ncities.capital: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\ncities.insert_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2022-10-03', '2023-06-17', '2022-06-25']\ncities_countries.country_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['brazil', 'ivory coast', 'monaco']\njob_company.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Odit-e', 'Darwin', 'Скайтек']\njob_postings_fact.salary_rate: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['day', 'year', 'hour']\nlegislation_date_dim.date: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['1923-05-17', '1967-06-28', '1993-05-16']\nlegislators.birthday: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['1756-02-12', '1943-06-29', '1952-07-24']\nlegislators.first_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Paula', 'Luke', 'Emilio']\nlegislators.last_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Andrew', 'Radford', 'Kern']\nlegislators_terms.address: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['1529 Longworth House Office Building; Washington DC 20515-3211', '125 Cannon HOB; Washington DC 20515-2802', '1404 Longworth HOB; Washington DC 20515-4004']\nlegislators_terms.how: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['appointment']\nlegislators_terms.office: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2232 Rayburn House Office Building', '2078 Rayburn House Office Building', '341 Cannon House Office Building']\nlegislators_terms.phone: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['202-225-4261', '202-224-6542', '202-225-4965']\nlegislators_terms.term_end: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1828-11-14', '1906-01-30', '2019-02-10']\nlegislators_terms.term_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['M000479-0', 'L000180-2', 'L000174-7']\nlegislators_terms.term_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 9, 14]\nlegislators_terms.term_start: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1986-11-04', '1978-12-30', '1806-02-24']",
+        "foreign_keys": "",
+        "foreign_set": [],
+        "q_order": [
+            "the proportion of legislators"
+        ],
+        "status": "success"
+    }
+]

@@ -1,0 +1,329 @@
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: For every ticker, what was the average daily trading volume (after converting values that end with “K”, “M”, or “B” and treating “-” as zero) during September 2021?  List the tickers with the highest average volumes first. */
+SELECT ticker,
+       AVG(adj_volume) AS avg_volume
+FROM (
+    SELECT ticker,
+           CASE
+               WHEN volume LIKE '%K' THEN CAST(REPLACE(volume,'K','') AS REAL)*1000
+               WHEN volume LIKE '%M' THEN CAST(REPLACE(volume,'M','') AS REAL)*1000000
+               WHEN volume LIKE '%B' THEN CAST(REPLACE(volume,'B','') AS REAL)*1000000000
+               WHEN volume = '-'          THEN 0
+               ELSE CAST(volume AS REAL)
+           END AS adj_volume
+    FROM bitcoin_prices
+    WHERE date BETWEEN '2021-09-01' AND '2021-09-30'
+) AS v
+WHERE adj_volume > 0
+GROUP BY ticker
+ORDER BY avg_volume DESC;
+
+/* Answer the following: On which date in 2021 did BTC register its single-day highest trading volume (after normalizing “K”, “M”, “B”, and “-”)? */
+SELECT date
+FROM (
+    SELECT date,
+           CASE
+               WHEN volume LIKE '%K' THEN CAST(REPLACE(volume,'K','') AS REAL)*1000
+               WHEN volume LIKE '%M' THEN CAST(REPLACE(volume,'M','') AS REAL)*1000000
+               WHEN volume LIKE '%B' THEN CAST(REPLACE(volume,'B','') AS REAL)*1000000000
+               WHEN volume = '-'          THEN 0
+               ELSE CAST(volume AS REAL)
+           END AS adj_volume
+    FROM bitcoin_prices
+    WHERE ticker = 'BTC' AND date BETWEEN '2021-01-01' AND '2021-12-31'
+) AS v
+ORDER BY adj_volume DESC
+LIMIT 1;
+
+/* Answer the following: Show the daily percentage change in closing price for ETH from May 10 2021 through May 15 2021. */
+SELECT date,
+       ROUND( (close - LAG(close) OVER (ORDER BY date)) * 100.0 / LAG(close) OVER (ORDER BY date), 2 ) AS pct_change
+FROM bitcoin_prices
+WHERE ticker = 'ETH' AND date BETWEEN '2021-05-10' AND '2021-05-15'
+ORDER BY date;
+
+/* Answer the following: What was the total trading volume for XRP during the first week of July 2021 (after converting “K”, “M”, “B”, and treating “-” as zero and ignoring the zeros)? */
+SELECT SUM(adj_volume) AS total_volume
+FROM (
+    SELECT CASE
+               WHEN volume LIKE '%K' THEN CAST(REPLACE(volume,'K','') AS REAL)*1000
+               WHEN volume LIKE '%M' THEN CAST(REPLACE(volume,'M','') AS REAL)*1000000
+               WHEN volume LIKE '%B' THEN CAST(REPLACE(volume,'B','') AS REAL)*1000000000
+               WHEN volume = '-'          THEN 0
+               ELSE CAST(volume AS REAL)
+           END AS adj_volume
+    FROM bitcoin_prices
+    WHERE ticker = 'XRP' AND date BETWEEN '2021-07-01' AND '2021-07-07'
+) AS v
+WHERE adj_volume > 0;
+
+/* Answer the following: Which tickers recorded at least one closing price above 50,000 USD during April 2021? */
+SELECT DISTINCT ticker
+FROM bitcoin_prices
+WHERE date BETWEEN '2021-04-01' AND '2021-04-30'
+  AND close > 50000;
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: EntertainmentAgency
+## Table Agents:
+AgentID: The type is INT, Which does not inlude Null and is Unique. Values format like: [6, 4, 9]
+AgtFirstName: The type is nvarchar (25), Which does not inlude Null and is Unique. Values format like: ['Karen', 'Caleb', 'Maria']
+AgtLastName: The type is nvarchar (25), Which does not inlude Null and is Non-Unique. Values format like: ['Dumbwit', 'Kennedy', 'Thompson']
+AgtStreetAddress: The type is nvarchar (50), Which does not inlude Null and is Unique. Values format like: ['66 Spring Valley Drive', '3445 Cheyenne Road', '667 Red River Road']
+AgtCity: The type is nvarchar (30), Which does not inlude Null and is Non-Unique. Values format like: ['Seattle', 'Tacoma', 'Kirkland']
+AgtState: The type is nvarchar (2), Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']
+AgtZipCode: The type is nvarchar (10), Which does not inlude Null and is Non-Unique. Values format like: [98125, 98006, 98413]
+AgtPhoneNumber: The type is nvarchar (15), Which does not inlude Null and is Unique. Values format like: ['555-2621', '555-2606', '555-2681']
+DateHired: The type is date, Which does not inlude Null and is Non-Unique. Values format like: ['2000-02-05', '1998-02-16', '1997-11-19']
+Salary: The type is decimal(15, 2), Which does not inlude Null and is Non-Unique. Values format like: [30000, 22000, 22100]
+CommissionRate: The type is float(24), Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]
+
+## Table Customers:
+CustomerID: The type is INT, Which does not inlude Null and is Unique. Values format like: [10012, 10009, 10010]
+CustFirstName: The type is nvarchar (25), Which does not inlude Null and is Unique. Values format like: ['Matt', 'Deb', 'Dean']
+CustLastName: The type is nvarchar (25), Which does not inlude Null and is Unique. Values format like: ['Thompson', 'Pundt', 'Patterson']
+CustStreetAddress: The type is nvarchar (50), Which does not inlude Null and is Non-Unique. Values format like: ['4726 - 11th Ave. N.E.', '908 W. Capital Way', '2601 Seaview Lane']
+CustCity: The type is nvarchar (30), Which does not inlude Null and is Non-Unique. Values format like: ['Tacoma', 'Auburn', 'Redmond']
+CustState: The type is nvarchar (2), Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']
+CustZipCode: The type is nvarchar (10), Which does not inlude Null and is Non-Unique. Values format like: [98105, 98033, 98115]
+CustPhoneNumber: The type is nvarchar (15), Which does not inlude Null and is Unique. Values format like: ['555-2726', '555-2721', '555-2296']
+
+## Table Engagements:
+EngagementNumber: The type is INT, Which does not inlude Null and is Unique. Values format like: [31, 23, 74]
+StartDate: The type is date, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-20', '2017-09-30', '2017-12-31']
+EndDate: The type is date, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-23', '2018-02-01', '2018-02-20']
+StartTime: The type is time, Which does not inlude Null and is Non-Unique. Values format like: ['13:00:00', '20:00:00', '16:00:00']
+StopTime: The type is time, Which does not inlude Null and is Non-Unique. Values format like: ['00:00:00', '14:00:00', '15:00:00']
+ContractPrice: The type is decimal(15, 2), Which does not inlude Null and is Non-Unique. Values format like: [2930, 3800, 950]
+CustomerID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [10007, 10005, 10003]
+AgentID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [8, 3, 6]
+EntertainerID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1001, 1006, 1012]
+
+## Table Entertainer_Members:
+EntertainerID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1007, 1011, 1010]
+MemberID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [102, 121, 114]
+Status: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]
+
+## Table Entertainer_Styles:
+EntertainerID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1003, 1007, 1006]
+StyleID: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [20, 13, 23]
+StyleStrength: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [1, 3, 2]
+
+## Table Entertainers:
+EntertainerID: The type is INT, Which does not inlude Null and is Unique. Values format like: [1007, 1011, 1002]
+EntStageName: The type is nvarchar (50), Which does not inlude Null and is Unique. Values format like: ['Katherine Ehrlich', 'JV & the Deep Six', 'Jazz Persuasion']
+EntSSN: The type is nvarchar (12), Which does not inlude Null and is Unique. Values format like: ['888-26-1025', '888-66-1085', '888-71-1123']
+EntStreetAddress: The type is nvarchar (50), Which does not inlude Null and is Unique. Values format like: ['3887 Easy Street', '15127 NE 24th, #383', '4726 - 11th Ave. N.E.']
+EntCity: The type is nvarchar (30), Which does not inlude Null and is Non-Unique. Values format like: ['Redmond', 'Seattle', 'Woodinville']
+EntState: The type is nvarchar (2), Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']
+EntZipCode: The type is nvarchar (10), Which does not inlude Null and is Non-Unique. Values format like: [98105, 98009, 98072]
+EntPhoneNumber: The type is nvarchar (15), Which does not inlude Null and is Unique. Values format like: ['555-2541', '555-2511', '555-2711']
+EntWebPage: The type is nvarchar (50), Which inlude Null and is Non-Unique. Values format like: ['www.greensleeves.com', 'www.jvd6.com', 'www.jazzper.com']
+EntEMailAddress: The type is nvarchar (50), Which inlude Null and is Non-Unique. Values format like: ['carolp@cptrio.com', 'susan@gs.com', 'ke@mzo.com']
+DateEntered: The type is date, Which does not inlude Null and is Unique. Values format like: ['1996-04-01', '1997-07-11', '1998-09-13']
+
+## Table Members:
+MemberID: The type is INT, Which does not inlude Null and is Unique. Values format like: [111, 103, 115]
+MbrFirstName: The type is nvarchar (25), Which does not inlude Null and is Non-Unique. Values format like: ['Mariya', 'Katherine', 'Sara']
+MbrLastName: The type is nvarchar (25), Which does not inlude Null and is Non-Unique. Values format like: ['Kennedy', 'Ehrlich', 'McLain']
+MbrPhoneNumber: The type is nvarchar (15), Which does not inlude Null and is Unique. Values format like: ['555-2316', '555-2511', '555-2306']
+Gender: The type is nvarchar (2), Which inlude Null and is Non-Unique. Value of this column must in: ['M', 'F']
+
+## Table Musical_Preferences:
+CustomerID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [10004, 10012, 10002]
+StyleID: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [24, 19, 21]
+PreferenceSeq: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 1]
+
+## Table Musical_Styles:
+StyleID: The type is smallint, Which does not inlude Null and is Unique. Values format like: [25, 16, 10]
+StyleName: The type is nvarchar (75), Which does not inlude Null and is Unique. Values format like: ["70's Music", 'Classic Rock & Roll', 'Country Rock']
+
+## Table ztblDays:
+DateField: The type is date, Which does not inlude Null and is Unique. Values format like: ['2018-08-20', '2019-03-03', '2017-07-03']
+
+## Table ztblMonths:
+MonthYear: The type is nvarchar (15), Which does not inlude Null and is Unique. Values format like: ['February 2018', 'December 2017', 'January 2019']
+YearNumber: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [2019, 2017, 2018]
+MonthNumber: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [5, 8, 9]
+MonthStart: The type is date, Which does not inlude Null and is Unique. Values format like: ['2019-09-01', '2019-01-01', '2017-02-01']
+MonthEnd: The type is date, Which does not inlude Null and is Unique. Values format like: ['2018-06-30', '2019-03-31', '2019-04-30']
+January: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]
+February: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+March: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+April: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+May: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+June: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+July: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+August: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+September: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+October: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+November: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+December: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+
+## Table ztblSkipLabels:
+LabelCount: The type is INT, Which does not inlude Null and is Unique. Values format like: [28, 60, 33]
+
+## Table ztblWeeks:
+WeekStart: The type is date, Which does not inlude Null and is Unique. Values format like: ['2017-12-24', '2018-12-09', '2019-05-05']
+WeekEnd: The type is date, Which does not inlude Null and is Unique. Values format like: ['2019-11-23', '2017-07-22', '2018-05-05']
+
+#Forigen keys:
+Engagements.CustomerID = Customers.CustomerID, Engagements.AgentID = Agents.AgentID, Musical_Preferences.CustomerID = Customers.CustomerID
+
+#Database Description:
+The `EntertainmentAgency` database is designed to manage information related to an entertainment agency's operations. It includes details about agents, customers, engagements, entertainers, members, musical preferences, musical styles, and various date-related tables. The database facilitates tracking of engagements between customers and entertainers, musical preferences, and the styles of entertainers. It also includes auxiliary tables for managing date-related data.
+
+#Tables Descriptions:
+
+## Agents:
+Contains information about agents working for the entertainment agency. Includes details such as agent ID, name, address, phone number, hire date, salary, and commission rate.
+
+## Customers:
+Stores information about customers of the entertainment agency. Includes customer ID, name, address, phone number, and other contact details.
+
+## Engagements:
+Tracks engagements between customers and entertainers. Includes engagement number, start and end dates, start and stop times, contract price, and references to customers, agents, and entertainers.
+
+## Entertainer_Members:
+Manages the relationship between entertainers and their members. Includes entertainer ID, member ID, and the status of the member.
+
+## Entertainer_Styles:
+Tracks the musical styles associated with entertainers. Includes entertainer ID, style ID, and the strength of the style.
+
+## Entertainers:
+Contains information about entertainers managed by the agency. Includes entertainer ID, stage name, SSN, address, phone number, webpage, email address, and the date they were entered into the system.
+
+## Members:
+Stores information about individual members of entertainer groups. Includes member ID, name, phone number, and gender.
+
+## Musical_Preferences:
+Tracks the musical preferences of customers. Includes customer ID, style ID, and the sequence of preference.
+
+## Musical_Styles:
+Contains information about musical styles. Includes style ID and style name.
+
+## ztblDays:
+Stores unique dates for reference purposes. Includes a single column for date values.
+
+## ztblMonths:
+Tracks month-related information. Includes month-year, year number, month number, start and end dates, and flags for each month.
+
+## ztblSkipLabels:
+Contains a count of labels for reference purposes. Includes a single column for label count.
+
+## ztblWeeks:
+Tracks week-related information. Includes start and end dates for weeks.
+
+#Foreign Keys:
+- `Engagements.CustomerID` references `Customers.CustomerID`.
+- `Engagements.AgentID` references `Agents.AgentID`.
+- `Musical_Preferences.CustomerID` references `Customers.CustomerID`.
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: Given a database of musical styles and user preferences, where each user ranks up to three preferred styles as their first, second, and third choices, assign 3 points for each first-choice ranking, 2 points for each second-choice ranking, and 1 point for each third-choice ranking. Calculate the total weighted score for each musical style that has been ranked by at least one user. Then, compute the absolute difference between each style's total weighted score and the average total weighted score across all such styles. */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries the total weighted score for each musical style based on user preferences and calculates the absolute difference between each style's score and the average score. The relevant columns include user preferences and musical styles, as well as the ranking sequence and style IDs.
+#columns: Musical_Preferences.StyleID, Musical_Preferences.PreferenceSeq, Musical_Styles.StyleID, Musical_Styles.StyleName
+#values: "1", "2", "3"
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+Given a database of musical styles and user preferences, where each user ranks up to three preferred styles as their first, second, and third choices, assign 3 points for each first-choice ranking, 2 points for each second-choice ranking, and 1 point for each third-choice ranking. Calculate the total weighted score for each musical style that has been ranked by at least one user. Then, compute the absolute difference between each style's total weighted score and the average total weighted score across all such styles.
+
+############################## AI at step extract_query_noun ##############################
+
+"database", "musical styles", "user preferences", "user", "styles", "choices", "points", "ranking", "score", "weighted score", "musical style", "user", "absolute difference", "style", "average total weighted score", "styles"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: Given a database of musical styles and user preferences, where each user ranks up to three preferred styles as their first, second, and third choices, assign 3 points for each first-choice ranking, 2 points for each second-choice ranking, and 1 point for each third-choice ranking. Calculate the total weighted score for each musical style that has been ranked by at least one user. Then, compute the absolute difference between each style's total weighted score and the average total weighted score across all such styles.
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "Calculate",
+      "J": null,
+      "I": ["the total weighted score for each musical style"],
+      "C": ["that has been ranked by at least one user"]
+    }
+  },
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "Compute",
+      "J": null,
+      "I": ["the absolute difference between each style's total weighted score", "the average total weighted score across all such styles"],
+      "C": []
+    }
+  }
+]
+```
+

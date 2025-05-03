@@ -1,0 +1,433 @@
+############################## Human at step generate_db_schema ##############################
+
+/* Here is a examples about describe database */
+    #Forigen keys: 
+    Airlines.ORIGIN = Airports.Code, Airlines.DEST = Airports.Code, Airlines.OP_CARRIER_AIRLINE_ID = Air Carriers.Code
+    #Database Description: The database encompasses information related to flights, including airlines, airports, and flight operations.
+    #Tables Descriptions:
+    Air Carriers: Codes and descriptive information about airlines
+    Airports: IATA codes and descriptions of airports
+    Airlines: Detailed information about flights 
+
+    /* Here is a examples about describe database */
+    #Forigen keys:
+    data.ID = price.ID, production.ID = price.ID, production.ID = data.ID, production.country = country.origin
+    #Database Description: The database contains information related to cars, including country, price, specifications, Production
+    #Tables Descriptions:
+    Country: Names of the countries where the cars originate from.
+    Price: Price of the car in USD.
+    Data: Information about the car's specifications
+    Production: Information about car's production.
+
+    /* Describe the following database */
+    Database Management System: SQLite
+#Database name: BowlingLeague
+## Table Bowler_Scores:
+MatchID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [41, 2, 28]
+GameNumber: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 1]
+BowlerID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [2, 20, 5]
+RawScore: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [191, 168, 139]
+HandiCapScore: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [205, 189, 216]
+WonGame: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+
+## Table Bowlers:
+BowlerID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [24, 6, 22]
+BowlerLastName: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Black', 'Hernandez', 'Fournier']
+BowlerFirstName: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['David', 'Sarah', 'Stephanie']
+BowlerMiddleInit: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['A', 'J', 'L']
+BowlerAddress: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['67 Willow Drive', '16 Maple Lane', '4726 - 11th Ave. N.E.']
+BowlerCity: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Bellevue', 'Woodinville', 'Auburn']
+BowlerState: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']
+BowlerZip: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [98404, 98154, 98002]
+BowlerPhoneNumber: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['(206) 881-5596', '(206) 555-9893', '(206) 555-3487']
+TeamID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 8]
+BowlerTotalPins: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [6152, 5790, 6147]
+BowlerGamesBowled: The type is INT, Which does not inlude Null and is Non-Unique. Value of this column must in: [39, 0]
+BowlerCurrentAverage: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [149, 159, 162]
+BowlerCurrentHcp: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [0, 46, 34]
+
+## Table Match_Games:
+MatchID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [10, 51, 47]
+GameNumber: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [1, 2, 3]
+WinningTeamID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1, 8, 2]
+
+## Table Teams:
+TeamID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 5, 7]
+TeamName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Dolphins', 'Barracudas', 'Terrapins']
+CaptainID: The type is INT, Which does not inlude Null and is Unique. Values format like: [12, 28, 24]
+
+## Table Tournaments:
+TourneyID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [13, 14, 3]
+TourneyDate: The type is DATE, Which does not inlude Null and is Unique. Values format like: ['2018-08-02', '2017-10-23', '2018-07-26']
+TourneyLocation: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Red Rooster Lanes', 'Totem Lanes', 'Bolero Lanes']
+
+## Table Tourney_Matches:
+MatchID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [37, 34, 17]
+TourneyID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [6, 1, 4]
+Lanes: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['21-22', '27-28', '09-10']
+OddLaneTeamID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [4, 2, 8]
+EvenLaneTeamID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [5, 4, 3]
+
+## Table WAZips:
+ZIP: The type is TEXT, Which does not inlude Null and is Unique. Values format like: [98205, 98422, 98264]
+City: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Blaine', 'Wahkiacus', 'University Place']
+State: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']
+
+#Forigen keys:
+Tourney_Matches.TourneyID = Tournaments.TourneyID, Tourney_Matches.OddLaneTeamID = Teams.TeamID, Tourney_Matches.EvenLaneTeamID = Teams.TeamID, Tourney_Matches_Archive.TourneyID = Tournaments_Archive.TourneyID
+
+    Please conclude the database in the following format:
+    #Database Description:
+    #Tables Descriptions:
+    
+
+############################## AI at step generate_db_schema ##############################
+
+#Database Description:
+The BowlingLeague database is designed to manage and store information related to bowling leagues, including bowlers, teams, matches, tournaments, and locations. It provides detailed data about individual bowlers, their scores, team affiliations, tournament matches, and zip codes within Washington state. The database is structured to support league operations, tracking scores, and organizing tournaments.
+
+#Tables Descriptions:
+
+## Bowler_Scores:
+Contains information about individual bowler scores in specific matches and games. Includes raw scores, handicap scores, and whether the bowler won the game.
+- **MatchID**: INT, Non-Unique, Not Null.
+- **GameNumber**: SMALLINT, Non-Unique, Not Null.
+- **BowlerID**: INT, Non-Unique, Not Null.
+- **RawScore**: SMALLINT, Non-Unique, Not Null.
+- **HandiCapScore**: SMALLINT, Non-Unique, Not Null.
+- **WonGame**: BOOLEAN, Non-Unique, Not Null.
+
+## Bowlers:
+Stores detailed information about individual bowlers, including their personal details, team affiliation, and bowling statistics.
+- **BowlerID**: INTEGER, Unique, Not Null.
+- **BowlerLastName**: TEXT, Non-Unique, Not Null.
+- **BowlerFirstName**: TEXT, Non-Unique, Not Null.
+- **BowlerMiddleInit**: TEXT, Non-Unique, Nullable.
+- **BowlerAddress**: TEXT, Non-Unique, Not Null.
+- **BowlerCity**: TEXT, Non-Unique, Not Null.
+- **BowlerState**: TEXT, Non-Unique, Not Null (Values restricted to 'WA').
+- **BowlerZip**: TEXT, Non-Unique, Not Null.
+- **BowlerPhoneNumber**: TEXT, Non-Unique, Not Null.
+- **TeamID**: INT, Non-Unique, Not Null.
+- **BowlerTotalPins**: INT, Non-Unique, Not Null.
+- **BowlerGamesBowled**: INT, Non-Unique, Not Null (Values restricted to [39, 0]).
+- **BowlerCurrentAverage**: SMALLINT, Non-Unique, Not Null.
+- **BowlerCurrentHcp**: SMALLINT, Non-Unique, Not Null.
+
+## Match_Games:
+Tracks the results of individual games within matches, including the winning team.
+- **MatchID**: INT, Non-Unique, Not Null.
+- **GameNumber**: SMALLINT, Non-Unique, Not Null.
+- **WinningTeamID**: INT, Non-Unique, Not Null.
+
+## Teams:
+Contains information about bowling teams, including their names and captains.
+- **TeamID**: INTEGER, Unique, Not Null.
+- **TeamName**: TEXT, Unique, Not Null.
+- **CaptainID**: INT, Unique, Not Null.
+
+## Tournaments:
+Stores information about tournaments, including their dates and locations.
+- **TourneyID**: INTEGER, Unique, Not Null.
+- **TourneyDate**: DATE, Unique, Not Null.
+- **TourneyLocation**: TEXT, Non-Unique, Not Null.
+
+## Tourney_Matches:
+Tracks matches within tournaments, including the teams playing on odd and even lanes.
+- **MatchID**: INTEGER, Unique, Not Null.
+- **TourneyID**: INT, Non-Unique, Not Null.
+- **Lanes**: TEXT, Non-Unique, Not Null.
+- **OddLaneTeamID**: INT, Non-Unique, Not Null.
+- **EvenLaneTeamID**: INT, Non-Unique, Not Null.
+
+## WAZips:
+Contains zip codes and corresponding city and state information for Washington state.
+- **ZIP**: TEXT, Unique, Not Null.
+- **City**: TEXT, Non-Unique
+
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: What was the total sales for each salesperson in 2019? */
+SELECT sp.name ,
+       SUM(o.amount) AS total_sales_2019
+FROM   sales_person AS sp
+JOIN   orders       AS o  ON sp.id = o.salesperson_id
+WHERE  strftime('%Y', o.order_date) = '2019'
+GROUP  BY sp.id ;
+
+/* Answer the following: What was the average annual sales quota across all sales-people for the year 2020? */
+SELECT AVG(sq.quota_amount) AS avg_quota_2020
+FROM   sales_quota AS sq
+WHERE  sq.year = 2020 ;
+
+/* Answer the following: Which sales-people exceeded their annual quota in 2018? */
+SELECT sp.name ,
+       SUM(o.amount)            AS total_sales ,
+       sq.quota_amount          AS quota_2018
+FROM   sales_person AS sp
+JOIN   orders       AS o  ON sp.id = o.salesperson_id
+JOIN   sales_quota  AS sq ON sq.salesperson_id = sp.id
+WHERE  sq.year = 2018
+  AND  strftime('%Y', o.order_date) = '2018'
+GROUP  BY sp.id
+HAVING total_sales > quota_2018 ;
+
+/* Answer the following: For each year, how many sales-people achieved at least 110 percent of their quota? */
+SELECT yearly.year ,
+       COUNT(*) AS num_above_110pct
+FROM (
+        SELECT sp.id           AS salesperson_id ,
+               sq.year         AS year ,
+               SUM(o.amount)   AS total_sales ,
+               sq.quota_amount
+        FROM   sales_person  AS sp
+        JOIN   sales_quota   AS sq ON sq.salesperson_id = sp.id
+        JOIN   orders        AS o  ON o.salesperson_id = sp.id
+        WHERE  strftime('%Y', o.order_date) = sq.year
+        GROUP  BY sp.id , sq.year
+     ) AS yearly
+WHERE  total_sales >= 1.10 * quota_amount
+GROUP  BY yearly.year ;
+
+/* Answer the following: Which salesperson beat their quota by the highest percentage in 2021? */
+SELECT sp.name
+FROM   sales_person AS sp
+JOIN (
+        SELECT o.salesperson_id ,
+               (SUM(o.amount) - sq.quota_amount) * 1.0 / sq.quota_amount AS pct_above
+        FROM   orders       AS o
+        JOIN   sales_quota  AS sq ON sq.salesperson_id = o.salesperson_id
+        WHERE  sq.year = 2021
+          AND  strftime('%Y', o.order_date) = '2021'
+        GROUP  BY o.salesperson_id
+     ) AS t ON sp.id = t.salesperson_id
+ORDER  BY t.pct_above DESC
+LIMIT 1 ;
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: BowlingLeague
+## Table Bowler_Scores:
+MatchID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [41, 2, 28]
+GameNumber: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 1]
+BowlerID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [2, 20, 5]
+RawScore: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [191, 168, 139]
+HandiCapScore: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [205, 189, 216]
+WonGame: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+
+## Table Bowlers:
+BowlerID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [24, 6, 22]
+BowlerLastName: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Black', 'Hernandez', 'Fournier']
+BowlerFirstName: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['David', 'Sarah', 'Stephanie']
+BowlerMiddleInit: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['A', 'J', 'L']
+BowlerAddress: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['67 Willow Drive', '16 Maple Lane', '4726 - 11th Ave. N.E.']
+BowlerCity: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Bellevue', 'Woodinville', 'Auburn']
+BowlerState: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']
+BowlerZip: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [98404, 98154, 98002]
+BowlerPhoneNumber: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['(206) 881-5596', '(206) 555-9893', '(206) 555-3487']
+TeamID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 8]
+BowlerTotalPins: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [6152, 5790, 6147]
+BowlerGamesBowled: The type is INT, Which does not inlude Null and is Non-Unique. Value of this column must in: [39, 0]
+BowlerCurrentAverage: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [149, 159, 162]
+BowlerCurrentHcp: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [0, 46, 34]
+
+## Table Match_Games:
+MatchID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [10, 51, 47]
+GameNumber: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [1, 2, 3]
+WinningTeamID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1, 8, 2]
+
+## Table Teams:
+TeamID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 5, 7]
+TeamName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Dolphins', 'Barracudas', 'Terrapins']
+CaptainID: The type is INT, Which does not inlude Null and is Unique. Values format like: [12, 28, 24]
+
+## Table Tournaments:
+TourneyID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [13, 14, 3]
+TourneyDate: The type is DATE, Which does not inlude Null and is Unique. Values format like: ['2018-08-02', '2017-10-23', '2018-07-26']
+TourneyLocation: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Red Rooster Lanes', 'Totem Lanes', 'Bolero Lanes']
+
+## Table Tourney_Matches:
+MatchID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [37, 34, 17]
+TourneyID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [6, 1, 4]
+Lanes: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['21-22', '27-28', '09-10']
+OddLaneTeamID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [4, 2, 8]
+EvenLaneTeamID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [5, 4, 3]
+
+## Table WAZips:
+ZIP: The type is TEXT, Which does not inlude Null and is Unique. Values format like: [98205, 98422, 98264]
+City: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Blaine', 'Wahkiacus', 'University Place']
+State: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']
+
+#Forigen keys:
+Tourney_Matches.TourneyID = Tournaments.TourneyID, Tourney_Matches.OddLaneTeamID = Teams.TeamID, Tourney_Matches.EvenLaneTeamID = Teams.TeamID, Tourney_Matches_Archive.TourneyID = Tournaments_Archive.TourneyID
+
+#Database Description:
+The BowlingLeague database is designed to manage and store information related to bowling leagues, including bowlers, teams, matches, tournaments, and locations. It provides detailed data about individual bowlers, their scores, team affiliations, tournament matches, and zip codes within Washington state. The database is structured to support league operations, tracking scores, and organizing tournaments.
+
+#Tables Descriptions:
+
+## Bowler_Scores:
+Contains information about individual bowler scores in specific matches and games. Includes raw scores, handicap scores, and whether the bowler won the game.
+- **MatchID**: INT, Non-Unique, Not Null.
+- **GameNumber**: SMALLINT, Non-Unique, Not Null.
+- **BowlerID**: INT, Non-Unique, Not Null.
+- **RawScore**: SMALLINT, Non-Unique, Not Null.
+- **HandiCapScore**: SMALLINT, Non-Unique, Not Null.
+- **WonGame**: BOOLEAN, Non-Unique, Not Null.
+
+## Bowlers:
+Stores detailed information about individual bowlers, including their personal details, team affiliation, and bowling statistics.
+- **BowlerID**: INTEGER, Unique, Not Null.
+- **BowlerLastName**: TEXT, Non-Unique, Not Null.
+- **BowlerFirstName**: TEXT, Non-Unique, Not Null.
+- **BowlerMiddleInit**: TEXT, Non-Unique, Nullable.
+- **BowlerAddress**: TEXT, Non-Unique, Not Null.
+- **BowlerCity**: TEXT, Non-Unique, Not Null.
+- **BowlerState**: TEXT, Non-Unique, Not Null (Values restricted to 'WA').
+- **BowlerZip**: TEXT, Non-Unique, Not Null.
+- **BowlerPhoneNumber**: TEXT, Non-Unique, Not Null.
+- **TeamID**: INT, Non-Unique, Not Null.
+- **BowlerTotalPins**: INT, Non-Unique, Not Null.
+- **BowlerGamesBowled**: INT, Non-Unique, Not Null (Values restricted to [39, 0]).
+- **BowlerCurrentAverage**: SMALLINT, Non-Unique, Not Null.
+- **BowlerCurrentHcp**: SMALLINT, Non-Unique, Not Null.
+
+## Match_Games:
+Tracks the results of individual games within matches, including the winning team.
+- **MatchID**: INT, Non-Unique, Not Null.
+- **GameNumber**: SMALLINT, Non-Unique, Not Null.
+- **WinningTeamID**: INT, Non-Unique, Not Null.
+
+## Teams:
+Contains information about bowling teams, including their names and captains.
+- **TeamID**: INTEGER, Unique, Not Null.
+- **TeamName**: TEXT, Unique, Not Null.
+- **CaptainID**: INT, Unique, Not Null.
+
+## Tournaments:
+Stores information about tournaments, including their dates and locations.
+- **TourneyID**: INTEGER, Unique, Not Null.
+- **TourneyDate**: DATE, Unique, Not Null.
+- **TourneyLocation**: TEXT, Non-Unique, Not Null.
+
+## Tourney_Matches:
+Tracks matches within tournaments, including the teams playing on odd and even lanes.
+- **MatchID**: INTEGER, Unique, Not Null.
+- **TourneyID**: INT, Non-Unique, Not Null.
+- **Lanes**: TEXT, Non-Unique, Not Null.
+- **OddLaneTeamID**: INT, Non-Unique, Not Null.
+- **EvenLaneTeamID**: INT, Non-Unique, Not Null.
+
+## WAZips:
+Contains zip codes and corresponding city and state information for Washington state.
+- **ZIP**: TEXT, Unique, Not Null.
+- **City**: TEXT, Non-Unique
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: List the bowlers, match number, game number, handicap score, tournament date, and location for only those bowlers who won their game with a handicap score of 190 or less at Thunderbird Lanes, Totem Lanes, and Bolero Lanes. */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries bowlers, match number, game number, handicap score, tournament date, and location for bowlers who won their game with a handicap score of 190 or less at specific locations. The related columns include bowler details, match details, game details, scores, tournament date, and location. The values include "190", "Thunderbird Lanes", "Totem Lanes", "Bolero Lanes".
+#columns: Bowler_Scores.BowlerID, Bowler_Scores.MatchID, Bowler_Scores.GameNumber, Bowler_Scores.HandiCapScore, Bowler_Scores.WonGame, Tournaments.TourneyDate, Tournaments.TourneyLocation
+#values: "190", "Thunderbird Lanes", "Totem Lanes", "Bolero Lanes"
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+List the bowlers, match number, game number, handicap score, tournament date, and location for only those bowlers who won their game with a handicap score of 190 or less at Thunderbird Lanes, Totem Lanes, and Bolero Lanes.
+
+############################## AI at step extract_query_noun ##############################
+
+"bowlers", "match number", "game number", "handicap score", "tournament date", "location", "game", "Thunderbird Lanes", "Totem Lanes", "Bolero Lanes"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: List the bowlers, match number, game number, handicap score, tournament date, and location for only those bowlers who won their game with a handicap score of 190 or less at Thunderbird Lanes, Totem Lanes, and Bolero Lanes.
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "List",
+      "J": null,
+      "I": [
+        "the bowlers",
+        "match number",
+        "game number",
+        "handicap score",
+        "tournament date",
+        "location"
+      ],
+      "C": [
+        "for only those bowlers who won their game",
+        "with a handicap score of 190 or less",
+        "at Thunderbird Lanes, Totem Lanes, and Bolero Lanes"
+      ]
+    }
+  }
+]
+```
+

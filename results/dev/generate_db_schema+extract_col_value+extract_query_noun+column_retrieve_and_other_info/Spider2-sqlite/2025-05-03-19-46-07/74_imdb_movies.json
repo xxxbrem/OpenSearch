@@ -1,0 +1,410 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: imdb_movies\n## Table ERD:\ntable: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['names', 'ratings', 'role_mapping']\ncolumn: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['id', 'known_for_movies', 'country']\n`Unnamed: 2`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None\n`Unnamed: 3`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None\n`Unnamed: 4`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None\n`Unnamed: 5`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None\n`Unnamed: 6`: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['category', 'role_mapping', '* name_id']\n`Unnamed: 7`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None\n`Unnamed: 8`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None\n`Unnamed: 9`: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['date_of_birth', 'duration', 'movie']\n`Unnamed: 10`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None\n`Unnamed: 11`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None\n`Unnamed: 12`: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['median_rating', 'director_mapping', 'ratings']\n\n## Table movies:\nid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt9251598', 'tt0443474', 'tt6175402']\ntitle: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Les fauves', 'An International Local Story', 'Ga wo man see geng']\nyear: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2019, 2017, 2018]\ndate_published: The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Values format like: ['2017-04-10 00:00:00', '2019-07-05 00:00:00', '2018-07-14 00:00:00']\nduration: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [177, 105, 160]\ncountry: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Hong Kong, China', 'Iran', 'Palestine, Germany, Netherlands, Mexico']\nworlwide_gross_income: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['$ 226945087', '$ 4080073', '$ 17702']\nlanguages: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Turkish, English', 'English, Spanish, French', 'English, Arabic, Hebrew']\nproduction_company: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Open Road Films (II)', 'MK', 'Abhishek Films']\n\n## Table genre:\nmovie_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt4654472', 'tt6824598', 'tt6807256']\ngenre: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Crime', 'Drama', 'Fantasy']\n\n## Table director_mapping:\nmovie_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt7768846', 'tt10370402', 'tt8286894']\nname_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['nm0764367', 'nm0298807', 'nm2051948']\n\n## Table role_mapping:\nmovie_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt5674698', 'tt7969140', 'tt7367960']\nname_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['nm3589654', 'nm2790534', 'nm5591758']\ncategory: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['actor', 'actress']\n\n## Table names:\nid: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['nm6037329', 'nm0421232', 'nm0410667']\nname: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Ishaa Saha', 'Jennie Lynn', 'Yetkin Dikinciler']\nheight: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [81, 147, 190]\ndate_of_birth: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['1936-10-02', '1935-01-19', '1976-08-27']\nknown_for_movies: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['tt7345034', 'tt7216068,tt5242548', 'tt3465026']\n\n## Table ratings:\nmovie_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt10214842', 'tt8587142', 'tt6270596']\navg_rating: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [6, 3, 9]\ntotal_votes: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5670, 651, 1262]\nmedian_rating: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [10, 5, 4]\n\n#Forigen keys:\n\n\n#Database Description:\nThe `imdb_movies` database is designed to store and manage information related to movies, including their genres, directors, actors, ratings, and production details. It provides a comprehensive structure to analyze movie data, including metadata about movies, their associated personnel, and performance metrics such as ratings and votes.\n\n#Tables Descriptions:\n1. **movies**: Contains detailed information about movies, including their unique ID, title, release year, publication date, duration, country of origin, worldwide gross income, languages, and production company.\n\n2. **genre**: Stores the genre(s) associated with each movie, linking movies via their unique IDs.\n\n3. **director_mapping**: Maps movies to their directors using movie IDs and director IDs.\n\n4. **role_mapping**: Maps movies to their actors/actresses, specifying their roles (actor/actress) using movie IDs and personnel IDs.\n\n5. **names**: Contains information about individuals (actors, actresses, directors, etc.), including their unique ID, name, height, date of birth, and movies they are known for.\n\n6. **ratings**: Stores rating information for movies, including the average rating, total votes, and median rating, linked via movie IDs.\n\n#Foreign Keys:\n1. `genre.movie_id` → `movies.id`: Links genres to their respective movies.\n2. `director_mapping.movie_id` → `movies.id`: Links directors to their respective movies.\n3. `director_mapping.name_id` → `names.id`: Links directors to their personal information.\n4. `role_mapping.movie_id` → `movies.id`: Links actors/actresses to their respective movies.\n5. `role_mapping.name_id` → `names.id`: Links actors/actresses to their personal information.\n6. `ratings.movie_id` → `movies.id`: Links ratings to their respective movies.\n",
+        "db_col_dic": {
+            "ERD.table": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['names', 'ratings', 'role_mapping']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['names', 'ratings', 'role_mapping']"
+            ],
+            "ERD.column": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['id', 'known_for_movies', 'country']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['id', 'known_for_movies', 'country']"
+            ],
+            "ERD.`Unnamed: 2`": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "None"
+            ],
+            "ERD.`Unnamed: 3`": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "None"
+            ],
+            "ERD.`Unnamed: 4`": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "None"
+            ],
+            "ERD.`Unnamed: 5`": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "None"
+            ],
+            "ERD.`Unnamed: 6`": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['category', 'role_mapping', '* name_id']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['category', 'role_mapping', '* name_id']"
+            ],
+            "ERD.`Unnamed: 7`": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "None"
+            ],
+            "ERD.`Unnamed: 8`": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "None"
+            ],
+            "ERD.`Unnamed: 9`": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['date_of_birth', 'duration', 'movie']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['date_of_birth', 'duration', 'movie']"
+            ],
+            "ERD.`Unnamed: 10`": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "None"
+            ],
+            "ERD.`Unnamed: 11`": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "None"
+            ],
+            "ERD.`Unnamed: 12`": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['median_rating', 'director_mapping', 'ratings']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['median_rating', 'director_mapping', 'ratings']"
+            ],
+            "movies.id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt9251598', 'tt0443474', 'tt6175402']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['tt9251598', 'tt0443474', 'tt6175402']"
+            ],
+            "movies.title": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Les fauves', 'An International Local Story', 'Ga wo man see geng']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Les fauves', 'An International Local Story', 'Ga wo man see geng']"
+            ],
+            "movies.year": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2019, 2017, 2018]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2019, 2017, 2018]"
+            ],
+            "movies.date_published": [
+                "The type is TIMESTAMP, Which does not inlude Null and is Non-Unique. Values format like: ['2017-04-10 00:00:00', '2019-07-05 00:00:00', '2018-07-14 00:00:00']",
+                "",
+                "",
+                "TIMESTAMP",
+                "Non-Null",
+                "Non-Unique",
+                "['2017-04-10 00:00:00', '2019-07-05 00:00:00', '2018-07-14 00:00:00']"
+            ],
+            "movies.duration": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [177, 105, 160]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[177, 105, 160]"
+            ],
+            "movies.country": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Hong Kong, China', 'Iran', 'Palestine, Germany, Netherlands, Mexico']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Hong Kong, China', 'Iran', 'Palestine, Germany, Netherlands, Mexico']"
+            ],
+            "movies.worlwide_gross_income": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['$ 226945087', '$ 4080073', '$ 17702']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['$ 226945087', '$ 4080073', '$ 17702']"
+            ],
+            "movies.languages": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Turkish, English', 'English, Spanish, French', 'English, Arabic, Hebrew']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Turkish, English', 'English, Spanish, French', 'English, Arabic, Hebrew']"
+            ],
+            "movies.production_company": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Open Road Films (II)', 'MK', 'Abhishek Films']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Open Road Films (II)', 'MK', 'Abhishek Films']"
+            ],
+            "genre.movie_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt4654472', 'tt6824598', 'tt6807256']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['tt4654472', 'tt6824598', 'tt6807256']"
+            ],
+            "genre.genre": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Crime', 'Drama', 'Fantasy']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Crime', 'Drama', 'Fantasy']"
+            ],
+            "director_mapping.movie_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt7768846', 'tt10370402', 'tt8286894']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['tt7768846', 'tt10370402', 'tt8286894']"
+            ],
+            "director_mapping.name_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['nm0764367', 'nm0298807', 'nm2051948']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['nm0764367', 'nm0298807', 'nm2051948']"
+            ],
+            "role_mapping.movie_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt5674698', 'tt7969140', 'tt7367960']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['tt5674698', 'tt7969140', 'tt7367960']"
+            ],
+            "role_mapping.name_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['nm3589654', 'nm2790534', 'nm5591758']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['nm3589654', 'nm2790534', 'nm5591758']"
+            ],
+            "role_mapping.category": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['actor', 'actress']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['actor', 'actress']"
+            ],
+            "names.id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['nm6037329', 'nm0421232', 'nm0410667']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['nm6037329', 'nm0421232', 'nm0410667']"
+            ],
+            "names.name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Ishaa Saha', 'Jennie Lynn', 'Yetkin Dikinciler']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Ishaa Saha', 'Jennie Lynn', 'Yetkin Dikinciler']"
+            ],
+            "names.height": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [81, 147, 190]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[81, 147, 190]"
+            ],
+            "names.date_of_birth": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['1936-10-02', '1935-01-19', '1976-08-27']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['1936-10-02', '1935-01-19', '1976-08-27']"
+            ],
+            "names.known_for_movies": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['tt7345034', 'tt7216068,tt5242548', 'tt3465026']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['tt7345034', 'tt7216068,tt5242548', 'tt3465026']"
+            ],
+            "ratings.movie_id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt10214842', 'tt8587142', 'tt6270596']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['tt10214842', 'tt8587142', 'tt6270596']"
+            ],
+            "ratings.avg_rating": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [6, 3, 9]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[6, 3, 9]"
+            ],
+            "ratings.total_votes": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5670, 651, 1262]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[5670, 651, 1262]"
+            ],
+            "ratings.median_rating": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [10, 5, 4]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[10, 5, 4]"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries the top genres and directors based on movies rated above 8. Relevant columns include genre information, movie ratings, and director mappings. Filters include rating > 8 and genre-specific filtering.\n#columns: genre.genre, ratings.avg_rating, ratings.movie_id, director_mapping.movie_id, director_mapping.name_id, names.name\n#values: \"8\"\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "8",
+            "most movies rated above 8",
+            "those genres",
+            "top three genres",
+            "top four directors",
+            "directors and their respective movie counts",
+            "films",
+            "most films rated above 8",
+            "movie counts",
+            "movies",
+            "genres",
+            "directors"
+        ],
+        "col": "genre.genre, ratings.avg_rating, ratings.movie_id, director_mapping.movie_id, director_mapping.name_id, names.name",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [
+            [
+                "ERD.`Unnamed: 9`",
+                "genre"
+            ],
+            [
+                "ERD.`Unnamed: 9`",
+                "movie"
+            ],
+            [
+                "ERD.column",
+                "genre"
+            ],
+            [
+                "ERD.table",
+                "genre"
+            ],
+            [
+                "ERD.table",
+                "movie"
+            ]
+        ],
+        "column": "ERD.`Unnamed: 2`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None\nERD.`Unnamed: 4`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None\nERD.`Unnamed: 6`: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['category', 'role_mapping', '* name_id']\nERD.`Unnamed: 7`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None\nERD.`Unnamed: 8`: The type is REAL, Which inlude Null and is Non-Unique. Value of this column must in: None\nERD.`Unnamed: 9`: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['date_of_birth', 'duration', 'movie']\nERD.column: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['id', 'known_for_movies', 'country']\nERD.table: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['names', 'ratings', 'role_mapping']\ndirector_mapping.movie_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt7768846', 'tt10370402', 'tt8286894']\ndirector_mapping.name_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['nm0764367', 'nm0298807', 'nm2051948']\ngenre.genre: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Crime', 'Drama', 'Fantasy']\ngenre.movie_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt4654472', 'tt6824598', 'tt6807256']\nmovies.country: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Hong Kong, China', 'Iran', 'Palestine, Germany, Netherlands, Mexico']\nmovies.id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt9251598', 'tt0443474', 'tt6175402']\nmovies.languages: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Turkish, English', 'English, Spanish, French', 'English, Arabic, Hebrew']\nnames.id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['nm6037329', 'nm0421232', 'nm0410667']\nnames.name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Ishaa Saha', 'Jennie Lynn', 'Yetkin Dikinciler']\nratings.avg_rating: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [6, 3, 9]\nratings.median_rating: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [10, 5, 4]\nratings.movie_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt10214842', 'tt8587142', 'tt6270596']\nrole_mapping.category: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['actor', 'actress']\nrole_mapping.movie_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt5674698', 'tt7969140', 'tt7367960']\nrole_mapping.name_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['nm3589654', 'nm2790534', 'nm5591758']",
+        "foreign_keys": "",
+        "foreign_set": [],
+        "q_order": [
+            "the top three genres",
+            "the top four directors",
+            "these directors",
+            "their respective movie counts"
+        ],
+        "status": "success"
+    }
+]

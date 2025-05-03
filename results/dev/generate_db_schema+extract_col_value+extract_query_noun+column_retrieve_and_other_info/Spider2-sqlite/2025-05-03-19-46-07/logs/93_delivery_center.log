@@ -1,0 +1,401 @@
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: For every IPL season, find the batsman with the highest strike-rate (minimum 100 balls faced) and the bowler with the best economy rate (minimum 20 overs bowled). Break ties using the lower player_id. Return season_id, batsman_id, strike_rate, bowler_id, economy ordered by season_id. */
+WITH BatAgg AS (
+    SELECT season_id,
+           batsman_id,
+           SUM(runs_off_bat)                    AS runs,
+           COUNT(*)                             AS balls
+    FROM matches
+    JOIN ball_by_ball USING (match_id)
+    GROUP BY season_id, batsman_id
+    HAVING COUNT(*) >= 100
+),
+BatRank AS (
+    SELECT season_id,
+           batsman_id,
+           runs * 1.0 / balls * 100             AS strike_rate,
+           ROW_NUMBER() OVER (PARTITION BY season_id
+                              ORDER BY runs * 1.0 / balls * 100 DESC, batsman_id) AS rk
+    FROM BatAgg
+),
+BowlAgg AS (
+    SELECT season_id,
+           bowler_id,
+           SUM(total_runs)                      AS runs_conceded,
+           COUNT(*)                             AS balls_bowled
+    FROM matches
+    JOIN ball_by_ball USING (match_id)
+    GROUP BY season_id, bowler_id
+    HAVING COUNT(*) >= 120                -- 20 overs
+),
+BowlRank AS (
+    SELECT season_id,
+           bowler_id,
+           runs_conceded * 1.0 / (balls_bowled / 6.0) AS economy,
+           ROW_NUMBER() OVER (PARTITION BY season_id
+                              ORDER BY runs_conceded * 1.0 / (balls_bowled / 6.0) ASC, bowler_id) AS rk
+    FROM BowlAgg
+)
+SELECT B.season_id,
+       B.batsman_id,
+       ROUND(B.strike_rate, 2) AS strike_rate,
+       L.bowler_id,
+       ROUND(L.economy, 2)     AS economy
+FROM BatRank  B
+JOIN BowlRank L
+  ON L.season_id = B.season_id
+WHERE B.rk = 1 AND L.rk = 1
+ORDER BY B.season_id;
+
+/* Answer the following: For every venue, list the two batsmen with the most fours and the two bowlers with the most wickets (excluding run out, hit wicket, retired hurt). Pair the results by rank (rank-1 batsman with rank-1 bowler, etc.). Return venue_id, rank, batsman_id, fours, bowler_id, wickets ordered by venue_id, rank. */
+WITH FourCnt AS (
+    SELECT venue_id,
+           batsman_id,
+           COUNT(*) AS fours,
+           ROW_NUMBER() OVER (PARTITION BY venue_id
+                              ORDER BY COUNT(*) DESC, batsman_id) AS rk
+    FROM matches
+    JOIN ball_by_ball USING (match_id)
+    WHERE runs_off_bat = 4
+    GROUP BY venue_id, batsman_id
+),
+WktCnt AS (
+    SELECT venue_id,
+           bowler_id,
+           COUNT(*) AS wkts,
+           ROW_NUMBER() OVER (PARTITION BY venue_id
+                              ORDER BY COUNT(*) DESC, bowler_id) AS rk
+    FROM matches
+    JOIN ball_by_ball USING (match_id)
+    WHERE dismissal_type NOT IN ('run out', 'hit wicket', 'retired hurt')
+    GROUP BY venue_id, bowler_id
+)
+SELECT F.venue_id,
+       F.rk                            AS rank,
+       F.batsman_id,
+       F.fours,
+       W.bowler_id,
+       W.wkts                          AS wickets
+FROM FourCnt F
+JOIN WktCnt W
+  ON W.venue_id = F.venue_id
+ AND W.rk       = F.rk
+WHERE F.rk <= 2
+ORDER BY F.venue_id, F.rk;
+
+/* Answer the following: Across all IPL history, retrieve the five bowlers with the best bowling average (runs conceded per wicket) among those who have bowled at least 200 balls and taken at least 20 wickets. Break ties using the lower bowler_id. Return bowler_id and bowling_average. */
+WITH BowlStats AS (
+    SELECT bowler_id,
+           SUM(total_runs)          AS runs_conceded,
+           COUNT(*)                 AS balls_bowled,
+           COUNT(CASE WHEN dismissal_type NOT IN ('run out', 'hit wicket', 'retired hurt')
+                       THEN 1 END)  AS wickets
+    FROM ball_by_ball
+    GROUP BY bowler_id
+    HAVING COUNT(*) >= 200 AND wickets >= 20
+)
+SELECT bowler_id,
+       ROUND(runs_conceded * 1.0 / wickets, 2) AS bowling_average
+FROM BowlStats
+ORDER BY bowling_average ASC, bowler_id
+LIMIT 5;
+
+/* Answer the following: For every match in the 2019 season, identify (a) the bowler who took the most wickets in power-play overs (1–6) and (b) the batsman who scored the most runs in death overs (16–20). Ignore run-out, hit-wicket, retired-hurt dismissals for wickets and break all ties with the lower player_id. Return match_id, batsman_id, runs_in_death, bowler_id, powerplay_wkts ordered by match_id. */
+WITH Season19 AS (
+    SELECT match_id, season_id
+    FROM matches
+    WHERE season_id = 2019
+),
+PP_Wkts AS (
+    SELECT b.match_id,
+           bowler_id,
+           COUNT(*) AS wkts,
+           ROW_NUMBER() OVER (PARTITION BY b.match_id
+                              ORDER BY COUNT(*) DESC, bowler_id) AS rk
+    FROM Season19 s
+    JOIN ball_by_ball b ON b.match_id = s.match_id
+    WHERE over BETWEEN 1 AND 6
+      AND dismissal_type NOT IN ('run out', 'hit wicket', 'retired hurt')
+    GROUP BY b.match_id, bowler_id
+),
+DeathRuns AS (
+    SELECT b.match_id,
+           batsman_id,
+           SUM(runs_off_bat) AS runs,
+           ROW_NUMBER() OVER (PARTITION BY b.match_id
+                              ORDER BY SUM(runs_off_bat) DESC, batsman_id) AS rk
+    FROM Season19 s
+    JOIN ball_by_ball b ON b.match_id = s.match_id
+    WHERE over BETWEEN 16 AND 20
+    GROUP BY b.match_id, batsman_id
+)
+SELECT s.match_id,
+       d.batsman_id,
+       d.runs        AS runs_in_death,
+       p.bowler_id,
+       p.wkts        AS powerplay_wkts
+FROM Season19 s
+JOIN DeathRuns d ON d.match_id = s.match_id AND d.rk = 1
+JOIN PP_Wkts  p ON p.match_id = s.match_id AND p.rk = 1
+ORDER BY s.match_id;
+
+/* Answer the following: For each team in the 2020 season, find the top run-scorer and the top wicket-taker (ignoring run out, hit wicket, retired hurt dismissals). Break ties by lower player_id. Return team_id, batsman_id, runs, bowler_id, wickets ordered by team_id. */
+WITH Season20 AS (
+    SELECT match_id
+    FROM matches
+    WHERE season_id = 2020
+),
+BatRuns AS (
+    SELECT batting_team_id AS team_id,
+           batsman_id,
+           SUM(runs_off_bat) AS runs,
+           ROW_NUMBER() OVER (PARTITION BY batting_team_id
+                              ORDER BY SUM(runs_off_bat) DESC, batsman_id) AS rk
+    FROM Season20 s
+    JOIN ball_by_ball b ON b.match_id = s.match_id
+    GROUP BY batting_team_id, batsman_id
+),
+BowlWkts AS (
+    SELECT bowling_team_id AS team_id,
+           bowler_id,
+           COUNT(*) AS wkts,
+           ROW_NUMBER() OVER (PARTITION BY bowling_team_id
+                              ORDER BY COUNT(*) DESC, bowler_id) AS rk
+    FROM Season20 s
+    JOIN ball_by_ball b ON b.match_id = s.match_id
+    WHERE dismissal_type NOT IN ('run out', 'hit wicket', 'retired hurt')
+    GROUP BY bowling_team_id, bowler_id
+)
+SELECT B.team_id,
+       B.batsman_id,
+       B.runs,
+       W.bowler_id,
+       W.wkts AS wickets
+FROM BatRuns B
+JOIN BowlWkts W
+  ON W.team_id = B.team_id
+WHERE B.rk = 1 AND W.rk = 1
+ORDER BY B.team_id;
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: delivery_center
+## Table channels:
+channel_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 9, 7]
+channel_name: The type is VARCHAR(50), Which does not inlude Null and is Unique. Values format like: ['ATCHIN PLACE', 'EATS PLACE', 'ON PLACE']
+channel_type: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Value of this column must in: ['OWN CHANNEL', 'MARKETPLACE']
+
+## Table drivers:
+driver_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [35121, 4256, 48100]
+driver_modal: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Value of this column must in: ['MOTOBOY', 'BIKER']
+driver_type: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Value of this column must in: ['LOGISTIC OPERATOR', 'FREELANCE']
+
+## Table deliveries:
+delivery_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2518512, 2556897, 2711702]
+delivery_order_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [89376422, 85506542, 85225838]
+driver_id: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [1626, 23063, 42209]
+delivery_distance_meters: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [1987, 27196, 15868]
+delivery_status: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Values format like: ['CANCELLED', 'DELIVERING', 'DELIVERED']
+
+## Table hubs:
+hub_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [35, 29, 16]
+hub_name: The type is VARCHAR(50), Which does not inlude Null and is Unique. Values format like: ['GAROA SHOPPING', 'ELIXIR SHOPPING', 'COLOR SHOPPING']
+hub_city: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Values format like: ['RIO DE JANEIRO', 'CURITIBA', 'PORTO ALEGRE']
+hub_state: The type is CHAR(2), Which does not inlude Null and is Non-Unique. Values format like: ['RS', 'RJ', 'PR']
+hub_latitude: The type is DECIMAL(9, 6), Which does not inlude Null and is Unique. Values format like: [-22, -23, -23]
+hub_longitude: The type is DECIMAL(9, 6), Which does not inlude Null and is Unique. Values format like: [-49, -51, -46]
+
+## Table payments:
+payment_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [4462237, 5404746, 4873564]
+payment_order_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [82374061, 84731074, 75884657]
+payment_amount: The type is DECIMAL(10, 2), Which does not inlude Null and is Non-Unique. Values format like: [187, 78, 237]
+payment_fee: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [10, 5, 12]
+payment_method: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Values format like: ['CREDIT_STORE', 'DEBIT', 'PAYMENT_LINK']
+payment_status: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Values format like: ['PAID', 'CHARGEBACK', 'AWAITING']
+
+## Table stores:
+store_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [435, 4447, 1246]
+hub_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [73, 13, 91]
+store_name: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Values format like: ['EULIRUM ', 'PAMOIPIMG ', 'IGUAI VUMURAMIRAI ']
+store_segment: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Value of this column must in: ['FOOD', 'GOOD']
+store_plan_price: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [39, 0, 29]
+store_latitude: The type is DECIMAL(9, 6), Which inlude Null and is Non-Unique. Values format like: [-22, -22, -22]
+store_longitude: The type is DECIMAL(9, 6), Which inlude Null and is Non-Unique. Values format like: [-43, -46, -43]
+
+## Table orders:
+order_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [88456414, 89747805, 87303615]
+store_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4402, 4300, 600]
+channel_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [11, 2, 24]
+payment_order_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [78844063, 77908678, 72825777]
+delivery_order_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [90268249, 89894745, 87306472]
+order_status: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Value of this column must in: ['CANCELED', 'FINISHED']
+order_amount: The type is DECIMAL(10, 2), Which does not inlude Null and is Non-Unique. Values format like: [66, 829, 609]
+order_delivery_fee: The type is DECIMAL(10, 2), Which does not inlude Null and is Non-Unique. Values format like: [37, 15, 90]
+order_delivery_cost: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [14, 24, 20]
+order_created_hour: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 13, 8]
+order_created_minute: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [35, 3, 40]
+order_created_day: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [21, 17, 20]
+order_created_month: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 3, 2]
+order_created_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2021]
+order_moment_created: The type is DATETIME, Which does not inlude Null and is Non-Unique. Values format like: ['3/30/2021 10:38:12 PM', '2/16/2021 8:07:22 PM', '4/6/2021 4:34:45 PM']
+order_moment_accepted: The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['3/6/2021 12:20:51 AM', '3/7/2021 4:45:50 PM', '3/24/2021 2:14:10 PM']
+order_moment_ready: The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['4/11/2021 11:31:43 PM', '1/17/2021 11:52:00 PM', '2/1/2021 7:33:25 PM']
+order_moment_collected: The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['3/3/2021 11:46:48 PM', '3/6/2021 7:10:07 PM', '2/13/2021 11:30:23 PM']
+order_moment_in_expedition: The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['4/11/2021 4:24:01 PM', '1/16/2021 7:54:48 PM', '4/10/2021 11:12:07 PM']
+order_moment_delivering: The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['3/21/2021 12:48:16 AM', '4/3/2021 2:31:13 PM', '4/26/2021 3:57:43 PM']
+order_moment_delivered: The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['3/9/2021 4:23:36 PM', '4/10/2021 10:18:43 PM', '4/6/2021 12:35:58 AM']
+order_moment_finished: The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['3/26/2021 4:04:22 PM', '4/27/2021 5:29:20 PM', '2/11/2021 7:24:49 PM']
+order_metric_collected_time: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [22, 3, 25]
+order_metric_paused_time: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [100, 96, 43]
+order_metric_production_time: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [1147, 3, 113]
+order_metric_walking_time: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [69, 1, 21]
+order_metric_expediton_speed_time: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [145, 131, 60]
+order_metric_transit_time: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [18, 159, 194]
+order_metric_cycle_time: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [105, 35, 82]
+
+#Forigen keys:
+
+
+# Database Description:
+The `delivery_center` database is designed to manage and store information related to delivery operations. It includes details about delivery channels, drivers, deliveries, hubs, payments, stores, and orders. The database is structured to track the entire lifecycle of an order, from creation to delivery, while also capturing metrics and operational data for analysis.
+
+# Tables Descriptions:
+1. **Channels**:  
+   - Contains information about the delivery channels used for orders.  
+   - Includes unique identifiers, names, and types of channels.  
+
+2. **Drivers**:  
+   - Stores details about drivers involved in the delivery process.  
+   - Includes unique identifiers, driver modes (e.g., biker, motoboy), and driver types (e.g., freelance, logistic operator).  
+
+3. **Deliveries**:  
+   - Tracks individual deliveries, including their status, distance, and associated driver.  
+   - Includes unique delivery IDs, order IDs, and delivery metrics.  
+
+4. **Hubs**:  
+   - Represents physical locations (hubs) where deliveries are managed.  
+   - Includes unique hub IDs, names, cities, states, and geographical coordinates (latitude and longitude).  
+
+5. **Payments**:  
+   - Manages payment information for orders.  
+   - Includes unique payment IDs, amounts, fees, methods, and statuses.  
+
+6. **Stores**:  
+   - Contains information about stores that generate orders.  
+   - Includes unique store IDs, associated hub IDs, names, segments, plan prices, and geographical coordinates.  
+
+7. **Orders**:  
+   - Tracks the lifecycle of orders, including creation, delivery, and completion.  
+   - Includes unique order IDs, associated store and channel IDs, payment and delivery order IDs, statuses, amounts, delivery fees, timestamps for various stages, and operational metrics.  
+
+# Foreign Keys:
+1. **Orders**:  
+   - `store_id` → `stores.store_id`  
+   - `channel_id` → `channels.channel_id`  
+   - `payment_order_id` → `payments.payment_order_id`  
+   - `delivery_order_id` → `deliveries.delivery_order_id`  
+
+2. **Deliveries**:  
+   - `driver_id` → `drivers.driver_id`  
+
+3. **Stores**:  
+   - `hub_id` → `hubs.hub_id`  
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: Can you find 5 delivery drivers with the highest average number of daily deliveries? */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries the top 5 delivery drivers based on the highest average number of daily deliveries. The relevant columns include driver details and delivery metrics. To calculate daily averages, we need columns related to drivers and deliveries, including delivery.driver_id and delivery.delivery_order_id. 
+#columns: deliveries.driver_id, deliveries.delivery_order_id, deliveries.delivery_status, orders.order_created_day, orders.order_created_month, orders.order_created_year
+#values: "DELIVERED"
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+Can you find 5 delivery drivers with the highest average number of daily deliveries?
+
+############################## AI at step extract_query_noun ##############################
+
+"delivery", "drivers", "average", "number", "daily deliveries", "highest average number of daily deliveries"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: Can you find 5 delivery drivers with the highest average number of daily deliveries?
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "find",
+      "J": null,
+      "I": ["5 delivery drivers"],
+      "C": ["with the highest average number of daily deliveries"]
+    }
+  }
+]
+```
+

@@ -1,0 +1,292 @@
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: What is the average distance (in kilometres) of every route that operates between the cities 'New York' and 'Los Angeles'?  Treat the two directions as the same city-pair. */
+SELECT AVG(distance_km)
+FROM routes
+WHERE (source_city = 'New York'  AND dest_city = 'Los Angeles')
+   OR (source_city = 'Los Angeles' AND dest_city = 'New York');
+
+/* Answer the following: List the five city-pairs that have the greatest average distance of all their routes.  Show the two city names and that average distance, ordering from the largest downward. */
+SELECT LEAST(source_city , dest_city)  AS city_a,
+       GREATEST(source_city , dest_city) AS city_b,
+       AVG(distance_km)                 AS avg_dist
+FROM routes
+GROUP BY city_a , city_b
+ORDER BY avg_dist DESC
+LIMIT 5;
+
+/* Answer the following: How many unique city-pairs have an average distance that is strictly below 1 000 km? */
+SELECT COUNT(*)
+FROM (
+        SELECT LEAST(source_city , dest_city)  AS city_a,
+               GREATEST(source_city , dest_city) AS city_b
+        FROM routes
+        GROUP BY city_a , city_b
+        HAVING AVG(distance_km) < 1000
+     ) AS short_pairs;
+
+/* Answer the following: Among the city-pairs whose average distance exceeds 4 000 km, which pair has the fewest distinct routes?  Return the two city names and that route count. */
+SELECT city_a, city_b, route_cnt
+FROM (
+        SELECT LEAST(source_city , dest_city)  AS city_a,
+               GREATEST(source_city , dest_city) AS city_b,
+               COUNT(*)                         AS route_cnt,
+               AVG(distance_km)                 AS avg_dist
+        FROM routes
+        GROUP BY city_a , city_b
+        HAVING avg_dist > 4000
+     ) AS long_pairs
+ORDER BY route_cnt ASC
+LIMIT 1;
+
+/* Answer the following: What is the maximum value of the average distance among city-pairs that have at least ten different routes?  (At least ten routes refers to COUNT(*) >= 10.) */
+SELECT MAX(avg_dist)
+FROM (
+        SELECT LEAST(source_city , dest_city)  AS city_a,
+               GREATEST(source_city , dest_city) AS city_b,
+               AVG(distance_km)                 AS avg_dist
+        FROM routes
+        GROUP BY city_a , city_b
+        HAVING COUNT(*) >= 10
+     ) AS rich_pairs;
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: Airlines
+## Table aircrafts_data:
+aircraft_code: The type is character(3), Which does not inlude Null and is Unique. Values format like: ['CN1', 773, 320]
+model: The type is jsonb, Which does not inlude Null and is Unique. Values format like: ['{"en": "Airbus A321-200", "ru": "Аэробус A321-200"}', '{"en": "Boeing 767-300", "ru": "Боинг 767-300"}', '{"en": "Sukhoi Superjet-100", "ru": "Сухой Суперджет-100"}']
+range: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [11100, 5600, 5700]
+
+## Table airports_data:
+airport_code: The type is character(3), Which does not inlude Null and is Unique. Values format like: ['OMS', 'TBW', 'IKT']
+airport_name: The type is jsonb, Which does not inlude Null and is Unique. Values format like: ['{"en": "Petrozavodsk Airport", "ru": "Бесовец"}', '{"en": "Ignatyevo Airport", "ru": "Игнатьево"}', '{"en": "Vnukovo International Airport", "ru": "Внуково"}']
+city: The type is jsonb, Which does not inlude Null and is Non-Unique. Values format like: ['{"en": "Vorkuta", "ru": "Воркута"}', '{"en": "Nizhniy Novgorod", "ru": "Нижний Новгород"}', '{"en": "Noyabrsk", "ru": "Ноябрьск"}']
+coordinates: The type is point, Which does not inlude Null and is Unique. Values format like: ['(47.9047012329101562,56.7005996704101562)', '(52.8017005920410156,54.6399993896484375)', '(72.6500015258789062,61.1082992553710938)']
+timezone: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Asia/Anadyr', 'Europe/Volgograd', 'Asia/Sakhalin']
+
+## Table boarding_passes:
+ticket_no: The type is character(13), Which does not inlude Null and is Non-Unique. Values format like: [5435299778, 5433754178, 5433785298]
+flight_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [29249, 31131, 24619]
+boarding_no: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [106, 38, 43]
+seat_no: The type is character varying(4), Which does not inlude Null and is Non-Unique. Values format like: ['3G', '32D', '37C']
+
+## Table bookings:
+book_ref: The type is character(6), Which does not inlude Null and is Unique. Values format like: ['744DD2', '211BC7', '9F281D']
+book_date: The type is timestamp with time zone, Which does not inlude Null and is Non-Unique. Values format like: ['2017-07-01 22:01:00+03', '2017-07-19 06:30:00+03', '2017-07-08 20:46:00+03']
+total_amount: The type is numeric(10,2), Which does not inlude Null and is Non-Unique. Values format like: [268600, 99600, 236800]
+
+## Table flights:
+flight_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [9693, 6901, 3993]
+flight_no: The type is character(6), Which does not inlude Null and is Non-Unique. Values format like: ['PG0685', 'PG0286', 'PG0559']
+scheduled_departure: The type is timestamp with time zone, Which does not inlude Null and is Non-Unique. Values format like: ['2017-08-25 09:55:00+03', '2017-08-17 07:45:00+03', '2017-09-12 12:35:00+03']
+scheduled_arrival: The type is timestamp with time zone, Which does not inlude Null and is Non-Unique. Values format like: ['2017-07-25 02:35:00+03', '2017-08-13 19:45:00+03', '2017-09-06 19:45:00+03']
+departure_airport: The type is character(3), Which does not inlude Null and is Non-Unique. Values format like: ['BTK', 'MCX', 'TJM']
+arrival_airport: The type is character(3), Which does not inlude Null and is Non-Unique. Values format like: ['UCT', 'AAQ', 'RGK']
+status: The type is character varying(20), Which does not inlude Null and is Non-Unique. Values format like: ['Delayed', 'Scheduled', 'Arrived']
+aircraft_code: The type is character(3), Which does not inlude Null and is Non-Unique. Values format like: [321, 'CR2', 733]
+actual_departure: The type is timestamp with time zone, Which does not inlude Null and is Non-Unique. Values format like: ['2017-07-18 19:13:00+03', '2017-08-12 11:27:00+03', '2017-07-18 18:05:00+03']
+actual_arrival: The type is timestamp with time zone, Which does not inlude Null and is Non-Unique. Values format like: ['2017-08-04 11:32:00+03', '2017-08-07 13:51:00+03', '2017-07-27 15:51:00+03']
+
+## Table seats:
+aircraft_code: The type is character(3), Which does not inlude Null and is Non-Unique. Values format like: [763, 773, 319]
+seat_no: The type is character varying(4), Which does not inlude Null and is Non-Unique. Values format like: ['31J', '9F', '14K']
+fare_conditions: The type is character varying(10), Which does not inlude Null and is Non-Unique. Values format like: ['Comfort', 'Business', 'Economy']
+
+## Table ticket_flights:
+ticket_no: The type is character(13), Which does not inlude Null and is Non-Unique. Values format like: [5433679943, 5434140394, 5434373943]
+flight_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [28173, 12199, 6729]
+fare_conditions: The type is character varying(10), Which does not inlude Null and is Non-Unique. Values format like: ['Business', 'Comfort', 'Economy']
+amount: The type is numeric(10,2), Which does not inlude Null and is Non-Unique. Values format like: [39100, 99800, 51100]
+
+## Table tickets:
+ticket_no: The type is character(13), Which does not inlude Null and is Unique. Values format like: [5435462214, 5434504810, 5434025255]
+book_ref: The type is character(6), Which does not inlude Null and is Non-Unique. Values format like: ['2C4E01', 'E3FF6B', '8E947D']
+passenger_id: The type is character varying(20), Which does not inlude Null and is Unique. Values format like: ['4098 744370', '0165 915763', '9031 712502']
+
+#Forigen keys:
+
+
+# Database Description:
+The database is designed to manage and store information related to airline operations. It includes details about aircraft, airports, flights, bookings, tickets, and passengers. The database is structured to support airline management systems, providing comprehensive data for flight scheduling, ticketing, and passenger management.
+
+# Tables Descriptions:
+
+## 1. `aircrafts_data`:
+- **Description**: Contains information about aircraft models and their specifications.
+- **Columns**:
+  - `aircraft_code`: A unique 3-character code representing the aircraft type.
+  - `model`: A JSONB field containing the aircraft model name in multiple languages.
+  - `range`: The maximum range of the aircraft in kilometers.
+
+## 2. `airports_data`:
+- **Description**: Stores details about airports, including their codes, names, and locations.
+- **Columns**:
+  - `airport_code`: A unique 3-character IATA code for the airport.
+  - `airport_name`: A JSONB field containing the airport name in multiple languages.
+  - `city`: A JSONB field containing the city name in multiple languages.
+  - `coordinates`: A point field representing the geographical coordinates of the airport.
+  - `timezone`: The timezone of the airport.
+
+## 3. `boarding_passes`:
+- **Description**: Tracks boarding pass details for passengers on specific flights.
+- **Columns**:
+  - `ticket_no`: The ticket number associated with the boarding pass.
+  - `flight_id`: The flight ID for which the boarding pass is issued.
+  - `boarding_no`: The boarding sequence number.
+  - `seat_no`: The seat number assigned to the passenger.
+
+## 4. `bookings`:
+- **Description**: Contains information about flight bookings.
+- **Columns**:
+  - `book_ref`: A unique booking reference code.
+  - `book_date`: The date and time when the booking was made.
+  - `total_amount`: The total amount paid for the booking.
+
+## 5. `flights`:
+- **Description**: Stores details about scheduled and actual flight operations.
+- **Columns**:
+  - `flight_id`: A unique identifier for the flight.
+  - `flight_no`: The flight number.
+  - `scheduled_departure`: The scheduled departure time.
+  - `scheduled_arrival`: The scheduled arrival time.
+  - `departure_airport`: The IATA code of the departure airport.
+  - `arrival_airport`: The IATA code of the arrival airport.
+  - `status`: The current status of the flight (e.g., Scheduled, Delayed, Arrived).
+  - `aircraft_code`: The aircraft code used for the flight.
+  - `actual_departure`: The actual departure time.
+  - `actual_arrival`: The actual arrival time.
+
+## 6. `seats`:
+- **Description**: Contains information about the seating arrangements on aircraft.
+- **Columns**:
+  - `aircraft_code`: The aircraft code to which the seat belongs.
+  - `seat_no`: The seat number.
+  - `fare_conditions`: The fare class of the seat (e.g., Economy, Business, Comfort).
+
+## 7. `ticket_flights`:
+- **Description**: Links tickets to flights and provides fare and payment details.
+- **Columns**:
+  - `ticket_no`: The ticket number.
+  - `flight_id`: The flight ID associated with the ticket.
+  - `fare_conditions`: The fare class of the ticket.
+  - `amount`: The amount paid for the ticket.
+
+## 8. `tickets`:
+- **Description**: Stores information about tickets issued to passengers.
+- **Columns**:
+  - `ticket_no`: A unique ticket number.
+  - `book_ref`: The booking reference associated with the ticket.
+  - `passenger_id`: A unique identifier for the
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: Distribute all the unique city pairs into the distance ranges 0, 1000, 2000, 3000, 4000, 5000, and 6000+, based on their average distance of all routes between them. Then how many pairs are there in the distance range with the fewest unique city paires? */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries the distribution of unique city pairs into specific distance ranges based on their average distance. It requires counting the pairs in the range with the fewest unique city pairs. Relevant columns include city names and average distance.
+#columns: routes.source_city, routes.dest_city, routes.distance_km
+#values: "0-1000", "1000-2000", "2000-3000", "3000-4000", "4000-5000", "6000+"
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+Distribute all the unique city pairs into the distance ranges 0, 1000, 2000, 3000, 4000, 5000, and 6000+, based on their average distance of all routes between them. Then how many pairs are there in the distance range with the fewest unique city paires?
+
+############################## AI at step extract_query_noun ##############################
+
+"city", "pairs", "distance ranges", "0", "1000", "2000", "3000", "4000", "5000", "6000+", "average distance", "routes", "distance range", "unique city pairs"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: Distribute all the unique city pairs into the distance ranges 0, 1000, 2000, 3000, 4000, 5000, and 6000+, based on their average distance of all routes between them. Then how many pairs are there in the distance range with the fewest unique city paires?
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "Distribute",
+      "J": null,
+      "I": ["all the unique city pairs"],
+      "C": [
+        "into the distance ranges 0, 1000, 2000, 3000, 4000, 5000, and 6000+",
+        "based on their average distance of all routes between them"
+      ]
+    }
+  },
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "how many",
+      "J": null,
+      "I": ["pairs"],
+      "C": [
+        "are there in the distance range with the fewest unique city pairs"
+      ]
+    }
+  }
+]
+```
+

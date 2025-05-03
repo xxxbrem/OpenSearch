@@ -1,0 +1,374 @@
+############################## Human at step generate_db_schema ##############################
+
+/* Here is a examples about describe database */
+    #Forigen keys: 
+    Airlines.ORIGIN = Airports.Code, Airlines.DEST = Airports.Code, Airlines.OP_CARRIER_AIRLINE_ID = Air Carriers.Code
+    #Database Description: The database encompasses information related to flights, including airlines, airports, and flight operations.
+    #Tables Descriptions:
+    Air Carriers: Codes and descriptive information about airlines
+    Airports: IATA codes and descriptions of airports
+    Airlines: Detailed information about flights 
+
+    /* Here is a examples about describe database */
+    #Forigen keys:
+    data.ID = price.ID, production.ID = price.ID, production.ID = data.ID, production.country = country.origin
+    #Database Description: The database contains information related to cars, including country, price, specifications, Production
+    #Tables Descriptions:
+    Country: Names of the countries where the cars originate from.
+    Price: Price of the car in USD.
+    Data: Information about the car's specifications
+    Production: Information about car's production.
+
+    /* Describe the following database */
+    Database Management System: SQLite
+#Database name: WWE
+## Table Promotions:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3211, 9876, 10963]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['WCW', 'WWE', 'WWWF']
+
+## Table Tables:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [9481, 7201, 8841]
+html: The type is TEXT, Which does not inlude Null and is Unique. Values format: <Long text>
+url: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['http://www.profightdb.com/cards/wwe-cards-pg579-no-2.html?order=&type=', 'http://www.profightdb.com/cards/wwe-cards-pg32-no-2.html?order=&type=', 'http://www.profightdb.com/cards/nxt-cards-pg116-no-103.html?order=&type=']
+
+## Table Cards:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2543, 4941, 1782]
+table_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5881, 1520, 2950]
+location_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4286, 548, 11781]
+promotion_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 3211, 9876]
+event_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-10-30', '2006-04-22', '2014-07-21']
+event_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2138, 1862, 3165]
+url: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['http://www.profightdb.com/cards/wwe/main-event-taping-30288.html', 'http://www.profightdb.com/cards/wwe/205-live-32-26190.html', 'http://www.profightdb.com/cards/wwe/wwe-live-22857.html']
+info_html: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format: <Long text>
+match_html: The type is TEXT, Which does not inlude Null and is Unique. Values format: <Long text>
+
+## Table Locations:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [438, 10922, 36]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['State College, Pennsylvania', 'Turin, Piedmont', 'Antwerp, Antwerp']
+
+## Table Events:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7202, 12568, 2832]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ["Stomping Grounds '19", 'TV Taping #49', 'Velocity #54 Taping']
+
+## Table Matches:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [145399, 108289, 285329]
+card_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4542, 526, 10396]
+winner_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [4370, 31012, 53361]
+win_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['def.', '(sub)', 'draw (time)']
+loser_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [108848, 25944, 7871]
+match_type_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [49361, 1671, 62705]
+duration: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['03:55', '16:53', '13:50']
+title_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [21186, 57883, 1633]
+title_change: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+
+## Table Belts:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [47991, 11029, 51484]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['WWE United States Championship WWE World Heavyweight Championship', 'WWE European Championship WWE Intercontinental Championship', 'WWF King of the Ring']
+
+## Table Wrestlers:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [118650, 104734, 77548]
+name: The type is , Which does not inlude Null and is Unique. Values format like: ['R-Truth & Rey Mysterio', 'Bayley & Tamina', 'Bobo Brazil & Ernie Ladd']
+
+## Table Match_Types:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [57570, 14896, 9292]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['dark no holds barred', 'no disqualification bullrope', '"Lights Out"']
+
+#Forigen keys:
+
+
+    Please conclude the database in the following format:
+    #Database Description:
+    #Tables Descriptions:
+    
+
+############################## AI at step generate_db_schema ##############################
+
+# Database Description:
+The WWE database is designed to store and manage information related to professional wrestling events, promotions, matches, wrestlers, and associated metadata. It includes details about promotions, event locations, match types, belts, and more. The database is structured to provide a comprehensive view of wrestling history, including event details, match outcomes, and wrestler statistics.
+
+# Tables Descriptions:
+
+## Promotions:
+- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique identifier for each promotion (e.g., WWE, WCW).
+- **name**: TEXT, NOT NULL, UNIQUE. The name of the wrestling promotion.
+
+## Tables:
+- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique identifier for each table.
+- **html**: TEXT, NOT NULL, UNIQUE. Contains long HTML content related to the table.
+- **url**: TEXT, NOT NULL, UNIQUE. The URL associated with the table.
+
+## Cards:
+- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique identifier for each card.
+- **table_id**: INTEGER, NOT NULL, NON-UNIQUE. Foreign key referencing the `Tables.id` column.
+- **location_id**: INTEGER, NOT NULL, NON-UNIQUE. Foreign key referencing the `Locations.id` column.
+- **promotion_id**: INTEGER, NOT NULL, NON-UNIQUE. Foreign key referencing the `Promotions.id` column.
+- **event_date**: TEXT, NOT NULL, NON-UNIQUE. The date of the event in the format 'YYYY-MM-DD'.
+- **event_id**: INTEGER, NOT NULL, NON-UNIQUE. Foreign key referencing the `Events.id` column.
+- **url**: TEXT, NOT NULL, UNIQUE. The URL associated with the card.
+- **info_html**: TEXT, NOT NULL, NON-UNIQUE. Contains long HTML content with additional information about the card.
+- **match_html**: TEXT, NOT NULL, UNIQUE. Contains long HTML content with match details.
+
+## Locations:
+- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique identifier for each location.
+- **name**: TEXT, NOT NULL, UNIQUE. The name of the location (e.g., city and state).
+
+## Events:
+- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique identifier for each event.
+- **name**: TEXT, NOT NULL, UNIQUE. The name of the event (e.g., "Stomping Grounds '19").
+
+## Matches:
+- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique identifier for each match.
+- **card_id**: INTEGER, NOT NULL, NON-UNIQUE. Foreign key referencing the `Cards.id` column.
+- **winner_id**: TEXT, NOT NULL, NON-UNIQUE. Foreign key referencing the `Wrestlers.id` column for the winner.
+- **win_type**: TEXT, NOT NULL, NON-UNIQUE. The type of win (e.g., 'def.', '(sub)', 'draw (time)').
+- **loser_id**: TEXT, NOT NULL, NON-UNIQUE. Foreign key referencing the `Wrestlers.id` column for the loser.
+- **match_type_id**: TEXT, NOT NULL, NON-UNIQUE. Foreign key referencing the `Match_Types.id` column.
+- **duration**: TEXT, NOT NULL, NON-UNIQUE. The duration of the match in the format 'MM:SS'.
+- **title_id**: TEXT, NOT NULL, NON-UNIQUE. Foreign key referencing the `Belts.id` column.
+- **title_change**: INTEGER, NOT NULL, NON-UNIQUE. Indicates whether a title changed hands during the match (0 = No, 1 = Yes).
+
+## Belts:
+- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique
+
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: What is the average length (in minutes) of NXT title matches in which the title actually changed hands? */
+SELECT AVG(M.match_length) 
+FROM matches AS M
+WHERE M.is_title_change = 'Yes';
+
+/* Answer the following: Which wrestler has appeared in the greatest number of NXT title matches?  */
+SELECT W.name
+FROM wrestlers AS W
+JOIN match_wrestlers AS MW ON W.wrestler_id = MW.wrestler_id
+JOIN matches AS M ON M.match_id = MW.match_id
+GROUP BY W.wrestler_id
+ORDER BY COUNT(*) DESC
+LIMIT 1;
+
+/* Answer the following: List every NXT title that has never changed hands. */
+SELECT T.name
+FROM titles AS T
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM matches AS M
+    WHERE M.title_id = T.title_id 
+      AND M.is_title_change = 'Yes'
+);
+
+/* Answer the following: How many NXT title matches lasted longer than 25 minutes? 25 minutes refers to match_length > 25. */
+SELECT COUNT(*) 
+FROM matches 
+WHERE match_length > 25;
+
+/* Answer the following: On what earliest date was the “NXT Women’s Championship” defended? */
+SELECT MIN(M.date) 
+FROM matches AS M
+JOIN titles  AS T ON T.title_id = M.title_id
+WHERE T.name = 'NXT Women''s Championship';
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: WWE
+## Table Promotions:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3211, 9876, 10963]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['WCW', 'WWE', 'WWWF']
+
+## Table Tables:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [9481, 7201, 8841]
+html: The type is TEXT, Which does not inlude Null and is Unique. Values format: <Long text>
+url: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['http://www.profightdb.com/cards/wwe-cards-pg579-no-2.html?order=&type=', 'http://www.profightdb.com/cards/wwe-cards-pg32-no-2.html?order=&type=', 'http://www.profightdb.com/cards/nxt-cards-pg116-no-103.html?order=&type=']
+
+## Table Cards:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2543, 4941, 1782]
+table_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5881, 1520, 2950]
+location_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4286, 548, 11781]
+promotion_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 3211, 9876]
+event_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-10-30', '2006-04-22', '2014-07-21']
+event_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2138, 1862, 3165]
+url: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['http://www.profightdb.com/cards/wwe/main-event-taping-30288.html', 'http://www.profightdb.com/cards/wwe/205-live-32-26190.html', 'http://www.profightdb.com/cards/wwe/wwe-live-22857.html']
+info_html: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format: <Long text>
+match_html: The type is TEXT, Which does not inlude Null and is Unique. Values format: <Long text>
+
+## Table Locations:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [438, 10922, 36]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['State College, Pennsylvania', 'Turin, Piedmont', 'Antwerp, Antwerp']
+
+## Table Events:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7202, 12568, 2832]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ["Stomping Grounds '19", 'TV Taping #49', 'Velocity #54 Taping']
+
+## Table Matches:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [145399, 108289, 285329]
+card_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4542, 526, 10396]
+winner_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [4370, 31012, 53361]
+win_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['def.', '(sub)', 'draw (time)']
+loser_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [108848, 25944, 7871]
+match_type_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [49361, 1671, 62705]
+duration: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['03:55', '16:53', '13:50']
+title_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [21186, 57883, 1633]
+title_change: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+
+## Table Belts:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [47991, 11029, 51484]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['WWE United States Championship WWE World Heavyweight Championship', 'WWE European Championship WWE Intercontinental Championship', 'WWF King of the Ring']
+
+## Table Wrestlers:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [118650, 104734, 77548]
+name: The type is , Which does not inlude Null and is Unique. Values format like: ['R-Truth & Rey Mysterio', 'Bayley & Tamina', 'Bobo Brazil & Ernie Ladd']
+
+## Table Match_Types:
+id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [57570, 14896, 9292]
+name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['dark no holds barred', 'no disqualification bullrope', '"Lights Out"']
+
+#Forigen keys:
+
+
+# Database Description:
+The WWE database is designed to store and manage information related to professional wrestling events, promotions, matches, wrestlers, and associated metadata. It includes details about promotions, event locations, match types, belts, and more. The database is structured to provide a comprehensive view of wrestling history, including event details, match outcomes, and wrestler statistics.
+
+# Tables Descriptions:
+
+## Promotions:
+- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique identifier for each promotion (e.g., WWE, WCW).
+- **name**: TEXT, NOT NULL, UNIQUE. The name of the wrestling promotion.
+
+## Tables:
+- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique identifier for each table.
+- **html**: TEXT, NOT NULL, UNIQUE. Contains long HTML content related to the table.
+- **url**: TEXT, NOT NULL, UNIQUE. The URL associated with the table.
+
+## Cards:
+- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique identifier for each card.
+- **table_id**: INTEGER, NOT NULL, NON-UNIQUE. Foreign key referencing the `Tables.id` column.
+- **location_id**: INTEGER, NOT NULL, NON-UNIQUE. Foreign key referencing the `Locations.id` column.
+- **promotion_id**: INTEGER, NOT NULL, NON-UNIQUE. Foreign key referencing the `Promotions.id` column.
+- **event_date**: TEXT, NOT NULL, NON-UNIQUE. The date of the event in the format 'YYYY-MM-DD'.
+- **event_id**: INTEGER, NOT NULL, NON-UNIQUE. Foreign key referencing the `Events.id` column.
+- **url**: TEXT, NOT NULL, UNIQUE. The URL associated with the card.
+- **info_html**: TEXT, NOT NULL, NON-UNIQUE. Contains long HTML content with additional information about the card.
+- **match_html**: TEXT, NOT NULL, UNIQUE. Contains long HTML content with match details.
+
+## Locations:
+- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique identifier for each location.
+- **name**: TEXT, NOT NULL, UNIQUE. The name of the location (e.g., city and state).
+
+## Events:
+- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique identifier for each event.
+- **name**: TEXT, NOT NULL, UNIQUE. The name of the event (e.g., "Stomping Grounds '19").
+
+## Matches:
+- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique identifier for each match.
+- **card_id**: INTEGER, NOT NULL, NON-UNIQUE. Foreign key referencing the `Cards.id` column.
+- **winner_id**: TEXT, NOT NULL, NON-UNIQUE. Foreign key referencing the `Wrestlers.id` column for the winner.
+- **win_type**: TEXT, NOT NULL, NON-UNIQUE. The type of win (e.g., 'def.', '(sub)', 'draw (time)').
+- **loser_id**: TEXT, NOT NULL, NON-UNIQUE. Foreign key referencing the `Wrestlers.id` column for the loser.
+- **match_type_id**: TEXT, NOT NULL, NON-UNIQUE. Foreign key referencing the `Match_Types.id` column.
+- **duration**: TEXT, NOT NULL, NON-UNIQUE. The duration of the match in the format 'MM:SS'.
+- **title_id**: TEXT, NOT NULL, NON-UNIQUE. Foreign key referencing the `Belts.id` column.
+- **title_change**: INTEGER, NOT NULL, NON-UNIQUE. Indicates whether a title changed hands during the match (0 = No, 1 = Yes).
+
+## Belts:
+- **id**: INTEGER, NOT NULL, UNIQUE. Represents the unique
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: For the NXT title that had the shortest match (excluding titles with "title change"), what were the names of the two wrestlers involved? */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries the shortest match for an NXT title excluding "title change" and requires the names of the two wrestlers involved. The related columns include match duration, title change status, title name, and wrestler names.
+#columns: matches.duration, matches.title_change, belts.name, wrestlers.name, matches.winner_id, matches.loser_id
+#values: "0"
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+For the NXT title that had the shortest match (excluding titles with "title change"), what were the names of the two wrestlers involved?
+
+############################## AI at step extract_query_noun ##############################
+
+"titles", "match", "title change", "names", "wrestlers", "NXT title", "shortest match", "two wrestlers"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: For the NXT title that had the shortest match (excluding titles with "title change"), what were the names of the two wrestlers involved?
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "what",
+      "J": null,
+      "I": ["the names of the two wrestlers involved"],
+      "C": [
+        "of the NXT title",
+        "that had the shortest match",
+        "excluding titles with 'title change'"
+      ]
+    }
+  }
+]
+```
+

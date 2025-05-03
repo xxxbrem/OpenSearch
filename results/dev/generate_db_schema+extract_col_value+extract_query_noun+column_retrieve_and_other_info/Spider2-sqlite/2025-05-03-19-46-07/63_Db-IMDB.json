@@ -1,0 +1,506 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: Db-IMDB\n## Table Movie:\nindex: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1538, 2263, 2491]\nMID: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt0137947', 'tt0327437', 'tt1821385']\ntitle: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Khubsoorat', 'Kucch To Hai', 'Bhupathi']\nyear: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [1985, 1987, 1962]\nrating: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [3, 1, 6]\nnum_votes: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [836, 184585, 522]\n\n## Table Genre:\nindex: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [294, 45, 104]\nName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Drama, Romance, Thriller            ', 'Comedy, Crime, Family            ', 'Crime, Horror, Mystery            ']\nGID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [57, 71, 185]\n\n## Table Language:\nindex: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [18, 12, 15]\nName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Mandarin', 'Swiss German', 'Kannada']\nLAID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [23, 19, 17]\n\n## Table Country:\nindex: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [28, 14, 31]\nName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Hong Kong', 'Spain', 'Iceland']\nCID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [30, 8, 9]\n\n## Table Location:\nindex: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [18, 293, 225]\nName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Harrods, Brompton Road, Knightsbridge, London, England, UK', 'Bangkok, Thailand', 'Ye Olde Cheshire Cheese, Fleet Street, London, UK']\nLID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [408, 540, 149]\n\n## Table M_Location:\nindex: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [252, 2169, 1378]\nMID: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt6747420', 'tt0102835', 'tt0046427']\nLID: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [499, 85, 494]\nID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2726, 286, 563]\n\n## Table M_Country:\nindex: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3204, 3043, 678]\nMID: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt0068929', 'tt2401719', 'tt2658126']\nCID: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [33, 21, 6]\nID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1257, 303, 1075]\n\n## Table M_Language:\nindex: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1005, 3041, 374]\nMID: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt0286640', 'tt6040012', 'tt0286934']\nLAID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [30, 2, 6]\nID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1666, 2942, 2500]\n\n## Table M_Genre:\nindex: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [364, 2748, 1708]\nMID: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt0147843', 'tt1603862', 'tt0125556']\nGID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [127, 115, 318]\nID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3221, 1669, 1600]\n\n## Table Person:\nindex: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [33694, 24660, 33216]\nPID: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['nm2864164', 'nm0610268', 'nm0045393']\nName: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: [' Soma Adhikari', ' Ishtiaq', ' Uma Kamesh']\nGender: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['Male', 'Female']\n\n## Table M_Producer:\nindex: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2730, 10145, 7955]\nMID: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt2957126', 'tt0073191', 'tt0438153']\nPID: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: [' nm1402514', ' nm0201951', ' nm8753450']\nID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1563, 544, 5426]\n\n## Table M_Director:\nindex: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3149, 2179, 3017]\nMID: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt0272735', 'tt7218518', 'tt1688092']\nPID: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['nm0665374', 'nm5455809', 'nm3085237']\nID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1163, 3268, 2485]\n\n## Table M_Cast:\nindex: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [66166, 41024, 79917]\nMID: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt5780570', 'tt2369154', 'tt0338721']\nPID: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: [' nm1175047', ' nm6929455', ' nm1930468']\nID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [19876, 19678, 54307]\n\n#Forigen keys:\n\n\n#Database Description:\nThe database `Db-IMDB` is designed to store and manage information related to movies, including their genres, languages, countries, filming locations, and associated personnel such as producers, directors, and cast members. It provides detailed metadata about movies, including ratings, votes, and production details, as well as relationships between movies and their attributes.\n\n#Tables Descriptions:\n\n1. **Movie**:  \n   Contains detailed information about movies, including their unique identifiers (`MID`), titles, release years, ratings, and the number of votes they received.\n\n2. **Genre**:  \n   Stores information about movie genres, including unique genre identifiers (`GID`) and descriptive names.\n\n3. **Language**:  \n   Contains information about languages used in movies, including unique language identifiers (`LAID`) and names.\n\n4. **Country**:  \n   Stores information about countries associated with movies, including unique country identifiers (`CID`) and names.\n\n5. **Location**:  \n   Contains information about filming locations, including unique location identifiers (`LID`) and descriptive names.\n\n6. **M_Location**:  \n   Represents the relationship between movies (`MID`) and their filming locations (`LID`). Each record is uniquely identified by an `ID`.\n\n7. **M_Country**:  \n   Represents the relationship between movies (`MID`) and their associated countries (`CID`). Each record is uniquely identified by an `ID`.\n\n8. **M_Language**:  \n   Represents the relationship between movies (`MID`) and their associated languages (`LAID`). Each record is uniquely identified by an `ID`.\n\n9. **M_Genre**:  \n   Represents the relationship between movies (`MID`) and their associated genres (`GID`). Each record is uniquely identified by an `ID`.\n\n10. **Person**:  \n    Contains information about individuals associated with movies, including their unique identifiers (`PID`), names, and genders.\n\n11. **M_Producer**:  \n    Represents the relationship between movies (`MID`) and their producers (`PID`). Each record is uniquely identified by an `ID`.\n\n12. **M_Director**:  \n    Represents the relationship between movies (`MID`) and their directors (`PID`). Each record is uniquely identified by an `ID`.\n\n13. **M_Cast**:  \n    Represents the relationship between movies (`MID`) and their cast members (`PID`). Each record is uniquely identified by an `ID`.\n\n#Foreign Keys:\n- **M_Location**: `MID` references `Movie.MID`, `LID` references `Location.LID`.\n- **M_Country**: `MID` references `Movie.MID`, `CID` references `Country.CID`.\n- **M_Language**: `MID` references `Movie.MID`, `LAID` references `Language.LAID`.\n- **M_Genre**: `MID` references `Movie.MID`, `GID` references `Genre.GID`.\n- **M_Producer**: `MID` references `Movie.MID`, `PID` references `Person.PID`.\n- **M_Director**: `MID` references `Movie.MID`, `PID` references `Person.PID`.\n- **M_Cast**: `MID` references `Movie.MID`, `PID` references `Person.PID`.\n",
+        "db_col_dic": {
+            "Movie.index": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1538, 2263, 2491]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1538, 2263, 2491]"
+            ],
+            "Movie.MID": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt0137947', 'tt0327437', 'tt1821385']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['tt0137947', 'tt0327437', 'tt1821385']"
+            ],
+            "Movie.title": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Khubsoorat', 'Kucch To Hai', 'Bhupathi']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Khubsoorat', 'Kucch To Hai', 'Bhupathi']"
+            ],
+            "Movie.year": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [1985, 1987, 1962]",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "[1985, 1987, 1962]"
+            ],
+            "Movie.rating": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [3, 1, 6]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 1, 6]"
+            ],
+            "Movie.num_votes": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [836, 184585, 522]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[836, 184585, 522]"
+            ],
+            "Genre.index": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [294, 45, 104]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[294, 45, 104]"
+            ],
+            "Genre.Name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Drama, Romance, Thriller            ', 'Comedy, Crime, Family            ', 'Crime, Horror, Mystery            ']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Drama, Romance, Thriller            ', 'Comedy, Crime, Family            ', 'Crime, Horror, Mystery            ']"
+            ],
+            "Genre.GID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [57, 71, 185]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[57, 71, 185]"
+            ],
+            "Language.index": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [18, 12, 15]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[18, 12, 15]"
+            ],
+            "Language.Name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Mandarin', 'Swiss German', 'Kannada']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Mandarin', 'Swiss German', 'Kannada']"
+            ],
+            "Language.LAID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [23, 19, 17]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[23, 19, 17]"
+            ],
+            "Country.index": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [28, 14, 31]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[28, 14, 31]"
+            ],
+            "Country.Name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Hong Kong', 'Spain', 'Iceland']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Hong Kong', 'Spain', 'Iceland']"
+            ],
+            "Country.CID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [30, 8, 9]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[30, 8, 9]"
+            ],
+            "Location.index": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [18, 293, 225]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[18, 293, 225]"
+            ],
+            "Location.Name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Harrods, Brompton Road, Knightsbridge, London, England, UK', 'Bangkok, Thailand', 'Ye Olde Cheshire Cheese, Fleet Street, London, UK']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Harrods, Brompton Road, Knightsbridge, London, England, UK', 'Bangkok, Thailand', 'Ye Olde Cheshire Cheese, Fleet Street, London, UK']"
+            ],
+            "Location.LID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [408, 540, 149]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[408, 540, 149]"
+            ],
+            "M_Location.index": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [252, 2169, 1378]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[252, 2169, 1378]"
+            ],
+            "M_Location.MID": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt6747420', 'tt0102835', 'tt0046427']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['tt6747420', 'tt0102835', 'tt0046427']"
+            ],
+            "M_Location.LID": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [499, 85, 494]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[499, 85, 494]"
+            ],
+            "M_Location.ID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2726, 286, 563]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[2726, 286, 563]"
+            ],
+            "M_Country.index": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3204, 3043, 678]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[3204, 3043, 678]"
+            ],
+            "M_Country.MID": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt0068929', 'tt2401719', 'tt2658126']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['tt0068929', 'tt2401719', 'tt2658126']"
+            ],
+            "M_Country.CID": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [33, 21, 6]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[33, 21, 6]"
+            ],
+            "M_Country.ID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1257, 303, 1075]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1257, 303, 1075]"
+            ],
+            "M_Language.index": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1005, 3041, 374]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1005, 3041, 374]"
+            ],
+            "M_Language.MID": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt0286640', 'tt6040012', 'tt0286934']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['tt0286640', 'tt6040012', 'tt0286934']"
+            ],
+            "M_Language.LAID": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [30, 2, 6]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[30, 2, 6]"
+            ],
+            "M_Language.ID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1666, 2942, 2500]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1666, 2942, 2500]"
+            ],
+            "M_Genre.index": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [364, 2748, 1708]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[364, 2748, 1708]"
+            ],
+            "M_Genre.MID": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt0147843', 'tt1603862', 'tt0125556']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['tt0147843', 'tt1603862', 'tt0125556']"
+            ],
+            "M_Genre.GID": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [127, 115, 318]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[127, 115, 318]"
+            ],
+            "M_Genre.ID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3221, 1669, 1600]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[3221, 1669, 1600]"
+            ],
+            "Person.index": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [33694, 24660, 33216]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[33694, 24660, 33216]"
+            ],
+            "Person.PID": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['nm2864164', 'nm0610268', 'nm0045393']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['nm2864164', 'nm0610268', 'nm0045393']"
+            ],
+            "Person.Name": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: [' Soma Adhikari', ' Ishtiaq', ' Uma Kamesh']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "[' Soma Adhikari', ' Ishtiaq', ' Uma Kamesh']"
+            ],
+            "Person.Gender": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: ['Male', 'Female']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Male', 'Female']"
+            ],
+            "M_Producer.index": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2730, 10145, 7955]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[2730, 10145, 7955]"
+            ],
+            "M_Producer.MID": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt2957126', 'tt0073191', 'tt0438153']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['tt2957126', 'tt0073191', 'tt0438153']"
+            ],
+            "M_Producer.PID": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: [' nm1402514', ' nm0201951', ' nm8753450']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "[' nm1402514', ' nm0201951', ' nm8753450']"
+            ],
+            "M_Producer.ID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1563, 544, 5426]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1563, 544, 5426]"
+            ],
+            "M_Director.index": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3149, 2179, 3017]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[3149, 2179, 3017]"
+            ],
+            "M_Director.MID": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt0272735', 'tt7218518', 'tt1688092']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['tt0272735', 'tt7218518', 'tt1688092']"
+            ],
+            "M_Director.PID": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['nm0665374', 'nm5455809', 'nm3085237']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['nm0665374', 'nm5455809', 'nm3085237']"
+            ],
+            "M_Director.ID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1163, 3268, 2485]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1163, 3268, 2485]"
+            ],
+            "M_Cast.index": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [66166, 41024, 79917]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[66166, 41024, 79917]"
+            ],
+            "M_Cast.MID": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt5780570', 'tt2369154', 'tt0338721']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['tt5780570', 'tt2369154', 'tt0338721']"
+            ],
+            "M_Cast.PID": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: [' nm1175047', ' nm6929455', ' nm1930468']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "[' nm1175047', ' nm6929455', ' nm1930468']"
+            ],
+            "M_Cast.ID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [19876, 19678, 54307]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[19876, 19678, 54307]"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries actors' active career span and checks for gaps in movie appearances. The relevant columns include actor names, movie years, and actor IDs. The values include the year range and actor IDs.\n#columns: Person.PID, Person.Name, Movie.year, M_Cast.MID\n#values: \"3\"\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "career",
+            "film credit",
+            "span",
+            "new movie appearance",
+            "gap",
+            "movie",
+            "first year",
+            "year",
+            "active career",
+            "appearance",
+            "3",
+            "film",
+            "actors",
+            "last year",
+            "last",
+            "single film credit",
+            "years",
+            "database",
+            "actor"
+        ],
+        "col": "Person.PID, Person.Name, Movie.year, M_Cast.MID",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [
+            [
+                "Movie.title",
+                "The Film"
+            ]
+        ],
+        "column": "Country.Name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Hong Kong', 'Spain', 'Iceland']\nGenre.Name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Drama, Romance, Thriller            ', 'Comedy, Crime, Family            ', 'Crime, Horror, Mystery            ']\nLanguage.LAID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [23, 19, 17]\nLanguage.Name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Mandarin', 'Swiss German', 'Kannada']\nLocation.Name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Harrods, Brompton Road, Knightsbridge, London, England, UK', 'Bangkok, Thailand', 'Ye Olde Cheshire Cheese, Fleet Street, London, UK']\nM_Cast.MID: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt5780570', 'tt2369154', 'tt0338721']\nM_Cast.PID: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: [' nm1175047', ' nm6929455', ' nm1930468']\nM_Country.MID: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt0068929', 'tt2401719', 'tt2658126']\nM_Director.MID: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt0272735', 'tt7218518', 'tt1688092']\nM_Director.PID: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['nm0665374', 'nm5455809', 'nm3085237']\nM_Genre.MID: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt0147843', 'tt1603862', 'tt0125556']\nM_Language.LAID: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [30, 2, 6]\nM_Language.MID: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt0286640', 'tt6040012', 'tt0286934']\nM_Location.MID: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt6747420', 'tt0102835', 'tt0046427']\nM_Producer.MID: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tt2957126', 'tt0073191', 'tt0438153']\nM_Producer.PID: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: [' nm1402514', ' nm0201951', ' nm8753450']\nMovie.MID: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['tt0137947', 'tt0327437', 'tt1821385']\nMovie.rating: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [3, 1, 6]\nMovie.title: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Khubsoorat', 'Kucch To Hai', 'Bhupathi']\nMovie.year: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [1985, 1987, 1962]\nPerson.Name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: [' Soma Adhikari', ' Ishtiaq', ' Uma Kamesh']\nPerson.PID: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['nm2864164', 'nm0610268', 'nm0045393']",
+        "foreign_keys": "",
+        "foreign_set": [],
+        "q_order": [
+            "how many actors"
+        ],
+        "status": "success"
+    }
+]

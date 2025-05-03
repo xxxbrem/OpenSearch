@@ -1,0 +1,435 @@
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following: Which U.S. city recorded the greatest percentage growth in total sales of promo_id = 999 products from Q4 2019 (calendar_quarter_id = 1772) to Q4 2020 (calendar_quarter_id = 1776)? */
+WITH q19 AS (
+    SELECT city_id ,
+           SUM(sales_amount) AS s19
+    FROM sales  AS S
+    JOIN city   AS C USING (city_id)
+    WHERE S.promo_id = 999
+      AND S.calendar_quarter_id = 1772
+      AND C.country = 'United States'
+    GROUP BY city_id
+),
+q20 AS (
+    SELECT city_id ,
+           SUM(sales_amount) AS s20
+    FROM sales  AS S
+    JOIN city   AS C USING (city_id)
+    WHERE S.promo_id = 999
+      AND S.calendar_quarter_id = 1776
+      AND C.country = 'United States'
+    GROUP BY city_id
+),
+pct AS (
+    SELECT q20.city_id ,
+           (q20.s20 - q19.s19) * 100.0 / NULLIF(q19.s19,0) AS pct_growth
+    FROM q20
+    JOIN q19 USING (city_id)
+)
+SELECT C.city_name
+FROM pct
+JOIN city C USING (city_id)
+ORDER BY pct_growth DESC
+LIMIT 1;
+
+/* Answer the following: What was the overall percentage change in total U.S. sales of promo_id = 999 products from Q4 2019 to Q4 2020? */
+WITH totals AS (
+    SELECT calendar_quarter_id,
+           SUM(sales_amount) AS amt
+    FROM sales S
+    JOIN city C USING (city_id)
+    WHERE S.promo_id = 999
+      AND S.calendar_quarter_id IN (1772,1776)
+      AND C.country = 'United States'
+    GROUP BY calendar_quarter_id
+)
+SELECT (MAX(CASE WHEN calendar_quarter_id = 1776 THEN amt END) -
+        MAX(CASE WHEN calendar_quarter_id = 1772 THEN amt END)) * 100.0
+        / MAX(CASE WHEN calendar_quarter_id = 1772 THEN amt END)  AS pct_change
+FROM totals;
+
+/* Answer the following: What is the average Q4 2020 sales amount for products whose U.S. sales grew by at least 50 % between the two quarters under promo_id = 999? */
+WITH q19 AS (
+    SELECT product_id ,
+           SUM(sales_amount) AS s19
+    FROM sales S
+    JOIN city C USING (city_id)
+    WHERE S.promo_id = 999
+      AND S.calendar_quarter_id = 1772
+      AND C.country = 'United States'
+    GROUP BY product_id
+),
+q20 AS (
+    SELECT product_id ,
+           SUM(sales_amount) AS s20
+    FROM sales S
+    JOIN city C USING (city_id)
+    WHERE S.promo_id = 999
+      AND S.calendar_quarter_id = 1776
+      AND C.country = 'United States'
+    GROUP BY product_id
+)
+SELECT AVG(q20.s20) AS avg_sales_2020
+FROM q20
+JOIN q19 USING (product_id)
+WHERE (q20.s20 - q19.s19) * 100.0 / NULLIF(q19.s19,0) >= 50;
+
+/* Answer the following: List the five products that gained the most absolute sales dollars in the United States between Q4 2019 and Q4 2020 for promo_id = 999. */
+WITH q19 AS (
+    SELECT product_id , SUM(sales_amount) AS s19
+    FROM sales S JOIN city C USING (city_id)
+    WHERE S.promo_id = 999 AND S.calendar_quarter_id = 1772
+      AND C.country = 'United States'
+    GROUP BY product_id
+),
+q20 AS (
+    SELECT product_id , SUM(sales_amount) AS s20
+    FROM sales S JOIN city C USING (city_id)
+    WHERE S.promo_id = 999 AND S.calendar_quarter_id = 1776
+      AND C.country = 'United States'
+    GROUP BY product_id
+)
+SELECT P.product_name ,
+       (q20.s20 - COALESCE(q19.s19,0)) AS growth_amount
+FROM q20
+LEFT JOIN q19 USING (product_id)
+JOIN product P USING (product_id)
+ORDER BY growth_amount DESC
+LIMIT 5;
+
+/* Answer the following: How many products had zero U.S. sales in Q4 2019 but registered some sales in Q4 2020 under promo_id = 999? */
+WITH q19 AS (
+    SELECT DISTINCT product_id
+    FROM sales S JOIN city C USING (city_id)
+    WHERE S.promo_id = 999
+      AND S.calendar_quarter_id = 1772
+      AND C.country = 'United States'
+),
+q20 AS (
+    SELECT DISTINCT product_id
+    FROM sales S JOIN city C USING (city_id)
+    WHERE S.promo_id = 999
+      AND S.calendar_quarter_id = 1776
+      AND C.country = 'United States'
+)
+SELECT COUNT(*)
+FROM q20
+WHERE product_id NOT IN (SELECT product_id FROM q19);
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: complex_oracle
+## Table countries:
+country_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [52793, 52785, 52784]
+country_iso_code: The type is CHAR(2), Which does not inlude Null and is Unique. Values format like: ['IL', 'NZ', 'EG']
+country_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Zimbabwe', 'Sweden', 'Netherlands']
+country_subregion: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Middle East', 'Western Europe', 'Southern America']
+country_subregion_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52798, 52794, 52795]
+country_region: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Asia', 'Oceania', 'Middle East']
+country_region_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52804, 52800, 52803]
+country_total: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['World total']
+country_total_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [52806]
+
+## Table customers:
+cust_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [8297, 47535, 16542]
+cust_first_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Rutherford', 'Carin', 'Morton']
+cust_last_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Mac', 'Ness', 'James']
+cust_gender: The type is CHAR(1), Which does not inlude Null and is Non-Unique. Value of this column must in: ['M', 'F']
+cust_year_of_birth: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1968, 1950, 1947]
+cust_marital_status: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['separated', 'widowed', 'married']
+cust_street_address: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['77 West Taney Avenue', '27 East Trego Boulevard', '17 East Yavapai Court']
+cust_postal_code: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [71138, 43209, 45036]
+cust_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Hatfield', 'Bethel Acres', 'Bradford']
+cust_city_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52512, 52029, 51505]
+cust_state_province: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Midi-Pyrenees', 'Rio Negro', 'Rheinland-Pfalz']
+cust_state_province_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52573, 52770, 52591]
+country_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [52771, 52777, 52775]
+cust_main_phone_number: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['625-660-4049', '369-418-9314', '569-768-7273']
+cust_income_level: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['F: 110,000 - 129,999', 'B: 30,000 - 49,999', 'G: 130,000 - 149,999']
+cust_credit_limit: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [15000, 9000, 7000]
+cust_email: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Kiker@company.example.com', 'Lanston@company.example.com', 'olga.ireland@company2.example.com']
+cust_total: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Customer total']
+cust_total_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [52772]
+cust_src_id: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: None
+cust_eff_from: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2019-01-01']
+cust_eff_to: The type is DATE, Which inlude Null and is Non-Unique. Value of this column must in: None
+cust_valid: The type is CHAR(1), Which does not inlude Null and is Non-Unique. Value of this column must in: ['I', 'A']
+
+## Table promotions:
+promo_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [152, 236, 347]
+promo_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['newspaper promotion #16-265', 'newspaper promotion #19-78', 'internet promotion #29-405']
+promo_subcategory: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['ad news', 'freeway billboard', 'loyal customer discount']
+promo_subcategory_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [14, 19, 13]
+promo_category: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['newspaper', 'post', 'flyer']
+promo_category_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 8, 7]
+promo_cost: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [41800, 7100, 92400]
+promo_begin_date: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2019-06-01', '2019-06-30', '2020-04-05']
+promo_end_date: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2020-04-15', '2020-04-20', '2020-01-14']
+promo_total: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Promotion total']
+promo_total_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]
+
+## Table products:
+prod_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [28, 14, 19]
+prod_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Cricket Gloves', 'Pro Maple Bat', 'Speed Trainer Bats and Training Program']
+prod_desc: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['New Zealand Cricket Team', 'Cricket Bat - Fiber Tape', 'Genuine Series MIX Wood Bat']
+prod_subcategory: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Cricket Fan Gear', 'Cricket Bat', 'Baseballs']
+prod_subcategory_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2036, 2055, 2035]
+prod_subcategory_desc: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Cricket', 'Cricket Bat', 'Cricket Fan Gear']
+prod_category: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Baseball', 'Cricket']
+prod_category_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [203, 205]
+prod_category_desc: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Baseball', 'Cricket']
+prod_weight_class: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]
+prod_unit_of_measure: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['U']
+prod_pack_size: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['P']
+supplier_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]
+prod_status: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['STATUS']
+prod_list_price: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [89, 899, 999]
+prod_min_price: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [36, 199, 8]
+prod_total: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['TOTAL']
+prod_total_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]
+prod_src_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: ['']
+prod_eff_from: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['2019-01-01 00:00:00']
+prod_eff_to: The type is DATE, Which does not inlude Null and is Non-Unique. Value of this column must in: ['']
+prod_valid: The type is CHAR(1), Which does not inlude Null and is Non-Unique. Value of this column must in: ['A']
+
+## Table times:
+time_id: The type is DATE, Which does not inlude Null and is Unique. Values format like: ['2023-12-11', '2023-10-21', '2019-12-19']
+day_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Saturday', 'Friday', 'Tuesday']
+day_number_in_week: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 6, 5]
+day_number_in_month: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [31, 23, 11]
+calendar_week_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [12, 15, 10]
+fiscal_week_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [15, 21, 27]
+week_ending_day: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2023-04-23', '2020-06-21', '2020-02-09']
+week_ending_day_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1479, 1519, 1871]
+calendar_month_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7, 3, 6]
+fiscal_month_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 5]
+calendar_month_desc: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-10', '2021-04', '2021-10']
+calendar_month_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1680, 1885, 1702]
+fiscal_month_desc: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2021-02', '2019-04', '2023-08']
+fiscal_month_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1748, 1724, 2070]
+days_in_cal_month: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [30, 29, 31]
+days_in_fis_month: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [35, 28, 25]
+end_of_cal_month: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2021-07-31', '2021-09-30', '2019-12-31']
+end_of_fis_month: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2020-12-26', '2019-04-26', '2020-04-25']
+calendar_month_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['July', 'June', 'January']
+fiscal_month_name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['December', 'August', 'November']
+calendar_quarter_desc: The type is CHAR(7), Which does not inlude Null and is Non-Unique. Values format like: ['2020-03', '2021-02', '2019-04']
+calendar_quarter_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1779, 1775, 1777]
+fiscal_quarter_desc: The type is CHAR(7), Which does not inlude Null and is Non-Unique. Values format like: ['2022-04', '2021-02', '2023-02']
+fiscal_quarter_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1800, 1796, 1801]
+days_in_cal_quarter: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [90, 91, 92]
+days_in_fis_quarter: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [91, 84, 98]
+end_of_cal_quarter: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2023-03-31', '2021-09-30', '2023-12-31']
+end_of_fis_quarter: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2022-03-25', '2020-12-26', '2023-12-29']
+calendar_quarter_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 2, 3]
+fiscal_quarter_number: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 1, 2]
+calendar_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2022, 2020, 2021]
+calendar_year_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1802, 1813, 1803]
+fiscal_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2024, 2023, 2019]
+fiscal_year_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1810, 1806, 1808]
+days_in_cal_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [365, 366]
+days_in_fis_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [361, 371, 364]
+end_of_cal_year: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2022-12-31', '2023-12-31', '2021-12-31']
+end_of_fis_year: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2024-12-28', '2020-12-26', '2023-12-29']
+
+## Table channels:
+channel_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2, 9, 4]
+channel_desc: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Tele Sales', 'Catalog', 'Direct Sales']
+channel_class: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Indirect', 'Direct', 'Others']
+channel_class_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [12, 13, 14]
+channel_total: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['Channel total']
+channel_total_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]
+
+## Table sales:
+prod_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [44, 122, 37]
+cust_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7385, 1444, 5321]
+time_id: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2021-03-03', '2021-08-13', '2022-09-16']
+channel_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 4, 3]
+promo_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [350, 351, 33]
+quantity_sold: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]
+amount_sold: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [20, 45, 63]
+
+## Table costs:
+prod_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [146, 120, 137]
+time_id: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['2020-05-31', '2019-04-01', '2022-05-07']
+promo_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [350, 999, 351]
+channel_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 4]
+unit_cost: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [549, 507, 19]
+unit_price: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [8, 9, 30]
+
+## Table supplementary_demographics:
+cust_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [101820, 100294, 100764]
+education: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['11th', 'HS-grad', '1st-4th']
+occupation: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Handler', 'Armed-F', 'TechSup']
+household_size: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['6-8', '9+', 3]
+yrs_residence: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [10, 6, 8]
+affinity_card: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+cricket: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+baseball: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+tennis: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]
+soccer: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]
+golf: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1]
+unknown: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+misc: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]
+comments: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['I love it. Will never shop at other shops again!', 'I used to shop at your store, but have stopped now. I tried to return some electronic items and your store manager was a pain to deal with.', "I purchased a new model recently, but the instructions weren't included.  Could you ship them to me directly?"]
+
+## Table currency:
+country: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Canada', 'Kuwait', 'Italy']
+year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2020, 2021, 2019]
+month: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 1, 8]
+to_us: The type is REAL, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]
+
+#Forigen keys:
+customers.country_id = countries.country_id, sales.time_id = times.time_id, sales.channel_id = channels.channel_id, sales.prod_id = products.prod_id, sales.cust_id = customers.cust_id, sales.promo_id = promotions.promo_id, costs.channel_id = channels.channel_id, costs.time_id = times.time_id, costs.prod_id = products.prod_id, costs.promo_id = promotions.promo_id
+
+# Database Description:
+The `complex_oracle` database is designed to manage and analyze data related to sales, promotions, products, customers, time periods, channels, costs, demographics, and currency exchange rates. It provides a comprehensive structure for tracking and analyzing business operations, customer information, product details, promotional campaigns, and financial metrics. The database is implemented using SQLite and includes foreign key relationships to ensure data integrity across tables.
+
+# Tables Descriptions:
+
+## Table `countries`:
+Contains information about countries, including unique identifiers, ISO codes, names, subregions, regions, and totals. This table is used to categorize and identify countries in relation to customers and other entities.
+
+## Table `customers`:
+Stores detailed information about customers, including personal details (e.g., name, gender, marital status), location data (e.g., address, city, state, country), financial data (e.g., income level, credit limit), and other attributes such as phone numbers, email addresses, and validity status. This table is linked to the `countries` table via `country_id`.
+
+## Table `promotions`:
+Tracks promotional campaigns, including unique identifiers, names, subcategories, categories, costs, and time periods. This table is used to analyze the effectiveness of promotions and is linked to the `sales` and `costs` tables.
+
+## Table `products`:
+Contains information about products, including unique identifiers, names, descriptions, categories, subcategories, pricing, and supplier details. This table is linked to the `sales` and `costs` tables via `prod_id`.
+
+## Table `times`:
+Stores time-related data, including dates, day names, calendar and fiscal week/month/quarter/year details, and the number of days in each period. This table is used for time-based analysis and is linked to the `sales` and `costs` tables via `time_id`.
+
+## Table `channels`:
+Tracks sales channels, including unique identifiers, descriptions, classes, and totals. This table is used to categorize sales channels and is linked to the `sales` and `costs` tables via `channel_id`.
+
+## Table `sales`:
+Records sales transactions, including product IDs, customer IDs, time IDs, channel IDs, promotion IDs, quantities sold, and amounts sold. This table serves as the central point for analyzing sales data and is linked to multiple tables (`products`, `customers`, `times`, `channels`, `promotions`).
+
+## Table `costs`:
+Tracks cost-related data, including product IDs, time IDs, channel IDs, promotion IDs, unit costs, and unit prices. This table is used to analyze the cost structure of products and is linked to multiple tables (`products`, `times`, `channels`, `promotions`).
+
+## Table `supplementary_demographics`:
+Contains additional demographic information about customers, including education, occupation, household size, years of residence, affinity card usage, sports interests, and comments. This table is linked to the `customers` table via `cust_id`.
+
+## Table `currency`:
+Stores currency exchange rates for different countries, years, and months, with conversion rates to USD. This table is used for financial analysis and currency conversion.
+
+# Foreign Keys:
+- `customers.country_id` → `countries.country_id`
+- `sales.time_id` → `times.time_id`
+- `sales.channel_id` → `channels.channel_id`
+- `sales.prod_id` → `products.prod_id`
+- `sales.cust_id` → `customers.cust_id`
+- `sales.promo_id` → `promotions.promo_id`
+- `costs.channel_id` → `channels.channel_id`
+- `costs.time_id` → `times.time_id`
+- `costs.prod_id` → `products.prod_id`
+- `costs.promo_id` → `promotions.promo_id`
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: What is the median of the average monthly projected sales in USD for France in 2021, calculated by using the monthly sales data from 2019 and 2020 (filtered by promo_total_id=1 and channel_total_id=1), applying the growth rate from 2019 to 2020 to project 2021, converting to USD based on the currency table, and then determining the monthly averages before finding their median? */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries the median of the average monthly projected sales in USD for France in 2021, calculated using monthly sales data from 2019 and 2020, filtered by promo_total_id=1 and channel_total_id=1, applying the growth rate from 2019 to 2020 to project 2021, converting to USD based on the currency table, and determining monthly averages before finding the median. Relevant columns include sales data, time details, country information, and currency conversion rates.
+#columns: sales.amount_sold, sales.channel_id, sales.promo_id, times.calendar_month_id, times.calendar_year, countries.country_name, countries.country_id, currency.year, currency.month, currency.to_us
+#values: "France", "2021", "2019", "2020", "1"
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+What is the median of the average monthly projected sales in USD for France in 2021, calculated by using the monthly sales data from 2019 and 2020 (filtered by promo_total_id=1 and channel_total_id=1), applying the growth rate from 2019 to 2020 to project 2021, converting to USD based on the currency table, and then determining the monthly averages before finding their median?
+
+############################## AI at step extract_query_noun ##############################
+
+"median", "average", "monthly", "projected sales", "USD", "France", "2021", "monthly sales data", "2019", "2020", "promo_total_id", "channel_total_id", "growth rate", "currency table", "monthly averages", "median"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: What is the median of the average monthly projected sales in USD for France in 2021, calculated by using the monthly sales data from 2019 and 2020 (filtered by promo_total_id=1 and channel_total_id=1), applying the growth rate from 2019 to 2020 to project 2021, converting to USD based on the currency table, and then determining the monthly averages before finding their median?
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "What",
+      "J": null,
+      "I": ["the median of the average monthly projected sales in USD for France in 2021"],
+      "C": [
+        "calculated by using the monthly sales data from 2019 and 2020",
+        "filtered by promo_total_id=1 and channel_total_id=1",
+        "applying the growth rate from 2019 to 2020 to project 2021",
+        "converting to USD based on the currency table",
+        "determining the monthly averages before finding their median"
+      ]
+    }
+  }
+]
+```
+

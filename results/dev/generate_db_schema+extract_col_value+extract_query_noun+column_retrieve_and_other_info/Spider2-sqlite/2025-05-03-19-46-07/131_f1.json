@@ -1,0 +1,2119 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: f1\n## Table circuits:\ncircuit_id: The type is INT(11), Which does not inlude Null and is Unique. Values format like: [29, 4, 3]\ncircuit_ref: The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['jerez', 'essarts', 'charade']\nname: The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['Prince George Circuit', 'Charade Circuit', 'Montjuïc']\nlocation: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['Suzuka', 'Oyama', 'California']\ncountry: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['Singapore', 'Qatar', 'United States']\nlat: The type is FLOAT, Which does not inlude Null and is Unique. Values format like: [21, 34, 36]\nlng: The type is FLOAT, Which does not inlude Null and is Unique. Values format like: [-2, 138, -6]\nalt: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [129, 2, 161]\nurl: The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['http://en.wikipedia.org/wiki/Fair_Park', 'http://en.wikipedia.org/wiki/Nivelles-Baulers', 'http://en.wikipedia.org/wiki/Scandinavian_Raceway']\n\n## Table constructor_results:\nconstructor_results_id: The type is INT(11), Which does not inlude Null and is Unique. Values format like: [3566, 4108, 969]\nrace_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [603, 878, 183]\nconstructor_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [14, 48, 189]\npoints: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [34, 43, 35]\nstatus: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Value of this column must in: ['D']\n\n## Table constructor_standings:\nconstructor_standings_id: The type is INT(11), Which does not inlude Null and is Unique. Values format like: [9390, 22263, 11250]\nrace_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [284, 697, 108]\nconstructor_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [13, 191, 64]\npoints: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [431, 613, 278]\nposition: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [2, 10, 3]\nposition_text: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: [16, 'E', 5]\nwins: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [19, 3, 9]\n\n## Table constructors:\nconstructor_id: The type is INT(11), Which does not inlude Null and is Unique. Values format like: [190, 13, 173]\nconstructor_ref: The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['ats', 'dunn', 'williams']\nname: The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['Cooper-Ferrari', 'Kurtis Kraft', 'Stevens']\nnationality: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['Spanish', 'Austrian', 'Mexican']\nurl: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['http://en.wikipedia.org/wiki/Kuzma_(constructor)', 'http://en.wikipedia.org/wiki/Pankratz', 'http://en.wikipedia.org/wiki/Shadow_Racing_Cars']\n\n## Table driver_standings:\ndriver_standings_id: The type is INT(11), Which does not inlude Null and is Unique. Values format like: [68878, 59347, 69240]\nrace_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [693, 148, 162]\ndriver_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [248, 640, 766]\npoints: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [219, 240, 11]\nposition: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [104, 64, 11]\nposition_text: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: [53, 83, 28]\nwins: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [4, 14, 0]\n\n## Table drivers:\ndriver_id: The type is INT(11), Which does not inlude Null and is Unique. Values format like: [539, 689, 7]\ndriver_ref: The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['purley', 'ghinzani', 'vaccarella']\nnumber: The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [30, 5, 33]\ncode: The type is VARCHAR(3), Which inlude Null and is Non-Unique. Values format like: ['PER', 'VAN', 'CHA']\nforename: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['Clemente', 'Jackie', 'Didier']\nsurname: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['Pagani', 'Raby', 'Foitek']\ndob: The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['Pete Lovely', 'Hiroshi Fushida', 'Menato Boffa']\nnationality: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['1978-01-05', '1920-04-05', '1948-05-17']\nurl: The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['Canadian', 'French', 'East German']\n\n## Table lap_times:\nrace_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [224, 21, 132]\ndriver_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [29, 26, 38]\nlap: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [60, 68, 6]\nposition: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [12, 21, 14]\ntime: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['1:47.354', '1:09.818', '1:46.770']\nmilliseconds: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [130689, 119280, 59390]\n\n## Table pit_stops:\nrace_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [995, 956, 1038]\ndriver_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [844, 831, 5]\nstop: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [70, 57, 48]\nlap: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [45, 32, 68]\ntime: The type is TIME, Which does not inlude Null and is Non-Unique. Values format like: ['13:49:03', '14:34:34', '14:25:18']\nduration: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['26.382', '23.161', '24.145']\nmilliseconds: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [33077, 22111, 20779]\n\n## Table qualifying:\nqualify_id: The type is INT(11), Which does not inlude Null and is Unique. Values format like: [39, 2063, 2336]\nrace_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [103, 226, 339]\ndriver_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [82, 87, 810]\nconstructor_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [206, 3, 6]\nnumber: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [1, 40, 38]\nposition: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [28, 8, 25]\nq1: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['1:35.793', '1:36.213', '1:20.943']\nq2: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['1:52.049', '1:15.166', '1:14.488']\nq3: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['1:04.896', '1:21.011', '1:37.531']\n\n## Table races:\nrace_id: The type is INT(11), Which does not inlude Null and is Unique. Values format like: [329, 606, 262]\nyear: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [1953, 2000, 2015]\nround: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [5, 2, 3]\ncircuit_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [38, 71, 69]\nname: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['Swiss Grand Prix', 'United States Grand Prix West', 'Swedish Grand Prix']\ndate: The type is DATE, Which does not inlude Null and is Unique. Values format like: ['1996-04-28', '1991-09-08', '1985-05-05']\ntime: The type is TIME, Which inlude Null and is Non-Unique. Values format like: ['06:00:00', '09:30:00', '17:10:00']\nurl: The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['http://en.wikipedia.org/wiki/1980_Austrian_Grand_Prix', 'http://en.wikipedia.org/wiki/1976_Belgian_Grand_Prix', 'http://en.wikipedia.org/wiki/1975_Belgian_Grand_Prix']\nfp1_date: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['2021-04-16', '2021-07-30', '2023-09-22']\nfp1_time: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['12:00:00', '03:30:00', '11:00:00']\nfp2_date: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['2024-11-29', '2022-07-09', '2023-07-07']\nfp2_time: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['22:00:00', '21:00:00', '06:00:00']\nfp3_date: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['2021-12-11', '2022-11-19', '2024-03-08']\nfp3_time: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['11:30:00', '17:00:00', '08:30:00']\nquali_date: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['2021-07-31', '2021-09-25', '2024-11-02']\nquali_time: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['17:00:00', '16:00:00', '19:00:00']\nsprint_date: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['2023-07-01', '2024-11-02', '2022-07-09']\nsprint_time: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['10:00:00', '14:00:00', '16:00:00']\n\n## Table results:\nresult_id: The type is INT(11), Which does not inlude Null and is Unique. Values format like: [7771, 14250, 19734]\nrace_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [1013, 175, 885]\ndriver_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [426, 202, 39]\nconstructor_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [15, 168, 62]\nnumber: The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [75, 108, 102]\ngrid: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [3, 20, 7]\nposition: The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [18, 30, 24]\nposition_text: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: [21, 'F', 30]\nposition_order: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [2, 13, 24]\npoints: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [7, 16, 50]\nlaps: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [130, 47, 60]\ntime: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['+53.673', '+17.688', '+40.92']\nmilliseconds: The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [4699104, 6182143, 5258908]\nfastest_lap: The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [38, 55, 32]\nrank: The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [22, 19, 8]\nfastest_lap_time: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['1:48.321', '1:41.044', '1:34.650']\nfastest_lap_speed: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['210.415', '213.560', '193.412']\nstatus_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [64, 27, 34]\n\n## Table seasons:\nyear: The type is INT(11), Which does not inlude Null and is Unique. Values format like: [1988, 2016, 2020]\nurl: The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['http://en.wikipedia.org/wiki/2006_Formula_One_season', 'http://en.wikipedia.org/wiki/2015_Formula_One_season', 'http://en.wikipedia.org/wiki/1974_Formula_One_season']\n\n## Table status:\nstatus_id: The type is INT(11), Which does not inlude Null and is Unique. Values format like: [35, 94, 23]\nstatus: The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['Engine fire', 'Vibrations', 'Excluded']\n\n## Table sprint_results:\nresult_id: The type is INT(11), Which does not inlude Null and is Unique. Values format like: [254, 93, 43]\nrace_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [1101, 1125, 1071]\ndriver_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [857, 847, 9]\nconstructor_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [1, 213, 210]\nnumber: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [3, 11, 63]\ngrid: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [9, 6, 3]\nposition: The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [13, 18, 17]\nposition_text: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: [6, 12, 8]\nposition_order: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [7, 5, 1]\npoints: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [4, 3, 2]\nlaps: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [1, 2, 23]\ntime: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['+19.864', '+28.307', '+38.295']\nmilliseconds: The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [1835769, 1879578, 1536260]\nfastest_lap: The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [13, 24, 5]\nfastest_lap_time: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['1:10.512', '1:14.292', '1:14.583']\nfastest_lap_speed: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Value of this column must in: None\nstatus_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [31, 130, 23]\n\n## Table short_grand_prix_names:\nfull_name: The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['Turkish Grand Prix', 'São Paulo Grand Prix', 'Azerbaijan Grand Prix']\nshort_name: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['70th Anniversary', 'Qatar', 'Netherlands']\n\n## Table short_constructor_names:\nconstructor_ref: The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['lotus-borgward', 'eagle-climax', 'de_tomaso-ferrari']\nshort_name: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['McLaren', 'Alpine', 'Shadow']\n\n## Table liveries:\nconstructor_ref: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['ferrari', 'honda', 'spyker']\nstart_year: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [1997, 2021, 2007]\nend_year: The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [1993, 2013, 2020]\nprimary_hex_code: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['#005919', '#FF3A2E', '#BC132C']\n\n## Table tdr_overrides:\nyear: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [2017, 2021, 2019]\nconstructor_ref: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['mercedes', 'aston_martin', 'toro_rosso']\ndriver_ref: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['massa', 'kovalainen', 'stroll']\nteam_driver_rank: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [4, 1, 2]\n\n## Table circuits_ext:\ncircuit_id: The type is INT, Which does not inlude Null and is Unique. Values format like: [9, 21, 70]\ncircuit_ref: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['yeongam', 'dijon', 'red_bull_ring']\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Fair Park', 'Ain Diab', 'Circuit de Monaco']\nlocation: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['California', 'Estoril', 'Montmeló']\ncountry: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['United States', 'Austria', 'Italy']\nlat: The type is REAL, Which does not inlude Null and is Unique. Values format like: [-34, 49, 30]\nlng: The type is REAL, Which does not inlude Null and is Unique. Values format like: [103, 2, -115]\nalt: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [153, 37, 578]\nurl: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['http://en.wikipedia.org/wiki/Las_Vegas_Street_Circuit', 'http://en.wikipedia.org/wiki/Circuito_Permanente_de_Jerez', 'http://en.wikipedia.org/wiki/Long_Beach,_California']\nlast_race_year: The type is , Which does not inlude Null and is Non-Unique. Values format like: [1983, 2013, 1966]\nnumber_of_races: The type is , Which does not inlude Null and is Non-Unique. Values format like: [9, 37, 2]\n\n## Table constructors_ext:\nconstructor_id: The type is INT, Which does not inlude Null and is Unique. Values format like: [140, 45, 75]\nconstructor_ref: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['cooper-climax', 'stewart', 'minardi']\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Pawl', 'Ligier', 'Christensen']\nnationality: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Malaysian', 'Spanish', 'Japanese']\nurl: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['http://en.wikipedia.org/wiki/Team_McLaren', 'http://en.wikipedia.org/wiki/Adams_(constructor)', 'http://en.wikipedia.org/wiki/Honda_Racing_F1']\nshort_name: The type is , Which does not inlude Null and is Non-Unique. Values format like: ['Coloni', 'Iso Marlboro', 'Benetton']\n\n## Table drivers_ext:\ndriver_id: The type is INT, Which does not inlude Null and is Unique. Values format like: [443, 765, 85]\ndriver_ref: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['gugelmin', 'palm', 'john_james']\nnumber: The type is INT, Which inlude Null and is Non-Unique. Values format like: [26, 38, 89]\ncode: The type is , Which does not inlude Null and is Non-Unique. Values format like: ['GUT', 'HEL', 'FOY']\nforename: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Lewis', 'Luca', 'Wolfgang']\nsurname: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Baumgartner', 'Sutcliffe', 'Montermini']\nfull_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Adrián Campos', 'Paul Russo', 'Allan McNish']\ndob: The type is NUM, Which does not inlude Null and is Non-Unique. Values format like: ['1934-11-22', '1917-01-30', '1948-08-31']\nnationality: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['German', 'Dutch', 'Chinese']\nurl: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['http://en.wikipedia.org/wiki/Sergio_Mantovani', 'http://en.wikipedia.org/wiki/Philippe_Adams', 'http://en.wikipedia.org/wiki/Duke_Nalon']\n\n## Table driver_standings_ext:\ndriver_standings_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [10755, 11156, 22208]\nrace_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [455, 975, 587]\ndriver_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [751, 153, 749]\npoints: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [193, 184, 400]\nposition: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [25, 85, 64]\nposition_text: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: [22, 43, 96]\nwins: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [7, 1, 16]\n\n## Table lap_times_ext:\nrace_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1070, 153, 66]\ndriver_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [859, 82, 26]\nlap: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [3, 16, 28]\nposition: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [5, 21, 9]\ntime: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1:31.431', '1:24.738', '1:45.094']\nmilliseconds: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [86142, 58921, 78183]\nseconds: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [72, 166, 134]\nrunning_milliseconds: The type is , Which does not inlude Null and is Non-Unique. Values format like: [1850369, 3446390, 4500213]\n\n## Table lap_time_stats:\nrace_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [41, 92, 1]\ndriver_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [827, 824, 5]\navg_milliseconds: The type is , Which does not inlude Null and is Non-Unique. Values format like: [99810, 144345, 94110]\navg_seconds: The type is , Which does not inlude Null and is Non-Unique. Values format like: [106, 79, 117]\nstdev_milliseconds: The type is , Which does not inlude Null and is Non-Unique. Values format like: [3766, 7088, 3442]\nstdev_seconds: The type is , Which does not inlude Null and is Non-Unique. Values format like: [145, 12, 8]\n\n## Table races_ext:\nrace_id: The type is INT, Which does not inlude Null and is Unique. Values format like: [289, 301, 431]\nyear: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1950, 2009, 1993]\nround: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [17, 16, 18]\ncircuit_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [53, 63, 67]\nname: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Italian Grand Prix', 'European Grand Prix', 'Chinese Grand Prix']\ndate: The type is NUM, Which does not inlude Null and is Unique. Values format like: ['1986-07-27', '1999-05-02', '1960-11-20']\ntime: The type is NUM, Which inlude Null and is Non-Unique. Values format like: ['11:30:00', '17:10:00', '18:00:00']\nurl: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['http://en.wikipedia.org/wiki/1962_Monaco_Grand_Prix', 'http://en.wikipedia.org/wiki/1973_Monaco_Grand_Prix', 'https://en.wikipedia.org/wiki/2024_Mexico_City_Grand_Prix']\nfp1_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2023-11-03', '2023-07-07', '2024-06-28']\nfp1_time: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['04:30:00', '15:30:00', '03:30:00']\nfp2_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2024-08-30', '2024-02-29', '2023-06-02']\nfp2_time: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['17:30:00', '18:30:00', '14:30:00']\nfp3_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2021-10-23', '2022-07-02', '2021-09-25']\nfp3_time: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['17:00:00', '13:30:00', '02:30:00']\nquali_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2024-10-19', '2021-09-25', '2021-05-01']\nquali_time: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['18:00:00', '19:00:00', '13:00:00']\nsprint_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2023-10-07', '2023-04-29', '2024-11-30']\nsprint_time: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['18:00:00', '19:30:00', '03:00:00']\nis_pit_data_available: The type is , Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nshort_name: The type is , Which does not inlude Null and is Non-Unique. Values format like: ['Tuscany', 'Germany', 'Portugal']\nhas_sprint: The type is , Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nmax_points: The type is , Which does not inlude Null and is Non-Unique. Values format like: [8, 29, 26]\n\n## Table team_driver_ranks:\nyear: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1993, 1964, 2023]\nconstructor_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [207, 12, 35]\nconstructor_ref: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['lotus-maserati', 'onyx', 'footwork']\ndriver_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [630, 425, 85]\ndriver_ref: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tarquini', 'liuzzi', 'peters']\nteam_driver_rank: The type is , Which does not inlude Null and is Non-Unique. Values format like: [24, 28, 21]\n\n## Table drives:\nyear: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1956, 1972, 1984]\ndriver_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [286, 37, 531]\ndrive_id: The type is , Which does not inlude Null and is Non-Unique. Values format like: [5, 3, 1]\nconstructor_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [44, 130, 159]\nfirst_round: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1, 17, 8]\nlast_round: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [11, 22, 14]\nis_first_drive_of_season: The type is , Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\nis_final_drive_of_season: The type is , Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\n\n## Table retirements:\nrace_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1088, 739, 441]\ndriver_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [7, 156, 663]\nlap: The type is , Which does not inlude Null and is Non-Unique. Values format like: [14, 17, 190]\nposition_order: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [31, 19, 21]\nstatus_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [104, 94, 39]\nretirement_type: The type is , Which does not inlude Null and is Non-Unique. Values format like: ['Retirement (Mechanical Problem)', 'Retirement (Disqualification)', 'Retirement (Driver Error)']\n\n## Table lap_positions:\nrace_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1095, 539, 434]\ndriver_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [527, 581, 666]\nlap: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1, 46, 130]\nposition: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [26, 32, 21]\nlap_type: The type is , Which does not inlude Null and is Non-Unique. Values format like: ['Race', 'Retirement (Mechanical Problem)', 'Retirement (Disqualification)']\n\n#Forigen keys:\n\n\n#Database Description:\nThe database `f1` is designed to store and manage detailed information related to Formula 1 racing events, including circuits, constructors, drivers, races, lap times, standings, and other related data. It provides comprehensive insights into the history, performance, and statistics of Formula 1 races, constructors, and drivers. The database is structured to support analysis, reporting, and visualization of Formula 1 data.\n\n#Tables Descriptions:\n\n1. **circuits**: Contains information about Formula 1 circuits, including their unique IDs, names, locations, countries, geographical coordinates (latitude, longitude, altitude), and URLs for additional details.\n\n2. **constructor_results**: Stores results for constructors in specific races, including points scored and status.\n\n3. **constructor_standings**: Tracks standings of constructors across races, including points, positions, wins, and textual representation of positions.\n\n4. **constructors**: Contains details about constructors, including their unique IDs, names, nationalities, and URLs for additional information.\n\n5. **driver_standings**: Tracks standings of drivers across races, including points, positions, wins, and textual representation of positions.\n\n6. **drivers**: Stores information about drivers, including their unique IDs, names, nationalities, dates of birth, and URLs for additional details.\n\n7. **lap_times**: Contains lap-by-lap timing data for drivers in specific races, including lap numbers, positions, times, and milliseconds.\n\n8. **pit_stops**: Stores data about pit stops during races, including lap numbers, stop numbers, times, durations, and milliseconds.\n\n9. **qualifying**: Contains qualifying session data, including positions, times for Q1, Q2, and Q3, and associated race, driver, and constructor IDs.\n\n10. **races**: Stores information about races, including their unique IDs, names, years, rounds, dates, times, and URLs for additional details. It also includes data about practice sessions, qualifying, and sprint races.\n\n11. **results**: Contains race results for drivers, including positions, points, laps completed, fastest lap times, and associated race, driver, and constructor IDs.\n\n12. **seasons**: Stores information about Formula 1 seasons, including the year and URLs for additional details.\n\n13. **status**: Contains unique status IDs and descriptions of race statuses, such as retirements or disqualifications.\n\n14. **sprint_results**: Stores results for sprint races, including positions, points, laps completed, fastest lap times, and associated race, driver, and constructor IDs.\n\n15. **short_grand_prix_names**: Maps full names of Grand Prix events to their short names.\n\n16. **short_constructor_names**: Maps constructor references to their short names.\n\n17. **liveries**: Contains information about constructor liveries, including start and end years, and primary hex color codes.\n\n18. **tdr_overrides**: Tracks overrides for team driver ranks, including year, constructor references, driver references, and rank.\n\n19. **circuits_ext**: Extended information about circuits, including last race year, number of races held, and additional details.\n\n20. **constructors_ext**: Extended information about constructors, including short names and additional details.\n\n21. **drivers_ext**: Extended information about drivers, including full names, numbers, codes, and additional details.\n\n22. **driver_standings_ext**: Extended standings for drivers, including points, positions, wins, and textual representation of positions.\n\n23. **lap_times_ext**: Extended lap timing data, including average and standard deviation of lap times.\n\n24. **lap_time_stats**: Statistical data about lap times, including averages and standard deviations for milliseconds and seconds.\n\n25. **races_ext**: Extended information about races, including short names, maximum points, and whether pit data or sprint races\n",
+        "db_col_dic": {
+            "circuits.circuit_id": [
+                "The type is INT(11), Which does not inlude Null and is Unique. Values format like: [29, 4, 3]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Unique",
+                "[29, 4, 3]"
+            ],
+            "circuits.circuit_ref": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['jerez', 'essarts', 'charade']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Unique",
+                "['jerez', 'essarts', 'charade']"
+            ],
+            "circuits.name": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['Prince George Circuit', 'Charade Circuit', 'Montjuïc']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Unique",
+                "['Prince George Circuit', 'Charade Circuit', 'Montjuïc']"
+            ],
+            "circuits.location": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['Suzuka', 'Oyama', 'California']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "['Suzuka', 'Oyama', 'California']"
+            ],
+            "circuits.country": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['Singapore', 'Qatar', 'United States']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "['Singapore', 'Qatar', 'United States']"
+            ],
+            "circuits.lat": [
+                "The type is FLOAT, Which does not inlude Null and is Unique. Values format like: [21, 34, 36]",
+                "",
+                "",
+                "FLOAT",
+                "Non-Null",
+                "Unique",
+                "[21, 34, 36]"
+            ],
+            "circuits.lng": [
+                "The type is FLOAT, Which does not inlude Null and is Unique. Values format like: [-2, 138, -6]",
+                "",
+                "",
+                "FLOAT",
+                "Non-Null",
+                "Unique",
+                "[-2, 138, -6]"
+            ],
+            "circuits.alt": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [129, 2, 161]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[129, 2, 161]"
+            ],
+            "circuits.url": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['http://en.wikipedia.org/wiki/Fair_Park', 'http://en.wikipedia.org/wiki/Nivelles-Baulers', 'http://en.wikipedia.org/wiki/Scandinavian_Raceway']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Unique",
+                "['http://en.wikipedia.org/wiki/Fair_Park', 'http://en.wikipedia.org/wiki/Nivelles-Baulers', 'http://en.wikipedia.org/wiki/Scandinavian_Raceway']"
+            ],
+            "constructor_results.constructor_results_id": [
+                "The type is INT(11), Which does not inlude Null and is Unique. Values format like: [3566, 4108, 969]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Unique",
+                "[3566, 4108, 969]"
+            ],
+            "constructor_results.race_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [603, 878, 183]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[603, 878, 183]"
+            ],
+            "constructor_results.constructor_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [14, 48, 189]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[14, 48, 189]"
+            ],
+            "constructor_results.points": [
+                "The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [34, 43, 35]",
+                "",
+                "",
+                "FLOAT",
+                "Non-Null",
+                "Non-Unique",
+                "[34, 43, 35]"
+            ],
+            "constructor_results.status": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Value of this column must in: ['D']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['D']"
+            ],
+            "constructor_standings.constructor_standings_id": [
+                "The type is INT(11), Which does not inlude Null and is Unique. Values format like: [9390, 22263, 11250]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Unique",
+                "[9390, 22263, 11250]"
+            ],
+            "constructor_standings.race_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [284, 697, 108]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[284, 697, 108]"
+            ],
+            "constructor_standings.constructor_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [13, 191, 64]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[13, 191, 64]"
+            ],
+            "constructor_standings.points": [
+                "The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [431, 613, 278]",
+                "",
+                "",
+                "FLOAT",
+                "Non-Null",
+                "Non-Unique",
+                "[431, 613, 278]"
+            ],
+            "constructor_standings.position": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [2, 10, 3]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 10, 3]"
+            ],
+            "constructor_standings.position_text": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: [16, 'E', 5]",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "[16, 'E', 5]"
+            ],
+            "constructor_standings.wins": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [19, 3, 9]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[19, 3, 9]"
+            ],
+            "constructors.constructor_id": [
+                "The type is INT(11), Which does not inlude Null and is Unique. Values format like: [190, 13, 173]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Unique",
+                "[190, 13, 173]"
+            ],
+            "constructors.constructor_ref": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['ats', 'dunn', 'williams']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Unique",
+                "['ats', 'dunn', 'williams']"
+            ],
+            "constructors.name": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['Cooper-Ferrari', 'Kurtis Kraft', 'Stevens']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Unique",
+                "['Cooper-Ferrari', 'Kurtis Kraft', 'Stevens']"
+            ],
+            "constructors.nationality": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['Spanish', 'Austrian', 'Mexican']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "['Spanish', 'Austrian', 'Mexican']"
+            ],
+            "constructors.url": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['http://en.wikipedia.org/wiki/Kuzma_(constructor)', 'http://en.wikipedia.org/wiki/Pankratz', 'http://en.wikipedia.org/wiki/Shadow_Racing_Cars']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "['http://en.wikipedia.org/wiki/Kuzma_(constructor)', 'http://en.wikipedia.org/wiki/Pankratz', 'http://en.wikipedia.org/wiki/Shadow_Racing_Cars']"
+            ],
+            "driver_standings.driver_standings_id": [
+                "The type is INT(11), Which does not inlude Null and is Unique. Values format like: [68878, 59347, 69240]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Unique",
+                "[68878, 59347, 69240]"
+            ],
+            "driver_standings.race_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [693, 148, 162]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[693, 148, 162]"
+            ],
+            "driver_standings.driver_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [248, 640, 766]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[248, 640, 766]"
+            ],
+            "driver_standings.points": [
+                "The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [219, 240, 11]",
+                "",
+                "",
+                "FLOAT",
+                "Non-Null",
+                "Non-Unique",
+                "[219, 240, 11]"
+            ],
+            "driver_standings.position": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [104, 64, 11]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[104, 64, 11]"
+            ],
+            "driver_standings.position_text": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: [53, 83, 28]",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "[53, 83, 28]"
+            ],
+            "driver_standings.wins": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [4, 14, 0]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[4, 14, 0]"
+            ],
+            "drivers.driver_id": [
+                "The type is INT(11), Which does not inlude Null and is Unique. Values format like: [539, 689, 7]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Unique",
+                "[539, 689, 7]"
+            ],
+            "drivers.driver_ref": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['purley', 'ghinzani', 'vaccarella']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Unique",
+                "['purley', 'ghinzani', 'vaccarella']"
+            ],
+            "drivers.number": [
+                "The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [30, 5, 33]",
+                "",
+                "",
+                "INT(11)",
+                "Include Null",
+                "Non-Unique",
+                "[30, 5, 33]"
+            ],
+            "drivers.code": [
+                "The type is VARCHAR(3), Which inlude Null and is Non-Unique. Values format like: ['PER', 'VAN', 'CHA']",
+                "",
+                "",
+                "VARCHAR(3)",
+                "Include Null",
+                "Non-Unique",
+                "['PER', 'VAN', 'CHA']"
+            ],
+            "drivers.forename": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['Clemente', 'Jackie', 'Didier']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "['Clemente', 'Jackie', 'Didier']"
+            ],
+            "drivers.surname": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['Pagani', 'Raby', 'Foitek']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "['Pagani', 'Raby', 'Foitek']"
+            ],
+            "drivers.dob": [
+                "The type is DATE, Which does not inlude Null and is Non-Unique. Values format like: ['Pete Lovely', 'Hiroshi Fushida', 'Menato Boffa']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Non-Unique",
+                "['Pete Lovely', 'Hiroshi Fushida', 'Menato Boffa']"
+            ],
+            "drivers.nationality": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['1978-01-05', '1920-04-05', '1948-05-17']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "['1978-01-05', '1920-04-05', '1948-05-17']"
+            ],
+            "drivers.url": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['Canadian', 'French', 'East German']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Unique",
+                "['Canadian', 'French', 'East German']"
+            ],
+            "lap_times.race_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [224, 21, 132]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[224, 21, 132]"
+            ],
+            "lap_times.driver_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [29, 26, 38]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[29, 26, 38]"
+            ],
+            "lap_times.lap": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [60, 68, 6]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[60, 68, 6]"
+            ],
+            "lap_times.position": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [12, 21, 14]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[12, 21, 14]"
+            ],
+            "lap_times.time": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['1:47.354', '1:09.818', '1:46.770']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "['1:47.354', '1:09.818', '1:46.770']"
+            ],
+            "lap_times.milliseconds": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [130689, 119280, 59390]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[130689, 119280, 59390]"
+            ],
+            "pit_stops.race_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [995, 956, 1038]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[995, 956, 1038]"
+            ],
+            "pit_stops.driver_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [844, 831, 5]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[844, 831, 5]"
+            ],
+            "pit_stops.stop": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [70, 57, 48]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[70, 57, 48]"
+            ],
+            "pit_stops.lap": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [45, 32, 68]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[45, 32, 68]"
+            ],
+            "pit_stops.time": [
+                "The type is TIME, Which does not inlude Null and is Non-Unique. Values format like: ['13:49:03', '14:34:34', '14:25:18']",
+                "",
+                "",
+                "TIME",
+                "Non-Null",
+                "Non-Unique",
+                "['13:49:03', '14:34:34', '14:25:18']"
+            ],
+            "pit_stops.duration": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['26.382', '23.161', '24.145']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "['26.382', '23.161', '24.145']"
+            ],
+            "pit_stops.milliseconds": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [33077, 22111, 20779]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[33077, 22111, 20779]"
+            ],
+            "qualifying.qualify_id": [
+                "The type is INT(11), Which does not inlude Null and is Unique. Values format like: [39, 2063, 2336]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Unique",
+                "[39, 2063, 2336]"
+            ],
+            "qualifying.race_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [103, 226, 339]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[103, 226, 339]"
+            ],
+            "qualifying.driver_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [82, 87, 810]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[82, 87, 810]"
+            ],
+            "qualifying.constructor_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [206, 3, 6]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[206, 3, 6]"
+            ],
+            "qualifying.number": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [1, 40, 38]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 40, 38]"
+            ],
+            "qualifying.position": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [28, 8, 25]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[28, 8, 25]"
+            ],
+            "qualifying.q1": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['1:35.793', '1:36.213', '1:20.943']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['1:35.793', '1:36.213', '1:20.943']"
+            ],
+            "qualifying.q2": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['1:52.049', '1:15.166', '1:14.488']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['1:52.049', '1:15.166', '1:14.488']"
+            ],
+            "qualifying.q3": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['1:04.896', '1:21.011', '1:37.531']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['1:04.896', '1:21.011', '1:37.531']"
+            ],
+            "races.race_id": [
+                "The type is INT(11), Which does not inlude Null and is Unique. Values format like: [329, 606, 262]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Unique",
+                "[329, 606, 262]"
+            ],
+            "races.year": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [1953, 2000, 2015]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[1953, 2000, 2015]"
+            ],
+            "races.round": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [5, 2, 3]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[5, 2, 3]"
+            ],
+            "races.circuit_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [38, 71, 69]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[38, 71, 69]"
+            ],
+            "races.name": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['Swiss Grand Prix', 'United States Grand Prix West', 'Swedish Grand Prix']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "['Swiss Grand Prix', 'United States Grand Prix West', 'Swedish Grand Prix']"
+            ],
+            "races.date": [
+                "The type is DATE, Which does not inlude Null and is Unique. Values format like: ['1996-04-28', '1991-09-08', '1985-05-05']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Unique",
+                "['1996-04-28', '1991-09-08', '1985-05-05']"
+            ],
+            "races.time": [
+                "The type is TIME, Which inlude Null and is Non-Unique. Values format like: ['06:00:00', '09:30:00', '17:10:00']",
+                "",
+                "",
+                "TIME",
+                "Include Null",
+                "Non-Unique",
+                "['06:00:00', '09:30:00', '17:10:00']"
+            ],
+            "races.url": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['http://en.wikipedia.org/wiki/1980_Austrian_Grand_Prix', 'http://en.wikipedia.org/wiki/1976_Belgian_Grand_Prix', 'http://en.wikipedia.org/wiki/1975_Belgian_Grand_Prix']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Unique",
+                "['http://en.wikipedia.org/wiki/1980_Austrian_Grand_Prix', 'http://en.wikipedia.org/wiki/1976_Belgian_Grand_Prix', 'http://en.wikipedia.org/wiki/1975_Belgian_Grand_Prix']"
+            ],
+            "races.fp1_date": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['2021-04-16', '2021-07-30', '2023-09-22']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['2021-04-16', '2021-07-30', '2023-09-22']"
+            ],
+            "races.fp1_time": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['12:00:00', '03:30:00', '11:00:00']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['12:00:00', '03:30:00', '11:00:00']"
+            ],
+            "races.fp2_date": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['2024-11-29', '2022-07-09', '2023-07-07']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['2024-11-29', '2022-07-09', '2023-07-07']"
+            ],
+            "races.fp2_time": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['22:00:00', '21:00:00', '06:00:00']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['22:00:00', '21:00:00', '06:00:00']"
+            ],
+            "races.fp3_date": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['2021-12-11', '2022-11-19', '2024-03-08']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['2021-12-11', '2022-11-19', '2024-03-08']"
+            ],
+            "races.fp3_time": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['11:30:00', '17:00:00', '08:30:00']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['11:30:00', '17:00:00', '08:30:00']"
+            ],
+            "races.quali_date": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['2021-07-31', '2021-09-25', '2024-11-02']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['2021-07-31', '2021-09-25', '2024-11-02']"
+            ],
+            "races.quali_time": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['17:00:00', '16:00:00', '19:00:00']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['17:00:00', '16:00:00', '19:00:00']"
+            ],
+            "races.sprint_date": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['2023-07-01', '2024-11-02', '2022-07-09']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['2023-07-01', '2024-11-02', '2022-07-09']"
+            ],
+            "races.sprint_time": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['10:00:00', '14:00:00', '16:00:00']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['10:00:00', '14:00:00', '16:00:00']"
+            ],
+            "results.result_id": [
+                "The type is INT(11), Which does not inlude Null and is Unique. Values format like: [7771, 14250, 19734]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Unique",
+                "[7771, 14250, 19734]"
+            ],
+            "results.race_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [1013, 175, 885]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[1013, 175, 885]"
+            ],
+            "results.driver_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [426, 202, 39]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[426, 202, 39]"
+            ],
+            "results.constructor_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [15, 168, 62]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[15, 168, 62]"
+            ],
+            "results.number": [
+                "The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [75, 108, 102]",
+                "",
+                "",
+                "INT(11)",
+                "Include Null",
+                "Non-Unique",
+                "[75, 108, 102]"
+            ],
+            "results.grid": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [3, 20, 7]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 20, 7]"
+            ],
+            "results.position": [
+                "The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [18, 30, 24]",
+                "",
+                "",
+                "INT(11)",
+                "Include Null",
+                "Non-Unique",
+                "[18, 30, 24]"
+            ],
+            "results.position_text": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: [21, 'F', 30]",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "[21, 'F', 30]"
+            ],
+            "results.position_order": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [2, 13, 24]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 13, 24]"
+            ],
+            "results.points": [
+                "The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [7, 16, 50]",
+                "",
+                "",
+                "FLOAT",
+                "Non-Null",
+                "Non-Unique",
+                "[7, 16, 50]"
+            ],
+            "results.laps": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [130, 47, 60]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[130, 47, 60]"
+            ],
+            "results.time": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['+53.673', '+17.688', '+40.92']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['+53.673', '+17.688', '+40.92']"
+            ],
+            "results.milliseconds": [
+                "The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [4699104, 6182143, 5258908]",
+                "",
+                "",
+                "INT(11)",
+                "Include Null",
+                "Non-Unique",
+                "[4699104, 6182143, 5258908]"
+            ],
+            "results.fastest_lap": [
+                "The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [38, 55, 32]",
+                "",
+                "",
+                "INT(11)",
+                "Include Null",
+                "Non-Unique",
+                "[38, 55, 32]"
+            ],
+            "results.rank": [
+                "The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [22, 19, 8]",
+                "",
+                "",
+                "INT(11)",
+                "Include Null",
+                "Non-Unique",
+                "[22, 19, 8]"
+            ],
+            "results.fastest_lap_time": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['1:48.321', '1:41.044', '1:34.650']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['1:48.321', '1:41.044', '1:34.650']"
+            ],
+            "results.fastest_lap_speed": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['210.415', '213.560', '193.412']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['210.415', '213.560', '193.412']"
+            ],
+            "results.status_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [64, 27, 34]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[64, 27, 34]"
+            ],
+            "seasons.year": [
+                "The type is INT(11), Which does not inlude Null and is Unique. Values format like: [1988, 2016, 2020]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Unique",
+                "[1988, 2016, 2020]"
+            ],
+            "seasons.url": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['http://en.wikipedia.org/wiki/2006_Formula_One_season', 'http://en.wikipedia.org/wiki/2015_Formula_One_season', 'http://en.wikipedia.org/wiki/1974_Formula_One_season']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Unique",
+                "['http://en.wikipedia.org/wiki/2006_Formula_One_season', 'http://en.wikipedia.org/wiki/2015_Formula_One_season', 'http://en.wikipedia.org/wiki/1974_Formula_One_season']"
+            ],
+            "status.status_id": [
+                "The type is INT(11), Which does not inlude Null and is Unique. Values format like: [35, 94, 23]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Unique",
+                "[35, 94, 23]"
+            ],
+            "status.status": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['Engine fire', 'Vibrations', 'Excluded']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Unique",
+                "['Engine fire', 'Vibrations', 'Excluded']"
+            ],
+            "sprint_results.result_id": [
+                "The type is INT(11), Which does not inlude Null and is Unique. Values format like: [254, 93, 43]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Unique",
+                "[254, 93, 43]"
+            ],
+            "sprint_results.race_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [1101, 1125, 1071]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[1101, 1125, 1071]"
+            ],
+            "sprint_results.driver_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [857, 847, 9]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[857, 847, 9]"
+            ],
+            "sprint_results.constructor_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [1, 213, 210]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 213, 210]"
+            ],
+            "sprint_results.number": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [3, 11, 63]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 11, 63]"
+            ],
+            "sprint_results.grid": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [9, 6, 3]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[9, 6, 3]"
+            ],
+            "sprint_results.position": [
+                "The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [13, 18, 17]",
+                "",
+                "",
+                "INT(11)",
+                "Include Null",
+                "Non-Unique",
+                "[13, 18, 17]"
+            ],
+            "sprint_results.position_text": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: [6, 12, 8]",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "[6, 12, 8]"
+            ],
+            "sprint_results.position_order": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [7, 5, 1]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[7, 5, 1]"
+            ],
+            "sprint_results.points": [
+                "The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [4, 3, 2]",
+                "",
+                "",
+                "FLOAT",
+                "Non-Null",
+                "Non-Unique",
+                "[4, 3, 2]"
+            ],
+            "sprint_results.laps": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [1, 2, 23]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 2, 23]"
+            ],
+            "sprint_results.time": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['+19.864', '+28.307', '+38.295']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['+19.864', '+28.307', '+38.295']"
+            ],
+            "sprint_results.milliseconds": [
+                "The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [1835769, 1879578, 1536260]",
+                "",
+                "",
+                "INT(11)",
+                "Include Null",
+                "Non-Unique",
+                "[1835769, 1879578, 1536260]"
+            ],
+            "sprint_results.fastest_lap": [
+                "The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [13, 24, 5]",
+                "",
+                "",
+                "INT(11)",
+                "Include Null",
+                "Non-Unique",
+                "[13, 24, 5]"
+            ],
+            "sprint_results.fastest_lap_time": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['1:10.512', '1:14.292', '1:14.583']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "['1:10.512', '1:14.292', '1:14.583']"
+            ],
+            "sprint_results.fastest_lap_speed": [
+                "The type is VARCHAR(255), Which inlude Null and is Non-Unique. Value of this column must in: None",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Include Null",
+                "Non-Unique",
+                "None"
+            ],
+            "sprint_results.status_id": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [31, 130, 23]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[31, 130, 23]"
+            ],
+            "short_grand_prix_names.full_name": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['Turkish Grand Prix', 'São Paulo Grand Prix', 'Azerbaijan Grand Prix']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Unique",
+                "['Turkish Grand Prix', 'São Paulo Grand Prix', 'Azerbaijan Grand Prix']"
+            ],
+            "short_grand_prix_names.short_name": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['70th Anniversary', 'Qatar', 'Netherlands']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "['70th Anniversary', 'Qatar', 'Netherlands']"
+            ],
+            "short_constructor_names.constructor_ref": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['lotus-borgward', 'eagle-climax', 'de_tomaso-ferrari']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Unique",
+                "['lotus-borgward', 'eagle-climax', 'de_tomaso-ferrari']"
+            ],
+            "short_constructor_names.short_name": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['McLaren', 'Alpine', 'Shadow']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "['McLaren', 'Alpine', 'Shadow']"
+            ],
+            "liveries.constructor_ref": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['ferrari', 'honda', 'spyker']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "['ferrari', 'honda', 'spyker']"
+            ],
+            "liveries.start_year": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [1997, 2021, 2007]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[1997, 2021, 2007]"
+            ],
+            "liveries.end_year": [
+                "The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [1993, 2013, 2020]",
+                "",
+                "",
+                "INT(11)",
+                "Include Null",
+                "Non-Unique",
+                "[1993, 2013, 2020]"
+            ],
+            "liveries.primary_hex_code": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['#005919', '#FF3A2E', '#BC132C']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "['#005919', '#FF3A2E', '#BC132C']"
+            ],
+            "tdr_overrides.year": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [2017, 2021, 2019]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[2017, 2021, 2019]"
+            ],
+            "tdr_overrides.constructor_ref": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['mercedes', 'aston_martin', 'toro_rosso']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "['mercedes', 'aston_martin', 'toro_rosso']"
+            ],
+            "tdr_overrides.driver_ref": [
+                "The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['massa', 'kovalainen', 'stroll']",
+                "",
+                "",
+                "VARCHAR(255)",
+                "Non-Null",
+                "Non-Unique",
+                "['massa', 'kovalainen', 'stroll']"
+            ],
+            "tdr_overrides.team_driver_rank": [
+                "The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [4, 1, 2]",
+                "",
+                "",
+                "INT(11)",
+                "Non-Null",
+                "Non-Unique",
+                "[4, 1, 2]"
+            ],
+            "circuits_ext.circuit_id": [
+                "The type is INT, Which does not inlude Null and is Unique. Values format like: [9, 21, 70]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Unique",
+                "[9, 21, 70]"
+            ],
+            "circuits_ext.circuit_ref": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['yeongam', 'dijon', 'red_bull_ring']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['yeongam', 'dijon', 'red_bull_ring']"
+            ],
+            "circuits_ext.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Fair Park', 'Ain Diab', 'Circuit de Monaco']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Fair Park', 'Ain Diab', 'Circuit de Monaco']"
+            ],
+            "circuits_ext.location": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['California', 'Estoril', 'Montmeló']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['California', 'Estoril', 'Montmeló']"
+            ],
+            "circuits_ext.country": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['United States', 'Austria', 'Italy']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['United States', 'Austria', 'Italy']"
+            ],
+            "circuits_ext.lat": [
+                "The type is REAL, Which does not inlude Null and is Unique. Values format like: [-34, 49, 30]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Unique",
+                "[-34, 49, 30]"
+            ],
+            "circuits_ext.lng": [
+                "The type is REAL, Which does not inlude Null and is Unique. Values format like: [103, 2, -115]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Unique",
+                "[103, 2, -115]"
+            ],
+            "circuits_ext.alt": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [153, 37, 578]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[153, 37, 578]"
+            ],
+            "circuits_ext.url": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['http://en.wikipedia.org/wiki/Las_Vegas_Street_Circuit', 'http://en.wikipedia.org/wiki/Circuito_Permanente_de_Jerez', 'http://en.wikipedia.org/wiki/Long_Beach,_California']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['http://en.wikipedia.org/wiki/Las_Vegas_Street_Circuit', 'http://en.wikipedia.org/wiki/Circuito_Permanente_de_Jerez', 'http://en.wikipedia.org/wiki/Long_Beach,_California']"
+            ],
+            "circuits_ext.last_race_year": [
+                "The type is , Which does not inlude Null and is Non-Unique. Values format like: [1983, 2013, 1966]",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "[1983, 2013, 1966]"
+            ],
+            "circuits_ext.number_of_races": [
+                "The type is , Which does not inlude Null and is Non-Unique. Values format like: [9, 37, 2]",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "[9, 37, 2]"
+            ],
+            "constructors_ext.constructor_id": [
+                "The type is INT, Which does not inlude Null and is Unique. Values format like: [140, 45, 75]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Unique",
+                "[140, 45, 75]"
+            ],
+            "constructors_ext.constructor_ref": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['cooper-climax', 'stewart', 'minardi']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['cooper-climax', 'stewart', 'minardi']"
+            ],
+            "constructors_ext.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Pawl', 'Ligier', 'Christensen']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Pawl', 'Ligier', 'Christensen']"
+            ],
+            "constructors_ext.nationality": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Malaysian', 'Spanish', 'Japanese']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Malaysian', 'Spanish', 'Japanese']"
+            ],
+            "constructors_ext.url": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['http://en.wikipedia.org/wiki/Team_McLaren', 'http://en.wikipedia.org/wiki/Adams_(constructor)', 'http://en.wikipedia.org/wiki/Honda_Racing_F1']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['http://en.wikipedia.org/wiki/Team_McLaren', 'http://en.wikipedia.org/wiki/Adams_(constructor)', 'http://en.wikipedia.org/wiki/Honda_Racing_F1']"
+            ],
+            "constructors_ext.short_name": [
+                "The type is , Which does not inlude Null and is Non-Unique. Values format like: ['Coloni', 'Iso Marlboro', 'Benetton']",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "['Coloni', 'Iso Marlboro', 'Benetton']"
+            ],
+            "drivers_ext.driver_id": [
+                "The type is INT, Which does not inlude Null and is Unique. Values format like: [443, 765, 85]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Unique",
+                "[443, 765, 85]"
+            ],
+            "drivers_ext.driver_ref": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['gugelmin', 'palm', 'john_james']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['gugelmin', 'palm', 'john_james']"
+            ],
+            "drivers_ext.number": [
+                "The type is INT, Which inlude Null and is Non-Unique. Values format like: [26, 38, 89]",
+                "",
+                "",
+                "INT",
+                "Include Null",
+                "Non-Unique",
+                "[26, 38, 89]"
+            ],
+            "drivers_ext.code": [
+                "The type is , Which does not inlude Null and is Non-Unique. Values format like: ['GUT', 'HEL', 'FOY']",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "['GUT', 'HEL', 'FOY']"
+            ],
+            "drivers_ext.forename": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Lewis', 'Luca', 'Wolfgang']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Lewis', 'Luca', 'Wolfgang']"
+            ],
+            "drivers_ext.surname": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Baumgartner', 'Sutcliffe', 'Montermini']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Baumgartner', 'Sutcliffe', 'Montermini']"
+            ],
+            "drivers_ext.full_name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Adrián Campos', 'Paul Russo', 'Allan McNish']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Adrián Campos', 'Paul Russo', 'Allan McNish']"
+            ],
+            "drivers_ext.dob": [
+                "The type is NUM, Which does not inlude Null and is Non-Unique. Values format like: ['1934-11-22', '1917-01-30', '1948-08-31']",
+                "",
+                "",
+                "NUM",
+                "Non-Null",
+                "Non-Unique",
+                "['1934-11-22', '1917-01-30', '1948-08-31']"
+            ],
+            "drivers_ext.nationality": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['German', 'Dutch', 'Chinese']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['German', 'Dutch', 'Chinese']"
+            ],
+            "drivers_ext.url": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['http://en.wikipedia.org/wiki/Sergio_Mantovani', 'http://en.wikipedia.org/wiki/Philippe_Adams', 'http://en.wikipedia.org/wiki/Duke_Nalon']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['http://en.wikipedia.org/wiki/Sergio_Mantovani', 'http://en.wikipedia.org/wiki/Philippe_Adams', 'http://en.wikipedia.org/wiki/Duke_Nalon']"
+            ],
+            "driver_standings_ext.driver_standings_id": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [10755, 11156, 22208]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[10755, 11156, 22208]"
+            ],
+            "driver_standings_ext.race_id": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [455, 975, 587]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[455, 975, 587]"
+            ],
+            "driver_standings_ext.driver_id": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [751, 153, 749]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[751, 153, 749]"
+            ],
+            "driver_standings_ext.points": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [193, 184, 400]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[193, 184, 400]"
+            ],
+            "driver_standings_ext.position": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [25, 85, 64]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[25, 85, 64]"
+            ],
+            "driver_standings_ext.position_text": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: [22, 43, 96]",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "[22, 43, 96]"
+            ],
+            "driver_standings_ext.wins": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [7, 1, 16]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[7, 1, 16]"
+            ],
+            "lap_times_ext.race_id": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1070, 153, 66]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[1070, 153, 66]"
+            ],
+            "lap_times_ext.driver_id": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [859, 82, 26]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[859, 82, 26]"
+            ],
+            "lap_times_ext.lap": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [3, 16, 28]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 16, 28]"
+            ],
+            "lap_times_ext.position": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [5, 21, 9]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[5, 21, 9]"
+            ],
+            "lap_times_ext.time": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1:31.431', '1:24.738', '1:45.094']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['1:31.431', '1:24.738', '1:45.094']"
+            ],
+            "lap_times_ext.milliseconds": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [86142, 58921, 78183]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[86142, 58921, 78183]"
+            ],
+            "lap_times_ext.seconds": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [72, 166, 134]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[72, 166, 134]"
+            ],
+            "lap_times_ext.running_milliseconds": [
+                "The type is , Which does not inlude Null and is Non-Unique. Values format like: [1850369, 3446390, 4500213]",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "[1850369, 3446390, 4500213]"
+            ],
+            "lap_time_stats.race_id": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [41, 92, 1]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[41, 92, 1]"
+            ],
+            "lap_time_stats.driver_id": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [827, 824, 5]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[827, 824, 5]"
+            ],
+            "lap_time_stats.avg_milliseconds": [
+                "The type is , Which does not inlude Null and is Non-Unique. Values format like: [99810, 144345, 94110]",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "[99810, 144345, 94110]"
+            ],
+            "lap_time_stats.avg_seconds": [
+                "The type is , Which does not inlude Null and is Non-Unique. Values format like: [106, 79, 117]",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "[106, 79, 117]"
+            ],
+            "lap_time_stats.stdev_milliseconds": [
+                "The type is , Which does not inlude Null and is Non-Unique. Values format like: [3766, 7088, 3442]",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "[3766, 7088, 3442]"
+            ],
+            "lap_time_stats.stdev_seconds": [
+                "The type is , Which does not inlude Null and is Non-Unique. Values format like: [145, 12, 8]",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "[145, 12, 8]"
+            ],
+            "races_ext.race_id": [
+                "The type is INT, Which does not inlude Null and is Unique. Values format like: [289, 301, 431]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Unique",
+                "[289, 301, 431]"
+            ],
+            "races_ext.year": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1950, 2009, 1993]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[1950, 2009, 1993]"
+            ],
+            "races_ext.round": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [17, 16, 18]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[17, 16, 18]"
+            ],
+            "races_ext.circuit_id": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [53, 63, 67]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[53, 63, 67]"
+            ],
+            "races_ext.name": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Italian Grand Prix', 'European Grand Prix', 'Chinese Grand Prix']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Italian Grand Prix', 'European Grand Prix', 'Chinese Grand Prix']"
+            ],
+            "races_ext.date": [
+                "The type is NUM, Which does not inlude Null and is Unique. Values format like: ['1986-07-27', '1999-05-02', '1960-11-20']",
+                "",
+                "",
+                "NUM",
+                "Non-Null",
+                "Unique",
+                "['1986-07-27', '1999-05-02', '1960-11-20']"
+            ],
+            "races_ext.time": [
+                "The type is NUM, Which inlude Null and is Non-Unique. Values format like: ['11:30:00', '17:10:00', '18:00:00']",
+                "",
+                "",
+                "NUM",
+                "Include Null",
+                "Non-Unique",
+                "['11:30:00', '17:10:00', '18:00:00']"
+            ],
+            "races_ext.url": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['http://en.wikipedia.org/wiki/1962_Monaco_Grand_Prix', 'http://en.wikipedia.org/wiki/1973_Monaco_Grand_Prix', 'https://en.wikipedia.org/wiki/2024_Mexico_City_Grand_Prix']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['http://en.wikipedia.org/wiki/1962_Monaco_Grand_Prix', 'http://en.wikipedia.org/wiki/1973_Monaco_Grand_Prix', 'https://en.wikipedia.org/wiki/2024_Mexico_City_Grand_Prix']"
+            ],
+            "races_ext.fp1_date": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2023-11-03', '2023-07-07', '2024-06-28']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['2023-11-03', '2023-07-07', '2024-06-28']"
+            ],
+            "races_ext.fp1_time": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['04:30:00', '15:30:00', '03:30:00']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['04:30:00', '15:30:00', '03:30:00']"
+            ],
+            "races_ext.fp2_date": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2024-08-30', '2024-02-29', '2023-06-02']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['2024-08-30', '2024-02-29', '2023-06-02']"
+            ],
+            "races_ext.fp2_time": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['17:30:00', '18:30:00', '14:30:00']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['17:30:00', '18:30:00', '14:30:00']"
+            ],
+            "races_ext.fp3_date": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2021-10-23', '2022-07-02', '2021-09-25']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['2021-10-23', '2022-07-02', '2021-09-25']"
+            ],
+            "races_ext.fp3_time": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['17:00:00', '13:30:00', '02:30:00']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['17:00:00', '13:30:00', '02:30:00']"
+            ],
+            "races_ext.quali_date": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2024-10-19', '2021-09-25', '2021-05-01']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['2024-10-19', '2021-09-25', '2021-05-01']"
+            ],
+            "races_ext.quali_time": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['18:00:00', '19:00:00', '13:00:00']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['18:00:00', '19:00:00', '13:00:00']"
+            ],
+            "races_ext.sprint_date": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2023-10-07', '2023-04-29', '2024-11-30']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['2023-10-07', '2023-04-29', '2024-11-30']"
+            ],
+            "races_ext.sprint_time": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['18:00:00', '19:30:00', '03:00:00']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['18:00:00', '19:30:00', '03:00:00']"
+            ],
+            "races_ext.is_pit_data_available": [
+                "The type is , Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "races_ext.short_name": [
+                "The type is , Which does not inlude Null and is Non-Unique. Values format like: ['Tuscany', 'Germany', 'Portugal']",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "['Tuscany', 'Germany', 'Portugal']"
+            ],
+            "races_ext.has_sprint": [
+                "The type is , Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "races_ext.max_points": [
+                "The type is , Which does not inlude Null and is Non-Unique. Values format like: [8, 29, 26]",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "[8, 29, 26]"
+            ],
+            "team_driver_ranks.year": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1993, 1964, 2023]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[1993, 1964, 2023]"
+            ],
+            "team_driver_ranks.constructor_id": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [207, 12, 35]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[207, 12, 35]"
+            ],
+            "team_driver_ranks.constructor_ref": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['lotus-maserati', 'onyx', 'footwork']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['lotus-maserati', 'onyx', 'footwork']"
+            ],
+            "team_driver_ranks.driver_id": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [630, 425, 85]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[630, 425, 85]"
+            ],
+            "team_driver_ranks.driver_ref": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tarquini', 'liuzzi', 'peters']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['tarquini', 'liuzzi', 'peters']"
+            ],
+            "team_driver_ranks.team_driver_rank": [
+                "The type is , Which does not inlude Null and is Non-Unique. Values format like: [24, 28, 21]",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "[24, 28, 21]"
+            ],
+            "drives.year": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1956, 1972, 1984]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[1956, 1972, 1984]"
+            ],
+            "drives.driver_id": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [286, 37, 531]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[286, 37, 531]"
+            ],
+            "drives.drive_id": [
+                "The type is , Which does not inlude Null and is Non-Unique. Values format like: [5, 3, 1]",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "[5, 3, 1]"
+            ],
+            "drives.constructor_id": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [44, 130, 159]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[44, 130, 159]"
+            ],
+            "drives.first_round": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1, 17, 8]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 17, 8]"
+            ],
+            "drives.last_round": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [11, 22, 14]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[11, 22, 14]"
+            ],
+            "drives.is_first_drive_of_season": [
+                "The type is , Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "drives.is_final_drive_of_season": [
+                "The type is , Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "retirements.race_id": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1088, 739, 441]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[1088, 739, 441]"
+            ],
+            "retirements.driver_id": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [7, 156, 663]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[7, 156, 663]"
+            ],
+            "retirements.lap": [
+                "The type is , Which does not inlude Null and is Non-Unique. Values format like: [14, 17, 190]",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "[14, 17, 190]"
+            ],
+            "retirements.position_order": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [31, 19, 21]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[31, 19, 21]"
+            ],
+            "retirements.status_id": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [104, 94, 39]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[104, 94, 39]"
+            ],
+            "retirements.retirement_type": [
+                "The type is , Which does not inlude Null and is Non-Unique. Values format like: ['Retirement (Mechanical Problem)', 'Retirement (Disqualification)', 'Retirement (Driver Error)']",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "['Retirement (Mechanical Problem)', 'Retirement (Disqualification)', 'Retirement (Driver Error)']"
+            ],
+            "lap_positions.race_id": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1095, 539, 434]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[1095, 539, 434]"
+            ],
+            "lap_positions.driver_id": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [527, 581, 666]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[527, 581, 666]"
+            ],
+            "lap_positions.lap": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1, 46, 130]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 46, 130]"
+            ],
+            "lap_positions.position": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [26, 32, 21]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[26, 32, 21]"
+            ],
+            "lap_positions.lap_type": [
+                "The type is , Which does not inlude Null and is Non-Unique. Values format like: ['Race', 'Retirement (Mechanical Problem)', 'Retirement (Disqualification)']",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Non-Unique",
+                "['Race', 'Retirement (Mechanical Problem)', 'Retirement (Disqualification)']"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries which constructors had the top 3 combined points from their best driver and team, and in which years they achieved them. The related columns include constructor points, driver points, constructor names, and years. The values include filtering for the top 3 combined points.\n#columns: constructors.name, constructor_standings.points, driver_standings.points, races.year, constructor_standings.constructor_id, driver_standings.driver_id\n#values: \"top 3 combined points\"\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "points",
+            "best driver",
+            "driver",
+            "their best driver and team",
+            "which years",
+            "constructors",
+            "top 3 combined points",
+            "years",
+            "team"
+        ],
+        "col": "constructors.name, constructor_standings.points, driver_standings.points, races.year, constructor_standings.constructor_id, driver_standings.driver_id",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [
+            [
+                "drivers.driver_ref",
+                "driver"
+            ],
+            [
+                "drivers.surname",
+                "Driver"
+            ],
+            [
+                "drivers_ext.code",
+                "AND"
+            ],
+            [
+                "drivers_ext.driver_ref",
+                "driver"
+            ],
+            [
+                "drivers_ext.surname",
+                "Driver"
+            ],
+            [
+                "team_driver_ranks.driver_ref",
+                "driver"
+            ]
+        ],
+        "column": "circuits.country: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['Singapore', 'Qatar', 'United States']\ncircuits.location: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['Suzuka', 'Oyama', 'California']\ncircuits.name: The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['Prince George Circuit', 'Charade Circuit', 'Montjuïc']\ncircuits_ext.country: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['United States', 'Austria', 'Italy']\ncircuits_ext.location: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['California', 'Estoril', 'Montmeló']\ncircuits_ext.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Fair Park', 'Ain Diab', 'Circuit de Monaco']\nconstructor_results.constructor_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [14, 48, 189]\nconstructor_results.constructor_results_id: The type is INT(11), Which does not inlude Null and is Unique. Values format like: [3566, 4108, 969]\nconstructor_results.points: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [34, 43, 35]\nconstructor_standings.constructor_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [13, 191, 64]\nconstructor_standings.points: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [431, 613, 278]\nconstructor_standings.wins: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [19, 3, 9]\nconstructors.constructor_id: The type is INT(11), Which does not inlude Null and is Unique. Values format like: [190, 13, 173]\nconstructors.constructor_ref: The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['ats', 'dunn', 'williams']\nconstructors.name: The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['Cooper-Ferrari', 'Kurtis Kraft', 'Stevens']\nconstructors_ext.constructor_id: The type is INT, Which does not inlude Null and is Unique. Values format like: [140, 45, 75]\nconstructors_ext.constructor_ref: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['cooper-climax', 'stewart', 'minardi']\nconstructors_ext.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Pawl', 'Ligier', 'Christensen']\ndriver_standings.driver_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [248, 640, 766]\ndriver_standings.driver_standings_id: The type is INT(11), Which does not inlude Null and is Unique. Values format like: [68878, 59347, 69240]\ndriver_standings.points: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [219, 240, 11]\ndriver_standings.wins: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [4, 14, 0]\ndriver_standings_ext.driver_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [751, 153, 749]\ndriver_standings_ext.driver_standings_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [10755, 11156, 22208]\ndriver_standings_ext.points: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [193, 184, 400]\ndriver_standings_ext.wins: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [7, 1, 16]\ndrivers.driver_id: The type is INT(11), Which does not inlude Null and is Unique. Values format like: [539, 689, 7]\ndrivers.driver_ref: The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['purley', 'ghinzani', 'vaccarella']\ndrivers.forename: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['Clemente', 'Jackie', 'Didier']\ndrivers.number: The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [30, 5, 33]\ndrivers.surname: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['Pagani', 'Raby', 'Foitek']\ndrivers_ext.code: The type is , Which does not inlude Null and is Non-Unique. Values format like: ['GUT', 'HEL', 'FOY']\ndrivers_ext.driver_id: The type is INT, Which does not inlude Null and is Unique. Values format like: [443, 765, 85]\ndrivers_ext.driver_ref: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['gugelmin', 'palm', 'john_james']\ndrivers_ext.forename: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Lewis', 'Luca', 'Wolfgang']\ndrivers_ext.number: The type is INT, Which inlude Null and is Non-Unique. Values format like: [26, 38, 89]\ndrivers_ext.surname: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Baumgartner', 'Sutcliffe', 'Montermini']\ndrives.constructor_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [44, 130, 159]\ndrives.driver_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [286, 37, 531]\ndrives.year: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1956, 1972, 1984]\nlap_positions.driver_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [527, 581, 666]\nlap_time_stats.driver_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [827, 824, 5]\nlap_times.driver_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [29, 26, 38]\nlap_times.time: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['1:47.354', '1:09.818', '1:46.770']\nlap_times_ext.driver_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [859, 82, 26]\nlap_times_ext.seconds: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [72, 166, 134]\nlap_times_ext.time: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['1:31.431', '1:24.738', '1:45.094']\nliveries.constructor_ref: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['ferrari', 'honda', 'spyker']\nliveries.end_year: The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [1993, 2013, 2020]\nliveries.start_year: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [1997, 2021, 2007]\npit_stops.driver_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [844, 831, 5]\npit_stops.duration: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['26.382', '23.161', '24.145']\npit_stops.time: The type is TIME, Which does not inlude Null and is Non-Unique. Values format like: ['13:49:03', '14:34:34', '14:25:18']\nqualifying.constructor_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [206, 3, 6]\nqualifying.driver_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [82, 87, 810]\nqualifying.number: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [1, 40, 38]\nqualifying.q3: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['1:04.896', '1:21.011', '1:37.531']\nqualifying.qualify_id: The type is INT(11), Which does not inlude Null and is Unique. Values format like: [39, 2063, 2336]\nraces.date: The type is DATE, Which does not inlude Null and is Unique. Values format like: ['1996-04-28', '1991-09-08', '1985-05-05']\nraces.name: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['Swiss Grand Prix', 'United States Grand Prix West', 'Swedish Grand Prix']\nraces.quali_date: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['2021-07-31', '2021-09-25', '2024-11-02']\nraces.sprint_date: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['2023-07-01', '2024-11-02', '2022-07-09']\nraces.time: The type is TIME, Which inlude Null and is Non-Unique. Values format like: ['06:00:00', '09:30:00', '17:10:00']\nraces.year: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [1953, 2000, 2015]\nraces_ext.date: The type is NUM, Which does not inlude Null and is Unique. Values format like: ['1986-07-27', '1999-05-02', '1960-11-20']\nraces_ext.max_points: The type is , Which does not inlude Null and is Non-Unique. Values format like: [8, 29, 26]\nraces_ext.name: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Italian Grand Prix', 'European Grand Prix', 'Chinese Grand Prix']\nraces_ext.quali_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2024-10-19', '2021-09-25', '2021-05-01']\nraces_ext.sprint_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2023-10-07', '2023-04-29', '2024-11-30']\nraces_ext.time: The type is NUM, Which inlude Null and is Non-Unique. Values format like: ['11:30:00', '17:10:00', '18:00:00']\nraces_ext.year: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1950, 2009, 1993]\nresults.constructor_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [15, 168, 62]\nresults.driver_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [426, 202, 39]\nresults.fastest_lap: The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [38, 55, 32]\nresults.number: The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [75, 108, 102]\nresults.points: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [7, 16, 50]\nresults.rank: The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [22, 19, 8]\nresults.time: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['+53.673', '+17.688', '+40.92']\nretirements.driver_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [7, 156, 663]\nseasons.year: The type is INT(11), Which does not inlude Null and is Unique. Values format like: [1988, 2016, 2020]\nshort_constructor_names.constructor_ref: The type is VARCHAR(255), Which does not inlude Null and is Unique. Values format like: ['lotus-borgward', 'eagle-climax', 'de_tomaso-ferrari']\nsprint_results.constructor_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [1, 213, 210]\nsprint_results.driver_id: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [857, 847, 9]\nsprint_results.fastest_lap: The type is INT(11), Which inlude Null and is Non-Unique. Values format like: [13, 24, 5]\nsprint_results.number: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [3, 11, 63]\nsprint_results.points: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [4, 3, 2]\nsprint_results.time: The type is VARCHAR(255), Which inlude Null and is Non-Unique. Values format like: ['+19.864', '+28.307', '+38.295']\ntdr_overrides.constructor_ref: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['mercedes', 'aston_martin', 'toro_rosso']\ntdr_overrides.driver_ref: The type is VARCHAR(255), Which does not inlude Null and is Non-Unique. Values format like: ['massa', 'kovalainen', 'stroll']\ntdr_overrides.team_driver_rank: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [4, 1, 2]\ntdr_overrides.year: The type is INT(11), Which does not inlude Null and is Non-Unique. Values format like: [2017, 2021, 2019]\nteam_driver_ranks.constructor_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [207, 12, 35]\nteam_driver_ranks.constructor_ref: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['lotus-maserati', 'onyx', 'footwork']\nteam_driver_ranks.driver_id: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [630, 425, 85]\nteam_driver_ranks.driver_ref: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['tarquini', 'liuzzi', 'peters']\nteam_driver_ranks.team_driver_rank: The type is , Which does not inlude Null and is Non-Unique. Values format like: [24, 28, 21]\nteam_driver_ranks.year: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1993, 1964, 2023]",
+        "foreign_keys": "",
+        "foreign_set": [],
+        "q_order": [
+            "Which constructors",
+            "Which years"
+        ],
+        "status": "success"
+    }
+]

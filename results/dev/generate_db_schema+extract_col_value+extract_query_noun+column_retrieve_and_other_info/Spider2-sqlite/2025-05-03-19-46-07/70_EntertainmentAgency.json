@@ -1,0 +1,741 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: EntertainmentAgency\n## Table Agents:\nAgentID: The type is INT, Which does not inlude Null and is Unique. Values format like: [6, 4, 9]\nAgtFirstName: The type is nvarchar (25), Which does not inlude Null and is Unique. Values format like: ['Karen', 'Caleb', 'Maria']\nAgtLastName: The type is nvarchar (25), Which does not inlude Null and is Non-Unique. Values format like: ['Dumbwit', 'Kennedy', 'Thompson']\nAgtStreetAddress: The type is nvarchar (50), Which does not inlude Null and is Unique. Values format like: ['66 Spring Valley Drive', '3445 Cheyenne Road', '667 Red River Road']\nAgtCity: The type is nvarchar (30), Which does not inlude Null and is Non-Unique. Values format like: ['Seattle', 'Tacoma', 'Kirkland']\nAgtState: The type is nvarchar (2), Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']\nAgtZipCode: The type is nvarchar (10), Which does not inlude Null and is Non-Unique. Values format like: [98125, 98006, 98413]\nAgtPhoneNumber: The type is nvarchar (15), Which does not inlude Null and is Unique. Values format like: ['555-2621', '555-2606', '555-2681']\nDateHired: The type is date, Which does not inlude Null and is Non-Unique. Values format like: ['2000-02-05', '1998-02-16', '1997-11-19']\nSalary: The type is decimal(15, 2), Which does not inlude Null and is Non-Unique. Values format like: [30000, 22000, 22100]\nCommissionRate: The type is float(24), Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]\n\n## Table Customers:\nCustomerID: The type is INT, Which does not inlude Null and is Unique. Values format like: [10012, 10009, 10010]\nCustFirstName: The type is nvarchar (25), Which does not inlude Null and is Unique. Values format like: ['Matt', 'Deb', 'Dean']\nCustLastName: The type is nvarchar (25), Which does not inlude Null and is Unique. Values format like: ['Thompson', 'Pundt', 'Patterson']\nCustStreetAddress: The type is nvarchar (50), Which does not inlude Null and is Non-Unique. Values format like: ['4726 - 11th Ave. N.E.', '908 W. Capital Way', '2601 Seaview Lane']\nCustCity: The type is nvarchar (30), Which does not inlude Null and is Non-Unique. Values format like: ['Tacoma', 'Auburn', 'Redmond']\nCustState: The type is nvarchar (2), Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']\nCustZipCode: The type is nvarchar (10), Which does not inlude Null and is Non-Unique. Values format like: [98105, 98033, 98115]\nCustPhoneNumber: The type is nvarchar (15), Which does not inlude Null and is Unique. Values format like: ['555-2726', '555-2721', '555-2296']\n\n## Table Engagements:\nEngagementNumber: The type is INT, Which does not inlude Null and is Unique. Values format like: [31, 23, 74]\nStartDate: The type is date, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-20', '2017-09-30', '2017-12-31']\nEndDate: The type is date, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-23', '2018-02-01', '2018-02-20']\nStartTime: The type is time, Which does not inlude Null and is Non-Unique. Values format like: ['13:00:00', '20:00:00', '16:00:00']\nStopTime: The type is time, Which does not inlude Null and is Non-Unique. Values format like: ['00:00:00', '14:00:00', '15:00:00']\nContractPrice: The type is decimal(15, 2), Which does not inlude Null and is Non-Unique. Values format like: [2930, 3800, 950]\nCustomerID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [10007, 10005, 10003]\nAgentID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [8, 3, 6]\nEntertainerID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1001, 1006, 1012]\n\n## Table Entertainer_Members:\nEntertainerID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1007, 1011, 1010]\nMemberID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [102, 121, 114]\nStatus: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]\n\n## Table Entertainer_Styles:\nEntertainerID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1003, 1007, 1006]\nStyleID: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [20, 13, 23]\nStyleStrength: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [1, 3, 2]\n\n## Table Entertainers:\nEntertainerID: The type is INT, Which does not inlude Null and is Unique. Values format like: [1007, 1011, 1002]\nEntStageName: The type is nvarchar (50), Which does not inlude Null and is Unique. Values format like: ['Katherine Ehrlich', 'JV & the Deep Six', 'Jazz Persuasion']\nEntSSN: The type is nvarchar (12), Which does not inlude Null and is Unique. Values format like: ['888-26-1025', '888-66-1085', '888-71-1123']\nEntStreetAddress: The type is nvarchar (50), Which does not inlude Null and is Unique. Values format like: ['3887 Easy Street', '15127 NE 24th, #383', '4726 - 11th Ave. N.E.']\nEntCity: The type is nvarchar (30), Which does not inlude Null and is Non-Unique. Values format like: ['Redmond', 'Seattle', 'Woodinville']\nEntState: The type is nvarchar (2), Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']\nEntZipCode: The type is nvarchar (10), Which does not inlude Null and is Non-Unique. Values format like: [98105, 98009, 98072]\nEntPhoneNumber: The type is nvarchar (15), Which does not inlude Null and is Unique. Values format like: ['555-2541', '555-2511', '555-2711']\nEntWebPage: The type is nvarchar (50), Which inlude Null and is Non-Unique. Values format like: ['www.greensleeves.com', 'www.jvd6.com', 'www.jazzper.com']\nEntEMailAddress: The type is nvarchar (50), Which inlude Null and is Non-Unique. Values format like: ['carolp@cptrio.com', 'susan@gs.com', 'ke@mzo.com']\nDateEntered: The type is date, Which does not inlude Null and is Unique. Values format like: ['1996-04-01', '1997-07-11', '1998-09-13']\n\n## Table Members:\nMemberID: The type is INT, Which does not inlude Null and is Unique. Values format like: [111, 103, 115]\nMbrFirstName: The type is nvarchar (25), Which does not inlude Null and is Non-Unique. Values format like: ['Mariya', 'Katherine', 'Sara']\nMbrLastName: The type is nvarchar (25), Which does not inlude Null and is Non-Unique. Values format like: ['Kennedy', 'Ehrlich', 'McLain']\nMbrPhoneNumber: The type is nvarchar (15), Which does not inlude Null and is Unique. Values format like: ['555-2316', '555-2511', '555-2306']\nGender: The type is nvarchar (2), Which inlude Null and is Non-Unique. Value of this column must in: ['M', 'F']\n\n## Table Musical_Preferences:\nCustomerID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [10004, 10012, 10002]\nStyleID: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [24, 19, 21]\nPreferenceSeq: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 1]\n\n## Table Musical_Styles:\nStyleID: The type is smallint, Which does not inlude Null and is Unique. Values format like: [25, 16, 10]\nStyleName: The type is nvarchar (75), Which does not inlude Null and is Unique. Values format like: [\"70's Music\", 'Classic Rock & Roll', 'Country Rock']\n\n## Table ztblDays:\nDateField: The type is date, Which does not inlude Null and is Unique. Values format like: ['2018-08-20', '2019-03-03', '2017-07-03']\n\n## Table ztblMonths:\nMonthYear: The type is nvarchar (15), Which does not inlude Null and is Unique. Values format like: ['February 2018', 'December 2017', 'January 2019']\nYearNumber: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [2019, 2017, 2018]\nMonthNumber: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [5, 8, 9]\nMonthStart: The type is date, Which does not inlude Null and is Unique. Values format like: ['2019-09-01', '2019-01-01', '2017-02-01']\nMonthEnd: The type is date, Which does not inlude Null and is Unique. Values format like: ['2018-06-30', '2019-03-31', '2019-04-30']\nJanuary: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]\nFebruary: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nMarch: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nApril: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nMay: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nJune: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nJuly: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nAugust: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nSeptember: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nOctober: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nNovember: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nDecember: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\n\n## Table ztblSkipLabels:\nLabelCount: The type is INT, Which does not inlude Null and is Unique. Values format like: [28, 60, 33]\n\n## Table ztblWeeks:\nWeekStart: The type is date, Which does not inlude Null and is Unique. Values format like: ['2017-12-24', '2018-12-09', '2019-05-05']\nWeekEnd: The type is date, Which does not inlude Null and is Unique. Values format like: ['2019-11-23', '2017-07-22', '2018-05-05']\n\n#Forigen keys:\nEngagements.CustomerID = Customers.CustomerID, Engagements.AgentID = Agents.AgentID, Musical_Preferences.CustomerID = Customers.CustomerID\n\n#Database Description:\nThe `EntertainmentAgency` database is designed to manage information related to an entertainment agency's operations. It includes details about agents, customers, engagements, entertainers, members, musical preferences, musical styles, and various date-related tables. The database facilitates tracking of engagements between customers and entertainers, musical preferences, and the styles of entertainers. It also includes auxiliary tables for managing date-related data.\n\n#Tables Descriptions:\n\n## Agents:\nContains information about agents working for the entertainment agency. Includes details such as agent ID, name, address, phone number, hire date, salary, and commission rate.\n\n## Customers:\nStores information about customers of the entertainment agency. Includes customer ID, name, address, phone number, and other contact details.\n\n## Engagements:\nTracks engagements between customers and entertainers. Includes engagement number, start and end dates, start and stop times, contract price, and references to customers, agents, and entertainers.\n\n## Entertainer_Members:\nManages the relationship between entertainers and their members. Includes entertainer ID, member ID, and the status of the member.\n\n## Entertainer_Styles:\nTracks the musical styles associated with entertainers. Includes entertainer ID, style ID, and the strength of the style.\n\n## Entertainers:\nContains information about entertainers managed by the agency. Includes entertainer ID, stage name, SSN, address, phone number, webpage, email address, and the date they were entered into the system.\n\n## Members:\nStores information about individual members of entertainer groups. Includes member ID, name, phone number, and gender.\n\n## Musical_Preferences:\nTracks the musical preferences of customers. Includes customer ID, style ID, and the sequence of preference.\n\n## Musical_Styles:\nContains information about musical styles. Includes style ID and style name.\n\n## ztblDays:\nStores unique dates for reference purposes. Includes a single column for date values.\n\n## ztblMonths:\nTracks month-related information. Includes month-year, year number, month number, start and end dates, and flags for each month.\n\n## ztblSkipLabels:\nContains a count of labels for reference purposes. Includes a single column for label count.\n\n## ztblWeeks:\nTracks week-related information. Includes start and end dates for weeks.\n\n#Foreign Keys:\n- `Engagements.CustomerID` references `Customers.CustomerID`.\n- `Engagements.AgentID` references `Agents.AgentID`.\n- `Musical_Preferences.CustomerID` references `Customers.CustomerID`.\n",
+        "db_col_dic": {
+            "Agents.AgentID": [
+                "The type is INT, Which does not inlude Null and is Unique. Values format like: [6, 4, 9]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Unique",
+                "[6, 4, 9]"
+            ],
+            "Agents.AgtFirstName": [
+                "The type is nvarchar (25), Which does not inlude Null and is Unique. Values format like: ['Karen', 'Caleb', 'Maria']",
+                "",
+                "",
+                "nvarchar (25)",
+                "Non-Null",
+                "Unique",
+                "['Karen', 'Caleb', 'Maria']"
+            ],
+            "Agents.AgtLastName": [
+                "The type is nvarchar (25), Which does not inlude Null and is Non-Unique. Values format like: ['Dumbwit', 'Kennedy', 'Thompson']",
+                "",
+                "",
+                "nvarchar (25)",
+                "Non-Null",
+                "Non-Unique",
+                "['Dumbwit', 'Kennedy', 'Thompson']"
+            ],
+            "Agents.AgtStreetAddress": [
+                "The type is nvarchar (50), Which does not inlude Null and is Unique. Values format like: ['66 Spring Valley Drive', '3445 Cheyenne Road', '667 Red River Road']",
+                "",
+                "",
+                "nvarchar (50)",
+                "Non-Null",
+                "Unique",
+                "['66 Spring Valley Drive', '3445 Cheyenne Road', '667 Red River Road']"
+            ],
+            "Agents.AgtCity": [
+                "The type is nvarchar (30), Which does not inlude Null and is Non-Unique. Values format like: ['Seattle', 'Tacoma', 'Kirkland']",
+                "",
+                "",
+                "nvarchar (30)",
+                "Non-Null",
+                "Non-Unique",
+                "['Seattle', 'Tacoma', 'Kirkland']"
+            ],
+            "Agents.AgtState": [
+                "The type is nvarchar (2), Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']",
+                "",
+                "",
+                "nvarchar (2)",
+                "Non-Null",
+                "Non-Unique",
+                "['WA']"
+            ],
+            "Agents.AgtZipCode": [
+                "The type is nvarchar (10), Which does not inlude Null and is Non-Unique. Values format like: [98125, 98006, 98413]",
+                "",
+                "",
+                "nvarchar (10)",
+                "Non-Null",
+                "Non-Unique",
+                "[98125, 98006, 98413]"
+            ],
+            "Agents.AgtPhoneNumber": [
+                "The type is nvarchar (15), Which does not inlude Null and is Unique. Values format like: ['555-2621', '555-2606', '555-2681']",
+                "",
+                "",
+                "nvarchar (15)",
+                "Non-Null",
+                "Unique",
+                "['555-2621', '555-2606', '555-2681']"
+            ],
+            "Agents.DateHired": [
+                "The type is date, Which does not inlude Null and is Non-Unique. Values format like: ['2000-02-05', '1998-02-16', '1997-11-19']",
+                "",
+                "",
+                "date",
+                "Non-Null",
+                "Non-Unique",
+                "['2000-02-05', '1998-02-16', '1997-11-19']"
+            ],
+            "Agents.Salary": [
+                "The type is decimal(15, 2), Which does not inlude Null and is Non-Unique. Values format like: [30000, 22000, 22100]",
+                "",
+                "",
+                "decimal(15, 2)",
+                "Non-Null",
+                "Non-Unique",
+                "[30000, 22000, 22100]"
+            ],
+            "Agents.CommissionRate": [
+                "The type is float(24), Which does not inlude Null and is Non-Unique. Values format like: [0, 0, 0]",
+                "",
+                "",
+                "float(24)",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 0, 0]"
+            ],
+            "Customers.CustomerID": [
+                "The type is INT, Which does not inlude Null and is Unique. Values format like: [10012, 10009, 10010]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Unique",
+                "[10012, 10009, 10010]"
+            ],
+            "Customers.CustFirstName": [
+                "The type is nvarchar (25), Which does not inlude Null and is Unique. Values format like: ['Matt', 'Deb', 'Dean']",
+                "",
+                "",
+                "nvarchar (25)",
+                "Non-Null",
+                "Unique",
+                "['Matt', 'Deb', 'Dean']"
+            ],
+            "Customers.CustLastName": [
+                "The type is nvarchar (25), Which does not inlude Null and is Unique. Values format like: ['Thompson', 'Pundt', 'Patterson']",
+                "",
+                "",
+                "nvarchar (25)",
+                "Non-Null",
+                "Unique",
+                "['Thompson', 'Pundt', 'Patterson']"
+            ],
+            "Customers.CustStreetAddress": [
+                "The type is nvarchar (50), Which does not inlude Null and is Non-Unique. Values format like: ['4726 - 11th Ave. N.E.', '908 W. Capital Way', '2601 Seaview Lane']",
+                "",
+                "",
+                "nvarchar (50)",
+                "Non-Null",
+                "Non-Unique",
+                "['4726 - 11th Ave. N.E.', '908 W. Capital Way', '2601 Seaview Lane']"
+            ],
+            "Customers.CustCity": [
+                "The type is nvarchar (30), Which does not inlude Null and is Non-Unique. Values format like: ['Tacoma', 'Auburn', 'Redmond']",
+                "",
+                "",
+                "nvarchar (30)",
+                "Non-Null",
+                "Non-Unique",
+                "['Tacoma', 'Auburn', 'Redmond']"
+            ],
+            "Customers.CustState": [
+                "The type is nvarchar (2), Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']",
+                "",
+                "",
+                "nvarchar (2)",
+                "Non-Null",
+                "Non-Unique",
+                "['WA']"
+            ],
+            "Customers.CustZipCode": [
+                "The type is nvarchar (10), Which does not inlude Null and is Non-Unique. Values format like: [98105, 98033, 98115]",
+                "",
+                "",
+                "nvarchar (10)",
+                "Non-Null",
+                "Non-Unique",
+                "[98105, 98033, 98115]"
+            ],
+            "Customers.CustPhoneNumber": [
+                "The type is nvarchar (15), Which does not inlude Null and is Unique. Values format like: ['555-2726', '555-2721', '555-2296']",
+                "",
+                "",
+                "nvarchar (15)",
+                "Non-Null",
+                "Unique",
+                "['555-2726', '555-2721', '555-2296']"
+            ],
+            "Engagements.EngagementNumber": [
+                "The type is INT, Which does not inlude Null and is Unique. Values format like: [31, 23, 74]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Unique",
+                "[31, 23, 74]"
+            ],
+            "Engagements.StartDate": [
+                "The type is date, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-20', '2017-09-30', '2017-12-31']",
+                "",
+                "",
+                "date",
+                "Non-Null",
+                "Non-Unique",
+                "['2018-02-20', '2017-09-30', '2017-12-31']"
+            ],
+            "Engagements.EndDate": [
+                "The type is date, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-23', '2018-02-01', '2018-02-20']",
+                "",
+                "",
+                "date",
+                "Non-Null",
+                "Non-Unique",
+                "['2018-02-23', '2018-02-01', '2018-02-20']"
+            ],
+            "Engagements.StartTime": [
+                "The type is time, Which does not inlude Null and is Non-Unique. Values format like: ['13:00:00', '20:00:00', '16:00:00']",
+                "",
+                "",
+                "time",
+                "Non-Null",
+                "Non-Unique",
+                "['13:00:00', '20:00:00', '16:00:00']"
+            ],
+            "Engagements.StopTime": [
+                "The type is time, Which does not inlude Null and is Non-Unique. Values format like: ['00:00:00', '14:00:00', '15:00:00']",
+                "",
+                "",
+                "time",
+                "Non-Null",
+                "Non-Unique",
+                "['00:00:00', '14:00:00', '15:00:00']"
+            ],
+            "Engagements.ContractPrice": [
+                "The type is decimal(15, 2), Which does not inlude Null and is Non-Unique. Values format like: [2930, 3800, 950]",
+                "",
+                "",
+                "decimal(15, 2)",
+                "Non-Null",
+                "Non-Unique",
+                "[2930, 3800, 950]"
+            ],
+            "Engagements.CustomerID": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [10007, 10005, 10003]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[10007, 10005, 10003]"
+            ],
+            "Engagements.AgentID": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [8, 3, 6]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[8, 3, 6]"
+            ],
+            "Engagements.EntertainerID": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1001, 1006, 1012]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[1001, 1006, 1012]"
+            ],
+            "Entertainer_Members.EntertainerID": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1007, 1011, 1010]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[1007, 1011, 1010]"
+            ],
+            "Entertainer_Members.MemberID": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [102, 121, 114]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[102, 121, 114]"
+            ],
+            "Entertainer_Members.Status": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 2]"
+            ],
+            "Entertainer_Styles.EntertainerID": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1003, 1007, 1006]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[1003, 1007, 1006]"
+            ],
+            "Entertainer_Styles.StyleID": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [20, 13, 23]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[20, 13, 23]"
+            ],
+            "Entertainer_Styles.StyleStrength": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [1, 3, 2]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 3, 2]"
+            ],
+            "Entertainers.EntertainerID": [
+                "The type is INT, Which does not inlude Null and is Unique. Values format like: [1007, 1011, 1002]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Unique",
+                "[1007, 1011, 1002]"
+            ],
+            "Entertainers.EntStageName": [
+                "The type is nvarchar (50), Which does not inlude Null and is Unique. Values format like: ['Katherine Ehrlich', 'JV & the Deep Six', 'Jazz Persuasion']",
+                "",
+                "",
+                "nvarchar (50)",
+                "Non-Null",
+                "Unique",
+                "['Katherine Ehrlich', 'JV & the Deep Six', 'Jazz Persuasion']"
+            ],
+            "Entertainers.EntSSN": [
+                "The type is nvarchar (12), Which does not inlude Null and is Unique. Values format like: ['888-26-1025', '888-66-1085', '888-71-1123']",
+                "",
+                "",
+                "nvarchar (12)",
+                "Non-Null",
+                "Unique",
+                "['888-26-1025', '888-66-1085', '888-71-1123']"
+            ],
+            "Entertainers.EntStreetAddress": [
+                "The type is nvarchar (50), Which does not inlude Null and is Unique. Values format like: ['3887 Easy Street', '15127 NE 24th, #383', '4726 - 11th Ave. N.E.']",
+                "",
+                "",
+                "nvarchar (50)",
+                "Non-Null",
+                "Unique",
+                "['3887 Easy Street', '15127 NE 24th, #383', '4726 - 11th Ave. N.E.']"
+            ],
+            "Entertainers.EntCity": [
+                "The type is nvarchar (30), Which does not inlude Null and is Non-Unique. Values format like: ['Redmond', 'Seattle', 'Woodinville']",
+                "",
+                "",
+                "nvarchar (30)",
+                "Non-Null",
+                "Non-Unique",
+                "['Redmond', 'Seattle', 'Woodinville']"
+            ],
+            "Entertainers.EntState": [
+                "The type is nvarchar (2), Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']",
+                "",
+                "",
+                "nvarchar (2)",
+                "Non-Null",
+                "Non-Unique",
+                "['WA']"
+            ],
+            "Entertainers.EntZipCode": [
+                "The type is nvarchar (10), Which does not inlude Null and is Non-Unique. Values format like: [98105, 98009, 98072]",
+                "",
+                "",
+                "nvarchar (10)",
+                "Non-Null",
+                "Non-Unique",
+                "[98105, 98009, 98072]"
+            ],
+            "Entertainers.EntPhoneNumber": [
+                "The type is nvarchar (15), Which does not inlude Null and is Unique. Values format like: ['555-2541', '555-2511', '555-2711']",
+                "",
+                "",
+                "nvarchar (15)",
+                "Non-Null",
+                "Unique",
+                "['555-2541', '555-2511', '555-2711']"
+            ],
+            "Entertainers.EntWebPage": [
+                "The type is nvarchar (50), Which inlude Null and is Non-Unique. Values format like: ['www.greensleeves.com', 'www.jvd6.com', 'www.jazzper.com']",
+                "",
+                "",
+                "nvarchar (50)",
+                "Include Null",
+                "Non-Unique",
+                "['www.greensleeves.com', 'www.jvd6.com', 'www.jazzper.com']"
+            ],
+            "Entertainers.EntEMailAddress": [
+                "The type is nvarchar (50), Which inlude Null and is Non-Unique. Values format like: ['carolp@cptrio.com', 'susan@gs.com', 'ke@mzo.com']",
+                "",
+                "",
+                "nvarchar (50)",
+                "Include Null",
+                "Non-Unique",
+                "['carolp@cptrio.com', 'susan@gs.com', 'ke@mzo.com']"
+            ],
+            "Entertainers.DateEntered": [
+                "The type is date, Which does not inlude Null and is Unique. Values format like: ['1996-04-01', '1997-07-11', '1998-09-13']",
+                "",
+                "",
+                "date",
+                "Non-Null",
+                "Unique",
+                "['1996-04-01', '1997-07-11', '1998-09-13']"
+            ],
+            "Members.MemberID": [
+                "The type is INT, Which does not inlude Null and is Unique. Values format like: [111, 103, 115]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Unique",
+                "[111, 103, 115]"
+            ],
+            "Members.MbrFirstName": [
+                "The type is nvarchar (25), Which does not inlude Null and is Non-Unique. Values format like: ['Mariya', 'Katherine', 'Sara']",
+                "",
+                "",
+                "nvarchar (25)",
+                "Non-Null",
+                "Non-Unique",
+                "['Mariya', 'Katherine', 'Sara']"
+            ],
+            "Members.MbrLastName": [
+                "The type is nvarchar (25), Which does not inlude Null and is Non-Unique. Values format like: ['Kennedy', 'Ehrlich', 'McLain']",
+                "",
+                "",
+                "nvarchar (25)",
+                "Non-Null",
+                "Non-Unique",
+                "['Kennedy', 'Ehrlich', 'McLain']"
+            ],
+            "Members.MbrPhoneNumber": [
+                "The type is nvarchar (15), Which does not inlude Null and is Unique. Values format like: ['555-2316', '555-2511', '555-2306']",
+                "",
+                "",
+                "nvarchar (15)",
+                "Non-Null",
+                "Unique",
+                "['555-2316', '555-2511', '555-2306']"
+            ],
+            "Members.Gender": [
+                "The type is nvarchar (2), Which inlude Null and is Non-Unique. Value of this column must in: ['M', 'F']",
+                "",
+                "",
+                "nvarchar (2)",
+                "Include Null",
+                "Non-Unique",
+                "['M', 'F']"
+            ],
+            "Musical_Preferences.CustomerID": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [10004, 10012, 10002]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[10004, 10012, 10002]"
+            ],
+            "Musical_Preferences.StyleID": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [24, 19, 21]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[24, 19, 21]"
+            ],
+            "Musical_Preferences.PreferenceSeq": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 1]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 2, 1]"
+            ],
+            "Musical_Styles.StyleID": [
+                "The type is smallint, Which does not inlude Null and is Unique. Values format like: [25, 16, 10]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Unique",
+                "[25, 16, 10]"
+            ],
+            "Musical_Styles.StyleName": [
+                "The type is nvarchar (75), Which does not inlude Null and is Unique. Values format like: [\"70's Music\", 'Classic Rock & Roll', 'Country Rock']",
+                "",
+                "",
+                "nvarchar (75)",
+                "Non-Null",
+                "Unique",
+                "[\"70's Music\", 'Classic Rock & Roll', 'Country Rock']"
+            ],
+            "ztblDays.DateField": [
+                "The type is date, Which does not inlude Null and is Unique. Values format like: ['2018-08-20', '2019-03-03', '2017-07-03']",
+                "",
+                "",
+                "date",
+                "Non-Null",
+                "Unique",
+                "['2018-08-20', '2019-03-03', '2017-07-03']"
+            ],
+            "ztblMonths.MonthYear": [
+                "The type is nvarchar (15), Which does not inlude Null and is Unique. Values format like: ['February 2018', 'December 2017', 'January 2019']",
+                "",
+                "",
+                "nvarchar (15)",
+                "Non-Null",
+                "Unique",
+                "['February 2018', 'December 2017', 'January 2019']"
+            ],
+            "ztblMonths.YearNumber": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [2019, 2017, 2018]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[2019, 2017, 2018]"
+            ],
+            "ztblMonths.MonthNumber": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [5, 8, 9]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[5, 8, 9]"
+            ],
+            "ztblMonths.MonthStart": [
+                "The type is date, Which does not inlude Null and is Unique. Values format like: ['2019-09-01', '2019-01-01', '2017-02-01']",
+                "",
+                "",
+                "date",
+                "Non-Null",
+                "Unique",
+                "['2019-09-01', '2019-01-01', '2017-02-01']"
+            ],
+            "ztblMonths.MonthEnd": [
+                "The type is date, Which does not inlude Null and is Unique. Values format like: ['2018-06-30', '2019-03-31', '2019-04-30']",
+                "",
+                "",
+                "date",
+                "Non-Null",
+                "Unique",
+                "['2018-06-30', '2019-03-31', '2019-04-30']"
+            ],
+            "ztblMonths.January": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "ztblMonths.February": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "ztblMonths.March": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "ztblMonths.April": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "ztblMonths.May": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "ztblMonths.June": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "ztblMonths.July": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "ztblMonths.August": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "ztblMonths.September": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "ztblMonths.October": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "ztblMonths.November": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "ztblMonths.December": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "ztblSkipLabels.LabelCount": [
+                "The type is INT, Which does not inlude Null and is Unique. Values format like: [28, 60, 33]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Unique",
+                "[28, 60, 33]"
+            ],
+            "ztblWeeks.WeekStart": [
+                "The type is date, Which does not inlude Null and is Unique. Values format like: ['2017-12-24', '2018-12-09', '2019-05-05']",
+                "",
+                "",
+                "date",
+                "Non-Null",
+                "Unique",
+                "['2017-12-24', '2018-12-09', '2019-05-05']"
+            ],
+            "ztblWeeks.WeekEnd": [
+                "The type is date, Which does not inlude Null and is Unique. Values format like: ['2019-11-23', '2017-07-22', '2018-05-05']",
+                "",
+                "",
+                "date",
+                "Non-Null",
+                "Unique",
+                "['2019-11-23', '2017-07-22', '2018-05-05']"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries the total weighted score for each musical style based on user preferences and calculates the absolute difference between each style's score and the average score. The relevant columns include user preferences and musical styles, as well as the ranking sequence and style IDs.\n#columns: Musical_Preferences.StyleID, Musical_Preferences.PreferenceSeq, Musical_Styles.StyleID, Musical_Styles.StyleName\n#values: \"1\", \"2\", \"3\"\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "user preferences",
+            "points",
+            "absolute difference",
+            "average total weighted score",
+            "user",
+            "musical style",
+            "choices",
+            "2",
+            "styles",
+            "style",
+            "3",
+            "ranking",
+            "musical styles",
+            "1",
+            "score",
+            "database",
+            "weighted score"
+        ],
+        "col": "Musical_Preferences.StyleID, Musical_Preferences.PreferenceSeq, Musical_Styles.StyleID, Musical_Styles.StyleName",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [],
+        "column": "Agents.AgentID: The type is INT, Which does not inlude Null and is Unique. Values format like: [6, 4, 9]\nCustomers.CustCity: The type is nvarchar (30), Which does not inlude Null and is Non-Unique. Values format like: ['Tacoma', 'Auburn', 'Redmond']\nCustomers.CustFirstName: The type is nvarchar (25), Which does not inlude Null and is Unique. Values format like: ['Matt', 'Deb', 'Dean']\nCustomers.CustState: The type is nvarchar (2), Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']\nCustomers.CustomerID: The type is INT, Which does not inlude Null and is Unique. Values format like: [10012, 10009, 10010]\nEngagements.AgentID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [8, 3, 6]\nEngagements.CustomerID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [10007, 10005, 10003]\nEntertainer_Members.Status: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]\nEntertainer_Styles.StyleID: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [20, 13, 23]\nEntertainer_Styles.StyleStrength: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [1, 3, 2]\nEntertainers.EntSSN: The type is nvarchar (12), Which does not inlude Null and is Unique. Values format like: ['888-26-1025', '888-66-1085', '888-71-1123']\nMusical_Preferences.CustomerID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [10004, 10012, 10002]\nMusical_Preferences.PreferenceSeq: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 1]\nMusical_Preferences.StyleID: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [24, 19, 21]\nMusical_Styles.StyleID: The type is smallint, Which does not inlude Null and is Unique. Values format like: [25, 16, 10]\nMusical_Styles.StyleName: The type is nvarchar (75), Which does not inlude Null and is Unique. Values format like: [\"70's Music\", 'Classic Rock & Roll', 'Country Rock']\nztblMonths.August: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nztblMonths.November: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nztblMonths.September: The type is smallint, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+        "foreign_keys": "Engagements.CustomerID = Customers.CustomerID, Engagements.AgentID = Agents.AgentID, Musical_Preferences.CustomerID = Customers.CustomerID",
+        "foreign_set": [
+            "Engagements.AgentID",
+            "Customers.CustomerID",
+            "Agents.AgentID",
+            "Engagements.CustomerID",
+            "Musical_Preferences.CustomerID"
+        ],
+        "q_order": [
+            "the total weighted score for each musical style",
+            "the absolute difference between each style's total weighted score",
+            "the average total weighted score across all such styles"
+        ],
+        "status": "success"
+    }
+]

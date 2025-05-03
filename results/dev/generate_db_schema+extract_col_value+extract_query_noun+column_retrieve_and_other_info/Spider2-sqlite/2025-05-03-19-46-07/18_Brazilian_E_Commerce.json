@@ -1,0 +1,607 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: Brazilian_E_Commerce\n## Table olist_customers:\ncustomer_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['a9c4afe35d4118f574a3173117e1a3a8', '10031ad7752b10374ba516be41953b6c', '11438b1c01227d2058484d74b0d71a54']\ncustomer_unique_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['06f627751c6010c4c1efa16a711b2764', '8356af66c0132c203bc366a3d6720ca2', '13784315377079cd446a18c98dd70591']\ncustomer_zip_code_prefix: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [79604, 9080, 33902]\ncustomer_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['lagoa formosa', 'serranopolis de minas', 'santo eduardo']\ncustomer_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['GO', 'CE', 'MS']\n\n## Table olist_sellers:\nseller_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['6338ea67c41078a46ad99cc009654956', '65b081a070633e057c462abdd6fb9dd8', '1c5e4e49b9079480255b49d50aac1aa9']\nseller_zip_code_prefix: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [49980, 12942, 6340]\nseller_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['jacutinga', 'embu das artes', 'tres de maio']\nseller_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['DF', 'RO', 'GO']\n\n## Table olist_order_reviews:\nreview_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['3a43fb2825683f295a9d3c669dd6d430', '7aa912de7dbbd563551b3f48c51fc023', 'fd97851970b52770d59150cd05ea2638']\norder_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['36377e52aa9971718dd22913580b7799', '8f4350670751e101afb4d732a2ec8ac8', 'b2cc014ee51b0ca758fa72abdc54d199']\nreview_score: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [1, 3, 2]\nreview_comment_title: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['RECOMENDADO', 'boa loja', 'Recomendo parcialmente']\nreview_comment_message: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Se o produto não chegou, como pode ser obrigatório o preenchimento da avaliação geral ou se eu recomendo a loja?! Piada né?!', 'produto amassado', 'O produto chegou certinho! Porém eu percebi que a caixa vem toda amassada parecendo que sentaram nela. Eu desconfio que poderia vim com a caixa perfeita e não velha e destruída. ']\nreview_creation_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-04-15 00:00:00', '2017-09-21 00:00:00', '2017-11-05 00:00:00']\nreview_answer_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-07-14 13:30:34', '2018-03-11 04:07:33', '2018-01-31 20:12:51']\n\n## Table olist_order_items:\norder_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['40bd3f61e145286843c42286ac7bab0e', '5d636e00c8235b39e3149dd8ddc949b8', '99154e0d0a403c1c7dc3f38886f6776b']\norder_item_id: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [8, 11, 4]\nproduct_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['9bb64a6bd98df95fcfad9599bfdd1cdf', '5c909f03b5baf836858186d3d5867020', '76f71ec385ad031b06d5ad8be0440260']\nseller_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['e5c84227854980f1db19a58958c551d9', '4d9fea3499bdc22aa4da4e339365f215', 'f4c4daa86e30c7e5a553a8d518ac03a5']\nshipping_limit_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-11-09 08:10:23', '2017-06-08 01:25:06', '2017-12-20 08:52:15']\nprice: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [62, 18, 92]\nfreight_value: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [47, 40, 15]\n\n## Table olist_products:\nproduct_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['bdb0adfd465b18548a50bafc2a8e8ea6', '668677432cb5132ddfa6f1738479d0c0', '3bce6b72fbbfc2ec3bcffb83745cc24e']\nproduct_category_name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['musica', 'ferramentas_jardim', 'livros_importados']\nproduct_name_lenght: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [64, 7, 37]\nproduct_description_lenght: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [132, 3561, 3557]\nproduct_photos_qty: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [4, 1, 7]\nproduct_weight_g: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [1625, 14450, 400]\nproduct_length_cm: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [53, 54, 76]\nproduct_height_cm: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [67, 105, 4]\nproduct_width_cm: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [36, 53, 57]\n\n## Table olist_geolocation:\ngeolocation_zip_code_prefix: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [95548, 5020, 84030]\ngeolocation_lat: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [-23, -11, -23]\ngeolocation_lng: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [-42, -43, -49]\ngeolocation_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['alegrete do piaui', 'florínea', 'prado ferreira']\ngeolocation_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['MA', 'RO', 'RR']\n\n## Table product_category_name_translation:\nproduct_category_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['artigos_de_festas', 'sinalizacao_e_seguranca', 'industria_comercio_e_negocios']\nproduct_category_name_english: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['party_supplies', 'small_appliances_home_oven_and_coffee', 'small_appliances']\n\n## Table olist_orders:\norder_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['ef57c0c31600c0a1c7366ff29a71896a', 'f5ef2dc393fb470c2dbd4293efcc160e', '6ad7cdd50237385fec54699a2834eda3']\ncustomer_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['3bf822526ed19260365ce453f2271fef', '08fc5058d39f827b41d726cac116dfbc', 'e60ec15a7023a30e9edf3b9af2c7d0a4']\norder_status: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['delivered', 'invoiced', 'shipped']\norder_purchase_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-10-22 19:59:11', '2018-04-06 12:10:51', '2017-11-17 10:26:28']\norder_approved_at: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-02-25 14:30:28', '2017-05-21 11:45:12', '2017-05-23 17:45:16']\norder_delivered_carrier_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2017-09-12 23:10:05', '2017-12-01 22:32:18', '2018-03-05 22:59:02']\norder_delivered_customer_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-05-22 22:12:08', '2018-08-29 17:18:43', '2018-04-16 18:31:51']\norder_estimated_delivery_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-03-14 00:00:00', '2017-06-29 00:00:00', '2018-04-30 00:00:00']\n\n## Table olist_order_payments:\norder_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['f581282a5c459a970507563bf9893ba3', '10dcadee7d291d6dd245b3f85b11fa65', 'b47397056102b8fc054c6d969532376a']\npayment_sequential: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [16, 10, 28]\npayment_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['not_defined', 'credit_card', 'boleto']\npayment_installments: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [20, 3, 1]\npayment_value: The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [251, 551, 226]\n\n## Table olist_products_dataset:\nindex: The type is BIGINT, Which does not inlude Null and is Unique. Values format like: [21798, 14582, 6858]\nproduct_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['7ad1208884270048a2176ff437f49a9b', 'c56cdaacd8e2dca5489236a4875c0b89', 'f0a06cc25ae22358b10378bf4dafdf0a']\nproduct_category_name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['livros_interesse_geral', 'fashion_calcados', 'portateis_cozinha_e_preparadores_de_alimentos']\nproduct_name_lenght: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [22, 7, 36]\nproduct_description_lenght: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [249, 519, 1706]\nproduct_photos_qty: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [19, 4, 18]\nproduct_weight_g: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [4017, 3474, 239]\nproduct_length_cm: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [7, 101, 18]\nproduct_height_cm: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [56, 27, 16]\nproduct_width_cm: The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [33, 38, 23]\n\n#Forigen keys:\n\n\n# Database Description:\nThe `Brazilian_E_Commerce` database is designed to store and manage data related to an e-commerce platform in Brazil. It contains information about customers, sellers, orders, products, reviews, payments, and geolocation data. The database is structured to facilitate analysis of customer behavior, product performance, and order fulfillment processes.\n\n# Tables Descriptions:\n\n### 1. `olist_customers`:\n- **Description**: Contains information about customers, including their unique identifiers, location details, and city/state information.\n- **Primary Key**: `customer_id`\n- **Columns**:\n  - `customer_id`: Unique identifier for each customer.\n  - `customer_unique_id`: Non-unique identifier for customers (e.g., for tracking repeat customers).\n  - `customer_zip_code_prefix`: ZIP code prefix of the customer.\n  - `customer_city`: City of the customer.\n  - `customer_state`: State of the customer.\n\n---\n\n### 2. `olist_sellers`:\n- **Description**: Contains information about sellers, including their unique identifiers and location details.\n- **Primary Key**: `seller_id`\n- **Columns**:\n  - `seller_id`: Unique identifier for each seller.\n  - `seller_zip_code_prefix`: ZIP code prefix of the seller.\n  - `seller_city`: City of the seller.\n  - `seller_state`: State of the seller.\n\n---\n\n### 3. `olist_order_reviews`:\n- **Description**: Stores customer reviews for orders, including review scores, comments, and timestamps.\n- **Primary Key**: `review_id`\n- **Columns**:\n  - `review_id`: Unique identifier for each review.\n  - `order_id`: Identifier for the order being reviewed.\n  - `review_score`: Numeric score given by the customer.\n  - `review_comment_title`: Title of the review (nullable).\n  - `review_comment_message`: Detailed review message (nullable).\n  - `review_creation_date`: Date the review was created.\n  - `review_answer_timestamp`: Timestamp when the review was answered.\n\n---\n\n### 4. `olist_order_items`:\n- **Description**: Contains details about items in each order, including product and seller information, shipping deadlines, and pricing.\n- **Primary Key**: Composite key (`order_id`, `order_item_id`)\n- **Columns**:\n  - `order_id`: Identifier for the order.\n  - `order_item_id`: Identifier for the item within the order.\n  - `product_id`: Identifier for the product.\n  - `seller_id`: Identifier for the seller.\n  - `shipping_limit_date`: Deadline for shipping the item.\n  - `price`: Price of the item.\n  - `freight_value`: Freight cost for the item.\n\n---\n\n### 5. `olist_products`:\n- **Description**: Contains information about products, including their categories, dimensions, and weights.\n- **Primary Key**: `product_id`\n- **Columns**:\n  - `product_id`: Unique identifier for each product.\n  - `product_category_name`: Category of the product (nullable).\n  - `product_name_lenght`: Length of the product name (nullable).\n  - `product_description_lenght`: Length of the product description (nullable).\n  - `product_photos_qty`: Number of photos for the product (nullable).\n  - `product_weight_g`: Weight of the product in grams (nullable).\n  - `product_length_cm`: Length of the product in centimeters (nullable).\n  - `product_height_cm`: Height of the product in centimeters (nullable).\n  - `product_width_cm`: Width of the product in centimeters (nullable).\n\n---\n\n### 6. `olist_geolocation`:\n- **Description**: Stores geolocation data, including ZIP code prefixes, latitude, longitude, and city/state information.\n- **Primary Key**: None\n- **Columns**:\n \n",
+        "db_col_dic": {
+            "olist_customers.customer_id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['a9c4afe35d4118f574a3173117e1a3a8', '10031ad7752b10374ba516be41953b6c', '11438b1c01227d2058484d74b0d71a54']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['a9c4afe35d4118f574a3173117e1a3a8', '10031ad7752b10374ba516be41953b6c', '11438b1c01227d2058484d74b0d71a54']"
+            ],
+            "olist_customers.customer_unique_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['06f627751c6010c4c1efa16a711b2764', '8356af66c0132c203bc366a3d6720ca2', '13784315377079cd446a18c98dd70591']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['06f627751c6010c4c1efa16a711b2764', '8356af66c0132c203bc366a3d6720ca2', '13784315377079cd446a18c98dd70591']"
+            ],
+            "olist_customers.customer_zip_code_prefix": [
+                "The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [79604, 9080, 33902]",
+                "",
+                "",
+                "BIGINT",
+                "Non-Null",
+                "Non-Unique",
+                "[79604, 9080, 33902]"
+            ],
+            "olist_customers.customer_city": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['lagoa formosa', 'serranopolis de minas', 'santo eduardo']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['lagoa formosa', 'serranopolis de minas', 'santo eduardo']"
+            ],
+            "olist_customers.customer_state": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['GO', 'CE', 'MS']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['GO', 'CE', 'MS']"
+            ],
+            "olist_sellers.seller_id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['6338ea67c41078a46ad99cc009654956', '65b081a070633e057c462abdd6fb9dd8', '1c5e4e49b9079480255b49d50aac1aa9']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['6338ea67c41078a46ad99cc009654956', '65b081a070633e057c462abdd6fb9dd8', '1c5e4e49b9079480255b49d50aac1aa9']"
+            ],
+            "olist_sellers.seller_zip_code_prefix": [
+                "The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [49980, 12942, 6340]",
+                "",
+                "",
+                "BIGINT",
+                "Non-Null",
+                "Non-Unique",
+                "[49980, 12942, 6340]"
+            ],
+            "olist_sellers.seller_city": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['jacutinga', 'embu das artes', 'tres de maio']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['jacutinga', 'embu das artes', 'tres de maio']"
+            ],
+            "olist_sellers.seller_state": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['DF', 'RO', 'GO']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['DF', 'RO', 'GO']"
+            ],
+            "olist_order_reviews.review_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['3a43fb2825683f295a9d3c669dd6d430', '7aa912de7dbbd563551b3f48c51fc023', 'fd97851970b52770d59150cd05ea2638']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['3a43fb2825683f295a9d3c669dd6d430', '7aa912de7dbbd563551b3f48c51fc023', 'fd97851970b52770d59150cd05ea2638']"
+            ],
+            "olist_order_reviews.order_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['36377e52aa9971718dd22913580b7799', '8f4350670751e101afb4d732a2ec8ac8', 'b2cc014ee51b0ca758fa72abdc54d199']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['36377e52aa9971718dd22913580b7799', '8f4350670751e101afb4d732a2ec8ac8', 'b2cc014ee51b0ca758fa72abdc54d199']"
+            ],
+            "olist_order_reviews.review_score": [
+                "The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [1, 3, 2]",
+                "",
+                "",
+                "BIGINT",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 3, 2]"
+            ],
+            "olist_order_reviews.review_comment_title": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['RECOMENDADO', 'boa loja', 'Recomendo parcialmente']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['RECOMENDADO', 'boa loja', 'Recomendo parcialmente']"
+            ],
+            "olist_order_reviews.review_comment_message": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Se o produto não chegou, como pode ser obrigatório o preenchimento da avaliação geral ou se eu recomendo a loja?! Piada né?!', 'produto amassado', 'O produto chegou certinho! Porém eu percebi que a caixa vem toda amassada parecendo que sentaram nela. Eu desconfio que poderia vim com a caixa perfeita e não velha e destruída. ']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Se o produto não chegou, como pode ser obrigatório o preenchimento da avaliação geral ou se eu recomendo a loja?! Piada né?!', 'produto amassado', 'O produto chegou certinho! Porém eu percebi que a caixa vem toda amassada parecendo que sentaram nela. Eu desconfio que poderia vim com a caixa perfeita e não velha e destruída. ']"
+            ],
+            "olist_order_reviews.review_creation_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-04-15 00:00:00', '2017-09-21 00:00:00', '2017-11-05 00:00:00']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2018-04-15 00:00:00', '2017-09-21 00:00:00', '2017-11-05 00:00:00']"
+            ],
+            "olist_order_reviews.review_answer_timestamp": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-07-14 13:30:34', '2018-03-11 04:07:33', '2018-01-31 20:12:51']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2018-07-14 13:30:34', '2018-03-11 04:07:33', '2018-01-31 20:12:51']"
+            ],
+            "olist_order_items.order_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['40bd3f61e145286843c42286ac7bab0e', '5d636e00c8235b39e3149dd8ddc949b8', '99154e0d0a403c1c7dc3f38886f6776b']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['40bd3f61e145286843c42286ac7bab0e', '5d636e00c8235b39e3149dd8ddc949b8', '99154e0d0a403c1c7dc3f38886f6776b']"
+            ],
+            "olist_order_items.order_item_id": [
+                "The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [8, 11, 4]",
+                "",
+                "",
+                "BIGINT",
+                "Non-Null",
+                "Non-Unique",
+                "[8, 11, 4]"
+            ],
+            "olist_order_items.product_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['9bb64a6bd98df95fcfad9599bfdd1cdf', '5c909f03b5baf836858186d3d5867020', '76f71ec385ad031b06d5ad8be0440260']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['9bb64a6bd98df95fcfad9599bfdd1cdf', '5c909f03b5baf836858186d3d5867020', '76f71ec385ad031b06d5ad8be0440260']"
+            ],
+            "olist_order_items.seller_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['e5c84227854980f1db19a58958c551d9', '4d9fea3499bdc22aa4da4e339365f215', 'f4c4daa86e30c7e5a553a8d518ac03a5']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['e5c84227854980f1db19a58958c551d9', '4d9fea3499bdc22aa4da4e339365f215', 'f4c4daa86e30c7e5a553a8d518ac03a5']"
+            ],
+            "olist_order_items.shipping_limit_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-11-09 08:10:23', '2017-06-08 01:25:06', '2017-12-20 08:52:15']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2017-11-09 08:10:23', '2017-06-08 01:25:06', '2017-12-20 08:52:15']"
+            ],
+            "olist_order_items.price": [
+                "The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [62, 18, 92]",
+                "",
+                "",
+                "FLOAT",
+                "Non-Null",
+                "Non-Unique",
+                "[62, 18, 92]"
+            ],
+            "olist_order_items.freight_value": [
+                "The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [47, 40, 15]",
+                "",
+                "",
+                "FLOAT",
+                "Non-Null",
+                "Non-Unique",
+                "[47, 40, 15]"
+            ],
+            "olist_products.product_id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['bdb0adfd465b18548a50bafc2a8e8ea6', '668677432cb5132ddfa6f1738479d0c0', '3bce6b72fbbfc2ec3bcffb83745cc24e']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['bdb0adfd465b18548a50bafc2a8e8ea6', '668677432cb5132ddfa6f1738479d0c0', '3bce6b72fbbfc2ec3bcffb83745cc24e']"
+            ],
+            "olist_products.product_category_name": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['musica', 'ferramentas_jardim', 'livros_importados']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['musica', 'ferramentas_jardim', 'livros_importados']"
+            ],
+            "olist_products.product_name_lenght": [
+                "The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [64, 7, 37]",
+                "",
+                "",
+                "FLOAT",
+                "Include Null",
+                "Non-Unique",
+                "[64, 7, 37]"
+            ],
+            "olist_products.product_description_lenght": [
+                "The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [132, 3561, 3557]",
+                "",
+                "",
+                "FLOAT",
+                "Include Null",
+                "Non-Unique",
+                "[132, 3561, 3557]"
+            ],
+            "olist_products.product_photos_qty": [
+                "The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [4, 1, 7]",
+                "",
+                "",
+                "FLOAT",
+                "Include Null",
+                "Non-Unique",
+                "[4, 1, 7]"
+            ],
+            "olist_products.product_weight_g": [
+                "The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [1625, 14450, 400]",
+                "",
+                "",
+                "FLOAT",
+                "Include Null",
+                "Non-Unique",
+                "[1625, 14450, 400]"
+            ],
+            "olist_products.product_length_cm": [
+                "The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [53, 54, 76]",
+                "",
+                "",
+                "FLOAT",
+                "Include Null",
+                "Non-Unique",
+                "[53, 54, 76]"
+            ],
+            "olist_products.product_height_cm": [
+                "The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [67, 105, 4]",
+                "",
+                "",
+                "FLOAT",
+                "Include Null",
+                "Non-Unique",
+                "[67, 105, 4]"
+            ],
+            "olist_products.product_width_cm": [
+                "The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [36, 53, 57]",
+                "",
+                "",
+                "FLOAT",
+                "Include Null",
+                "Non-Unique",
+                "[36, 53, 57]"
+            ],
+            "olist_geolocation.geolocation_zip_code_prefix": [
+                "The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [95548, 5020, 84030]",
+                "",
+                "",
+                "BIGINT",
+                "Non-Null",
+                "Non-Unique",
+                "[95548, 5020, 84030]"
+            ],
+            "olist_geolocation.geolocation_lat": [
+                "The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [-23, -11, -23]",
+                "",
+                "",
+                "FLOAT",
+                "Non-Null",
+                "Non-Unique",
+                "[-23, -11, -23]"
+            ],
+            "olist_geolocation.geolocation_lng": [
+                "The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [-42, -43, -49]",
+                "",
+                "",
+                "FLOAT",
+                "Non-Null",
+                "Non-Unique",
+                "[-42, -43, -49]"
+            ],
+            "olist_geolocation.geolocation_city": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['alegrete do piaui', 'florínea', 'prado ferreira']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['alegrete do piaui', 'florínea', 'prado ferreira']"
+            ],
+            "olist_geolocation.geolocation_state": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['MA', 'RO', 'RR']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['MA', 'RO', 'RR']"
+            ],
+            "product_category_name_translation.product_category_name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['artigos_de_festas', 'sinalizacao_e_seguranca', 'industria_comercio_e_negocios']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['artigos_de_festas', 'sinalizacao_e_seguranca', 'industria_comercio_e_negocios']"
+            ],
+            "product_category_name_translation.product_category_name_english": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['party_supplies', 'small_appliances_home_oven_and_coffee', 'small_appliances']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['party_supplies', 'small_appliances_home_oven_and_coffee', 'small_appliances']"
+            ],
+            "olist_orders.order_id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['ef57c0c31600c0a1c7366ff29a71896a', 'f5ef2dc393fb470c2dbd4293efcc160e', '6ad7cdd50237385fec54699a2834eda3']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['ef57c0c31600c0a1c7366ff29a71896a', 'f5ef2dc393fb470c2dbd4293efcc160e', '6ad7cdd50237385fec54699a2834eda3']"
+            ],
+            "olist_orders.customer_id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['3bf822526ed19260365ce453f2271fef', '08fc5058d39f827b41d726cac116dfbc', 'e60ec15a7023a30e9edf3b9af2c7d0a4']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['3bf822526ed19260365ce453f2271fef', '08fc5058d39f827b41d726cac116dfbc', 'e60ec15a7023a30e9edf3b9af2c7d0a4']"
+            ],
+            "olist_orders.order_status": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['delivered', 'invoiced', 'shipped']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['delivered', 'invoiced', 'shipped']"
+            ],
+            "olist_orders.order_purchase_timestamp": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-10-22 19:59:11', '2018-04-06 12:10:51', '2017-11-17 10:26:28']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2017-10-22 19:59:11', '2018-04-06 12:10:51', '2017-11-17 10:26:28']"
+            ],
+            "olist_orders.order_approved_at": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-02-25 14:30:28', '2017-05-21 11:45:12', '2017-05-23 17:45:16']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['2018-02-25 14:30:28', '2017-05-21 11:45:12', '2017-05-23 17:45:16']"
+            ],
+            "olist_orders.order_delivered_carrier_date": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2017-09-12 23:10:05', '2017-12-01 22:32:18', '2018-03-05 22:59:02']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['2017-09-12 23:10:05', '2017-12-01 22:32:18', '2018-03-05 22:59:02']"
+            ],
+            "olist_orders.order_delivered_customer_date": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-05-22 22:12:08', '2018-08-29 17:18:43', '2018-04-16 18:31:51']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['2018-05-22 22:12:08', '2018-08-29 17:18:43', '2018-04-16 18:31:51']"
+            ],
+            "olist_orders.order_estimated_delivery_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-03-14 00:00:00', '2017-06-29 00:00:00', '2018-04-30 00:00:00']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2018-03-14 00:00:00', '2017-06-29 00:00:00', '2018-04-30 00:00:00']"
+            ],
+            "olist_order_payments.order_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['f581282a5c459a970507563bf9893ba3', '10dcadee7d291d6dd245b3f85b11fa65', 'b47397056102b8fc054c6d969532376a']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['f581282a5c459a970507563bf9893ba3', '10dcadee7d291d6dd245b3f85b11fa65', 'b47397056102b8fc054c6d969532376a']"
+            ],
+            "olist_order_payments.payment_sequential": [
+                "The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [16, 10, 28]",
+                "",
+                "",
+                "BIGINT",
+                "Non-Null",
+                "Non-Unique",
+                "[16, 10, 28]"
+            ],
+            "olist_order_payments.payment_type": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['not_defined', 'credit_card', 'boleto']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['not_defined', 'credit_card', 'boleto']"
+            ],
+            "olist_order_payments.payment_installments": [
+                "The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [20, 3, 1]",
+                "",
+                "",
+                "BIGINT",
+                "Non-Null",
+                "Non-Unique",
+                "[20, 3, 1]"
+            ],
+            "olist_order_payments.payment_value": [
+                "The type is FLOAT, Which does not inlude Null and is Non-Unique. Values format like: [251, 551, 226]",
+                "",
+                "",
+                "FLOAT",
+                "Non-Null",
+                "Non-Unique",
+                "[251, 551, 226]"
+            ],
+            "olist_products_dataset.index": [
+                "The type is BIGINT, Which does not inlude Null and is Unique. Values format like: [21798, 14582, 6858]",
+                "",
+                "",
+                "BIGINT",
+                "Non-Null",
+                "Unique",
+                "[21798, 14582, 6858]"
+            ],
+            "olist_products_dataset.product_id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['7ad1208884270048a2176ff437f49a9b', 'c56cdaacd8e2dca5489236a4875c0b89', 'f0a06cc25ae22358b10378bf4dafdf0a']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['7ad1208884270048a2176ff437f49a9b', 'c56cdaacd8e2dca5489236a4875c0b89', 'f0a06cc25ae22358b10378bf4dafdf0a']"
+            ],
+            "olist_products_dataset.product_category_name": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['livros_interesse_geral', 'fashion_calcados', 'portateis_cozinha_e_preparadores_de_alimentos']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['livros_interesse_geral', 'fashion_calcados', 'portateis_cozinha_e_preparadores_de_alimentos']"
+            ],
+            "olist_products_dataset.product_name_lenght": [
+                "The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [22, 7, 36]",
+                "",
+                "",
+                "FLOAT",
+                "Include Null",
+                "Non-Unique",
+                "[22, 7, 36]"
+            ],
+            "olist_products_dataset.product_description_lenght": [
+                "The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [249, 519, 1706]",
+                "",
+                "",
+                "FLOAT",
+                "Include Null",
+                "Non-Unique",
+                "[249, 519, 1706]"
+            ],
+            "olist_products_dataset.product_photos_qty": [
+                "The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [19, 4, 18]",
+                "",
+                "",
+                "FLOAT",
+                "Include Null",
+                "Non-Unique",
+                "[19, 4, 18]"
+            ],
+            "olist_products_dataset.product_weight_g": [
+                "The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [4017, 3474, 239]",
+                "",
+                "",
+                "FLOAT",
+                "Include Null",
+                "Non-Unique",
+                "[4017, 3474, 239]"
+            ],
+            "olist_products_dataset.product_length_cm": [
+                "The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [7, 101, 18]",
+                "",
+                "",
+                "FLOAT",
+                "Include Null",
+                "Non-Unique",
+                "[7, 101, 18]"
+            ],
+            "olist_products_dataset.product_height_cm": [
+                "The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [56, 27, 16]",
+                "",
+                "",
+                "FLOAT",
+                "Include Null",
+                "Non-Unique",
+                "[56, 27, 16]"
+            ],
+            "olist_products_dataset.product_width_cm": [
+                "The type is FLOAT, Which inlude Null and is Non-Unique. Values format like: [33, 38, 23]",
+                "",
+                "",
+                "FLOAT",
+                "Include Null",
+                "Non-Unique",
+                "[33, 38, 23]"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries the number of delivered orders grouped by month and year. The related columns include the order status, order delivery date, and order purchase timestamp to filter and group the data by year and month.\n#columns: olist_orders.order_status, olist_orders.order_delivered_customer_date, olist_orders.order_purchase_timestamp\n#values: \"delivered\", \"2016\", \"2017\", \"2018\"\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "column",
+            "month",
+            "report",
+            "row",
+            "2017",
+            "number",
+            "delivered orders",
+            "years",
+            "year",
+            "delivered",
+            "2018",
+            "2016"
+        ],
+        "col": "olist_orders.order_status, olist_orders.order_delivered_customer_date, olist_orders.order_purchase_timestamp",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [
+            [
+                "olist_orders.order_status",
+                "delivered"
+            ]
+        ],
+        "column": "olist_order_items.order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['40bd3f61e145286843c42286ac7bab0e', '5d636e00c8235b39e3149dd8ddc949b8', '99154e0d0a403c1c7dc3f38886f6776b']\nolist_order_items.order_item_id: The type is BIGINT, Which does not inlude Null and is Non-Unique. Values format like: [8, 11, 4]\nolist_order_payments.order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['f581282a5c459a970507563bf9893ba3', '10dcadee7d291d6dd245b3f85b11fa65', 'b47397056102b8fc054c6d969532376a']\nolist_order_reviews.order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['36377e52aa9971718dd22913580b7799', '8f4350670751e101afb4d732a2ec8ac8', 'b2cc014ee51b0ca758fa72abdc54d199']\nolist_orders.order_approved_at: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-02-25 14:30:28', '2017-05-21 11:45:12', '2017-05-23 17:45:16']\nolist_orders.order_delivered_carrier_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2017-09-12 23:10:05', '2017-12-01 22:32:18', '2018-03-05 22:59:02']\nolist_orders.order_delivered_customer_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-05-22 22:12:08', '2018-08-29 17:18:43', '2018-04-16 18:31:51']\nolist_orders.order_estimated_delivery_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-03-14 00:00:00', '2017-06-29 00:00:00', '2018-04-30 00:00:00']\nolist_orders.order_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['ef57c0c31600c0a1c7366ff29a71896a', 'f5ef2dc393fb470c2dbd4293efcc160e', '6ad7cdd50237385fec54699a2834eda3']\nolist_orders.order_purchase_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-10-22 19:59:11', '2018-04-06 12:10:51', '2017-11-17 10:26:28']\nolist_orders.order_status: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['delivered', 'invoiced', 'shipped']",
+        "foreign_keys": "",
+        "foreign_set": [],
+        "q_order": [
+            "a report that shows the number of delivered orders for each month"
+        ],
+        "status": "success"
+    }
+]

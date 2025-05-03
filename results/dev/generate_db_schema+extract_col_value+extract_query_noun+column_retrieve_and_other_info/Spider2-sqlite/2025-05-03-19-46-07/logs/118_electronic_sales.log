@@ -1,0 +1,653 @@
+############################## Human at step generate_db_schema ##############################
+
+/* Here is a examples about describe database */
+    #Forigen keys: 
+    Airlines.ORIGIN = Airports.Code, Airlines.DEST = Airports.Code, Airlines.OP_CARRIER_AIRLINE_ID = Air Carriers.Code
+    #Database Description: The database encompasses information related to flights, including airlines, airports, and flight operations.
+    #Tables Descriptions:
+    Air Carriers: Codes and descriptive information about airlines
+    Airports: IATA codes and descriptions of airports
+    Airlines: Detailed information about flights 
+
+    /* Here is a examples about describe database */
+    #Forigen keys:
+    data.ID = price.ID, production.ID = price.ID, production.ID = data.ID, production.country = country.origin
+    #Database Description: The database contains information related to cars, including country, price, specifications, Production
+    #Tables Descriptions:
+    Country: Names of the countries where the cars originate from.
+    Price: Price of the car in USD.
+    Data: Information about the car's specifications
+    Production: Information about car's production.
+
+    /* Describe the following database */
+    Database Management System: SQLite
+#Database name: electronic_sales
+## Table customers:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [20675, 71819, 99061]
+customer_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['e6c386cfd321a1708aa60ff6b8f46449', 'c255a9ef2264c3996c402a9c11ec4418', '10ee255a9c015e0148f2bc3bbb595e6b']
+customer_unique_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['5c9513d1c3b15c7a08a6ba86ca23e487', 'bf3451be8f588cd6d7c555f2ee8b4bea', '9a667674750c85328d27c1578b5db5c7']
+customer_zip_code_prefix: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3281, 24348, 21630]
+customer_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['xambre', 'cotriguacu', 'ipaba']
+customer_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['AL', 'RS', 'SC']
+
+## Table sellers:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [186, 2483, 2503]
+seller_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['d05ae8f7a5bd1d2a690a44cd079e4e27', '729b2d09b2a0bdab221076327f13d050', '11eac105f3f90a9b87b19c89d91e24f3']
+seller_zip_code_prefix: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [88504, 84035, 8431]
+seller_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['foz do iguacu', 'novo hamburgo', 'diadema']
+seller_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['CE', 'PI', 'DF']
+
+## Table order_reviews:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [79959, 35871, 6626]
+review_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['c9d86e41c59777562d7025e69a5bc3b1', '18922026f653eec8720baf3b49dd5c8b', 'c64de2ad9db9937406cf3c4b547fb3c4']
+order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['f1487beee9bcc5d6921a3e5ddcb63623', 'cf398216aad3dfa8731970860f663dd8', 'eb8d44030d2f4ebce460ebce652242e2']
+review_score: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 2, 3]
+review_comment_title: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['adorei', 'parabens ', 'Esperando']
+review_comment_message: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['EFETIVEI A COMPRA DE 3 UNIDADES DO PRODUTO, PORÉM SÓ RECEBI 1 UNIDADE.', 'minha filha adorou.', 'Nas fotos do produto não tinha mostrando a parte de trás do tapete.. Eu comprei pensando que era o tapete com as costas tradicional... ']
+review_creation_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-04-11 00:00:00', '2017-01-12 00:00:00', '2018-05-21 00:00:00']
+review_answer_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-04-14 23:40:04', '2017-12-20 19:16:25', '2017-10-20 09:58:14']
+
+## Table order_items:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [17523, 74303, 88839]
+order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['21799a54bd487cd78f616aac588377de', 'fe6548d8e286a9de2a672acdd24607dc', '58a72152512644cd6ee65accc9206cf4']
+order_item_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 15, 5]
+product_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['09d16c9d49e1616a733d22e77507d91d', '6a23c2eb9acc78f8ec403be9c6210dd4', 'da2d3c0905cbb6888fc1ca9a18f38ba3']
+seller_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['612a743d294c27884fb7b80d2b19ba35', 'b2ba3715d723d245138f291a6fe42594', 'bb5d956dece964a06c12bceb66b923ae']
+shipping_limit_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-11-03 09:44:57', '2018-06-15 14:18:31', '2017-06-15 11:43:06']
+price: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [25, 36, 207]
+freight_value: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [26, 39, 58]
+
+## Table products:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [25944, 32520, 30117]
+product_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['baddee1245c9736a49167f66e0912b0d', '8ec80bc0ce04aa714a68d87e91e9df11', '1ccef988a8dd457a93b0b4833b8f0724']
+product_category_name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['eletrodomesticos', 'sinalizacao_e_seguranca', 'moveis_colchao_e_estofado']
+product_name_lenght: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [32, 21, 54]
+product_description_lenght: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [3674, 1117, 2614]
+product_photos_qty: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [19, 8, 15]
+product_weight_g: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [19050, 27200, 887]
+product_length_cm: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [78, 91, 51]
+product_height_cm: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [28, 35, 104]
+product_width_cm: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [77, 101, 29]
+
+## Table geolocation:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [855106, 624603, 266477]
+geolocation_zip_code_prefix: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [17214, 44480, 58178]
+geolocation_lat: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [-23, -22, -8]
+geolocation_lng: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [-48, -51, -46]
+geolocation_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['sao francisco do brejao', 'são francisco de assis do piauí', 'japonvar']
+geolocation_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PR', 'MG', 'PE']
+
+## Table product_category_name_translation:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [47, 61, 15]
+product_category_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['artigos_de_natal', 'artes', 'utilidades_domesticas']
+product_category_name_english: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['consoles_games', 'home_appliances_2', 'books_technical']
+
+## Table orders:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [12580, 1737, 17939]
+order_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['1b694ef5b28d3e949a4f0ffeb2c9fcd6', '38fc895ea0a2aa253a46a6fdbb65aaf5', 'f7dca277a6bb273200598f0e36319d94']
+customer_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['3171bb44b50cefec7f8643a28e1a0343', '0af59dbe6e966baed8513b1093e7228b', 'e914087f4bedebda8f0dc92e4d095d16']
+order_status: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['approved', 'processing', 'shipped']
+order_purchase_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-03-26 10:11:55', '2018-04-27 16:16:00', '2017-10-24 15:38:18']
+order_approved_at: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2017-11-24 13:39:44', '2017-04-04 05:55:19', '2018-06-29 12:31:22']
+order_delivered_carrier_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2017-11-22 16:46:34', '2017-04-10 12:33:14', '2017-06-27 11:25:43']
+order_delivered_customer_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-06-21 17:08:31', '2018-07-12 16:12:43', '2018-06-14 22:03:29']
+order_estimated_delivery_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2016-11-30 00:00:00', '2018-08-20 00:00:00', '2018-09-21 00:00:00']
+
+## Table order_payments:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [76004, 100495, 34857]
+order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['9fdbb4e3852125934395217722756d93', 'a4101dff2487b4a3d89330b9fe480475', '14904245b311483b6886be3c2e717e76']
+payment_sequential: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [25, 16, 22]
+payment_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['debit_card', 'boleto', 'not_defined']
+payment_installments: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [18, 10, 0]
+payment_value: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [90, 238, 74]
+
+#Forigen keys:
+
+
+    Please conclude the database in the following format:
+    #Database Description:
+    #Tables Descriptions:
+    
+
+############################## AI at step generate_db_schema ##############################
+
+#Database Description:
+The `electronic_sales` database is designed to manage and analyze data related to electronic product sales. It includes information about customers, sellers, orders, products, geolocation, reviews, payments, and product categories. The database provides a comprehensive view of the sales process, from customer and seller details to order fulfillment and product specifications.
+
+#Tables Descriptions:
+
+## Customers:
+Contains information about customers, including their unique identifiers, location details, and city/state information.
+- **index**: Unique integer identifier for each record.
+- **customer_id**: Unique text identifier for each customer.
+- **customer_unique_id**: Non-unique text identifier for customers (can be shared across multiple records).
+- **customer_zip_code_prefix**: Non-unique integer representing the customer's zip code prefix.
+- **customer_city**: Non-unique text representing the customer's city.
+- **customer_state**: Non-unique text representing the customer's state.
+
+## Sellers:
+Contains information about sellers, including their unique identifiers and location details.
+- **index**: Unique integer identifier for each record.
+- **seller_id**: Unique text identifier for each seller.
+- **seller_zip_code_prefix**: Non-unique integer representing the seller's zip code prefix.
+- **seller_city**: Non-unique text representing the seller's city.
+- **seller_state**: Non-unique text representing the seller's state.
+
+## Order Reviews:
+Contains customer reviews for orders, including scores, comments, and timestamps.
+- **index**: Unique integer identifier for each record.
+- **review_id**: Non-unique text identifier for each review.
+- **order_id**: Non-unique text identifier for the associated order.
+- **review_score**: Non-unique integer representing the review score.
+- **review_comment_title**: Nullable, non-unique text representing the title of the review.
+- **review_comment_message**: Nullable, non-unique text representing the review message.
+- **review_creation_date**: Non-unique text representing the date the review was created.
+- **review_answer_timestamp**: Non-unique text representing the timestamp of the review response.
+
+## Order Items:
+Contains details about items in orders, including product and seller information, shipping limits, and pricing.
+- **index**: Unique integer identifier for each record.
+- **order_id**: Non-unique text identifier for the associated order.
+- **order_item_id**: Non-unique integer representing the item number within the order.
+- **product_id**: Non-unique text identifier for the associated product.
+- **seller_id**: Non-unique text identifier for the associated seller.
+- **shipping_limit_date**: Non-unique text representing the shipping deadline.
+- **price**: Non-unique real number representing the price of the item.
+- **freight_value**: Non-unique real number representing the freight cost.
+
+## Products:
+Contains information about products, including category, dimensions, and weight.
+- **index**: Unique integer identifier for each record.
+- **product_id**: Unique text identifier for each product.
+- **product_category_name**: Nullable, non-unique text representing the product category.
+- **product_name_lenght**: Nullable, non-unique real number representing the length of the product name.
+- **product_description_lenght**: Nullable, non-unique real number representing the length of the product description.
+- **product_photos_qty**: Nullable, non-unique real number representing the number of product photos.
+- **product_weight_g**: Nullable, non-unique real number representing the product's weight in grams.
+- **product_length_cm**: Nullable, non-unique real number representing the product's length in centimeters.
+- **product_height_cm**: Nullable, non-unique real number representing the product's height in centimeters.
+- **product_width_cm**: Nullable, non-unique real number representing the
+
+############################## Human at step extract_col_value ##############################
+
+/* Some extract examples are provided based on similar problems: */
+/* Answer the following: Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course. most number of students got an A refers MAX(COUNT(student_id WHERE grade = 'A')); full name = f_name, l_name; got an A refers to grade = 'A'; */
+#reason: The question requires display in order: "name of the course", "full name"."A" is filtering condition.
+#columns: course.name, student.f_name, student.l_name, registration.grade, registration.student_id
+#values: "A"
+
+/* Answer the following:How much more votes for episode 1 than for episode 5? more votes refers to SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)) */
+#reason: The question requires display in order: "How much more vote". The definition of "more vote" is SUBTRACT(SUM(votes when episode = 1), SUM(votes when episode = 5)). 1, 5 are filtering conditions.
+#columns: Episode.episode, Vote.votes
+#values: "1", "5"
+
+/* Answer the following: What is the average score of the movie "The Fall of Berlin" in 2019? Average score refers to Avg(rating_score); */
+#reason: The question requires display in order: "average score". Average score is Avg(rating_score), "The Fall of Berlin",2019 are filtering conditions.
+#columns: ratings.rating_score, ratings.rating_id, ratings.rating_timestamp_utc, movies.movie_title
+#values: "The Fall of Berlin", "2019"
+
+/* Answer the following: How many distinct orders were there in 2003 when the quantity ordered was less than 30? "year(orderDate) = '2003'; quantityOrdered < 30;" */
+#reason:  The question requires display in order: "How many distinct orders"." in 2003", "less than 30" are filtering conditions.
+#columns: orderdetails.orderNumber, orderdetails.quantityOrdered, orders.orderDate
+#values: "30", "2003"
+
+/* Answer the following:  For each account, work out its balance for every calendar day between the account’s first and last transaction (propagating the last known balance forward when no transaction occurs and turning negative balances into 0).  After that, find the highest daily balance each account reached in every month, and finally show, month-by-month, the sum of those monthly highs across all accounts. */
+SELECT mth,
+       SUM(max_daily_bal) AS total_max_balance
+FROM (
+        WITH all_days AS (
+            SELECT  account_id,
+                    generate_series(MIN(transaction_date),
+                                    MAX(transaction_date),
+                                    INTERVAL '1 day')::date AS day
+            FROM account_transactions
+            GROUP BY account_id
+        ),
+        daily_deltas AS (
+            SELECT  d.account_id,
+                    d.day,
+                    COALESCE(SUM(t.amount),0) AS delta
+            FROM all_days d
+            LEFT JOIN account_transactions t
+                   ON t.account_id = d.account_id
+                  AND t.transaction_date = d.day
+            GROUP BY d.account_id, d.day
+        ),
+        running_balance AS (
+            SELECT  account_id,
+                    day,
+                    GREATEST(
+                        SUM(delta) OVER (PARTITION BY account_id
+                                         ORDER BY day
+                                         ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW),
+                        0) AS balance
+            FROM daily_deltas
+        ),
+        monthly_max AS (
+            SELECT  account_id,
+                    DATE_TRUNC('month',day)::date       AS mth,
+                    MAX(balance)                        AS max_daily_bal
+            FROM running_balance
+            GROUP BY account_id, DATE_TRUNC('month',day)
+        )
+        SELECT * FROM monthly_max
+     ) x
+GROUP BY mth
+ORDER BY mth;
+
+
+/* Answer the following:  Determine each warehouse’s inventory level for every day between its earliest and latest stock movement, forward-filling any gaps and coercing negative levels to zero.  Then, for every quarter, obtain the highest daily level seen in each warehouse and total those peaks to get the company-wide quarterly inventory maximum. */
+SELECT qtr,
+       SUM(max_level) AS company_quarterly_peak
+FROM (
+        WITH days AS (
+            SELECT warehouse_id,
+                   generate_series(MIN(movement_date),
+                                   MAX(movement_date),
+                                   INTERVAL '1 day')::date AS d
+            FROM warehouse_inventory
+            GROUP BY warehouse_id
+        ),
+        deltas AS (
+            SELECT d.warehouse_id,
+                   d.d,
+                   COALESCE(SUM(wi.quantity_change),0) AS delta
+            FROM days d
+            LEFT JOIN warehouse_inventory wi
+                   ON wi.warehouse_id = d.warehouse_id
+                  AND wi.movement_date = d.d
+            GROUP BY d.warehouse_id, d.d
+        ),
+        levels AS (
+            SELECT warehouse_id,
+                   d,
+                   GREATEST(
+                       SUM(delta) OVER (PARTITION BY warehouse_id
+                                        ORDER BY d
+                                        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW),
+                       0) AS lvl
+            FROM deltas
+        ),
+        qmax AS (
+            SELECT warehouse_id,
+                   DATE_TRUNC('quarter',d)::date AS qtr,
+                   MAX(lvl)                     AS max_level
+            FROM levels
+            GROUP BY warehouse_id, DATE_TRUNC('quarter',d)
+        )
+        SELECT * FROM qmax
+     ) s
+GROUP BY qtr
+ORDER BY qtr;
+
+
+/* Answer the following:  Build a per-project daily total of hours worked between first and last time-log entries, filling missing days with 0, never allowing the cumulative hours to be negative.  For each month, find the maximum daily hours logged for each project and then sum those maxima at the department level. */
+SELECT dept.department_id,
+       mth,
+       SUM(max_daily_hrs) AS dept_monthly_peak_hours
+FROM (
+        WITH base AS (
+            SELECT project_id,
+                   generate_series(MIN(log_date),
+                                   MAX(log_date),
+                                   INTERVAL '1 day')::date AS d
+            FROM time_logs
+            GROUP BY project_id
+        ),
+        daily AS (
+            SELECT b.project_id,
+                   b.d,
+                   COALESCE(SUM(tl.hours),0) AS hrs
+            FROM base b
+            LEFT JOIN time_logs tl
+                   ON tl.project_id = b.project_id
+                  AND tl.log_date   = b.d
+            GROUP BY b.project_id, b.d
+        ),
+        cumu AS (
+            SELECT project_id,
+                   d,
+                   GREATEST(
+                       SUM(hrs) OVER (PARTITION BY project_id
+                                      ORDER BY d
+                                      ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW),
+                       0) AS tot_hrs
+            FROM daily
+        ),
+        pmax AS (
+            SELECT project_id,
+                   DATE_TRUNC('month',d)::date AS mth,
+                   MAX(tot_hrs)               AS max_daily_hrs
+            FROM cumu
+            GROUP BY project_id, DATE_TRUNC('month',d)
+        )
+        SELECT p.project_id,
+               p.mth,
+               p.max_daily_hrs
+        FROM pmax p
+     ) pm
+JOIN projects pr       ON pr.project_id = pm.project_id
+JOIN departments dept  ON dept.department_id = pr.department_id
+GROUP BY dept.department_id, mth
+ORDER BY dept.department_id, mth;
+
+
+/* Answer the following:  For every IoT sensor, generate a continuous daily series of energy consumption from its first to last reading by forward-filling missing days and replacing negatives with 0.  Identify each sensor’s peak daily consumption every month and then compute the facility’s overall monthly peak (sum of sensors’ peaks). */
+SELECT month,
+       SUM(sensor_peak) AS facility_monthly_peak_kwh
+FROM (
+        WITH days AS (
+            SELECT sensor_id,
+                   generate_series(MIN(read_date),
+                                   MAX(read_date),
+                                   INTERVAL '1 day')::date AS d
+            FROM energy_readings
+            GROUP BY sensor_id
+        ),
+        daily AS (
+            SELECT d.sensor_id,
+                   d.d,
+                   COALESCE(er.kwh,0) AS kwh
+            FROM days d
+            LEFT JOIN energy_readings er
+                   ON er.sensor_id = d.sensor_id
+                  AND er.read_date = d.d
+            GROUP BY d.sensor_id, d.d
+        ),
+        filled AS (
+            SELECT sensor_id,
+                   d,
+                   GREATEST(
+                       SUM(kwh) OVER (PARTITION BY sensor_id ORDER BY d ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW),
+                       0) AS cons
+            FROM daily
+        ),
+        mmax AS (
+            SELECT sensor_id,
+                   DATE_TRUNC('month',d)::date AS month,
+                   MAX(cons)                  AS sensor_peak
+            FROM filled
+            GROUP BY sensor_id, DATE_TRUNC('month',d)
+        )
+        SELECT * FROM mmax
+     ) t
+GROUP BY month
+ORDER BY month;
+
+
+/* Answer the following:  Compute each mobile subscriber’s data balance on a day-to-day basis between their initial and most recent usage record, forwarding balances when no usage is recorded and treating negatives as 0.  Per calendar month, retrieve every subscriber’s highest daily balance and sum these per subscription plan. */
+SELECT plan_id,
+       month,
+       SUM(max_bal) AS total_plan_peak_mb
+FROM (
+        WITH seq AS (
+            SELECT subscriber_id,
+                   generate_series(MIN(usage_date),
+                                   MAX(usage_date),
+                                   INTERVAL '1 day')::date AS d
+            FROM data_usage
+            GROUP BY subscriber_id
+        ),
+        deltas AS (
+            SELECT s.subscriber_id,
+                   s.d,
+                   COALESCE(SUM(du.delta_mb),0) AS delta
+            FROM seq s
+            LEFT JOIN data_usage du
+                   ON du.subscriber_id = s.subscriber_id
+                  AND du.usage_date   = s.d
+            GROUP BY s.subscriber_id, s.d
+        ),
+        bal AS (
+            SELECT subscriber_id,
+                   d,
+                   GREATEST(
+                       SUM(delta) OVER (PARTITION BY subscriber_id ORDER BY d ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW),
+                       0) AS balance
+            FROM deltas
+        ),
+        mpeak AS (
+            SELECT subscriber_id,
+                   DATE_TRUNC('month',d)::date AS month,
+                   MAX(balance)               AS max_bal
+            FROM bal
+            GROUP BY subscriber_id, DATE_TRUNC('month',d)
+        )
+        SELECT sp.plan_id,
+               mp.month,
+               mp.max_bal
+        FROM mpeak mp
+        JOIN subscribers sp ON sp.subscriber_id = mp.subscriber_id
+     ) u
+GROUP BY plan_id, month
+ORDER BY plan_id, month;
+
+
+
+
+/* Database schema */
+Database Management System: SQLite
+#Database name: electronic_sales
+## Table customers:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [20675, 71819, 99061]
+customer_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['e6c386cfd321a1708aa60ff6b8f46449', 'c255a9ef2264c3996c402a9c11ec4418', '10ee255a9c015e0148f2bc3bbb595e6b']
+customer_unique_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['5c9513d1c3b15c7a08a6ba86ca23e487', 'bf3451be8f588cd6d7c555f2ee8b4bea', '9a667674750c85328d27c1578b5db5c7']
+customer_zip_code_prefix: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3281, 24348, 21630]
+customer_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['xambre', 'cotriguacu', 'ipaba']
+customer_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['AL', 'RS', 'SC']
+
+## Table sellers:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [186, 2483, 2503]
+seller_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['d05ae8f7a5bd1d2a690a44cd079e4e27', '729b2d09b2a0bdab221076327f13d050', '11eac105f3f90a9b87b19c89d91e24f3']
+seller_zip_code_prefix: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [88504, 84035, 8431]
+seller_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['foz do iguacu', 'novo hamburgo', 'diadema']
+seller_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['CE', 'PI', 'DF']
+
+## Table order_reviews:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [79959, 35871, 6626]
+review_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['c9d86e41c59777562d7025e69a5bc3b1', '18922026f653eec8720baf3b49dd5c8b', 'c64de2ad9db9937406cf3c4b547fb3c4']
+order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['f1487beee9bcc5d6921a3e5ddcb63623', 'cf398216aad3dfa8731970860f663dd8', 'eb8d44030d2f4ebce460ebce652242e2']
+review_score: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 2, 3]
+review_comment_title: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['adorei', 'parabens ', 'Esperando']
+review_comment_message: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['EFETIVEI A COMPRA DE 3 UNIDADES DO PRODUTO, PORÉM SÓ RECEBI 1 UNIDADE.', 'minha filha adorou.', 'Nas fotos do produto não tinha mostrando a parte de trás do tapete.. Eu comprei pensando que era o tapete com as costas tradicional... ']
+review_creation_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-04-11 00:00:00', '2017-01-12 00:00:00', '2018-05-21 00:00:00']
+review_answer_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-04-14 23:40:04', '2017-12-20 19:16:25', '2017-10-20 09:58:14']
+
+## Table order_items:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [17523, 74303, 88839]
+order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['21799a54bd487cd78f616aac588377de', 'fe6548d8e286a9de2a672acdd24607dc', '58a72152512644cd6ee65accc9206cf4']
+order_item_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 15, 5]
+product_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['09d16c9d49e1616a733d22e77507d91d', '6a23c2eb9acc78f8ec403be9c6210dd4', 'da2d3c0905cbb6888fc1ca9a18f38ba3']
+seller_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['612a743d294c27884fb7b80d2b19ba35', 'b2ba3715d723d245138f291a6fe42594', 'bb5d956dece964a06c12bceb66b923ae']
+shipping_limit_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-11-03 09:44:57', '2018-06-15 14:18:31', '2017-06-15 11:43:06']
+price: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [25, 36, 207]
+freight_value: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [26, 39, 58]
+
+## Table products:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [25944, 32520, 30117]
+product_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['baddee1245c9736a49167f66e0912b0d', '8ec80bc0ce04aa714a68d87e91e9df11', '1ccef988a8dd457a93b0b4833b8f0724']
+product_category_name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['eletrodomesticos', 'sinalizacao_e_seguranca', 'moveis_colchao_e_estofado']
+product_name_lenght: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [32, 21, 54]
+product_description_lenght: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [3674, 1117, 2614]
+product_photos_qty: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [19, 8, 15]
+product_weight_g: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [19050, 27200, 887]
+product_length_cm: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [78, 91, 51]
+product_height_cm: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [28, 35, 104]
+product_width_cm: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [77, 101, 29]
+
+## Table geolocation:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [855106, 624603, 266477]
+geolocation_zip_code_prefix: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [17214, 44480, 58178]
+geolocation_lat: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [-23, -22, -8]
+geolocation_lng: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [-48, -51, -46]
+geolocation_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['sao francisco do brejao', 'são francisco de assis do piauí', 'japonvar']
+geolocation_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PR', 'MG', 'PE']
+
+## Table product_category_name_translation:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [47, 61, 15]
+product_category_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['artigos_de_natal', 'artes', 'utilidades_domesticas']
+product_category_name_english: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['consoles_games', 'home_appliances_2', 'books_technical']
+
+## Table orders:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [12580, 1737, 17939]
+order_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['1b694ef5b28d3e949a4f0ffeb2c9fcd6', '38fc895ea0a2aa253a46a6fdbb65aaf5', 'f7dca277a6bb273200598f0e36319d94']
+customer_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['3171bb44b50cefec7f8643a28e1a0343', '0af59dbe6e966baed8513b1093e7228b', 'e914087f4bedebda8f0dc92e4d095d16']
+order_status: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['approved', 'processing', 'shipped']
+order_purchase_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-03-26 10:11:55', '2018-04-27 16:16:00', '2017-10-24 15:38:18']
+order_approved_at: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2017-11-24 13:39:44', '2017-04-04 05:55:19', '2018-06-29 12:31:22']
+order_delivered_carrier_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2017-11-22 16:46:34', '2017-04-10 12:33:14', '2017-06-27 11:25:43']
+order_delivered_customer_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-06-21 17:08:31', '2018-07-12 16:12:43', '2018-06-14 22:03:29']
+order_estimated_delivery_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2016-11-30 00:00:00', '2018-08-20 00:00:00', '2018-09-21 00:00:00']
+
+## Table order_payments:
+index: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [76004, 100495, 34857]
+order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['9fdbb4e3852125934395217722756d93', 'a4101dff2487b4a3d89330b9fe480475', '14904245b311483b6886be3c2e717e76']
+payment_sequential: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [25, 16, 22]
+payment_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['debit_card', 'boleto', 'not_defined']
+payment_installments: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [18, 10, 0]
+payment_value: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [90, 238, 74]
+
+#Forigen keys:
+
+
+#Database Description:
+The `electronic_sales` database is designed to manage and analyze data related to electronic product sales. It includes information about customers, sellers, orders, products, geolocation, reviews, payments, and product categories. The database provides a comprehensive view of the sales process, from customer and seller details to order fulfillment and product specifications.
+
+#Tables Descriptions:
+
+## Customers:
+Contains information about customers, including their unique identifiers, location details, and city/state information.
+- **index**: Unique integer identifier for each record.
+- **customer_id**: Unique text identifier for each customer.
+- **customer_unique_id**: Non-unique text identifier for customers (can be shared across multiple records).
+- **customer_zip_code_prefix**: Non-unique integer representing the customer's zip code prefix.
+- **customer_city**: Non-unique text representing the customer's city.
+- **customer_state**: Non-unique text representing the customer's state.
+
+## Sellers:
+Contains information about sellers, including their unique identifiers and location details.
+- **index**: Unique integer identifier for each record.
+- **seller_id**: Unique text identifier for each seller.
+- **seller_zip_code_prefix**: Non-unique integer representing the seller's zip code prefix.
+- **seller_city**: Non-unique text representing the seller's city.
+- **seller_state**: Non-unique text representing the seller's state.
+
+## Order Reviews:
+Contains customer reviews for orders, including scores, comments, and timestamps.
+- **index**: Unique integer identifier for each record.
+- **review_id**: Non-unique text identifier for each review.
+- **order_id**: Non-unique text identifier for the associated order.
+- **review_score**: Non-unique integer representing the review score.
+- **review_comment_title**: Nullable, non-unique text representing the title of the review.
+- **review_comment_message**: Nullable, non-unique text representing the review message.
+- **review_creation_date**: Non-unique text representing the date the review was created.
+- **review_answer_timestamp**: Non-unique text representing the timestamp of the review response.
+
+## Order Items:
+Contains details about items in orders, including product and seller information, shipping limits, and pricing.
+- **index**: Unique integer identifier for each record.
+- **order_id**: Non-unique text identifier for the associated order.
+- **order_item_id**: Non-unique integer representing the item number within the order.
+- **product_id**: Non-unique text identifier for the associated product.
+- **seller_id**: Non-unique text identifier for the associated seller.
+- **shipping_limit_date**: Non-unique text representing the shipping deadline.
+- **price**: Non-unique real number representing the price of the item.
+- **freight_value**: Non-unique real number representing the freight cost.
+
+## Products:
+Contains information about products, including category, dimensions, and weight.
+- **index**: Unique integer identifier for each record.
+- **product_id**: Unique text identifier for each product.
+- **product_category_name**: Nullable, non-unique text representing the product category.
+- **product_name_lenght**: Nullable, non-unique real number representing the length of the product name.
+- **product_description_lenght**: Nullable, non-unique real number representing the length of the product description.
+- **product_photos_qty**: Nullable, non-unique real number representing the number of product photos.
+- **product_weight_g**: Nullable, non-unique real number representing the product's weight in grams.
+- **product_length_cm**: Nullable, non-unique real number representing the product's length in centimeters.
+- **product_height_cm**: Nullable, non-unique real number representing the product's height in centimeters.
+- **product_width_cm**: Nullable, non-unique real number representing the
+
+
+Attention:
+1. if the question have when\where\which, pay attention to pick table.column related to time, location and name in #columns
+2. Please answer the question in the following format without any other content:
+```
+#reason: Analysis of which columns and values might be relevant to the question. Note that when dealing with questions about time, who, which, what, etc., you should keep column related to time, names, and locations in the #column.(format: The question query xxx, the related column include table.column, the values include values)
+#columns: The top 10 columns relevant to the question( format: table.column_1, table.column_2 ...)
+#values: Potential filter values that the question might query(format: "value1", "value2" ...)
+```
+/* Answer the following: Prepare a comprehensive performance report on our sellers, focusing on total sales, average item price, average review scores, and packing times. Ensure that the report includes only those sellers who have sold a quantity of more than 100 products and highlight the product category names in English with the highest sales volume. */
+
+
+############################## AI at step extract_col_value ##############################
+
+```
+#reason: The question queries seller performance, including total sales, average item price, average review scores, and packing times. It also filters sellers with more than 100 products sold and highlights product categories with the highest sales volume. Relevant columns include seller details, product details, sales data, and review scores.
+#columns: sellers.seller_id, sellers.seller_city, sellers.seller_state, order_items.seller_id, order_items.price, order_items.product_id, order_items.shipping_limit_date, order_reviews.review_score, products.product_id, product_category_name_translation.product_category_name_english
+#values: "100"
+```
+
+############################## Human at step extract_query_noun ##############################
+
+Please extract all nouns and phrases from the following sentence, separating the results directly with a comma( format: "noun_1", "noun_2","phrases" ):
+Prepare a comprehensive performance report on our sellers, focusing on total sales, average item price, average review scores, and packing times. Ensure that the report includes only those sellers who have sold a quantity of more than 100 products and highlight the product category names in English with the highest sales volume.
+
+############################## AI at step extract_query_noun ##############################
+
+"performance report", "sellers", "total sales", "average item price", "average review scores", "packing times", "report", "sellers", "quantity", "products", "product category names", "English", "sales volume"
+
+############################## Human at step column_retrieve_and_other_info ##############################
+
+现在我们定义一个问句的语法原子单元如下:
+Q: 询问词: 如 calculate\ Include\ List\ List out\ List all\ give\ state\ Name\ In which\ How many\  which\ what\ who\ when\ provide\ Tally\ identify\ Find\ mention\ write等
+J: 判断词： 如 Do\ Did\ If\ Is\ Are等
+I: 查询内容: 查询的主体内容, 如: name, ID, date, location, item, biggest city.
+C: 条件句: 通过介词和连词引入的查询的要求或属性, 如大于、等于、排序、聚合等. 介词和连词有: of\ have\ with\ that\ by. 条件句的形式例子有: with condition\ have condition\ of attribute\ that was condition
+
+
+一个问题通过这些原子串联起来。常见的串联方式有
+QIC(询问句): List the student with score more than 80: Q: 'List' I: 'the student' C: 'with score more than 80'
+JC(判断句): State if Tom is a Cat? : J: 'State if C: is a Cat?'
+C(条件句): For all people in Beijing
+现在请你针对下面的问题, 把问题中的内容按照上述原子定义提取出来
+问题如下: Prepare a comprehensive performance report on our sellers, focusing on total sales, average item price, average review scores, and packing times. Ensure that the report includes only those sellers who have sold a quantity of more than 100 products and highlight the product category names in English with the highest sales volume.
+
+请按照下面的json格式进行回答:
+
+```json
+[{"Type":"类型(QIC,JC,C)",
+"Extract":{//不存在的填null
+    "Q":"询问词",
+    "J":"判断词",
+    "I":['查询内容a', '查询内容b'],//只有查询内容用and或alongside连接时,才分成多个实体填入List
+    "C":["条件句a","属性b"]
+}},
+{}]
+```
+
+############################## AI at step column_retrieve_and_other_info ##############################
+
+```json
+[
+  {
+    "Type": "QIC",
+    "Extract": {
+      "Q": "Prepare",
+      "J": null,
+      "I": [
+        "a comprehensive performance report on our sellers",
+        "total sales",
+        "average item price",
+        "average review scores",
+        "packing times"
+      ],
+      "C": [
+        "focusing on total sales, average item price, average review scores, and packing times",
+        "Ensure that the report includes only those sellers who have sold a quantity of more than 100 products",
+        "highlight the product category names in English with the highest sales volume"
+      ]
+    }
+  }
+]
+```
+

@@ -1,0 +1,579 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: delivery_center\n## Table channels:\nchannel_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 9, 7]\nchannel_name: The type is VARCHAR(50), Which does not inlude Null and is Unique. Values format like: ['ATCHIN PLACE', 'EATS PLACE', 'ON PLACE']\nchannel_type: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Value of this column must in: ['OWN CHANNEL', 'MARKETPLACE']\n\n## Table drivers:\ndriver_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [35121, 4256, 48100]\ndriver_modal: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Value of this column must in: ['MOTOBOY', 'BIKER']\ndriver_type: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Value of this column must in: ['LOGISTIC OPERATOR', 'FREELANCE']\n\n## Table deliveries:\ndelivery_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2518512, 2556897, 2711702]\ndelivery_order_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [89376422, 85506542, 85225838]\ndriver_id: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [1626, 23063, 42209]\ndelivery_distance_meters: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [1987, 27196, 15868]\ndelivery_status: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Values format like: ['CANCELLED', 'DELIVERING', 'DELIVERED']\n\n## Table hubs:\nhub_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [35, 29, 16]\nhub_name: The type is VARCHAR(50), Which does not inlude Null and is Unique. Values format like: ['GAROA SHOPPING', 'ELIXIR SHOPPING', 'COLOR SHOPPING']\nhub_city: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Values format like: ['RIO DE JANEIRO', 'CURITIBA', 'PORTO ALEGRE']\nhub_state: The type is CHAR(2), Which does not inlude Null and is Non-Unique. Values format like: ['RS', 'RJ', 'PR']\nhub_latitude: The type is DECIMAL(9, 6), Which does not inlude Null and is Unique. Values format like: [-22, -23, -23]\nhub_longitude: The type is DECIMAL(9, 6), Which does not inlude Null and is Unique. Values format like: [-49, -51, -46]\n\n## Table payments:\npayment_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [4462237, 5404746, 4873564]\npayment_order_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [82374061, 84731074, 75884657]\npayment_amount: The type is DECIMAL(10, 2), Which does not inlude Null and is Non-Unique. Values format like: [187, 78, 237]\npayment_fee: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [10, 5, 12]\npayment_method: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Values format like: ['CREDIT_STORE', 'DEBIT', 'PAYMENT_LINK']\npayment_status: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Values format like: ['PAID', 'CHARGEBACK', 'AWAITING']\n\n## Table stores:\nstore_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [435, 4447, 1246]\nhub_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [73, 13, 91]\nstore_name: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Values format like: ['EULIRUM ', 'PAMOIPIMG ', 'IGUAI VUMURAMIRAI ']\nstore_segment: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Value of this column must in: ['FOOD', 'GOOD']\nstore_plan_price: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [39, 0, 29]\nstore_latitude: The type is DECIMAL(9, 6), Which inlude Null and is Non-Unique. Values format like: [-22, -22, -22]\nstore_longitude: The type is DECIMAL(9, 6), Which inlude Null and is Non-Unique. Values format like: [-43, -46, -43]\n\n## Table orders:\norder_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [88456414, 89747805, 87303615]\nstore_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4402, 4300, 600]\nchannel_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [11, 2, 24]\npayment_order_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [78844063, 77908678, 72825777]\ndelivery_order_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [90268249, 89894745, 87306472]\norder_status: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Value of this column must in: ['CANCELED', 'FINISHED']\norder_amount: The type is DECIMAL(10, 2), Which does not inlude Null and is Non-Unique. Values format like: [66, 829, 609]\norder_delivery_fee: The type is DECIMAL(10, 2), Which does not inlude Null and is Non-Unique. Values format like: [37, 15, 90]\norder_delivery_cost: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [14, 24, 20]\norder_created_hour: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 13, 8]\norder_created_minute: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [35, 3, 40]\norder_created_day: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [21, 17, 20]\norder_created_month: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 3, 2]\norder_created_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2021]\norder_moment_created: The type is DATETIME, Which does not inlude Null and is Non-Unique. Values format like: ['3/30/2021 10:38:12 PM', '2/16/2021 8:07:22 PM', '4/6/2021 4:34:45 PM']\norder_moment_accepted: The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['3/6/2021 12:20:51 AM', '3/7/2021 4:45:50 PM', '3/24/2021 2:14:10 PM']\norder_moment_ready: The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['4/11/2021 11:31:43 PM', '1/17/2021 11:52:00 PM', '2/1/2021 7:33:25 PM']\norder_moment_collected: The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['3/3/2021 11:46:48 PM', '3/6/2021 7:10:07 PM', '2/13/2021 11:30:23 PM']\norder_moment_in_expedition: The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['4/11/2021 4:24:01 PM', '1/16/2021 7:54:48 PM', '4/10/2021 11:12:07 PM']\norder_moment_delivering: The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['3/21/2021 12:48:16 AM', '4/3/2021 2:31:13 PM', '4/26/2021 3:57:43 PM']\norder_moment_delivered: The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['3/9/2021 4:23:36 PM', '4/10/2021 10:18:43 PM', '4/6/2021 12:35:58 AM']\norder_moment_finished: The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['3/26/2021 4:04:22 PM', '4/27/2021 5:29:20 PM', '2/11/2021 7:24:49 PM']\norder_metric_collected_time: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [22, 3, 25]\norder_metric_paused_time: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [100, 96, 43]\norder_metric_production_time: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [1147, 3, 113]\norder_metric_walking_time: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [69, 1, 21]\norder_metric_expediton_speed_time: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [145, 131, 60]\norder_metric_transit_time: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [18, 159, 194]\norder_metric_cycle_time: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [105, 35, 82]\n\n#Forigen keys:\n\n\n# Database Description:\nThe `delivery_center` database is designed to manage and store information related to delivery operations. It includes details about delivery channels, drivers, deliveries, hubs, payments, stores, and orders. The database is structured to track the entire lifecycle of an order, from creation to delivery, while also capturing metrics and operational data for analysis.\n\n# Tables Descriptions:\n1. **Channels**:  \n   - Contains information about the delivery channels used for orders.  \n   - Includes unique identifiers, names, and types of channels.  \n\n2. **Drivers**:  \n   - Stores details about drivers involved in the delivery process.  \n   - Includes unique identifiers, driver modes (e.g., biker, motoboy), and driver types (e.g., freelance, logistic operator).  \n\n3. **Deliveries**:  \n   - Tracks individual deliveries, including their status, distance, and associated driver.  \n   - Includes unique delivery IDs, order IDs, and delivery metrics.  \n\n4. **Hubs**:  \n   - Represents physical locations (hubs) where deliveries are managed.  \n   - Includes unique hub IDs, names, cities, states, and geographical coordinates (latitude and longitude).  \n\n5. **Payments**:  \n   - Manages payment information for orders.  \n   - Includes unique payment IDs, amounts, fees, methods, and statuses.  \n\n6. **Stores**:  \n   - Contains information about stores that generate orders.  \n   - Includes unique store IDs, associated hub IDs, names, segments, plan prices, and geographical coordinates.  \n\n7. **Orders**:  \n   - Tracks the lifecycle of orders, including creation, delivery, and completion.  \n   - Includes unique order IDs, associated store and channel IDs, payment and delivery order IDs, statuses, amounts, delivery fees, timestamps for various stages, and operational metrics.  \n\n# Foreign Keys:\n1. **Orders**:  \n   - `store_id` → `stores.store_id`  \n   - `channel_id` → `channels.channel_id`  \n   - `payment_order_id` → `payments.payment_order_id`  \n   - `delivery_order_id` → `deliveries.delivery_order_id`  \n\n2. **Deliveries**:  \n   - `driver_id` → `drivers.driver_id`  \n\n3. **Stores**:  \n   - `hub_id` → `hubs.hub_id`  \n",
+        "db_col_dic": {
+            "channels.channel_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 9, 7]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1, 9, 7]"
+            ],
+            "channels.channel_name": [
+                "The type is VARCHAR(50), Which does not inlude Null and is Unique. Values format like: ['ATCHIN PLACE', 'EATS PLACE', 'ON PLACE']",
+                "",
+                "",
+                "VARCHAR(50)",
+                "Non-Null",
+                "Unique",
+                "['ATCHIN PLACE', 'EATS PLACE', 'ON PLACE']"
+            ],
+            "channels.channel_type": [
+                "The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Value of this column must in: ['OWN CHANNEL', 'MARKETPLACE']",
+                "",
+                "",
+                "VARCHAR(50)",
+                "Non-Null",
+                "Non-Unique",
+                "['OWN CHANNEL', 'MARKETPLACE']"
+            ],
+            "drivers.driver_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [35121, 4256, 48100]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[35121, 4256, 48100]"
+            ],
+            "drivers.driver_modal": [
+                "The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Value of this column must in: ['MOTOBOY', 'BIKER']",
+                "",
+                "",
+                "VARCHAR(50)",
+                "Non-Null",
+                "Non-Unique",
+                "['MOTOBOY', 'BIKER']"
+            ],
+            "drivers.driver_type": [
+                "The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Value of this column must in: ['LOGISTIC OPERATOR', 'FREELANCE']",
+                "",
+                "",
+                "VARCHAR(50)",
+                "Non-Null",
+                "Non-Unique",
+                "['LOGISTIC OPERATOR', 'FREELANCE']"
+            ],
+            "deliveries.delivery_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2518512, 2556897, 2711702]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[2518512, 2556897, 2711702]"
+            ],
+            "deliveries.delivery_order_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [89376422, 85506542, 85225838]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[89376422, 85506542, 85225838]"
+            ],
+            "deliveries.driver_id": [
+                "The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [1626, 23063, 42209]",
+                "",
+                "",
+                "INTEGER",
+                "Include Null",
+                "Non-Unique",
+                "[1626, 23063, 42209]"
+            ],
+            "deliveries.delivery_distance_meters": [
+                "The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [1987, 27196, 15868]",
+                "",
+                "",
+                "DECIMAL(10, 2)",
+                "Include Null",
+                "Non-Unique",
+                "[1987, 27196, 15868]"
+            ],
+            "deliveries.delivery_status": [
+                "The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Values format like: ['CANCELLED', 'DELIVERING', 'DELIVERED']",
+                "",
+                "",
+                "VARCHAR(50)",
+                "Non-Null",
+                "Non-Unique",
+                "['CANCELLED', 'DELIVERING', 'DELIVERED']"
+            ],
+            "hubs.hub_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [35, 29, 16]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[35, 29, 16]"
+            ],
+            "hubs.hub_name": [
+                "The type is VARCHAR(50), Which does not inlude Null and is Unique. Values format like: ['GAROA SHOPPING', 'ELIXIR SHOPPING', 'COLOR SHOPPING']",
+                "",
+                "",
+                "VARCHAR(50)",
+                "Non-Null",
+                "Unique",
+                "['GAROA SHOPPING', 'ELIXIR SHOPPING', 'COLOR SHOPPING']"
+            ],
+            "hubs.hub_city": [
+                "The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Values format like: ['RIO DE JANEIRO', 'CURITIBA', 'PORTO ALEGRE']",
+                "",
+                "",
+                "VARCHAR(50)",
+                "Non-Null",
+                "Non-Unique",
+                "['RIO DE JANEIRO', 'CURITIBA', 'PORTO ALEGRE']"
+            ],
+            "hubs.hub_state": [
+                "The type is CHAR(2), Which does not inlude Null and is Non-Unique. Values format like: ['RS', 'RJ', 'PR']",
+                "",
+                "",
+                "CHAR(2)",
+                "Non-Null",
+                "Non-Unique",
+                "['RS', 'RJ', 'PR']"
+            ],
+            "hubs.hub_latitude": [
+                "The type is DECIMAL(9, 6), Which does not inlude Null and is Unique. Values format like: [-22, -23, -23]",
+                "",
+                "",
+                "DECIMAL(9, 6)",
+                "Non-Null",
+                "Unique",
+                "[-22, -23, -23]"
+            ],
+            "hubs.hub_longitude": [
+                "The type is DECIMAL(9, 6), Which does not inlude Null and is Unique. Values format like: [-49, -51, -46]",
+                "",
+                "",
+                "DECIMAL(9, 6)",
+                "Non-Null",
+                "Unique",
+                "[-49, -51, -46]"
+            ],
+            "payments.payment_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [4462237, 5404746, 4873564]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[4462237, 5404746, 4873564]"
+            ],
+            "payments.payment_order_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [82374061, 84731074, 75884657]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[82374061, 84731074, 75884657]"
+            ],
+            "payments.payment_amount": [
+                "The type is DECIMAL(10, 2), Which does not inlude Null and is Non-Unique. Values format like: [187, 78, 237]",
+                "",
+                "",
+                "DECIMAL(10, 2)",
+                "Non-Null",
+                "Non-Unique",
+                "[187, 78, 237]"
+            ],
+            "payments.payment_fee": [
+                "The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [10, 5, 12]",
+                "",
+                "",
+                "DECIMAL(10, 2)",
+                "Include Null",
+                "Non-Unique",
+                "[10, 5, 12]"
+            ],
+            "payments.payment_method": [
+                "The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Values format like: ['CREDIT_STORE', 'DEBIT', 'PAYMENT_LINK']",
+                "",
+                "",
+                "VARCHAR(50)",
+                "Non-Null",
+                "Non-Unique",
+                "['CREDIT_STORE', 'DEBIT', 'PAYMENT_LINK']"
+            ],
+            "payments.payment_status": [
+                "The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Values format like: ['PAID', 'CHARGEBACK', 'AWAITING']",
+                "",
+                "",
+                "VARCHAR(50)",
+                "Non-Null",
+                "Non-Unique",
+                "['PAID', 'CHARGEBACK', 'AWAITING']"
+            ],
+            "stores.store_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [435, 4447, 1246]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[435, 4447, 1246]"
+            ],
+            "stores.hub_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [73, 13, 91]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[73, 13, 91]"
+            ],
+            "stores.store_name": [
+                "The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Values format like: ['EULIRUM ', 'PAMOIPIMG ', 'IGUAI VUMURAMIRAI ']",
+                "",
+                "",
+                "VARCHAR(50)",
+                "Non-Null",
+                "Non-Unique",
+                "['EULIRUM ', 'PAMOIPIMG ', 'IGUAI VUMURAMIRAI ']"
+            ],
+            "stores.store_segment": [
+                "The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Value of this column must in: ['FOOD', 'GOOD']",
+                "",
+                "",
+                "VARCHAR(50)",
+                "Non-Null",
+                "Non-Unique",
+                "['FOOD', 'GOOD']"
+            ],
+            "stores.store_plan_price": [
+                "The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [39, 0, 29]",
+                "",
+                "",
+                "DECIMAL(10, 2)",
+                "Include Null",
+                "Non-Unique",
+                "[39, 0, 29]"
+            ],
+            "stores.store_latitude": [
+                "The type is DECIMAL(9, 6), Which inlude Null and is Non-Unique. Values format like: [-22, -22, -22]",
+                "",
+                "",
+                "DECIMAL(9, 6)",
+                "Include Null",
+                "Non-Unique",
+                "[-22, -22, -22]"
+            ],
+            "stores.store_longitude": [
+                "The type is DECIMAL(9, 6), Which inlude Null and is Non-Unique. Values format like: [-43, -46, -43]",
+                "",
+                "",
+                "DECIMAL(9, 6)",
+                "Include Null",
+                "Non-Unique",
+                "[-43, -46, -43]"
+            ],
+            "orders.order_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [88456414, 89747805, 87303615]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[88456414, 89747805, 87303615]"
+            ],
+            "orders.store_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4402, 4300, 600]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4402, 4300, 600]"
+            ],
+            "orders.channel_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [11, 2, 24]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[11, 2, 24]"
+            ],
+            "orders.payment_order_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [78844063, 77908678, 72825777]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[78844063, 77908678, 72825777]"
+            ],
+            "orders.delivery_order_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [90268249, 89894745, 87306472]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[90268249, 89894745, 87306472]"
+            ],
+            "orders.order_status": [
+                "The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Value of this column must in: ['CANCELED', 'FINISHED']",
+                "",
+                "",
+                "VARCHAR(50)",
+                "Non-Null",
+                "Non-Unique",
+                "['CANCELED', 'FINISHED']"
+            ],
+            "orders.order_amount": [
+                "The type is DECIMAL(10, 2), Which does not inlude Null and is Non-Unique. Values format like: [66, 829, 609]",
+                "",
+                "",
+                "DECIMAL(10, 2)",
+                "Non-Null",
+                "Non-Unique",
+                "[66, 829, 609]"
+            ],
+            "orders.order_delivery_fee": [
+                "The type is DECIMAL(10, 2), Which does not inlude Null and is Non-Unique. Values format like: [37, 15, 90]",
+                "",
+                "",
+                "DECIMAL(10, 2)",
+                "Non-Null",
+                "Non-Unique",
+                "[37, 15, 90]"
+            ],
+            "orders.order_delivery_cost": [
+                "The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [14, 24, 20]",
+                "",
+                "",
+                "DECIMAL(10, 2)",
+                "Include Null",
+                "Non-Unique",
+                "[14, 24, 20]"
+            ],
+            "orders.order_created_hour": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [0, 13, 8]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 13, 8]"
+            ],
+            "orders.order_created_minute": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [35, 3, 40]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[35, 3, 40]"
+            ],
+            "orders.order_created_day": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [21, 17, 20]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[21, 17, 20]"
+            ],
+            "orders.order_created_month": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 3, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4, 3, 2]"
+            ],
+            "orders.order_created_year": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2021]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2021]"
+            ],
+            "orders.order_moment_created": [
+                "The type is DATETIME, Which does not inlude Null and is Non-Unique. Values format like: ['3/30/2021 10:38:12 PM', '2/16/2021 8:07:22 PM', '4/6/2021 4:34:45 PM']",
+                "",
+                "",
+                "DATETIME",
+                "Non-Null",
+                "Non-Unique",
+                "['3/30/2021 10:38:12 PM', '2/16/2021 8:07:22 PM', '4/6/2021 4:34:45 PM']"
+            ],
+            "orders.order_moment_accepted": [
+                "The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['3/6/2021 12:20:51 AM', '3/7/2021 4:45:50 PM', '3/24/2021 2:14:10 PM']",
+                "",
+                "",
+                "DATETIME",
+                "Include Null",
+                "Non-Unique",
+                "['3/6/2021 12:20:51 AM', '3/7/2021 4:45:50 PM', '3/24/2021 2:14:10 PM']"
+            ],
+            "orders.order_moment_ready": [
+                "The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['4/11/2021 11:31:43 PM', '1/17/2021 11:52:00 PM', '2/1/2021 7:33:25 PM']",
+                "",
+                "",
+                "DATETIME",
+                "Include Null",
+                "Non-Unique",
+                "['4/11/2021 11:31:43 PM', '1/17/2021 11:52:00 PM', '2/1/2021 7:33:25 PM']"
+            ],
+            "orders.order_moment_collected": [
+                "The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['3/3/2021 11:46:48 PM', '3/6/2021 7:10:07 PM', '2/13/2021 11:30:23 PM']",
+                "",
+                "",
+                "DATETIME",
+                "Include Null",
+                "Non-Unique",
+                "['3/3/2021 11:46:48 PM', '3/6/2021 7:10:07 PM', '2/13/2021 11:30:23 PM']"
+            ],
+            "orders.order_moment_in_expedition": [
+                "The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['4/11/2021 4:24:01 PM', '1/16/2021 7:54:48 PM', '4/10/2021 11:12:07 PM']",
+                "",
+                "",
+                "DATETIME",
+                "Include Null",
+                "Non-Unique",
+                "['4/11/2021 4:24:01 PM', '1/16/2021 7:54:48 PM', '4/10/2021 11:12:07 PM']"
+            ],
+            "orders.order_moment_delivering": [
+                "The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['3/21/2021 12:48:16 AM', '4/3/2021 2:31:13 PM', '4/26/2021 3:57:43 PM']",
+                "",
+                "",
+                "DATETIME",
+                "Include Null",
+                "Non-Unique",
+                "['3/21/2021 12:48:16 AM', '4/3/2021 2:31:13 PM', '4/26/2021 3:57:43 PM']"
+            ],
+            "orders.order_moment_delivered": [
+                "The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['3/9/2021 4:23:36 PM', '4/10/2021 10:18:43 PM', '4/6/2021 12:35:58 AM']",
+                "",
+                "",
+                "DATETIME",
+                "Include Null",
+                "Non-Unique",
+                "['3/9/2021 4:23:36 PM', '4/10/2021 10:18:43 PM', '4/6/2021 12:35:58 AM']"
+            ],
+            "orders.order_moment_finished": [
+                "The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['3/26/2021 4:04:22 PM', '4/27/2021 5:29:20 PM', '2/11/2021 7:24:49 PM']",
+                "",
+                "",
+                "DATETIME",
+                "Include Null",
+                "Non-Unique",
+                "['3/26/2021 4:04:22 PM', '4/27/2021 5:29:20 PM', '2/11/2021 7:24:49 PM']"
+            ],
+            "orders.order_metric_collected_time": [
+                "The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [22, 3, 25]",
+                "",
+                "",
+                "DECIMAL(10, 2)",
+                "Include Null",
+                "Non-Unique",
+                "[22, 3, 25]"
+            ],
+            "orders.order_metric_paused_time": [
+                "The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [100, 96, 43]",
+                "",
+                "",
+                "DECIMAL(10, 2)",
+                "Include Null",
+                "Non-Unique",
+                "[100, 96, 43]"
+            ],
+            "orders.order_metric_production_time": [
+                "The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [1147, 3, 113]",
+                "",
+                "",
+                "DECIMAL(10, 2)",
+                "Include Null",
+                "Non-Unique",
+                "[1147, 3, 113]"
+            ],
+            "orders.order_metric_walking_time": [
+                "The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [69, 1, 21]",
+                "",
+                "",
+                "DECIMAL(10, 2)",
+                "Include Null",
+                "Non-Unique",
+                "[69, 1, 21]"
+            ],
+            "orders.order_metric_expediton_speed_time": [
+                "The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [145, 131, 60]",
+                "",
+                "",
+                "DECIMAL(10, 2)",
+                "Include Null",
+                "Non-Unique",
+                "[145, 131, 60]"
+            ],
+            "orders.order_metric_transit_time": [
+                "The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [18, 159, 194]",
+                "",
+                "",
+                "DECIMAL(10, 2)",
+                "Include Null",
+                "Non-Unique",
+                "[18, 159, 194]"
+            ],
+            "orders.order_metric_cycle_time": [
+                "The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [105, 35, 82]",
+                "",
+                "",
+                "DECIMAL(10, 2)",
+                "Include Null",
+                "Non-Unique",
+                "[105, 35, 82]"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries the top 5 delivery drivers based on the highest average number of daily deliveries. The relevant columns include driver details and delivery metrics. To calculate daily averages, we need columns related to drivers and deliveries, including delivery.driver_id and delivery.delivery_order_id. \n#columns: deliveries.driver_id, deliveries.delivery_order_id, deliveries.delivery_status, orders.order_created_day, orders.order_created_month, orders.order_created_year\n#values: \"DELIVERED\"\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "drivers",
+            "highest average number of daily deliveries",
+            "average",
+            "delivery",
+            "DELIVERED",
+            "number",
+            "daily deliveries"
+        ],
+        "col": "deliveries.driver_id, deliveries.delivery_order_id, deliveries.delivery_status, orders.order_created_day, orders.order_created_month, orders.order_created_year",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [
+            [
+                "deliveries.delivery_status",
+                "DELIVERED"
+            ],
+            [
+                "deliveries.delivery_status",
+                "DELIVERING"
+            ]
+        ],
+        "column": "deliveries.delivery_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [2518512, 2556897, 2711702]\ndeliveries.delivery_order_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [89376422, 85506542, 85225838]\ndeliveries.delivery_status: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Values format like: ['CANCELLED', 'DELIVERING', 'DELIVERED']\ndeliveries.driver_id: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [1626, 23063, 42209]\ndrivers.driver_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [35121, 4256, 48100]\ndrivers.driver_type: The type is VARCHAR(50), Which does not inlude Null and is Non-Unique. Value of this column must in: ['LOGISTIC OPERATOR', 'FREELANCE']\norders.delivery_order_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [90268249, 89894745, 87306472]\norders.order_created_day: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [21, 17, 20]\norders.order_created_month: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4, 3, 2]\norders.order_created_year: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [2021]\norders.order_delivery_cost: The type is DECIMAL(10, 2), Which inlude Null and is Non-Unique. Values format like: [14, 24, 20]\norders.order_moment_delivered: The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['3/9/2021 4:23:36 PM', '4/10/2021 10:18:43 PM', '4/6/2021 12:35:58 AM']\norders.order_moment_delivering: The type is DATETIME, Which inlude Null and is Non-Unique. Values format like: ['3/21/2021 12:48:16 AM', '4/3/2021 2:31:13 PM', '4/26/2021 3:57:43 PM']",
+        "foreign_keys": "",
+        "foreign_set": [],
+        "q_order": [
+            "5 delivery drivers"
+        ],
+        "status": "success"
+    }
+]

@@ -1,0 +1,694 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "db_list": "Database Management System: SQLite\n#Database name: E_commerce\n## Table product_category_name_translation:\nproduct_category_name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['artes', 'fashion_underwear_e_moda_praia', 'agro_industria_e_comercio']\nproduct_category_name_english: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['perfumery', 'electronics', 'home_construction']\n\n## Table sellers:\nseller_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['7b3f6ce5c6c22e9b96e7581ebf0df6e1', '98115075dd26cb8835946fc6086f5d30', '913fd0ebba70bb919f7254a02239173c']\nseller_zip_code_prefix: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [22713, 12924, 17032]\nseller_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['santa cruz do sul', 'ampere', 'olimpia']\nseller_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['GO', 'PA', 'DF']\n\n## Table customers:\ncustomer_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['a15cfa97b62e30ca2e0f9ad649cc7774', '744712b9c80935dedc6c1995e32bfdd9', '24919b72996bb428094aac6b57ff53de']\ncustomer_unique_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2ec795a39feac8b0ffac1f2aedcdbbfe', '0339119d431b8dd1b361567e4fc48a58', '25901d663386536f4a705f6ba76a7616']\ncustomer_zip_code_prefix: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [53350, 89535, 7436]\ncustomer_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['simonesia', 'aracuai', 'diamantino']\ncustomer_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PR', 'MG', 'MS']\n\n## Table geolocation:\ngeolocation_zip_code_prefix: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [29027, 3448, 12335]\ngeolocation_lat: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [-30, -30, -23]\ngeolocation_lng: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [-46, -46, -46]\ngeolocation_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['quatituba', 'são domingos do norte', 'conceicao da barra de minas']\ngeolocation_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['MT', 'PA', 'CE']\n\n## Table order_items:\norder_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['6355eaa9ea0d6a5946978835f89effbb', 'd66296945273987f899b24ce13f32f81', '8cdf6f8f13da3e9e57245ad6a35e5eaa']\norder_item_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 6, 4]\nproduct_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['42c28e0e09e582dfd979242c53111e6e', '1a41f6016e828ff1d37f2ecc2f2a0dfd', 'c144fdb6fc3bda28fb58900cdb37247c']\nseller_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['a435b009cd956ea60748b5cfbddf2e24', 'f4c4daa86e30c7e5a553a8d518ac03a5', 'ce3ad9de960102d0677a81f5d0bb7b2d']\nshipping_limit_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-13 20:55:50', '2018-06-21 02:58:50', '2017-05-23 19:43:26']\nprice: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [277, 229, 159]\nfreight_value: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [211, 33, 23]\n\n## Table order_payments:\norder_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['8281751e57c88c456c81120e259c4367', '056a21113c096b87e87743862452a7d3', 'a404ea50be6a196526edbedda3d1d083']\npayment_sequential: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [17, 20, 15]\npayment_type: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['voucher', 'not_defined', 'debit_card']\npayment_installments: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 0, 24]\npayment_value: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [819, 134, 178]\n\n## Table order_reviews:\nreview_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['3590167a693b2f2312743bc9a03a8d28', '0a451903f2fd4f369e6f037a343e3c1c', 'c6c40b1caf7e48b48b2ad47fa88cf78d']\norder_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['6be4d639e28647dfcf1002b1e2f3e84c', '7deef94321f75bede64577871cf3147a', '5561adcb0fd46da4cad3048fa4e7fc00']\nreview_score: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 5, 3]\nreview_comment_title: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Atraso no entrega ', 'Excelentes!', 'entregue rapido']\nreview_comment_message: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['A melhor loja entrega rápida recomendo a todos ', 'quero meu dinheiro de volta', 'NAO RECEBI MEUS PRODUTOS COMPLETO']\nreview_creation_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-05-16 00:00:00', '2016-12-16 00:00:00', '2017-10-23 00:00:00']\nreview_answer_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-03 17:37:22', '2018-05-06 18:52:02', '2017-10-07 05:12:30']\n\n## Table orders:\norder_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['cc9b441239dbd3786773a5c8724547ba', 'c256d21967285da68304dbc784bae3d4', 'e9de409fda259726830399eaf5fb4e42']\ncustomer_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['67127c6c29a10ac3bccb1fff10fe5758', '194e5864217a3571944250937dec0a41', '3ecd1b9b4c5f6f6288f6e95485527938']\norder_status: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['invoiced', 'created', 'approved']\norder_purchase_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-03-23 20:23:25', '2017-10-17 18:12:23', '2017-03-03 15:55:48']\norder_approved_at: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2017-11-20 16:06:44', '2018-02-06 16:11:40', '2017-11-23 21:27:49']\norder_delivered_carrier_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-01-08 18:16:45', '2018-02-27 16:23:50', '2017-07-07 12:43:39']\norder_delivered_customer_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-08-24 21:40:59', '2017-05-18 12:36:48', '2018-04-02 13:18:34']\norder_estimated_delivery_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-03-16 00:00:00', '2017-05-02 00:00:00', '2017-11-07 00:00:00']\n\n## Table products:\nproduct_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['d7d794641d5ada503ecda1a6f19199d5', '3fdb534dccf5bc9ab0406944b913787d', '7c8e2b381bb0fcba5b368961d7823cd2']\nproduct_category_name: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['instrumentos_musicais', 'casa_conforto', 'livros_importados']\nproduct_name_lenght: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [72, 60, 34]\nproduct_description_lenght: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [1789, 2416, 588]\nproduct_photos_qty: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [11, 15, 3]\nproduct_weight_g: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [8325, 948, 1277]\nproduct_length_cm: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [30, 71, 98]\nproduct_height_cm: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [27, 73, 86]\nproduct_width_cm: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [23, 42, 100]\n\n## Table leads_qualified:\nmql_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['ea9bfa88b4322f8cc046e06cfd8c8856', 'ff0ff1ca67906b0ffaef9f6eaff010c6', '77487ac14aa5a4e7e5521642407eea5c']\nfirst_contact_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-05-15', '2017-10-20', '2017-08-07']\nlanding_page_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['fa5a0151e1f37d0055a3478fbb48827a', '87732658ba41d8775e8577df347a64db', '0f25be78376bbbaba8553051e980b83c']\norigin: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other_publicities', 'paid_search', 'social']\n\n## Table leads_closed:\nmql_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['a4caf71cf38708eaf17117f78fa61c9f', 'a2de60ae969948c62475144651c21281', '92ad56ab29e347d1779a07879d38c67a']\nseller_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['ec5b3cd9d6bf0a880edfda73562a7cea', '4a4da369ad50f14d48337aa52eb826f5', 'c1849d4d32d7a6cecd5aa471809d3135']\nsdr_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['0cdad77786224a7cefea567b8c75c3c1', 'de63de0d10a6012430098db33c679b0b', '068066e24f0c643eb1d089c7dd20cd73']\nsr_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['d3d1e91a157ea7f90548eef82f1955e3', 'b90f87164b5f8c2cfa5c8572834dbe3f', '9d12ef1a7eca3ec58c545c678af7869c']\nwon_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-03-07 17:11:48', '2018-05-09 21:35:58', '2018-05-10 19:16:27']\nbusiness_segment: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['car_accessories', 'food_drink', 'health_beauty']\nlead_type: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['online_small', 'online_medium', 'industry']\nlead_behaviour_profile: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['cat', 'shark, wolf', 'eagle']\nhas_company: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [1, 0]\nhas_gtin: The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [1, 0]\naverage_stock: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['200+', '50-200', '20-50']\nbusiness_type: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['reseller', 'manufacturer', 'other']\ndeclared_product_catalog_size: The type is REAL, Which inlude Null and is Non-Unique. Values format like: [5, 1000, 305]\ndeclared_monthly_revenue: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [130000, 150000, 20000]\n\n#Forigen keys:\n\n\n#Database Description:\nThe `E_commerce` database is designed to manage and analyze data related to an e-commerce platform. It contains information about products, sellers, customers, orders, payments, reviews, geolocation, and leads. The database facilitates tracking product details, seller and customer information, order processing, payment transactions, customer reviews, and lead management. It is structured to support business operations, customer insights, and sales analysis.\n\n#Tables Descriptions:\n\n1. **product_category_name_translation**:\n   - Contains translations of product category names into English.\n   - Includes columns for the original product category name (`product_category_name`) and its English translation (`product_category_name_english`).\n\n2. **sellers**:\n   - Stores information about sellers on the platform.\n   - Includes seller ID (`seller_id`), zip code prefix (`seller_zip_code_prefix`), city (`seller_city`), and state (`seller_state`).\n\n3. **customers**:\n   - Stores information about customers.\n   - Includes customer ID (`customer_id`), unique customer ID (`customer_unique_id`), zip code prefix (`customer_zip_code_prefix`), city (`customer_city`), and state (`customer_state`).\n\n4. **geolocation**:\n   - Contains geolocation data for zip codes.\n   - Includes zip code prefix (`geolocation_zip_code_prefix`), latitude (`geolocation_lat`), longitude (`geolocation_lng`), city (`geolocation_city`), and state (`geolocation_state`).\n\n5. **order_items**:\n   - Stores details about items in orders.\n   - Includes order ID (`order_id`), item ID (`order_item_id`), product ID (`product_id`), seller ID (`seller_id`), shipping limit date (`shipping_limit_date`), price (`price`), and freight value (`freight_value`).\n\n6. **order_payments**:\n   - Contains payment information for orders.\n   - Includes order ID (`order_id`), payment sequential number (`payment_sequential`), payment type (`payment_type`), number of installments (`payment_installments`), and payment value (`payment_value`).\n\n7. **order_reviews**:\n   - Stores customer reviews for orders.\n   - Includes review ID (`review_id`), order ID (`order_id`), review score (`review_score`), review comment title (`review_comment_title`), review comment message (`review_comment_message`), review creation date (`review_creation_date`), and review answer timestamp (`review_answer_timestamp`).\n\n8. **orders**:\n   - Contains information about orders placed on the platform.\n   - Includes order ID (`order_id`), customer ID (`customer_id`), order status (`order_status`), purchase timestamp (`order_purchase_timestamp`), approval timestamp (`order_approved_at`), carrier delivery date (`order_delivered_carrier_date`), customer delivery date (`order_delivered_customer_date`), and estimated delivery date (`order_estimated_delivery_date`).\n\n9. **products**:\n   - Stores details about products available on the platform.\n   - Includes product ID (`product_id`), category name (`product_category_name`), name length (`product_name_lenght`), description length (`product_description_lenght`), number of photos (`product_photos_qty`), weight (`product_weight_g`), dimensions (length, height, width in cm).\n\n10. **leads_qualified**:\n    - Contains information about qualified leads.\n    - Includes lead ID (`mql_id`), first contact date (`first_contact_date`), landing page ID (`landing_page_id`), and origin (`origin`).\n\n11. **leads_closed**:\n    - Stores information about closed leads.\n    - Includes lead ID (`mql_id`), seller ID (`seller_id`), SDR ID (`sdr_id`), SR ID (`sr_id`), won date (`won_date`), business segment (`business_segment`\n",
+        "db_col_dic": {
+            "product_category_name_translation.product_category_name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['artes', 'fashion_underwear_e_moda_praia', 'agro_industria_e_comercio']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['artes', 'fashion_underwear_e_moda_praia', 'agro_industria_e_comercio']"
+            ],
+            "product_category_name_translation.product_category_name_english": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['perfumery', 'electronics', 'home_construction']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['perfumery', 'electronics', 'home_construction']"
+            ],
+            "sellers.seller_id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['7b3f6ce5c6c22e9b96e7581ebf0df6e1', '98115075dd26cb8835946fc6086f5d30', '913fd0ebba70bb919f7254a02239173c']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['7b3f6ce5c6c22e9b96e7581ebf0df6e1', '98115075dd26cb8835946fc6086f5d30', '913fd0ebba70bb919f7254a02239173c']"
+            ],
+            "sellers.seller_zip_code_prefix": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [22713, 12924, 17032]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[22713, 12924, 17032]"
+            ],
+            "sellers.seller_city": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['santa cruz do sul', 'ampere', 'olimpia']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['santa cruz do sul', 'ampere', 'olimpia']"
+            ],
+            "sellers.seller_state": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['GO', 'PA', 'DF']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['GO', 'PA', 'DF']"
+            ],
+            "customers.customer_id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['a15cfa97b62e30ca2e0f9ad649cc7774', '744712b9c80935dedc6c1995e32bfdd9', '24919b72996bb428094aac6b57ff53de']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['a15cfa97b62e30ca2e0f9ad649cc7774', '744712b9c80935dedc6c1995e32bfdd9', '24919b72996bb428094aac6b57ff53de']"
+            ],
+            "customers.customer_unique_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2ec795a39feac8b0ffac1f2aedcdbbfe', '0339119d431b8dd1b361567e4fc48a58', '25901d663386536f4a705f6ba76a7616']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2ec795a39feac8b0ffac1f2aedcdbbfe', '0339119d431b8dd1b361567e4fc48a58', '25901d663386536f4a705f6ba76a7616']"
+            ],
+            "customers.customer_zip_code_prefix": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [53350, 89535, 7436]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[53350, 89535, 7436]"
+            ],
+            "customers.customer_city": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['simonesia', 'aracuai', 'diamantino']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['simonesia', 'aracuai', 'diamantino']"
+            ],
+            "customers.customer_state": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PR', 'MG', 'MS']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['PR', 'MG', 'MS']"
+            ],
+            "geolocation.geolocation_zip_code_prefix": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [29027, 3448, 12335]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[29027, 3448, 12335]"
+            ],
+            "geolocation.geolocation_lat": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [-30, -30, -23]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[-30, -30, -23]"
+            ],
+            "geolocation.geolocation_lng": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [-46, -46, -46]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[-46, -46, -46]"
+            ],
+            "geolocation.geolocation_city": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['quatituba', 'são domingos do norte', 'conceicao da barra de minas']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['quatituba', 'são domingos do norte', 'conceicao da barra de minas']"
+            ],
+            "geolocation.geolocation_state": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['MT', 'PA', 'CE']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['MT', 'PA', 'CE']"
+            ],
+            "order_items.order_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['6355eaa9ea0d6a5946978835f89effbb', 'd66296945273987f899b24ce13f32f81', '8cdf6f8f13da3e9e57245ad6a35e5eaa']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['6355eaa9ea0d6a5946978835f89effbb', 'd66296945273987f899b24ce13f32f81', '8cdf6f8f13da3e9e57245ad6a35e5eaa']"
+            ],
+            "order_items.order_item_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 6, 4]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[9, 6, 4]"
+            ],
+            "order_items.product_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['42c28e0e09e582dfd979242c53111e6e', '1a41f6016e828ff1d37f2ecc2f2a0dfd', 'c144fdb6fc3bda28fb58900cdb37247c']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['42c28e0e09e582dfd979242c53111e6e', '1a41f6016e828ff1d37f2ecc2f2a0dfd', 'c144fdb6fc3bda28fb58900cdb37247c']"
+            ],
+            "order_items.seller_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['a435b009cd956ea60748b5cfbddf2e24', 'f4c4daa86e30c7e5a553a8d518ac03a5', 'ce3ad9de960102d0677a81f5d0bb7b2d']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['a435b009cd956ea60748b5cfbddf2e24', 'f4c4daa86e30c7e5a553a8d518ac03a5', 'ce3ad9de960102d0677a81f5d0bb7b2d']"
+            ],
+            "order_items.shipping_limit_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-13 20:55:50', '2018-06-21 02:58:50', '2017-05-23 19:43:26']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2018-02-13 20:55:50', '2018-06-21 02:58:50', '2017-05-23 19:43:26']"
+            ],
+            "order_items.price": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [277, 229, 159]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[277, 229, 159]"
+            ],
+            "order_items.freight_value": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [211, 33, 23]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[211, 33, 23]"
+            ],
+            "order_payments.order_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['8281751e57c88c456c81120e259c4367', '056a21113c096b87e87743862452a7d3', 'a404ea50be6a196526edbedda3d1d083']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['8281751e57c88c456c81120e259c4367', '056a21113c096b87e87743862452a7d3', 'a404ea50be6a196526edbedda3d1d083']"
+            ],
+            "order_payments.payment_sequential": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [17, 20, 15]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[17, 20, 15]"
+            ],
+            "order_payments.payment_type": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['voucher', 'not_defined', 'debit_card']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['voucher', 'not_defined', 'debit_card']"
+            ],
+            "order_payments.payment_installments": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [2, 0, 24]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 0, 24]"
+            ],
+            "order_payments.payment_value": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [819, 134, 178]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[819, 134, 178]"
+            ],
+            "order_reviews.review_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['3590167a693b2f2312743bc9a03a8d28', '0a451903f2fd4f369e6f037a343e3c1c', 'c6c40b1caf7e48b48b2ad47fa88cf78d']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['3590167a693b2f2312743bc9a03a8d28', '0a451903f2fd4f369e6f037a343e3c1c', 'c6c40b1caf7e48b48b2ad47fa88cf78d']"
+            ],
+            "order_reviews.order_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['6be4d639e28647dfcf1002b1e2f3e84c', '7deef94321f75bede64577871cf3147a', '5561adcb0fd46da4cad3048fa4e7fc00']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['6be4d639e28647dfcf1002b1e2f3e84c', '7deef94321f75bede64577871cf3147a', '5561adcb0fd46da4cad3048fa4e7fc00']"
+            ],
+            "order_reviews.review_score": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 5, 3]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 5, 3]"
+            ],
+            "order_reviews.review_comment_title": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['Atraso no entrega ', 'Excelentes!', 'entregue rapido']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['Atraso no entrega ', 'Excelentes!', 'entregue rapido']"
+            ],
+            "order_reviews.review_comment_message": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['A melhor loja entrega rápida recomendo a todos ', 'quero meu dinheiro de volta', 'NAO RECEBI MEUS PRODUTOS COMPLETO']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['A melhor loja entrega rápida recomendo a todos ', 'quero meu dinheiro de volta', 'NAO RECEBI MEUS PRODUTOS COMPLETO']"
+            ],
+            "order_reviews.review_creation_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-05-16 00:00:00', '2016-12-16 00:00:00', '2017-10-23 00:00:00']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2017-05-16 00:00:00', '2016-12-16 00:00:00', '2017-10-23 00:00:00']"
+            ],
+            "order_reviews.review_answer_timestamp": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-03 17:37:22', '2018-05-06 18:52:02', '2017-10-07 05:12:30']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2018-02-03 17:37:22', '2018-05-06 18:52:02', '2017-10-07 05:12:30']"
+            ],
+            "orders.order_id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['cc9b441239dbd3786773a5c8724547ba', 'c256d21967285da68304dbc784bae3d4', 'e9de409fda259726830399eaf5fb4e42']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['cc9b441239dbd3786773a5c8724547ba', 'c256d21967285da68304dbc784bae3d4', 'e9de409fda259726830399eaf5fb4e42']"
+            ],
+            "orders.customer_id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['67127c6c29a10ac3bccb1fff10fe5758', '194e5864217a3571944250937dec0a41', '3ecd1b9b4c5f6f6288f6e95485527938']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['67127c6c29a10ac3bccb1fff10fe5758', '194e5864217a3571944250937dec0a41', '3ecd1b9b4c5f6f6288f6e95485527938']"
+            ],
+            "orders.order_status": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['invoiced', 'created', 'approved']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['invoiced', 'created', 'approved']"
+            ],
+            "orders.order_purchase_timestamp": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-03-23 20:23:25', '2017-10-17 18:12:23', '2017-03-03 15:55:48']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2017-03-23 20:23:25', '2017-10-17 18:12:23', '2017-03-03 15:55:48']"
+            ],
+            "orders.order_approved_at": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2017-11-20 16:06:44', '2018-02-06 16:11:40', '2017-11-23 21:27:49']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['2017-11-20 16:06:44', '2018-02-06 16:11:40', '2017-11-23 21:27:49']"
+            ],
+            "orders.order_delivered_carrier_date": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-01-08 18:16:45', '2018-02-27 16:23:50', '2017-07-07 12:43:39']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['2018-01-08 18:16:45', '2018-02-27 16:23:50', '2017-07-07 12:43:39']"
+            ],
+            "orders.order_delivered_customer_date": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-08-24 21:40:59', '2017-05-18 12:36:48', '2018-04-02 13:18:34']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['2018-08-24 21:40:59', '2017-05-18 12:36:48', '2018-04-02 13:18:34']"
+            ],
+            "orders.order_estimated_delivery_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-03-16 00:00:00', '2017-05-02 00:00:00', '2017-11-07 00:00:00']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2018-03-16 00:00:00', '2017-05-02 00:00:00', '2017-11-07 00:00:00']"
+            ],
+            "products.product_id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['d7d794641d5ada503ecda1a6f19199d5', '3fdb534dccf5bc9ab0406944b913787d', '7c8e2b381bb0fcba5b368961d7823cd2']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['d7d794641d5ada503ecda1a6f19199d5', '3fdb534dccf5bc9ab0406944b913787d', '7c8e2b381bb0fcba5b368961d7823cd2']"
+            ],
+            "products.product_category_name": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['instrumentos_musicais', 'casa_conforto', 'livros_importados']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['instrumentos_musicais', 'casa_conforto', 'livros_importados']"
+            ],
+            "products.product_name_lenght": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [72, 60, 34]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[72, 60, 34]"
+            ],
+            "products.product_description_lenght": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [1789, 2416, 588]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[1789, 2416, 588]"
+            ],
+            "products.product_photos_qty": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [11, 15, 3]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[11, 15, 3]"
+            ],
+            "products.product_weight_g": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [8325, 948, 1277]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[8325, 948, 1277]"
+            ],
+            "products.product_length_cm": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [30, 71, 98]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[30, 71, 98]"
+            ],
+            "products.product_height_cm": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [27, 73, 86]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[27, 73, 86]"
+            ],
+            "products.product_width_cm": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [23, 42, 100]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[23, 42, 100]"
+            ],
+            "leads_qualified.mql_id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['ea9bfa88b4322f8cc046e06cfd8c8856', 'ff0ff1ca67906b0ffaef9f6eaff010c6', '77487ac14aa5a4e7e5521642407eea5c']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['ea9bfa88b4322f8cc046e06cfd8c8856', 'ff0ff1ca67906b0ffaef9f6eaff010c6', '77487ac14aa5a4e7e5521642407eea5c']"
+            ],
+            "leads_qualified.first_contact_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-05-15', '2017-10-20', '2017-08-07']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2018-05-15', '2017-10-20', '2017-08-07']"
+            ],
+            "leads_qualified.landing_page_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['fa5a0151e1f37d0055a3478fbb48827a', '87732658ba41d8775e8577df347a64db', '0f25be78376bbbaba8553051e980b83c']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['fa5a0151e1f37d0055a3478fbb48827a', '87732658ba41d8775e8577df347a64db', '0f25be78376bbbaba8553051e980b83c']"
+            ],
+            "leads_qualified.origin": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['other_publicities', 'paid_search', 'social']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['other_publicities', 'paid_search', 'social']"
+            ],
+            "leads_closed.mql_id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['a4caf71cf38708eaf17117f78fa61c9f', 'a2de60ae969948c62475144651c21281', '92ad56ab29e347d1779a07879d38c67a']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['a4caf71cf38708eaf17117f78fa61c9f', 'a2de60ae969948c62475144651c21281', '92ad56ab29e347d1779a07879d38c67a']"
+            ],
+            "leads_closed.seller_id": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['ec5b3cd9d6bf0a880edfda73562a7cea', '4a4da369ad50f14d48337aa52eb826f5', 'c1849d4d32d7a6cecd5aa471809d3135']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['ec5b3cd9d6bf0a880edfda73562a7cea', '4a4da369ad50f14d48337aa52eb826f5', 'c1849d4d32d7a6cecd5aa471809d3135']"
+            ],
+            "leads_closed.sdr_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['0cdad77786224a7cefea567b8c75c3c1', 'de63de0d10a6012430098db33c679b0b', '068066e24f0c643eb1d089c7dd20cd73']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['0cdad77786224a7cefea567b8c75c3c1', 'de63de0d10a6012430098db33c679b0b', '068066e24f0c643eb1d089c7dd20cd73']"
+            ],
+            "leads_closed.sr_id": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['d3d1e91a157ea7f90548eef82f1955e3', 'b90f87164b5f8c2cfa5c8572834dbe3f', '9d12ef1a7eca3ec58c545c678af7869c']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['d3d1e91a157ea7f90548eef82f1955e3', 'b90f87164b5f8c2cfa5c8572834dbe3f', '9d12ef1a7eca3ec58c545c678af7869c']"
+            ],
+            "leads_closed.won_date": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-03-07 17:11:48', '2018-05-09 21:35:58', '2018-05-10 19:16:27']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2018-03-07 17:11:48', '2018-05-09 21:35:58', '2018-05-10 19:16:27']"
+            ],
+            "leads_closed.business_segment": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['car_accessories', 'food_drink', 'health_beauty']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['car_accessories', 'food_drink', 'health_beauty']"
+            ],
+            "leads_closed.lead_type": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['online_small', 'online_medium', 'industry']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['online_small', 'online_medium', 'industry']"
+            ],
+            "leads_closed.lead_behaviour_profile": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['cat', 'shark, wolf', 'eagle']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['cat', 'shark, wolf', 'eagle']"
+            ],
+            "leads_closed.has_company": [
+                "The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "INTEGER",
+                "Include Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "leads_closed.has_gtin": [
+                "The type is INTEGER, Which inlude Null and is Non-Unique. Value of this column must in: [1, 0]",
+                "",
+                "",
+                "INTEGER",
+                "Include Null",
+                "Non-Unique",
+                "[1, 0]"
+            ],
+            "leads_closed.average_stock": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['200+', '50-200', '20-50']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['200+', '50-200', '20-50']"
+            ],
+            "leads_closed.business_type": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['reseller', 'manufacturer', 'other']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['reseller', 'manufacturer', 'other']"
+            ],
+            "leads_closed.declared_product_catalog_size": [
+                "The type is REAL, Which inlude Null and is Non-Unique. Values format like: [5, 1000, 305]",
+                "",
+                "",
+                "REAL",
+                "Include Null",
+                "Non-Unique",
+                "[5, 1000, 305]"
+            ],
+            "leads_closed.declared_monthly_revenue": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [130000, 150000, 20000]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[130000, 150000, 20000]"
+            ]
+        },
+        "status": "success"
+    },
+    {
+        "node_type": "extract_col_value",
+        "key_col_des_raw": "\n#reason: The question queries the average sales per order for each customer within distinct RFM segments, considering only 'delivered' orders. It requires calculating Recency based on the latest purchase timestamp, classifying RFM segments, and computing average sales as total spend divided by the total number of orders. The related columns include customer unique identifier, order status, order timestamp, total amount, and customer ID.\n#columns: orders.customer_id, customers.customer_unique_id, orders.order_status, orders.order_purchase_timestamp, orders.order_id, order_items.price, order_items.freight_value\n#values: \"delivered\"\n",
+        "status": "success"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "values": [
+            "total number of orders",
+            "customer",
+            "average sales",
+            "RFM segments",
+            "distinct RFM segments",
+            "customer unique identifier",
+            "differences",
+            "total spend",
+            "order",
+            "delivered orders",
+            "criteria",
+            "latest purchase timestamp",
+            "Recency",
+            "delivered",
+            "RFM definition document"
+        ],
+        "col": "orders.customer_id, customers.customer_unique_id, orders.order_status, orders.order_purchase_timestamp, orders.order_id, order_items.price, order_items.freight_value",
+        "status": "success"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "L_values": [
+            [
+                "customers.customer_city",
+                "sales"
+            ],
+            [
+                "geolocation.geolocation_city",
+                "sales"
+            ],
+            [
+                "orders.order_status",
+                "delivered"
+            ]
+        ],
+        "column": "customers.customer_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['simonesia', 'aracuai', 'diamantino']\ncustomers.customer_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['a15cfa97b62e30ca2e0f9ad649cc7774', '744712b9c80935dedc6c1995e32bfdd9', '24919b72996bb428094aac6b57ff53de']\ncustomers.customer_state: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['PR', 'MG', 'MS']\ncustomers.customer_unique_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2ec795a39feac8b0ffac1f2aedcdbbfe', '0339119d431b8dd1b361567e4fc48a58', '25901d663386536f4a705f6ba76a7616']\ncustomers.customer_zip_code_prefix: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [53350, 89535, 7436]\ngeolocation.geolocation_city: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['quatituba', 'são domingos do norte', 'conceicao da barra de minas']\nleads_closed.average_stock: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['200+', '50-200', '20-50']\nleads_closed.business_segment: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['car_accessories', 'food_drink', 'health_beauty']\norder_items.freight_value: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [211, 33, 23]\norder_items.order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['6355eaa9ea0d6a5946978835f89effbb', 'd66296945273987f899b24ce13f32f81', '8cdf6f8f13da3e9e57245ad6a35e5eaa']\norder_items.order_item_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 6, 4]\norder_items.price: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [277, 229, 159]\norder_payments.order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['8281751e57c88c456c81120e259c4367', '056a21113c096b87e87743862452a7d3', 'a404ea50be6a196526edbedda3d1d083']\norder_reviews.order_id: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['6be4d639e28647dfcf1002b1e2f3e84c', '7deef94321f75bede64577871cf3147a', '5561adcb0fd46da4cad3048fa4e7fc00']\norder_reviews.review_answer_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-02-03 17:37:22', '2018-05-06 18:52:02', '2017-10-07 05:12:30']\norders.customer_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['67127c6c29a10ac3bccb1fff10fe5758', '194e5864217a3571944250937dec0a41', '3ecd1b9b4c5f6f6288f6e95485527938']\norders.order_approved_at: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2017-11-20 16:06:44', '2018-02-06 16:11:40', '2017-11-23 21:27:49']\norders.order_delivered_carrier_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-01-08 18:16:45', '2018-02-27 16:23:50', '2017-07-07 12:43:39']\norders.order_delivered_customer_date: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2018-08-24 21:40:59', '2017-05-18 12:36:48', '2018-04-02 13:18:34']\norders.order_estimated_delivery_date: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2018-03-16 00:00:00', '2017-05-02 00:00:00', '2017-11-07 00:00:00']\norders.order_id: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['cc9b441239dbd3786773a5c8724547ba', 'c256d21967285da68304dbc784bae3d4', 'e9de409fda259726830399eaf5fb4e42']\norders.order_purchase_timestamp: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2017-03-23 20:23:25', '2017-10-17 18:12:23', '2017-03-03 15:55:48']\norders.order_status: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['invoiced', 'created', 'approved']",
+        "foreign_keys": "",
+        "foreign_set": [],
+        "q_order": [
+            "the average sales per order for each customer",
+            "how to calculate Recency",
+            "the criteria for classifying RFM segments",
+            "the average sales",
+            "the differences in average sales"
+        ],
+        "status": "success"
+    }
+]

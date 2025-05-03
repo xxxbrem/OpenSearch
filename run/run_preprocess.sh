@@ -15,7 +15,7 @@ python -u src/database_process/generate_question.py \
     --db_root_directory "${db_root_directory}" \
     --DAIL_SQL "${DAIL_SQL}" 
 
-python -u src/database_process/make_emb.py \
-    --db_root_directory "${db_root_directory}" \
-    --dev_database "${dev_database}" \
-    --bert_model "${bert_model}"
+# python -u src/database_process/make_emb.py \
+#     --db_root_directory "${db_root_directory}" \
+#     --dev_database "${dev_database}" \
+#     --bert_model "${bert_model}"

@@ -1,0 +1,22 @@
+[
+    {
+        "node_type": "generate_db_schema",
+        "status": "error",
+        "error": "<class 'IndexError'>: <list index out of range>"
+    },
+    {
+        "node_type": "extract_col_value",
+        "status": "error",
+        "error": "<class 'KeyError'>: <'db_list'>"
+    },
+    {
+        "node_type": "extract_query_noun",
+        "status": "error",
+        "error": "<class 'KeyError'>: <'key_col_des_raw'>"
+    },
+    {
+        "node_type": "column_retrieve_and_other_info",
+        "status": "error",
+        "error": "<class 'KeyError'>: <'db_col_dic'>"
+    }
+]
