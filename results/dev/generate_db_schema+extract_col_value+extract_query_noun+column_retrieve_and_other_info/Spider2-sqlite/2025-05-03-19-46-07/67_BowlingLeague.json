@@ -1,22 +1,402 @@
 [
     {
         "node_type": "generate_db_schema",
-        "status": "error",
-        "error": "<class 'IndexError'>: <list index out of range>"
+        "db_list": "Database Management System: SQLite\n#Database name: BowlingLeague\n## Table Bowler_Scores:\nMatchID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [41, 2, 28]\nGameNumber: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 1]\nBowlerID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [2, 20, 5]\nRawScore: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [191, 168, 139]\nHandiCapScore: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [205, 189, 216]\nWonGame: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\n\n## Table Bowlers:\nBowlerID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [24, 6, 22]\nBowlerLastName: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Black', 'Hernandez', 'Fournier']\nBowlerFirstName: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['David', 'Sarah', 'Stephanie']\nBowlerMiddleInit: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['A', 'J', 'L']\nBowlerAddress: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['67 Willow Drive', '16 Maple Lane', '4726 - 11th Ave. N.E.']\nBowlerCity: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Bellevue', 'Woodinville', 'Auburn']\nBowlerState: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']\nBowlerZip: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [98404, 98154, 98002]\nBowlerPhoneNumber: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['(206) 881-5596', '(206) 555-9893', '(206) 555-3487']\nTeamID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 8]\nBowlerTotalPins: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [6152, 5790, 6147]\nBowlerGamesBowled: The type is INT, Which does not inlude Null and is Non-Unique. Value of this column must in: [39, 0]\nBowlerCurrentAverage: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [149, 159, 162]\nBowlerCurrentHcp: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [0, 46, 34]\n\n## Table Match_Games:\nMatchID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [10, 51, 47]\nGameNumber: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [1, 2, 3]\nWinningTeamID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1, 8, 2]\n\n## Table Teams:\nTeamID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 5, 7]\nTeamName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Dolphins', 'Barracudas', 'Terrapins']\nCaptainID: The type is INT, Which does not inlude Null and is Unique. Values format like: [12, 28, 24]\n\n## Table Tournaments:\nTourneyID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [13, 14, 3]\nTourneyDate: The type is DATE, Which does not inlude Null and is Unique. Values format like: ['2018-08-02', '2017-10-23', '2018-07-26']\nTourneyLocation: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Red Rooster Lanes', 'Totem Lanes', 'Bolero Lanes']\n\n## Table Tourney_Matches:\nMatchID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [37, 34, 17]\nTourneyID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [6, 1, 4]\nLanes: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['21-22', '27-28', '09-10']\nOddLaneTeamID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [4, 2, 8]\nEvenLaneTeamID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [5, 4, 3]\n\n## Table WAZips:\nZIP: The type is TEXT, Which does not inlude Null and is Unique. Values format like: [98205, 98422, 98264]\nCity: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Blaine', 'Wahkiacus', 'University Place']\nState: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']\n\n#Forigen keys:\nTourney_Matches.TourneyID = Tournaments.TourneyID, Tourney_Matches.OddLaneTeamID = Teams.TeamID, Tourney_Matches.EvenLaneTeamID = Teams.TeamID, Tourney_Matches_Archive.TourneyID = Tournaments_Archive.TourneyID\n\n#Database Description:\nThe BowlingLeague database is designed to manage and store information related to bowling leagues, including bowlers, teams, matches, tournaments, and locations. It provides detailed data about individual bowlers, their scores, team affiliations, tournament matches, and zip codes within Washington state. The database is structured to support league operations, tracking scores, and organizing tournaments.\n\n#Tables Descriptions:\n\n## Bowler_Scores:\nContains information about individual bowler scores in specific matches and games. Includes raw scores, handicap scores, and whether the bowler won the game.\n- **MatchID**: INT, Non-Unique, Not Null.\n- **GameNumber**: SMALLINT, Non-Unique, Not Null.\n- **BowlerID**: INT, Non-Unique, Not Null.\n- **RawScore**: SMALLINT, Non-Unique, Not Null.\n- **HandiCapScore**: SMALLINT, Non-Unique, Not Null.\n- **WonGame**: BOOLEAN, Non-Unique, Not Null.\n\n## Bowlers:\nStores detailed information about individual bowlers, including their personal details, team affiliation, and bowling statistics.\n- **BowlerID**: INTEGER, Unique, Not Null.\n- **BowlerLastName**: TEXT, Non-Unique, Not Null.\n- **BowlerFirstName**: TEXT, Non-Unique, Not Null.\n- **BowlerMiddleInit**: TEXT, Non-Unique, Nullable.\n- **BowlerAddress**: TEXT, Non-Unique, Not Null.\n- **BowlerCity**: TEXT, Non-Unique, Not Null.\n- **BowlerState**: TEXT, Non-Unique, Not Null (Values restricted to 'WA').\n- **BowlerZip**: TEXT, Non-Unique, Not Null.\n- **BowlerPhoneNumber**: TEXT, Non-Unique, Not Null.\n- **TeamID**: INT, Non-Unique, Not Null.\n- **BowlerTotalPins**: INT, Non-Unique, Not Null.\n- **BowlerGamesBowled**: INT, Non-Unique, Not Null (Values restricted to [39, 0]).\n- **BowlerCurrentAverage**: SMALLINT, Non-Unique, Not Null.\n- **BowlerCurrentHcp**: SMALLINT, Non-Unique, Not Null.\n\n## Match_Games:\nTracks the results of individual games within matches, including the winning team.\n- **MatchID**: INT, Non-Unique, Not Null.\n- **GameNumber**: SMALLINT, Non-Unique, Not Null.\n- **WinningTeamID**: INT, Non-Unique, Not Null.\n\n## Teams:\nContains information about bowling teams, including their names and captains.\n- **TeamID**: INTEGER, Unique, Not Null.\n- **TeamName**: TEXT, Unique, Not Null.\n- **CaptainID**: INT, Unique, Not Null.\n\n## Tournaments:\nStores information about tournaments, including their dates and locations.\n- **TourneyID**: INTEGER, Unique, Not Null.\n- **TourneyDate**: DATE, Unique, Not Null.\n- **TourneyLocation**: TEXT, Non-Unique, Not Null.\n\n## Tourney_Matches:\nTracks matches within tournaments, including the teams playing on odd and even lanes.\n- **MatchID**: INTEGER, Unique, Not Null.\n- **TourneyID**: INT, Non-Unique, Not Null.\n- **Lanes**: TEXT, Non-Unique, Not Null.\n- **OddLaneTeamID**: INT, Non-Unique, Not Null.\n- **EvenLaneTeamID**: INT, Non-Unique, Not Null.\n\n## WAZips:\nContains zip codes and corresponding city and state information for Washington state.\n- **ZIP**: TEXT, Unique, Not Null.\n- **City**: TEXT, Non-Unique\n",
+        "db_col_dic": {
+            "Bowler_Scores.MatchID": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [41, 2, 28]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[41, 2, 28]"
+            ],
+            "Bowler_Scores.GameNumber": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 1]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 2, 1]"
+            ],
+            "Bowler_Scores.BowlerID": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [2, 20, 5]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 20, 5]"
+            ],
+            "Bowler_Scores.RawScore": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [191, 168, 139]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[191, 168, 139]"
+            ],
+            "Bowler_Scores.HandiCapScore": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [205, 189, 216]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[205, 189, 216]"
+            ],
+            "Bowler_Scores.WonGame": [
+                "The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]",
+                "",
+                "",
+                "BOOLEAN",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 1]"
+            ],
+            "Bowlers.BowlerID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [24, 6, 22]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[24, 6, 22]"
+            ],
+            "Bowlers.BowlerLastName": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Black', 'Hernandez', 'Fournier']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Black', 'Hernandez', 'Fournier']"
+            ],
+            "Bowlers.BowlerFirstName": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['David', 'Sarah', 'Stephanie']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['David', 'Sarah', 'Stephanie']"
+            ],
+            "Bowlers.BowlerMiddleInit": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['A', 'J', 'L']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['A', 'J', 'L']"
+            ],
+            "Bowlers.BowlerAddress": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['67 Willow Drive', '16 Maple Lane', '4726 - 11th Ave. N.E.']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['67 Willow Drive', '16 Maple Lane', '4726 - 11th Ave. N.E.']"
+            ],
+            "Bowlers.BowlerCity": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Bellevue', 'Woodinville', 'Auburn']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Bellevue', 'Woodinville', 'Auburn']"
+            ],
+            "Bowlers.BowlerState": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['WA']"
+            ],
+            "Bowlers.BowlerZip": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: [98404, 98154, 98002]",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "[98404, 98154, 98002]"
+            ],
+            "Bowlers.BowlerPhoneNumber": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['(206) 881-5596', '(206) 555-9893', '(206) 555-3487']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['(206) 881-5596', '(206) 555-9893', '(206) 555-3487']"
+            ],
+            "Bowlers.TeamID": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 8]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[2, 1, 8]"
+            ],
+            "Bowlers.BowlerTotalPins": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [6152, 5790, 6147]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[6152, 5790, 6147]"
+            ],
+            "Bowlers.BowlerGamesBowled": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Value of this column must in: [39, 0]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[39, 0]"
+            ],
+            "Bowlers.BowlerCurrentAverage": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [149, 159, 162]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[149, 159, 162]"
+            ],
+            "Bowlers.BowlerCurrentHcp": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [0, 46, 34]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[0, 46, 34]"
+            ],
+            "Match_Games.MatchID": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [10, 51, 47]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[10, 51, 47]"
+            ],
+            "Match_Games.GameNumber": [
+                "The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [1, 2, 3]",
+                "",
+                "",
+                "smallint",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 2, 3]"
+            ],
+            "Match_Games.WinningTeamID": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1, 8, 2]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 8, 2]"
+            ],
+            "Teams.TeamID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 5, 7]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1, 5, 7]"
+            ],
+            "Teams.TeamName": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Dolphins', 'Barracudas', 'Terrapins']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Dolphins', 'Barracudas', 'Terrapins']"
+            ],
+            "Teams.CaptainID": [
+                "The type is INT, Which does not inlude Null and is Unique. Values format like: [12, 28, 24]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Unique",
+                "[12, 28, 24]"
+            ],
+            "Tournaments.TourneyID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [13, 14, 3]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[13, 14, 3]"
+            ],
+            "Tournaments.TourneyDate": [
+                "The type is DATE, Which does not inlude Null and is Unique. Values format like: ['2018-08-02', '2017-10-23', '2018-07-26']",
+                "",
+                "",
+                "DATE",
+                "Non-Null",
+                "Unique",
+                "['2018-08-02', '2017-10-23', '2018-07-26']"
+            ],
+            "Tournaments.TourneyLocation": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Red Rooster Lanes', 'Totem Lanes', 'Bolero Lanes']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Red Rooster Lanes', 'Totem Lanes', 'Bolero Lanes']"
+            ],
+            "Tourney_Matches.MatchID": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [37, 34, 17]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[37, 34, 17]"
+            ],
+            "Tourney_Matches.TourneyID": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [6, 1, 4]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[6, 1, 4]"
+            ],
+            "Tourney_Matches.Lanes": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['21-22', '27-28', '09-10']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['21-22', '27-28', '09-10']"
+            ],
+            "Tourney_Matches.OddLaneTeamID": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [4, 2, 8]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[4, 2, 8]"
+            ],
+            "Tourney_Matches.EvenLaneTeamID": [
+                "The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [5, 4, 3]",
+                "",
+                "",
+                "INT",
+                "Non-Null",
+                "Non-Unique",
+                "[5, 4, 3]"
+            ],
+            "WAZips.ZIP": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: [98205, 98422, 98264]",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "[98205, 98422, 98264]"
+            ],
+            "WAZips.City": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Blaine', 'Wahkiacus', 'University Place']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Blaine', 'Wahkiacus', 'University Place']"
+            ],
+            "WAZips.State": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['WA']"
+            ]
+        },
+        "status": "success"
     },
     {
         "node_type": "extract_col_value",
-        "status": "error",
-        "error": "<class 'KeyError'>: <'db_list'>"
+        "key_col_des_raw": "\n#reason: The question queries bowlers, match number, game number, handicap score, tournament date, and location for bowlers who won their game with a handicap score of 190 or less at specific locations. The related columns include bowler details, match details, game details, scores, tournament date, and location. The values include \"190\", \"Thunderbird Lanes\", \"Totem Lanes\", \"Bolero Lanes\".\n#columns: Bowler_Scores.BowlerID, Bowler_Scores.MatchID, Bowler_Scores.GameNumber, Bowler_Scores.HandiCapScore, Bowler_Scores.WonGame, Tournaments.TourneyDate, Tournaments.TourneyLocation\n#values: \"190\", \"Thunderbird Lanes\", \"Totem Lanes\", \"Bolero Lanes\"\n",
+        "status": "success"
     },
     {
         "node_type": "extract_query_noun",
-        "status": "error",
-        "error": "<class 'KeyError'>: <'key_col_des_raw'>"
+        "values": [
+            "Totem Lanes",
+            "Thunderbird Lanes",
+            "190",
+            "game number",
+            "tournament date",
+            "Bolero Lanes",
+            "handicap score",
+            "match number",
+            "bowlers",
+            "location",
+            "game"
+        ],
+        "col": "Bowler_Scores.BowlerID, Bowler_Scores.MatchID, Bowler_Scores.GameNumber, Bowler_Scores.HandiCapScore, Bowler_Scores.WonGame, Tournaments.TourneyDate, Tournaments.TourneyLocation",
+        "status": "success"
     },
     {
         "node_type": "column_retrieve_and_other_info",
-        "status": "error",
-        "error": "<class 'KeyError'>: <'db_col_dic'>"
+        "L_values": [
+            [
+                "Tournaments.TourneyLocation",
+                "Bolero Lanes"
+            ],
+            [
+                "Tournaments.TourneyLocation",
+                "Thunderbird Lanes"
+            ],
+            [
+                "Tournaments.TourneyLocation",
+                "Totem Lanes"
+            ]
+        ],
+        "column": "Bowler_Scores.BowlerID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [2, 20, 5]\nBowler_Scores.GameNumber: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [3, 2, 1]\nBowler_Scores.HandiCapScore: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [205, 189, 216]\nBowler_Scores.MatchID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [41, 2, 28]\nBowler_Scores.RawScore: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [191, 168, 139]\nBowler_Scores.WonGame: The type is BOOLEAN, Which does not inlude Null and is Non-Unique. Value of this column must in: [0, 1]\nBowlers.BowlerCurrentAverage: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [149, 159, 162]\nBowlers.BowlerCurrentHcp: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [0, 46, 34]\nBowlers.BowlerGamesBowled: The type is INT, Which does not inlude Null and is Non-Unique. Value of this column must in: [39, 0]\nBowlers.BowlerID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [24, 6, 22]\nBowlers.BowlerLastName: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Black', 'Hernandez', 'Fournier']\nBowlers.BowlerMiddleInit: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['A', 'J', 'L']\nBowlers.BowlerPhoneNumber: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['(206) 881-5596', '(206) 555-9893', '(206) 555-3487']\nBowlers.BowlerState: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['WA']\nBowlers.BowlerTotalPins: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [6152, 5790, 6147]\nBowlers.TeamID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [2, 1, 8]\nMatch_Games.GameNumber: The type is smallint, Which does not inlude Null and is Non-Unique. Values format like: [1, 2, 3]\nMatch_Games.MatchID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [10, 51, 47]\nMatch_Games.WinningTeamID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [1, 8, 2]\nTeams.TeamID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1, 5, 7]\nTeams.TeamName: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Dolphins', 'Barracudas', 'Terrapins']\nTournaments.TourneyDate: The type is DATE, Which does not inlude Null and is Unique. Values format like: ['2018-08-02', '2017-10-23', '2018-07-26']\nTournaments.TourneyID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [13, 14, 3]\nTournaments.TourneyLocation: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Red Rooster Lanes', 'Totem Lanes', 'Bolero Lanes']\nTourney_Matches.EvenLaneTeamID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [5, 4, 3]\nTourney_Matches.Lanes: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['21-22', '27-28', '09-10']\nTourney_Matches.MatchID: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [37, 34, 17]\nTourney_Matches.OddLaneTeamID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [4, 2, 8]\nTourney_Matches.TourneyID: The type is INT, Which does not inlude Null and is Non-Unique. Values format like: [6, 1, 4]\nWAZips.City: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Blaine', 'Wahkiacus', 'University Place']",
+        "foreign_keys": "Tourney_Matches.TourneyID = Tournaments.TourneyID, Tourney_Matches.OddLaneTeamID = Teams.TeamID, Tourney_Matches.EvenLaneTeamID = Teams.TeamID, Tourney_Matches_Archive.TourneyID = Tournaments_Archive.TourneyID",
+        "foreign_set": [
+            "Tourney_Matches.EvenLaneTeamID",
+            "Tourney_Matches.OddLaneTeamID",
+            "Tourney_Matches.TourneyID",
+            "Tournaments_Archive.TourneyID",
+            "Tourney_Matches_Archive.TourneyID",
+            "Tournaments.TourneyID",
+            "Teams.TeamID"
+        ],
+        "q_order": [
+            "the bowlers",
+            "match number",
+            "game number",
+            "handicap score",
+            "tournament date",
+            "location"
+        ],
+        "status": "success"
     }
 ]

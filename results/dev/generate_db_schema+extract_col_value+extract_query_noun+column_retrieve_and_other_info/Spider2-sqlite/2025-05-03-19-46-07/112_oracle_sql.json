@@ -1,22 +1,1137 @@
 [
     {
         "node_type": "generate_db_schema",
-        "status": "error",
-        "error": "<class 'IndexError'>: <list index out of range>"
+        "db_list": "Database Management System: SQLite\n#Database name: oracle_sql\n## Table customers:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [50042, 50741, 51069]\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Boom Beer Bar', 'Der Wichtelmann', 'Hygge og Humle']\n\n## Table web_devices:\nday: The type is , Which does not inlude Null and is Unique. Value of this column must in: ['2019-05-01', '2019-05-02']\npc: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [1042, 967]\ntablet: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [812, 1102]\nphone: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [1610, 2159]\n\n## Table web_demographics:\nday: The type is , Which does not inlude Null and is Unique. Value of this column must in: ['2019-05-01', '2019-05-02']\nm_tw_cnt: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [1232, 1438]\nm_tw_qty: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [86, 142]\nm_fb_cnt: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [1017, 1198]\nm_fb_qty: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [64, 70]\nf_tw_cnt: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [651, 840]\nf_tw_qty: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [76, 92]\nf_fb_cnt: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [564, 752]\nf_fb_qty: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [68, 78]\n\n## Table channels_dim:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [42, 44]\nname: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['Twitter', 'Facebook']\nshortcut: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['tw', 'fb']\n\n## Table gender_dim:\nletter: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['F', 'M']\nname: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['Female', 'Male']\n\n## Table packaging:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [531, 522, 511]\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Box Large', 'Pallet Mix SG', 'Bottle 330cl']\n\n## Table packaging_relations:\npackaging_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [532, 524, 511]\ncontains_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [523, 511, 521]\nqty: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [16, 8, 36]\n\n## Table product_groups:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [152, 202, 232]\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['IPA', 'Wheat', 'Belgian']\n\n## Table products:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7870, 4160, 6520]\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Hazy Pink Cloud', 'Coalminers Sweat', 'Ghost of Hops']\ngroup_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [152, 142, 202]\n\n## Table monthly_sales:\nproduct_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4280, 7870, 5310]\nmth: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2016-11-01', '2016-02-01', '2018-08-01']\nqty: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 27, 172]\n\n## Table breweries:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [536, 518, 523]\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Balthazar Brauerei', 'Brewing Barbarian', 'Happy Hoppy Hippo']\n\n## Table purchases:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [751, 742, 726]\npurchased: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2016-02-04', '2017-10-13', '2017-10-11']\nbrewery_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [536, 518, 523]\nproduct_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4280, 4160, 5310]\nqty: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [67, 71, 53]\ncost: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [211, 784, 115]\n\n## Table product_alcohol:\nproduct_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7870, 7950, 7790]\nsales_volume: The type is REAL, Which does not inlude Null and is Non-Unique. Value of this column must in: [330, 500]\nabv: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [4, 8, 4]\n\n## Table customer_favorites:\ncustomer_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [50042, 51069, 51007]\nfavorite_list: The type is TEXT, Which inlude Null and is Unique. Values format like: ['5430,7790,7870', 6520, '4040,5310']\n\n## Table customer_reviews:\ncustomer_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [51007, 51069, 50741]\nreview_list: The type is TEXT, Which inlude Null and is Unique. Values format like: ['4280:B,7790:B', '4040:A,6600:C,7950:B', '4160:A']\n\n## Table locations:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [80, 54, 104]\nwarehouse: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]\naisle: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['C', 'D', 'A']\nposition: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7, 21, 18]\n\n## Table inventory:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1403, 1151, 1370]\nlocation_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [205, 88, 236]\nproduct_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4280, 6520, 5430]\npurchase_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [724, 766, 757]\nqty: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [7, 36, 42]\n\n## Table orders:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [429, 426, 430]\ncustomer_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [50741, 51069, 50042]\nordered: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2019-01-15', '2019-02-17', '2019-01-28']\ndelivery: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: None\n\n## Table orderlines:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [9280, 9296, 9120]\norder_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [426, 425, 423]\nproduct_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4280, 6520, 6600]\nqty: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [40, 60, 140]\namount: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [480, 1750, 680]\n\n## Table monthly_budget:\nproduct_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [6520, 6600]\nmth: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-07-01', '2019-04-01', '2019-05-01']\nqty: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [60, 40, 50]\n\n## Table product_minimums:\nproduct_id: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [6520, 6600]\nqty_minimum: The type is REAL, Which does not inlude Null and is Unique. Value of this column must in: [100, 30]\nqty_purchase: The type is REAL, Which does not inlude Null and is Unique. Value of this column must in: [400, 100]\n\n## Table stock:\nsymbol: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['BEER']\ncompany: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['Good Beer Trading Co']\n\n## Table ticker:\nsymbol: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['BEER']\nday: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2019-04-12', '2019-04-02', '2019-04-19']\nprice: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [14, 15, 14]\n\n## Table web_apps:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [542]\nname: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['Webshop']\n\n## Table web_pages:\napp_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [542]\npage_no: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3, 2, 4]\nfriendly_url: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['/Shop', '/Breweries', '/About']\n\n## Table web_counter_hist:\napp_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [542]\npage_no: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 4, 3]\nday: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-04-08', '2019-04-13', '2019-04-10']\ncounter: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5733, 5088, 1938]\n\n## Table server_heartbeat:\nserver: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['10.0.0.100', '10.0.0.142']\nbeat_time: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-04-10 13:05', '2019-04-10 13:00', '2019-04-10 13:50']\n\n## Table web_page_visits:\nclient_ip: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['104.130.89.12', '85.237.86.200']\nvisit_time: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2019-04-20 08:16:31', '2019-04-20 12:02:02', '2019-04-20 09:03:34']\napp_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [542]\npage_no: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 4, 2]\n\n## Table employees:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [142, 147, 149]\nname: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Kurt Zollman', 'Simon Chang', 'Axel de Proef']\ntitle: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Sales Manager', 'Purchaser', 'Warehouse Manager']\nsupervisor_id: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [142, 151, 144]\n\n## Table emp_hire_periods:\nemp_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [142, 145, 146]\nstart_: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2016-06-01', '2019-02-01', '2010-07-01']\nend_: The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2016-06-01', '2015-10-01', '2012-04-01']\ntitle: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['IT Developer', 'Code Tester', 'Forklift Operator']\n\n## Table picking_list:\nid: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [841, 842]\ncreated: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['2019-01-16 14:03:41', '2019-01-19 15:57:42']\npicker_emp_id: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [149, 152]\n\n## Table picking_line:\npicklist_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [841, 842]\nline_no: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 4, 10]\nlocation_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [163, 186, 65]\norder_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [423, 421, 422]\nproduct_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [6520, 4280]\nqty: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [14, 30, 39]\n\n## Table picking_log:\npicklist_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [841, 842]\nlog_time: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2019-01-16 14:09:02', '2019-01-19 16:07:34', '2019-01-16 14:14:41']\nactivity: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['D', 'P', 'A']\nlocation_id: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [16, 212, 165]\npickline_no: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [6, 7, 11]\n\n#Forigen keys:\npackaging_relations.contains_id = packaging.id, packaging_relations.packaging_id = packaging.id, products.group_id = product_groups.id, monthly_sales.product_id = products.id, purchases.product_id = products.id, purchases.brewery_id = breweries.id, product_alcohol.product_id = products.id, customer_favorites.customer_id = customers.id, customer_reviews.customer_id = customers.id, inventory.purchase_id = purchases.id, inventory.product_id = products.id, inventory.location_id = locations.id, orders.customer_id = customers.id, orderlines.product_id = products.id, orderlines.order_id = orders.id, monthly_budget.product_id = products.id, product_minimums.product_id = products.id, ticker.symbol = stock.symbol, web_pages.app_id = web_apps.id, web_counter_hist.app_id = web_pages.app_id, web_counter_hist.page_no = web_pages.page_no, web_page_visits.app_id = web_pages.app_id, web_page_visits.page_no = web_pages.page_no, employees.supervisor_id = employees.id, emp_hire_periods.emp_id = employees.id, picking_list.picker_emp_id = employees.id, picking_line.product_id = products.id, picking_line.order_id = orders.id, picking_line.location_id = locations.id, picking_line.picklist_id = picking_list.id, picking_log.picklist_id = picking_line.picklist_id, picking_log.pickline_no = picking_line.line_no, picking_log.location_id = locations.id, picking_log.picklist_id = picking_list.id, id_name_coll_entries.collection_id = id_name_coll_type.collection_id\n\n# Database Description:\nThe database `oracle_sql` is designed to manage and track various aspects of a beer production, sales, and distribution business. It includes information about customers, products, breweries, sales, inventory, orders, packaging, employees, and web-related data. The database also tracks relationships between entities, such as customer preferences, product groups, and packaging hierarchies. Additionally, it provides insights into web traffic, server activity, and stock market data related to the business.\n\n# Tables Descriptions:\n1. **customers**: Contains information about customers, including unique IDs and names.\n2. **web_devices**: Tracks daily usage statistics for different devices (PC, tablet, phone).\n3. **web_demographics**: Provides daily demographic data for social media interactions (Twitter and Facebook) segmented by gender.\n4. **channels_dim**: Stores information about social media channels, including IDs, names, and shortcuts.\n5. **gender_dim**: Defines gender categories with unique letters and names.\n6. **packaging**: Contains details about packaging types, including IDs and names.\n7. **packaging_relations**: Defines relationships between packaging types, including quantities of items contained within other packaging.\n8. **product_groups**: Categorizes products into groups, such as IPA, Wheat, and Belgian.\n9. **products**: Contains detailed information about products, including IDs, names, and their associated product group IDs.\n10. **monthly_sales**: Tracks monthly sales data for products, including quantities sold.\n11. **breweries**: Stores information about breweries, including unique IDs and names.\n12. **purchases**: Tracks purchases made by breweries, including product details, quantities, costs, and purchase dates.\n13. **product_alcohol**: Provides alcohol-related details for products, including sales volume and alcohol by volume (ABV).\n14. **customer_favorites**: Stores customers' favorite products in a list format.\n15. **customer_reviews**: Contains customer reviews for products, including ratings and comments.\n16. **locations**: Defines warehouse locations, including aisles and positions.\n17. **inventory**: Tracks inventory details, including product quantities, purchase IDs, and location IDs.\n18. **orders**: Contains information about customer orders, including order dates and delivery details.\n19. **orderlines**: Tracks individual order lines, including product quantities and amounts.\n20. **monthly_budget**: Defines monthly budget allocations for products, including quantities.\n21. **product_minimums**: Specifies minimum quantities and purchase requirements for products.\n22. **stock**: Contains stock market information related to the company, including symbols and company names.\n23. **ticker**: Tracks daily stock prices for the company.\n24. **web_apps**: Stores information about web applications, including IDs and names.\n25. **web_pages**: Defines web pages within applications, including page numbers and friendly URLs.\n26. **web_counter_hist**: Tracks historical web page visit counters by day.\n27. **server_heartbeat**: Monitors server activity, including timestamps and server IPs.\n28. **web_page_visits**: Logs visits to web pages, including client IPs and timestamps.\n29. **employees**: Contains employee details, including IDs, names, titles, and supervisor relationships.\n30. **emp_hire_periods**: Tracks employee hire periods, including start and end dates and job titles.\n31. **picking_list**: Contains information about picking lists created for order fulfillment, including picker employee IDs and creation timestamps.\n32. **picking_line**: Tracks individual lines in picking lists, including product quantities and locations.\n33. **picking_log**: Logs activities related to picking lists, including timestamps, activities, and locations.\n\nThis database is highly relational, with foreign keys connecting various tables to ensure data integrity and consistency across the system. It supports operations related to production,\n",
+        "db_col_dic": {
+            "customers.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [50042, 50741, 51069]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[50042, 50741, 51069]"
+            ],
+            "customers.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Boom Beer Bar', 'Der Wichtelmann', 'Hygge og Humle']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Boom Beer Bar', 'Der Wichtelmann', 'Hygge og Humle']"
+            ],
+            "web_devices.day": [
+                "The type is , Which does not inlude Null and is Unique. Value of this column must in: ['2019-05-01', '2019-05-02']",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Unique",
+                "['2019-05-01', '2019-05-02']"
+            ],
+            "web_devices.pc": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [1042, 967]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1042, 967]"
+            ],
+            "web_devices.tablet": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [812, 1102]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[812, 1102]"
+            ],
+            "web_devices.phone": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [1610, 2159]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1610, 2159]"
+            ],
+            "web_demographics.day": [
+                "The type is , Which does not inlude Null and is Unique. Value of this column must in: ['2019-05-01', '2019-05-02']",
+                "",
+                "",
+                "",
+                "Non-Null",
+                "Unique",
+                "['2019-05-01', '2019-05-02']"
+            ],
+            "web_demographics.m_tw_cnt": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [1232, 1438]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1232, 1438]"
+            ],
+            "web_demographics.m_tw_qty": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [86, 142]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[86, 142]"
+            ],
+            "web_demographics.m_fb_cnt": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [1017, 1198]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1017, 1198]"
+            ],
+            "web_demographics.m_fb_qty": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [64, 70]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[64, 70]"
+            ],
+            "web_demographics.f_tw_cnt": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [651, 840]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[651, 840]"
+            ],
+            "web_demographics.f_tw_qty": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [76, 92]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[76, 92]"
+            ],
+            "web_demographics.f_fb_cnt": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [564, 752]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[564, 752]"
+            ],
+            "web_demographics.f_fb_qty": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [68, 78]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[68, 78]"
+            ],
+            "channels_dim.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [42, 44]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[42, 44]"
+            ],
+            "channels_dim.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['Twitter', 'Facebook']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Twitter', 'Facebook']"
+            ],
+            "channels_dim.shortcut": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['tw', 'fb']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['tw', 'fb']"
+            ],
+            "gender_dim.letter": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['F', 'M']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['F', 'M']"
+            ],
+            "gender_dim.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['Female', 'Male']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Female', 'Male']"
+            ],
+            "packaging.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [531, 522, 511]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[531, 522, 511]"
+            ],
+            "packaging.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Box Large', 'Pallet Mix SG', 'Bottle 330cl']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Box Large', 'Pallet Mix SG', 'Bottle 330cl']"
+            ],
+            "packaging_relations.packaging_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [532, 524, 511]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[532, 524, 511]"
+            ],
+            "packaging_relations.contains_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [523, 511, 521]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[523, 511, 521]"
+            ],
+            "packaging_relations.qty": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [16, 8, 36]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[16, 8, 36]"
+            ],
+            "product_groups.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [152, 202, 232]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[152, 202, 232]"
+            ],
+            "product_groups.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['IPA', 'Wheat', 'Belgian']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['IPA', 'Wheat', 'Belgian']"
+            ],
+            "products.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7870, 4160, 6520]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[7870, 4160, 6520]"
+            ],
+            "products.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Hazy Pink Cloud', 'Coalminers Sweat', 'Ghost of Hops']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Hazy Pink Cloud', 'Coalminers Sweat', 'Ghost of Hops']"
+            ],
+            "products.group_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [152, 142, 202]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[152, 142, 202]"
+            ],
+            "monthly_sales.product_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4280, 7870, 5310]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4280, 7870, 5310]"
+            ],
+            "monthly_sales.mth": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2016-11-01', '2016-02-01', '2018-08-01']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2016-11-01', '2016-02-01', '2018-08-01']"
+            ],
+            "monthly_sales.qty": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 27, 172]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[9, 27, 172]"
+            ],
+            "breweries.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [536, 518, 523]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[536, 518, 523]"
+            ],
+            "breweries.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Balthazar Brauerei', 'Brewing Barbarian', 'Happy Hoppy Hippo']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Balthazar Brauerei', 'Brewing Barbarian', 'Happy Hoppy Hippo']"
+            ],
+            "purchases.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [751, 742, 726]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[751, 742, 726]"
+            ],
+            "purchases.purchased": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2016-02-04', '2017-10-13', '2017-10-11']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['2016-02-04', '2017-10-13', '2017-10-11']"
+            ],
+            "purchases.brewery_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [536, 518, 523]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[536, 518, 523]"
+            ],
+            "purchases.product_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4280, 4160, 5310]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4280, 4160, 5310]"
+            ],
+            "purchases.qty": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [67, 71, 53]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[67, 71, 53]"
+            ],
+            "purchases.cost": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [211, 784, 115]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[211, 784, 115]"
+            ],
+            "product_alcohol.product_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7870, 7950, 7790]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[7870, 7950, 7790]"
+            ],
+            "product_alcohol.sales_volume": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Value of this column must in: [330, 500]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[330, 500]"
+            ],
+            "product_alcohol.abv": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [4, 8, 4]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[4, 8, 4]"
+            ],
+            "customer_favorites.customer_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [50042, 51069, 51007]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[50042, 51069, 51007]"
+            ],
+            "customer_favorites.favorite_list": [
+                "The type is TEXT, Which inlude Null and is Unique. Values format like: ['5430,7790,7870', 6520, '4040,5310']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Unique",
+                "['5430,7790,7870', 6520, '4040,5310']"
+            ],
+            "customer_reviews.customer_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [51007, 51069, 50741]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[51007, 51069, 50741]"
+            ],
+            "customer_reviews.review_list": [
+                "The type is TEXT, Which inlude Null and is Unique. Values format like: ['4280:B,7790:B', '4040:A,6600:C,7950:B', '4160:A']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Unique",
+                "['4280:B,7790:B', '4040:A,6600:C,7950:B', '4160:A']"
+            ],
+            "locations.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [80, 54, 104]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[80, 54, 104]"
+            ],
+            "locations.warehouse": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [1, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 2]"
+            ],
+            "locations.aisle": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['C', 'D', 'A']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['C', 'D', 'A']"
+            ],
+            "locations.position": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [7, 21, 18]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[7, 21, 18]"
+            ],
+            "inventory.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1403, 1151, 1370]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[1403, 1151, 1370]"
+            ],
+            "inventory.location_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [205, 88, 236]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[205, 88, 236]"
+            ],
+            "inventory.product_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4280, 6520, 5430]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4280, 6520, 5430]"
+            ],
+            "inventory.purchase_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [724, 766, 757]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[724, 766, 757]"
+            ],
+            "inventory.qty": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [7, 36, 42]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[7, 36, 42]"
+            ],
+            "orders.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [429, 426, 430]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[429, 426, 430]"
+            ],
+            "orders.customer_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [50741, 51069, 50042]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[50741, 51069, 50042]"
+            ],
+            "orders.ordered": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2019-01-15', '2019-02-17', '2019-01-28']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['2019-01-15', '2019-02-17', '2019-01-28']"
+            ],
+            "orders.delivery": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: None",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "None"
+            ],
+            "orderlines.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [9280, 9296, 9120]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[9280, 9296, 9120]"
+            ],
+            "orderlines.order_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [426, 425, 423]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[426, 425, 423]"
+            ],
+            "orderlines.product_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4280, 6520, 6600]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[4280, 6520, 6600]"
+            ],
+            "orderlines.qty": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [40, 60, 140]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[40, 60, 140]"
+            ],
+            "orderlines.amount": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [480, 1750, 680]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[480, 1750, 680]"
+            ],
+            "monthly_budget.product_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [6520, 6600]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[6520, 6600]"
+            ],
+            "monthly_budget.mth": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-07-01', '2019-04-01', '2019-05-01']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2019-07-01', '2019-04-01', '2019-05-01']"
+            ],
+            "monthly_budget.qty": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [60, 40, 50]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[60, 40, 50]"
+            ],
+            "product_minimums.product_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [6520, 6600]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[6520, 6600]"
+            ],
+            "product_minimums.qty_minimum": [
+                "The type is REAL, Which does not inlude Null and is Unique. Value of this column must in: [100, 30]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Unique",
+                "[100, 30]"
+            ],
+            "product_minimums.qty_purchase": [
+                "The type is REAL, Which does not inlude Null and is Unique. Value of this column must in: [400, 100]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Unique",
+                "[400, 100]"
+            ],
+            "stock.symbol": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['BEER']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['BEER']"
+            ],
+            "stock.company": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['Good Beer Trading Co']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Good Beer Trading Co']"
+            ],
+            "ticker.symbol": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['BEER']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['BEER']"
+            ],
+            "ticker.day": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2019-04-12', '2019-04-02', '2019-04-19']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['2019-04-12', '2019-04-02', '2019-04-19']"
+            ],
+            "ticker.price": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [14, 15, 14]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[14, 15, 14]"
+            ],
+            "web_apps.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [542]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[542]"
+            ],
+            "web_apps.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['Webshop']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Webshop']"
+            ],
+            "web_pages.app_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [542]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[542]"
+            ],
+            "web_pages.page_no": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3, 2, 4]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[3, 2, 4]"
+            ],
+            "web_pages.friendly_url": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['/Shop', '/Breweries', '/About']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['/Shop', '/Breweries', '/About']"
+            ],
+            "web_counter_hist.app_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [542]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[542]"
+            ],
+            "web_counter_hist.page_no": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 4, 3]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 4, 3]"
+            ],
+            "web_counter_hist.day": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-04-08', '2019-04-13', '2019-04-10']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2019-04-08', '2019-04-13', '2019-04-10']"
+            ],
+            "web_counter_hist.counter": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [5733, 5088, 1938]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[5733, 5088, 1938]"
+            ],
+            "server_heartbeat.server": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['10.0.0.100', '10.0.0.142']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['10.0.0.100', '10.0.0.142']"
+            ],
+            "server_heartbeat.beat_time": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-04-10 13:05', '2019-04-10 13:00', '2019-04-10 13:50']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2019-04-10 13:05', '2019-04-10 13:00', '2019-04-10 13:50']"
+            ],
+            "web_page_visits.client_ip": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['104.130.89.12', '85.237.86.200']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['104.130.89.12', '85.237.86.200']"
+            ],
+            "web_page_visits.visit_time": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2019-04-20 08:16:31', '2019-04-20 12:02:02', '2019-04-20 09:03:34']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['2019-04-20 08:16:31', '2019-04-20 12:02:02', '2019-04-20 09:03:34']"
+            ],
+            "web_page_visits.app_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [542]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[542]"
+            ],
+            "web_page_visits.page_no": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 4, 2]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[3, 4, 2]"
+            ],
+            "employees.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [142, 147, 149]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[142, 147, 149]"
+            ],
+            "employees.name": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Kurt Zollman', 'Simon Chang', 'Axel de Proef']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['Kurt Zollman', 'Simon Chang', 'Axel de Proef']"
+            ],
+            "employees.title": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['Sales Manager', 'Purchaser', 'Warehouse Manager']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['Sales Manager', 'Purchaser', 'Warehouse Manager']"
+            ],
+            "employees.supervisor_id": [
+                "The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [142, 151, 144]",
+                "",
+                "",
+                "INTEGER",
+                "Include Null",
+                "Non-Unique",
+                "[142, 151, 144]"
+            ],
+            "emp_hire_periods.emp_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [142, 145, 146]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[142, 145, 146]"
+            ],
+            "emp_hire_periods.start_": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2016-06-01', '2019-02-01', '2010-07-01']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['2016-06-01', '2019-02-01', '2010-07-01']"
+            ],
+            "emp_hire_periods.end_": [
+                "The type is TEXT, Which inlude Null and is Non-Unique. Values format like: ['2016-06-01', '2015-10-01', '2012-04-01']",
+                "",
+                "",
+                "TEXT",
+                "Include Null",
+                "Non-Unique",
+                "['2016-06-01', '2015-10-01', '2012-04-01']"
+            ],
+            "emp_hire_periods.title": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['IT Developer', 'Code Tester', 'Forklift Operator']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['IT Developer', 'Code Tester', 'Forklift Operator']"
+            ],
+            "picking_list.id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [841, 842]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[841, 842]"
+            ],
+            "picking_list.created": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['2019-01-16 14:03:41', '2019-01-19 15:57:42']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['2019-01-16 14:03:41', '2019-01-19 15:57:42']"
+            ],
+            "picking_list.picker_emp_id": [
+                "The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [149, 152]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Unique",
+                "[149, 152]"
+            ],
+            "picking_line.picklist_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [841, 842]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[841, 842]"
+            ],
+            "picking_line.line_no": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 4, 10]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[1, 4, 10]"
+            ],
+            "picking_line.location_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [163, 186, 65]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[163, 186, 65]"
+            ],
+            "picking_line.order_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [423, 421, 422]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[423, 421, 422]"
+            ],
+            "picking_line.product_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [6520, 4280]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[6520, 4280]"
+            ],
+            "picking_line.qty": [
+                "The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [14, 30, 39]",
+                "",
+                "",
+                "REAL",
+                "Non-Null",
+                "Non-Unique",
+                "[14, 30, 39]"
+            ],
+            "picking_log.picklist_id": [
+                "The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [841, 842]",
+                "",
+                "",
+                "INTEGER",
+                "Non-Null",
+                "Non-Unique",
+                "[841, 842]"
+            ],
+            "picking_log.log_time": [
+                "The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2019-01-16 14:09:02', '2019-01-19 16:07:34', '2019-01-16 14:14:41']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Unique",
+                "['2019-01-16 14:09:02', '2019-01-19 16:07:34', '2019-01-16 14:14:41']"
+            ],
+            "picking_log.activity": [
+                "The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['D', 'P', 'A']",
+                "",
+                "",
+                "TEXT",
+                "Non-Null",
+                "Non-Unique",
+                "['D', 'P', 'A']"
+            ],
+            "picking_log.location_id": [
+                "The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [16, 212, 165]",
+                "",
+                "",
+                "INTEGER",
+                "Include Null",
+                "Non-Unique",
+                "[16, 212, 165]"
+            ],
+            "picking_log.pickline_no": [
+                "The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [6, 7, 11]",
+                "",
+                "",
+                "INTEGER",
+                "Include Null",
+                "Non-Unique",
+                "[6, 7, 11]"
+            ]
+        },
+        "status": "success"
     },
     {
         "node_type": "extract_col_value",
-        "status": "error",
-        "error": "<class 'KeyError'>: <'db_list'>"
+        "key_col_des_raw": "\n#reason: The question queries products with seasonality-adjusted sales ratios consistently above 2 for every month in 2017, based on monthly sales data starting in January 2016. Relevant columns include product details, sales quantities, and timestamps for filtering and calculations.\n#columns: monthly_sales.product_id, monthly_sales.mth, monthly_sales.qty, products.id, products.name\n#values: \"2016-01-01\", \"2017-01-01\", \"2017-12-31\", \"2\"\n",
+        "status": "success"
     },
     {
         "node_type": "extract_query_noun",
-        "status": "error",
-        "error": "<class 'KeyError'>: <'key_col_des_raw'>"
+        "values": [
+            "products",
+            "year 2017",
+            "2",
+            "2017-01-01",
+            "seasonality",
+            "seasonality-adjusted sales ratio",
+            "month",
+            "2016-01-01",
+            "January 2016",
+            "2017-12-31",
+            "centered moving average",
+            "monthly sales data"
+        ],
+        "col": "monthly_sales.product_id, monthly_sales.mth, monthly_sales.qty, products.id, products.name",
+        "status": "success"
     },
     {
         "node_type": "column_retrieve_and_other_info",
-        "status": "error",
-        "error": "<class 'KeyError'>: <'db_col_dic'>"
+        "L_values": [
+            [
+                "monthly_sales.mth",
+                "2016-01-01"
+            ],
+            [
+                "monthly_sales.mth",
+                "2017-01-01"
+            ],
+            [
+                "purchases.purchased",
+                "2016-01-01"
+            ],
+            [
+                "purchases.purchased",
+                "2017-10-20"
+            ]
+        ],
+        "column": "breweries.id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [536, 518, 523]\nbreweries.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Balthazar Brauerei', 'Brewing Barbarian', 'Happy Hoppy Hippo']\nchannels_dim.id: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [42, 44]\nchannels_dim.name: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['Twitter', 'Facebook']\ncustomer_favorites.customer_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [50042, 51069, 51007]\ncustomer_reviews.customer_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [51007, 51069, 50741]\ncustomers.id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [50042, 50741, 51069]\ncustomers.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Boom Beer Bar', 'Der Wichtelmann', 'Hygge og Humle']\nemp_hire_periods.emp_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [142, 145, 146]\nemp_hire_periods.start_: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2016-06-01', '2019-02-01', '2010-07-01']\nemployees.id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [142, 147, 149]\nemployees.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Kurt Zollman', 'Simon Chang', 'Axel de Proef']\nemployees.supervisor_id: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [142, 151, 144]\ngender_dim.name: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['Female', 'Male']\ninventory.id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [1403, 1151, 1370]\ninventory.location_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [205, 88, 236]\ninventory.product_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4280, 6520, 5430]\ninventory.purchase_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [724, 766, 757]\ninventory.qty: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [7, 36, 42]\nlocations.id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [80, 54, 104]\nmonthly_budget.mth: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-07-01', '2019-04-01', '2019-05-01']\nmonthly_budget.product_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [6520, 6600]\nmonthly_budget.qty: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [60, 40, 50]\nmonthly_sales.mth: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2016-11-01', '2016-02-01', '2018-08-01']\nmonthly_sales.product_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4280, 7870, 5310]\nmonthly_sales.qty: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [9, 27, 172]\norderlines.amount: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [480, 1750, 680]\norderlines.id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [9280, 9296, 9120]\norderlines.order_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [426, 425, 423]\norderlines.product_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4280, 6520, 6600]\norderlines.qty: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [40, 60, 140]\norders.customer_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [50741, 51069, 50042]\norders.delivery: The type is TEXT, Which inlude Null and is Non-Unique. Value of this column must in: None\norders.id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [429, 426, 430]\npackaging.id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [531, 522, 511]\npackaging.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Box Large', 'Pallet Mix SG', 'Bottle 330cl']\npackaging_relations.contains_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [523, 511, 521]\npackaging_relations.packaging_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [532, 524, 511]\npackaging_relations.qty: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [16, 8, 36]\npicking_line.line_no: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 4, 10]\npicking_line.location_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [163, 186, 65]\npicking_line.order_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [423, 421, 422]\npicking_line.picklist_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [841, 842]\npicking_line.product_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [6520, 4280]\npicking_line.qty: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [14, 30, 39]\npicking_list.created: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['2019-01-16 14:03:41', '2019-01-19 15:57:42']\npicking_list.id: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [841, 842]\npicking_list.picker_emp_id: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [149, 152]\npicking_log.activity: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['D', 'P', 'A']\npicking_log.location_id: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [16, 212, 165]\npicking_log.pickline_no: The type is INTEGER, Which inlude Null and is Non-Unique. Values format like: [6, 7, 11]\npicking_log.picklist_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [841, 842]\nproduct_alcohol.product_id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7870, 7950, 7790]\nproduct_alcohol.sales_volume: The type is REAL, Which does not inlude Null and is Non-Unique. Value of this column must in: [330, 500]\nproduct_groups.id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [152, 202, 232]\nproduct_groups.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['IPA', 'Wheat', 'Belgian']\nproduct_minimums.product_id: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [6520, 6600]\nproducts.group_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [152, 142, 202]\nproducts.id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [7870, 4160, 6520]\nproducts.name: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['Hazy Pink Cloud', 'Coalminers Sweat', 'Ghost of Hops']\npurchases.brewery_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [536, 518, 523]\npurchases.cost: The type is REAL, Which does not inlude Null and is Non-Unique. Values format like: [211, 784, 115]\npurchases.id: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [751, 742, 726]\npurchases.product_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [4280, 4160, 5310]\npurchases.purchased: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2016-02-04', '2017-10-13', '2017-10-11']\npurchases.qty: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [67, 71, 53]\nserver_heartbeat.beat_time: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-04-10 13:05', '2019-04-10 13:00', '2019-04-10 13:50']\nstock.company: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['Good Beer Trading Co']\nstock.symbol: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['BEER']\nticker.day: The type is TEXT, Which does not inlude Null and is Unique. Values format like: ['2019-04-12', '2019-04-02', '2019-04-19']\nticker.symbol: The type is TEXT, Which does not inlude Null and is Non-Unique. Value of this column must in: ['BEER']\nweb_apps.id: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [542]\nweb_apps.name: The type is TEXT, Which does not inlude Null and is Unique. Value of this column must in: ['Webshop']\nweb_counter_hist.app_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [542]\nweb_counter_hist.day: The type is TEXT, Which does not inlude Null and is Non-Unique. Values format like: ['2019-04-08', '2019-04-13', '2019-04-10']\nweb_counter_hist.page_no: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [1, 4, 3]\nweb_demographics.day: The type is , Which does not inlude Null and is Unique. Value of this column must in: ['2019-05-01', '2019-05-02']\nweb_demographics.m_tw_cnt: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [1232, 1438]\nweb_devices.day: The type is , Which does not inlude Null and is Unique. Value of this column must in: ['2019-05-01', '2019-05-02']\nweb_devices.phone: The type is INTEGER, Which does not inlude Null and is Unique. Value of this column must in: [1610, 2159]\nweb_page_visits.app_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [542]\nweb_page_visits.page_no: The type is INTEGER, Which does not inlude Null and is Non-Unique. Values format like: [3, 4, 2]\nweb_pages.app_id: The type is INTEGER, Which does not inlude Null and is Non-Unique. Value of this column must in: [542]\nweb_pages.page_no: The type is INTEGER, Which does not inlude Null and is Unique. Values format like: [3, 2, 4]",
+        "foreign_keys": "packaging_relations.contains_id = packaging.id, packaging_relations.packaging_id = packaging.id, products.group_id = product_groups.id, monthly_sales.product_id = products.id, purchases.product_id = products.id, purchases.brewery_id = breweries.id, product_alcohol.product_id = products.id, customer_favorites.customer_id = customers.id, customer_reviews.customer_id = customers.id, inventory.purchase_id = purchases.id, inventory.product_id = products.id, inventory.location_id = locations.id, orders.customer_id = customers.id, orderlines.product_id = products.id, orderlines.order_id = orders.id, monthly_budget.product_id = products.id, product_minimums.product_id = products.id, ticker.symbol = stock.symbol, web_pages.app_id = web_apps.id, web_counter_hist.app_id = web_pages.app_id, web_counter_hist.page_no = web_pages.page_no, web_page_visits.app_id = web_pages.app_id, web_page_visits.page_no = web_pages.page_no, employees.supervisor_id = employees.id, emp_hire_periods.emp_id = employees.id, picking_list.picker_emp_id = employees.id, picking_line.product_id = products.id, picking_line.order_id = orders.id, picking_line.location_id = locations.id, picking_line.picklist_id = picking_list.id, picking_log.picklist_id = picking_line.picklist_id, picking_log.pickline_no = picking_line.line_no, picking_log.location_id = locations.id, picking_log.picklist_id = picking_list.id, id_name_coll_entries.collection_id = id_name_coll_type.collection_id",
+        "foreign_set": [
+            "orderlines.order_id",
+            "product_minimums.product_id",
+            "customer_reviews.customer_id",
+            "purchases.brewery_id",
+            "monthly_budget.product_id",
+            "web_counter_hist.app_id",
+            "product_alcohol.product_id",
+            "employees.supervisor_id",
+            "inventory.purchase_id",
+            "picking_log.pickline_no",
+            "products.id",
+            "picking_log.location_id",
+            "monthly_sales.product_id",
+            "emp_hire_periods.emp_id",
+            "orders.customer_id",
+            "customer_favorites.customer_id",
+            "picking_line.location_id",
+            "stock.symbol",
+            "picking_log.picklist_id",
+            "purchases.id",
+            "id_name_coll_entries.collection_id",
+            "web_page_visits.page_no",
+            "product_groups.id",
+            "orders.id",
+            "packaging_relations.packaging_id",
+            "packaging.id",
+            "locations.id",
+            "web_pages.app_id",
+            "breweries.id",
+            "web_apps.id",
+            "picking_line.order_id",
+            "purchases.product_id",
+            "inventory.location_id",
+            "employees.id",
+            "picking_line.picklist_id",
+            "id_name_coll_type.collection_id",
+            "inventory.product_id",
+            "orderlines.product_id",
+            "customers.id",
+            "web_counter_hist.page_no",
+            "picking_line.line_no",
+            "picking_list.id",
+            "packaging_relations.contains_id",
+            "web_pages.page_no",
+            "web_page_visits.app_id",
+            "ticker.symbol",
+            "products.group_id",
+            "picking_line.product_id",
+            "picking_list.picker_emp_id"
+        ],
+        "q_order": [
+            "which products"
+        ],
+        "status": "success"
     }
 ]
